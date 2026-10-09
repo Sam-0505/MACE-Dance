@@ -52,6 +52,22 @@ a different segment and `--num_frames 0` for the whole clip.
 
 Headless rendering uses EGL (`PYOPENGL_PLATFORM=egl` is set automatically).
 
+## Real video → controls (`video_to_controls.py`)
+
+Builds the Appearance Expert's three inputs from a **real** dance clip, following Wan2.2's own
+preprocessing: `reference.png` (first frame), `pose_video.mp4` (ViTPose skeleton) and
+`face_video.mp4` (512×512 face-landmark crop). Reference, pose and face all come from the same clip,
+a *reconstruction* setup like the samples in `Expert-Appearance/data/`. It does not use music and
+is not how a generated dance is made.
+
+```bash
+python video_to_controls.py --video clip.mp4 --out_dir outputs/controls/clip
+```
+
+Defaults: 77 frames at 16 fps (the sample data's rate), frames resized to a 1280×720 area.
+Real clips are available in the MA-Data "Appearance" subset (CC-BY-NC-4.0, 5 s, 1080×1920, with
+audio); the shards are sequential `.tar.gz`, so streaming the head of one shard is enough for a test.
+
 ## Conventions (verified on released Motion Expert outputs)
 
 - `smpl_poses`: (T, 72) axis-angle, `smpl_trans`: (T, 3) in **meters**, **z-up** world, 30 fps.
