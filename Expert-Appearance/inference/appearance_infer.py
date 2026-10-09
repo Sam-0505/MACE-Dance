@@ -105,17 +105,23 @@ def create_pipeline(
                         base_model_dir
                         / "diffusion_pytorch_model-00004-of-00004.safetensors"
                     ),
-                ]
+                ],
+                offload_device="cpu",
             ),
             ModelConfig(
-                path=str(base_model_dir / "models_t5_umt5-xxl-enc-bf16.pth")
+                path=str(base_model_dir / "models_t5_umt5-xxl-enc-bf16.pth"),
+                offload_device="cpu",
             ),
-            ModelConfig(path=str(base_model_dir / "Wan2.1_VAE.pth")),
+            ModelConfig(
+                path=str(base_model_dir / "Wan2.1_VAE.pth"),
+                offload_device="cpu",
+            ),
             ModelConfig(
                 path=str(
                     base_model_dir
                     / "models_clip_open-clip-xlm-roberta-large-vit-huge-14.pth"
-                )
+                ),
+                offload_device="cpu",
             ),
         ],
         tokenizer_config=ModelConfig(

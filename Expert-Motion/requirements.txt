@@ -7,6 +7,7 @@ tqdm==4.66.1
 einops==0.8.1
 p_tqdm==1.4.2
 accelerate==1.10.1
+transformers>=4.44,<5  # mamba-ssm imports APIs removed in transformers 5
 wandb==0.22.2
 
 torch==2.4.0

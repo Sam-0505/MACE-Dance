@@ -11,3 +11,11 @@ Expert-Appearance/outputs/
 Expert-Appearance/iw_cases/
 Expert-Appearance/iw_*_data.csv
 Expert-Appearance/appearance_*_audit.csv
+
+# Motion Expert: downloaded data/checkpoints and generated artifacts
+Expert-Motion/data/
+Expert-Motion/runs/
+Expert-Motion/eval/
+Expert-Motion/renders/
+Expert-Motion/logs/
+Expert-Motion/wandb/

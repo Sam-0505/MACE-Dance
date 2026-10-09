@@ -113,6 +113,45 @@ We provide a motion–appearance evaluation protocol for music-driven dance vide
 
 ---
 
+## 🛠️ Local Setup Notes (tested on a single RTX 4090, 24 GB)
+
+These notes are specific to this fork and are not from the original authors.
+
+**Weights.** The MACE weights are not gated, but are packaged as `.7z` archives in
+<https://huggingface.co/GD-ML/MACE-Dance> (`Expert-Appearance/Expert-Appearance.7z`,
+`Expert-Motion/Expert-Motion.7z`). Extract them with `py7zr` (or `7z`):
+
+- Appearance: the archive contains `model/train/{Adapter,LoRA}.safetensors`; place them in
+  `Expert-Appearance/models/train/`. The Wan2.2-Animate-14B base model (~42 GB of the
+  repo's 72 GB is needed) goes in `Expert-Appearance/models/Wan-AI/Wan2.2-Animate-14B/`.
+- Motion: extract into `Expert-Motion/`. It provides `runs/train/exp/weights/train-3750.pt`,
+  the `data/dataset_backups/` cache and test wavs under `data/test/wavs/`.
+
+**Environments.** The two experts need separate environments (Appearance: recent torch;
+Motion: torch 2.4.0). In both, `transformers` must be `<5`; `transformers` 5.x removed APIs
+that `diffsynth` and `mamba-ssm` import. For the Motion Expert, install the prebuilt wheels
+rather than compiling (CUDA 12, torch 2.4, Python 3.10):
+
+```bash
+pip install torch==2.4.0 torchvision==0.19.0 torchaudio==2.4.0 --index-url https://download.pytorch.org/whl/cu121
+pip install "https://github.com/Dao-AILab/causal-conv1d/releases/download/v1.5.3.post1/causal_conv1d-1.5.3.post1+cu12torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl" \
+            "https://github.com/state-spaces/mamba/releases/download/v2.2.6.post2/mamba_ssm-2.2.6.post2+cu12torch2.4cxx11abiFALSE-cp310-cp310-linux_x86_64.whl"
+pip install pytorch3d==0.7.8 --find-links https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py310_cu121_pyt240/download.html
+```
+
+**GPU memory.** The Appearance Expert originally loaded the full 14B model onto the GPU,
+which runs out of memory on 24 GB. `appearance_infer.py` now loads models on the CPU and
+relies on `enable_vram_management()` to stream layers to the GPU. On a 4090 this used
+~24 GB of VRAM and ~43 GB of system RAM, and took ~20 minutes for one 1280×720, 77-frame
+clip. Larger GPUs should be faster; this was not measured.
+
+**Scope of the Motion Expert.** `Expert-Motion/test.py` evaluates on the released test set
+and writes SMPL motion to `eval/`. It does not take an arbitrary song, and it does not render
+video. The Appearance Expert's pose/face control videos are provided only as samples in
+`Expert-Appearance/data/`.
+
+---
+
 ## 📄 Citation
 
 If you find this project useful, please consider citing our paper:
