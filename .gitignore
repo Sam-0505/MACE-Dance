@@ -19,3 +19,11 @@ Expert-Motion/eval/
 Expert-Motion/renders/
 Expert-Motion/logs/
 Expert-Motion/wandb/
+
+# Motion Projector: weights and generated artifacts
+Motion-Projector/models/
+Motion-Projector/outputs/
+Motion-Projector/logs/
+
+# Reference papers
+papers/
