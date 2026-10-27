@@ -1,0 +1,1478 @@
+{
+ "variants": {
+  "primary": {
+   "real_own": 0.22103026570909928,
+   "real_other": 0.10409244605065016,
+   "mace_own": 0.09246815008223207,
+   "mace_other": 0.08604495583489898,
+   "d_real": 0.11693781965844914,
+   "d_real_ci": [
+    0.013840875112089205,
+    0.20902285068714332
+   ],
+   "d_mace": 0.006423194247333103,
+   "d_mace_ci": [
+    -0.030722451653444952,
+    0.04419016074698761
+   ],
+   "G": 0.11051462541111604,
+   "G_ci": [
+    0.026809251874748592,
+    0.19141737519348773
+   ],
+   "G_wilcoxon_p": 0.020412445068359375,
+   "G_perm_p": 0.018598140185981403,
+   "H1_wilcoxon_p": 0.018033981323242188,
+   "H1_perm_p": 0.0182981701829817,
+   "H2_wilcoxon_p": 0.3991260528564453,
+   "H2_perm_p": 0.37636236376362364,
+   "n_real_pos": 14,
+   "n_mace_pos": 9,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.12856211562686723,
+   "own_diff_ci": [
+    0.0452369747711391,
+    0.21837561051380808
+   ],
+   "own_diff_wilcoxon_p": 0.014068603515625,
+   "own_diff_perm_p": 0.009099090090990901,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -9.0,
+   "real_frac_at_lag_edge": 0.8452380952380952,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   },
+   "per_song": {
+    "012": {
+     "ro": 0.3855576765142512,
+     "rx": 0.04247255714613733,
+     "mo": 0.08397232654288964,
+     "mx": 0.08493193639201348
+    },
+    "036": {
+     "ro": -0.1422351705506169,
+     "rx": 0.07598218120391978,
+     "mo": 0.046927373495230774,
+     "mx": 0.0165414644381878
+    },
+    "037": {
+     "ro": -0.06042127324734148,
+     "rx": -0.0007031145635621981,
+     "mo": 0.024071859688811346,
+     "mx": 0.03928831947047916
+    },
+    "063": {
+     "ro": 0.21686199018842578,
+     "rx": 0.10869646570702804,
+     "mo": 0.1212499732763721,
+     "mx": 0.21625719238261187
+    },
+    "065": {
+     "ro": 0.3406477555141929,
+     "rx": 0.02767104446888988,
+     "mo": 0.10958773999039646,
+     "mx": -0.01981312221034759
+    },
+    "092": {
+     "ro": 0.2553403380264991,
+     "rx": 0.2562731020697648,
+     "mo": 0.1424707277997276,
+     "mx": 0.07090838629848395
+    },
+    "098": {
+     "ro": 0.30458420601053926,
+     "rx": -0.015171053231015075,
+     "mo": 0.17236139766382141,
+     "mx": 0.1350933873013021
+    },
+    "109": {
+     "ro": 0.07374929437433174,
+     "rx": 0.02844522510600028,
+     "mo": 0.02484411606779767,
+     "mx": 0.0773983635220201
+    },
+    "130": {
+     "ro": 0.19286912837688291,
+     "rx": 0.06207397440112045,
+     "mo": 0.026358483865475672,
+     "mx": 0.02328742757624108
+    },
+    "132": {
+     "ro": -0.38059237697267234,
+     "rx": 0.057477142115663266,
+     "mo": -0.13663441946428254,
+     "mx": 0.0572263431300843
+    },
+    "137": {
+     "ro": 0.4320101427045162,
+     "rx": 0.08693098905378274,
+     "mo": 0.25815556291307884,
+     "mx": 0.06361439151069774
+    },
+    "143": {
+     "ro": 0.08044592681604393,
+     "rx": 0.04687267501621686,
+     "mo": 0.04955096185644316,
+     "mx": 0.052348633043916196
+    },
+    "144": {
+     "ro": 0.35814332261255466,
+     "rx": 0.12114124145773571,
+     "mo": 0.12138563865762095,
+     "mx": 0.018691470909912668
+    },
+    "161": {
+     "ro": 0.1583721809005771,
+     "rx": 0.12369209175517748,
+     "mo": 0.006320114893312499,
+     "mx": 0.0862944894007445
+    },
+    "179": {
+     "ro": 0.05887051114231127,
+     "rx": 0.17263100602294687,
+     "mo": 0.11317681057069776,
+     "mx": 0.13446594979338666
+    },
+    "193": {
+     "ro": 0.33037210764563346,
+     "rx": 0.012902432500759906,
+     "mo": 0.14040588980809673,
+     "mx": 0.10225409205500684
+    },
+    "198": {
+     "ro": 0.7398949753639156,
+     "rx": 0.5311954425621326,
+     "mo": 0.3710334460227037,
+     "mx": 0.379375923034714
+    },
+    "204": {
+     "ro": 0.5812726880094705,
+     "rx": 0.1581652038246105,
+     "mo": -0.030580121479201538,
+     "mx": 0.03527913731833381
+    },
+    "211": {
+     "ro": 0.27383162504337144,
+     "rx": 0.0810078683450436,
+     "mo": 0.1122369693934168,
+     "mx": 0.061410375495291394
+    }
+   }
+  },
+  "match_genre_first": {
+   "real_own": 0.22103026570909928,
+   "real_other": 0.042111505740731206,
+   "mace_own": 0.09246815008223207,
+   "mace_other": 0.08825623068569129,
+   "d_real": 0.17891875996836806,
+   "d_real_ci": [
+    0.04872439662092774,
+    0.29710586767353686
+   ],
+   "d_mace": 0.004211919396540751,
+   "d_mace_ci": [
+    -0.02430639283596689,
+    0.03670741699609022
+   ],
+   "G": 0.1747068405718273,
+   "G_ci": [
+    0.05845540204984443,
+    0.28325618611052855
+   ],
+   "G_wilcoxon_p": 0.007144927978515625,
+   "G_perm_p": 0.0084991500849915,
+   "H1_wilcoxon_p": 0.00904083251953125,
+   "H1_perm_p": 0.0084991500849915,
+   "H2_wilcoxon_p": 0.6602859497070312,
+   "H2_perm_p": 0.39876012398760124,
+   "n_real_pos": 14,
+   "n_mace_pos": 7,
+   "n_G_pos": 16,
+   "n": 19,
+   "own_diff": 0.12856211562686723,
+   "own_diff_ci": [
+    0.0452369747711391,
+    0.21837561051380808
+   ],
+   "own_diff_wilcoxon_p": 0.014068603515625,
+   "own_diff_perm_p": 0.009099090090990901,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -9.0,
+   "real_frac_at_lag_edge": 0.8452380952380952,
+   "config": {
+    "match": "genre_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "music_db": {
+   "real_own": 0.22496619100576276,
+   "real_other": 0.09808049723229736,
+   "mace_own": 0.09689241324209891,
+   "mace_other": 0.09219160254298232,
+   "d_real": 0.1268856937734654,
+   "d_real_ci": [
+    0.029222464233908726,
+    0.2163806816226885
+   ],
+   "d_mace": 0.004700810699116568,
+   "d_mace_ci": [
+    -0.03822767296177437,
+    0.04715730113581374
+   ],
+   "G": 0.12218488307434884,
+   "G_ci": [
+    0.03784206830235028,
+    0.2044323370558748
+   ],
+   "G_wilcoxon_p": 0.012359619140625,
+   "G_perm_p": 0.012698730126987301,
+   "H1_wilcoxon_p": 0.010206222534179688,
+   "H1_perm_p": 0.0098990100989901,
+   "H2_wilcoxon_p": 0.33971405029296875,
+   "H2_perm_p": 0.41755824417558246,
+   "n_real_pos": 15,
+   "n_mace_pos": 9,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.12807377776366388,
+   "own_diff_ci": [
+    0.04938417776141242,
+    0.2142577717690053
+   ],
+   "own_diff_wilcoxon_p": 0.00945281982421875,
+   "own_diff_perm_p": 0.006299370062993701,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -9.0,
+   "real_frac_at_lag_edge": 0.7976190476190477,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms_db",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "music_aweighted": {
+   "real_own": 0.19567195917316424,
+   "real_other": 0.08262026832260316,
+   "mace_own": 0.10775288369159015,
+   "mace_other": 0.08987386929076799,
+   "d_real": 0.11305169085056108,
+   "d_real_ci": [
+    0.013429232505478825,
+    0.20329881792626991
+   ],
+   "d_mace": 0.01787901440082218,
+   "d_mace_ci": [
+    -0.029059191935191724,
+    0.06495168265178385
+   ],
+   "G": 0.09517267644973891,
+   "G_ci": [
+    0.018247701999486048,
+    0.16410611480841542
+   ],
+   "G_wilcoxon_p": 0.040130615234375,
+   "G_perm_p": 0.024897510248975102,
+   "H1_wilcoxon_p": 0.012910842895507812,
+   "H1_perm_p": 0.0202979702029797,
+   "H2_wilcoxon_p": 0.186798095703125,
+   "H2_perm_p": 0.23937606239376064,
+   "n_real_pos": 14,
+   "n_mace_pos": 11,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.0879190754815741,
+   "own_diff_ci": [
+    0.009848741942176267,
+    0.1658557898446675
+   ],
+   "own_diff_wilcoxon_p": 0.05457305908203125,
+   "own_diff_perm_p": 0.04559544045595441,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -9.0,
+   "real_frac_at_lag_edge": 0.8214285714285714,
+   "config": {
+    "match": "tempo_first",
+    "music": "aweighted_db",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "motion_mean_speed": {
+   "real_own": 0.24739204336282322,
+   "real_other": 0.11910740118485101,
+   "mace_own": 0.08653970187090106,
+   "mace_other": 0.0880648541117877,
+   "d_real": 0.12828464217797217,
+   "d_real_ci": [
+    0.014555738283373467,
+    0.22959036099148766
+   ],
+   "d_mace": -0.0015251522408866304,
+   "d_mace_ci": [
+    -0.03980640230312007,
+    0.03593763906873222
+   ],
+   "G": 0.1298097944188588,
+   "G_ci": [
+    0.03858844683901099,
+    0.2162365410709498
+   ],
+   "G_wilcoxon_p": 0.0180816650390625,
+   "G_perm_p": 0.012698730126987301,
+   "H1_wilcoxon_p": 0.00904083251953125,
+   "H1_perm_p": 0.0192980701929807,
+   "H2_wilcoxon_p": 0.4921607971191406,
+   "H2_perm_p": 0.531046895310469,
+   "n_real_pos": 15,
+   "n_mace_pos": 10,
+   "n_G_pos": 15,
+   "n": 19,
+   "own_diff": 0.16085234149192212,
+   "own_diff_ci": [
+    0.07016647869809761,
+    0.26274621857252584
+   ],
+   "own_diff_wilcoxon_p": 0.00457763671875,
+   "own_diff_perm_p": 0.0051994800519948,
+   "n_own_real_gt_mace": 16,
+   "real_lag_median": -5.0,
+   "real_frac_at_lag_edge": 0.75,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "speed",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "motion_root_rel": {
+   "real_own": 0.21732910364925004,
+   "real_other": 0.10976245269025257,
+   "mace_own": 0.09924506730620528,
+   "mace_other": 0.08727916583578602,
+   "d_real": 0.10756665095899741,
+   "d_real_ci": [
+    0.011421445407331096,
+    0.19381161116378148
+   ],
+   "d_mace": 0.011965901470419267,
+   "d_mace_ci": [
+    -0.02478276729223645,
+    0.05008901252773749
+   ],
+   "G": 0.09560074948857814,
+   "G_ci": [
+    0.01641909326664299,
+    0.17175944003758722
+   ],
+   "G_wilcoxon_p": 0.040130615234375,
+   "G_perm_p": 0.029997000299970003,
+   "H1_wilcoxon_p": 0.018033981323242188,
+   "H1_perm_p": 0.0202979702029797,
+   "H2_wilcoxon_p": 0.28388023376464844,
+   "H2_perm_p": 0.27677232276772323,
+   "n_real_pos": 14,
+   "n_mace_pos": 9,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.11808403634304472,
+   "own_diff_ci": [
+    0.0394878089849175,
+    0.1994451379078019
+   ],
+   "own_diff_wilcoxon_p": 0.0180816650390625,
+   "own_diff_perm_p": 0.0110988901109889,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -9.0,
+   "real_frac_at_lag_edge": 0.8333333333333334,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy_root_rel",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "sigma_8": {
+   "real_own": 0.19579357340119038,
+   "real_other": 0.09912617250434269,
+   "mace_own": 0.08431253103613195,
+   "mace_other": 0.07992400335889907,
+   "d_real": 0.09666740089684767,
+   "d_real_ci": [
+    0.011892602862859642,
+    0.172483554261114
+   ],
+   "d_mace": 0.004388527677232912,
+   "d_mace_ci": [
+    -0.025086564840408415,
+    0.03276921934066327
+   ],
+   "G": 0.09227887321961477,
+   "G_ci": [
+    0.025236928981830088,
+    0.15800898057388607
+   ],
+   "G_wilcoxon_p": 0.015972137451171875,
+   "G_perm_p": 0.015998400159984,
+   "H1_wilcoxon_p": 0.010206222534179688,
+   "H1_perm_p": 0.017198280171982803,
+   "H2_wilcoxon_p": 0.3991260528564453,
+   "H2_perm_p": 0.38806119388061194,
+   "n_real_pos": 15,
+   "n_mace_pos": 9,
+   "n_G_pos": 15,
+   "n": 19,
+   "own_diff": 0.11148104236505842,
+   "own_diff_ci": [
+    0.03836532040871445,
+    0.18847634127971974
+   ],
+   "own_diff_wilcoxon_p": 0.01082611083984375,
+   "own_diff_perm_p": 0.009099090090990901,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -6.0,
+   "real_frac_at_lag_edge": 0.7380952380952381,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 8,
+    "lag": 9
+   }
+  },
+  "sigma_30": {
+   "real_own": 0.2499622221971373,
+   "real_other": 0.11714725831796098,
+   "mace_own": 0.11200044340156343,
+   "mace_other": 0.10201145705895003,
+   "d_real": 0.13281496387917632,
+   "d_real_ci": [
+    0.003452602112782306,
+    0.24956069616278048
+   ],
+   "d_mace": 0.009988986342613368,
+   "d_mace_ci": [
+    -0.039865647731770856,
+    0.06179665669966649
+   ],
+   "G": 0.12282597753656295,
+   "G_ci": [
+    0.010257800320835809,
+    0.22655919723594703
+   ],
+   "G_wilcoxon_p": 0.06628799438476562,
+   "G_perm_p": 0.044195580441955803,
+   "H1_wilcoxon_p": 0.030103683471679688,
+   "H1_perm_p": 0.026197380261973803,
+   "H2_wilcoxon_p": 0.4452838897705078,
+   "H2_perm_p": 0.35256474352564743,
+   "n_real_pos": 14,
+   "n_mace_pos": 8,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.13796177879557386,
+   "own_diff_ci": [
+    0.03733472181619141,
+    0.2453532152023842
+   ],
+   "own_diff_wilcoxon_p": 0.02298736572265625,
+   "own_diff_perm_p": 0.0174982501749825,
+   "n_own_real_gt_mace": 14,
+   "real_lag_median": -9.0,
+   "real_frac_at_lag_edge": 0.9166666666666666,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 30,
+    "lag": 9
+   }
+  },
+  "lag_0": {
+   "real_own": 0.1947086305455032,
+   "real_other": 0.07802257129155195,
+   "mace_own": 0.061084664228791406,
+   "mace_other": 0.054900137854479884,
+   "d_real": 0.11668605925395122,
+   "d_real_ci": [
+    0.01309267604332936,
+    0.20943731931992068
+   ],
+   "d_mace": 0.006184526374311535,
+   "d_mace_ci": [
+    -0.03141110654690752,
+    0.04490457046860241
+   ],
+   "G": 0.11050153287963971,
+   "G_ci": [
+    0.023797830534414647,
+    0.19269221867530476
+   ],
+   "G_wilcoxon_p": 0.02298736572265625,
+   "G_perm_p": 0.022497750224977502,
+   "H1_wilcoxon_p": 0.022279739379882812,
+   "H1_perm_p": 0.018598140185981403,
+   "H2_wilcoxon_p": 0.3690452575683594,
+   "H2_perm_p": 0.38176182381761825,
+   "n_real_pos": 14,
+   "n_mace_pos": 10,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.1336239663167118,
+   "own_diff_ci": [
+    0.04843420937435959,
+    0.22651294198707067
+   ],
+   "own_diff_wilcoxon_p": 0.014068603515625,
+   "own_diff_perm_p": 0.007599240075992401,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": 0.0,
+   "real_frac_at_lag_edge": 0.0,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 0
+   }
+  },
+  "lag_15": {
+   "real_own": 0.23628810434278363,
+   "real_other": 0.12068300140781242,
+   "mace_own": 0.11243798433389686,
+   "mace_other": 0.10586529639752389,
+   "d_real": 0.11560510293497127,
+   "d_real_ci": [
+    0.011748217848938357,
+    0.20750324307930076
+   ],
+   "d_mace": 0.006572687936372963,
+   "d_mace_ci": [
+    -0.030062440554779867,
+    0.04403590903422035
+   ],
+   "G": 0.10903241499859828,
+   "G_ci": [
+    0.02604188577424715,
+    0.18973335226604052
+   ],
+   "G_wilcoxon_p": 0.020412445068359375,
+   "G_perm_p": 0.0193980601939806,
+   "H1_wilcoxon_p": 0.01446533203125,
+   "H1_perm_p": 0.0197980201979802,
+   "H2_wilcoxon_p": 0.384002685546875,
+   "H2_perm_p": 0.36996300369963003,
+   "n_real_pos": 15,
+   "n_mace_pos": 10,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.12385012000888682,
+   "own_diff_ci": [
+    0.04188110384193,
+    0.21151388985239541
+   ],
+   "own_diff_wilcoxon_p": 0.014068603515625,
+   "own_diff_perm_p": 0.010498950104989501,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -10.5,
+   "real_frac_at_lag_edge": 0.7380952380952381,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 15
+   }
+  },
+  "lag_30": {
+   "real_own": 0.26743664989613253,
+   "real_other": 0.15633397252118178,
+   "mace_own": 0.1552991716994164,
+   "mace_other": 0.14806318742366342,
+   "d_real": 0.11110267737495078,
+   "d_real_ci": [
+    0.00654828226291228,
+    0.20371586360551105
+   ],
+   "d_mace": 0.00723598427575296,
+   "d_mace_ci": [
+    -0.028818978435492935,
+    0.04431184788431778
+   ],
+   "G": 0.10386669309919778,
+   "G_ci": [
+    0.020650313630427044,
+    0.1857585681735071
+   ],
+   "G_wilcoxon_p": 0.040130615234375,
+   "G_perm_p": 0.026297370262973702,
+   "H1_wilcoxon_p": 0.022279739379882812,
+   "H1_perm_p": 0.023897610238976102,
+   "H2_wilcoxon_p": 0.3690452575683594,
+   "H2_perm_p": 0.35356464353564643,
+   "n_real_pos": 14,
+   "n_mace_pos": 11,
+   "n_G_pos": 14,
+   "n": 19,
+   "own_diff": 0.11213747819671616,
+   "own_diff_ci": [
+    0.032095318087057054,
+    0.19583085588500648
+   ],
+   "own_diff_wilcoxon_p": 0.014068603515625,
+   "own_diff_perm_p": 0.015798420157984203,
+   "n_own_real_gt_mace": 15,
+   "real_lag_median": -10.0,
+   "real_frac_at_lag_edge": 0.5357142857142857,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 30
+   }
+  }
+ },
+ "bpm_full_song": {
+  "012": 84.04221025485438,
+  "036": 120.32523282887078,
+  "037": 123.97750605648783,
+  "063": 116.74235313604241,
+  "065": 124.9918170348505,
+  "092": 116.10068044354838,
+  "098": 100.02124272738068,
+  "109": 123.9945108856635,
+  "130": 116.98890168852053,
+  "132": 133.99161974829676,
+  "137": 132.54263661044362,
+  "143": 85.99112876439328,
+  "144": 180.51338071273122,
+  "161": 112.02744444676935,
+  "179": 90.46264867594255,
+  "193": 99.50747282608698,
+  "198": 75.99954044117648,
+  "204": 96.0314376072041,
+  "211": 96.53950800196635
+ },
+ "bpm_quantised": {
+  "012": 85.71428571428571,
+  "036": 120.0,
+  "037": 120.0,
+  "063": 138.46153846153845,
+  "065": 128.57142857142858,
+  "092": 112.5,
+  "098": 100.0,
+  "109": 120.0,
+  "130": 120.0,
+  "132": 138.46153846153845,
+  "137": 128.57142857142858,
+  "143": 85.71428571428571,
+  "144": 180.0,
+  "161": 112.5,
+  "179": 90.0,
+  "193": 100.0,
+  "198": 75.0,
+  "204": 94.73684210526316,
+  "211": 138.46153846153845
+ },
+ "genre": {
+  "012": "Jazz",
+  "036": "HanTang",
+  "037": "ShenYun",
+  "063": "Breaking",
+  "065": "Locking",
+  "092": "Popping",
+  "098": "Hiphop",
+  "109": "ShenYun",
+  "130": "Jazz",
+  "132": "Choreography",
+  "137": "Miao",
+  "143": "Dai",
+  "144": "Wei",
+  "161": "Popping",
+  "179": "Korean",
+  "193": "Korean",
+  "198": "Hiphop",
+  "204": "Urban",
+  "211": "Korean"
+ },
+ "matching": {
+  "genre_first": {
+   "012": [
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": true,
+     "tempo_dist": 0.3039872384736389
+    },
+    {
+     "song": "143",
+     "genre": "Dai",
+     "same_genre": false,
+     "tempo_dist": 0.023189757904139928
+    },
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.07639540180605033
+    }
+   ],
+   "036": [
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.030353344363034714
+    },
+    {
+     "song": "109",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.03049466824644544
+    },
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.027727610094012933
+    }
+   ],
+   "037": [
+    {
+     "song": "109",
+     "genre": "ShenYun",
+     "same_genre": true,
+     "tempo_dist": 0.00013716060047157095
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.029459160325042838
+    },
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.05636993830786597
+    }
+   ],
+   "063": [
+    {
+     "song": "132",
+     "genre": "Choreography",
+     "same_genre": false,
+     "tempo_dist": 0.14775500192422367
+    },
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.17305497611936296
+    },
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.070663848014052
+    }
+   ],
+   "065": [
+    {
+     "song": "137",
+     "genre": "Miao",
+     "same_genre": false,
+     "tempo_dist": 0.06041051130161415
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.03733511774357652
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.008115019066247035
+    }
+   ],
+   "092": [
+    {
+     "song": "161",
+     "genre": "Popping",
+     "same_genre": true,
+     "tempo_dist": 0.035083653095035576
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.03638697352317845
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.06784478422389083
+    }
+   ],
+   "098": [
+    {
+     "song": "198",
+     "genre": "Hiphop",
+     "same_genre": true,
+     "tempo_dist": 0.24016600505232769
+    },
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.005136607857333244
+    },
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.03988957756754986
+    }
+   ],
+   "109": [
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": true,
+     "tempo_dist": 0.0001371417900213019
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.02959226203308464
+    },
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.05649934942364434
+    }
+   ],
+   "130": [
+    {
+     "song": "012",
+     "genre": "Jazz",
+     "same_genre": true,
+     "tempo_dist": 0.28162236723433587
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.028518355948268802
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.05973732779006892
+    }
+   ],
+   "132": [
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.1287339211560924
+    },
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.2795108516240358
+    },
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.06716690738086745
+    }
+   ],
+   "137": [
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.05696898574445713
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.09217715969753221
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.06462170040520314
+    }
+   ],
+   "143": [
+    {
+     "song": "012",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.02266418103289157
+    },
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.05199978155654594
+    },
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.11675982147321516
+    }
+   ],
+   "144": [
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.2934481939798807
+    },
+    {
+     "song": "132",
+     "genre": "Choreography",
+     "same_genre": false,
+     "tempo_dist": 0.2577191828148692
+    },
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.06961054765905927
+    }
+   ],
+   "161": [
+    {
+     "song": "092",
+     "genre": "Popping",
+     "same_genre": true,
+     "tempo_dist": 0.0363592690781629
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.07406924636261059
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.10667084006720008
+    }
+   ],
+   "179": [
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.09998407389711769
+    },
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.06717534159089768
+    },
+    {
+     "song": "012",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.07097336320637274
+    }
+   ],
+   "193": [
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.09089592865002633
+    },
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.029826552115416034
+    },
+    {
+     "song": "098",
+     "genre": "Hiphop",
+     "same_genre": false,
+     "tempo_dist": 0.005163128825426353
+    }
+   ],
+   "198": [
+    {
+     "song": "098",
+     "genre": "Hiphop",
+     "same_genre": true,
+     "tempo_dist": 0.3160769413440988
+    },
+    {
+     "song": "012",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.10582524271844666
+    },
+    {
+     "song": "143",
+     "genre": "Dai",
+     "same_genre": false,
+     "tempo_dist": 0.1314690623813742
+    }
+   ],
+   "204": [
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.05798922800718117
+    },
+    {
+     "song": "098",
+     "genre": "Hiphop",
+     "same_genre": false,
+     "tempo_dist": 0.04154686443928937
+    },
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.03619684663162971
+    }
+   ],
+   "211": [
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.030743525480367843
+    },
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.06294686446817226
+    },
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.20927023093658773
+    }
+   ]
+  },
+  "tempo_first": {
+   "012": [
+    {
+     "song": "143",
+     "genre": "Dai",
+     "same_genre": false,
+     "tempo_dist": 0.023189757904139928
+    },
+    {
+     "song": "144",
+     "genre": "Wei",
+     "same_genre": false,
+     "tempo_dist": 0.0739447485098986
+    },
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.07639540180605033
+    }
+   ],
+   "036": [
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.027727610094012933
+    },
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.02977662796567385
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.030353344363034714
+    }
+   ],
+   "037": [
+    {
+     "song": "109",
+     "genre": "ShenYun",
+     "same_genre": true,
+     "tempo_dist": 0.00013716060047157095
+    },
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.00818141137554842
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.029459160325042838
+    }
+   ],
+   "063": [
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.00211190322839226
+    },
+    {
+     "song": "092",
+     "genre": "Popping",
+     "same_genre": false,
+     "tempo_dist": 0.0054964858533069925
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.03069048718465665
+    }
+   ],
+   "065": [
+    {
+     "song": "109",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.007978971526663428
+    },
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.008115019066247035
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.03733511774357652
+    }
+   ],
+   "092": [
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.005526864184108092
+    },
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.007650439614813656
+    },
+    {
+     "song": "161",
+     "genre": "Popping",
+     "same_genre": true,
+     "tempo_dist": 0.035083653095035576
+    }
+   ],
+   "098": [
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.005136607857333244
+    },
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.03480995267079607
+    },
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.03988957756754986
+    }
+   ],
+   "109": [
+    {
+     "song": "037",
+     "genre": "ShenYun",
+     "same_genre": true,
+     "tempo_dist": 0.0001371417900213019
+    },
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.008043147572126175
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.02959226203308464
+    }
+   ],
+   "130": [
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.0021074524926693082
+    },
+    {
+     "song": "092",
+     "genre": "Popping",
+     "same_genre": false,
+     "tempo_dist": 0.007592354763163828
+    },
+    {
+     "song": "036",
+     "genre": "HanTang",
+     "same_genre": false,
+     "tempo_dist": 0.028518355948268802
+    }
+   ],
+   "132": [
+    {
+     "song": "137",
+     "genre": "Miao",
+     "same_genre": false,
+     "tempo_dist": 0.01081398329667966
+    },
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.06716690738086745
+    },
+    {
+     "song": "109",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.07460995606600489
+    }
+   ],
+   "137": [
+    {
+     "song": "132",
+     "genre": "Choreography",
+     "same_genre": false,
+     "tempo_dist": 0.01093220396778316
+    },
+    {
+     "song": "065",
+     "genre": "Locking",
+     "same_genre": false,
+     "tempo_dist": 0.05696898574445713
+    },
+    {
+     "song": "109",
+     "genre": "ShenYun",
+     "same_genre": false,
+     "tempo_dist": 0.06449340335596264
+    }
+   ],
+   "143": [
+    {
+     "song": "012",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.02266418103289157
+    },
+    {
+     "song": "144",
+     "genre": "Wei",
+     "same_genre": false,
+     "tempo_dist": 0.04960467031034704
+    },
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.05199978155654594
+    }
+   ],
+   "144": [
+    {
+     "song": "179",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.002281917481836963
+    },
+    {
+     "song": "143",
+     "genre": "Dai",
+     "same_genre": false,
+     "tempo_dist": 0.04726033688062758
+    },
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.0639813760956415
+    }
+   ],
+   "161": [
+    {
+     "song": "092",
+     "genre": "Popping",
+     "same_genre": true,
+     "tempo_dist": 0.0363592690781629
+    },
+    {
+     "song": "063",
+     "genre": "Breaking",
+     "same_genre": false,
+     "tempo_dist": 0.04208708600429944
+    },
+    {
+     "song": "130",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.0442878730854978
+    }
+   ],
+   "179": [
+    {
+     "song": "144",
+     "genre": "Wei",
+     "same_genre": false,
+     "tempo_dist": 0.0022767221896710667
+    },
+    {
+     "song": "143",
+     "genre": "Dai",
+     "same_genre": false,
+     "tempo_dist": 0.04942946041263119
+    },
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.0615589860872878
+    }
+   ],
+   "193": [
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.029826552115416034
+    },
+    {
+     "song": "098",
+     "genre": "Hiphop",
+     "same_genre": false,
+     "tempo_dist": 0.005163128825426353
+    },
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.034932403769896606
+    }
+   ],
+   "198": [
+    {
+     "song": "012",
+     "genre": "Jazz",
+     "same_genre": false,
+     "tempo_dist": 0.10582524271844666
+    },
+    {
+     "song": "132",
+     "genre": "Choreography",
+     "same_genre": false,
+     "tempo_dist": 0.11847085541256624
+    },
+    {
+     "song": "137",
+     "genre": "Miao",
+     "same_genre": false,
+     "tempo_dist": 0.12800369685767107
+    }
+   ],
+   "204": [
+    {
+     "song": "211",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.005290667383741657
+    },
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": false,
+     "tempo_dist": 0.03619684663162971
+    },
+    {
+     "song": "098",
+     "genre": "Hiphop",
+     "same_genre": false,
+     "tempo_dist": 0.04154686443928937
+    }
+   ],
+   "211": [
+    {
+     "song": "204",
+     "genre": "Urban",
+     "same_genre": false,
+     "tempo_dist": 0.005262823534919072
+    },
+    {
+     "song": "193",
+     "genre": "Korean",
+     "same_genre": true,
+     "tempo_dist": 0.030743525480367843
+    },
+    {
+     "song": "098",
+     "genre": "Hiphop",
+     "same_genre": false,
+     "tempo_dist": 0.03606538708839711
+    }
+   ]
+  }
+ },
+ "tempo_tol": 0.03
+}
