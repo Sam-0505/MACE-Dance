@@ -61,18 +61,23 @@ def label(song):
     return {**lab, 'style2': lab['style2'][0].upper() + lab['style2'][1:]}         # 'jazz' -> 'Jazz'
 
 
-def music_groups(songs):
+def music_groups(songs, path=None):
     """Union songs whose first DUP_SECONDS of audio are the same recording, allowing an offset of up to DUP_MAX_LAG s
-    (096/165 'GoCrazy' are the same track shifted by 0.03 s). Shortlist: 4 Hz loudness-envelope r > DUP_ENV_R;
+    (096/165 'GoCrazy' are the same track shifted by 0.03 s; Motorica gTP 014/015 by 0.19 s).
+    Shortlist: max 4 Hz loudness-envelope r within +-DUP_MAX_LAG s > DUP_ENV_R;
     confirm: max normalised waveform cross-correlation within +-DUP_MAX_LAG s > DUP_R. Returns {song: piece id}."""
+    path = path or wav
     wave, env = [], []
     for s in songs:
-        y, _ = librosa.load(wav(s), sr=DUP_SR, duration=DUP_SECONDS)
+        y, _ = librosa.load(path(s), sr=DUP_SR, duration=DUP_SECONDS)
         y = np.pad(y, (0, DUP_SR * DUP_SECONDS - len(y)))
         wave.append((y - y.mean()) / (y.std() + 1e-9))
         e = librosa.feature.rms(y=y, frame_length=DUP_SR // 2, hop_length=DUP_SR // 4)[0]
         env.append((e - e.mean()) / (e.std() + 1e-9))
-    E = np.stack(env) @ np.stack(env).T / env[0].size
+    env = np.stack(env)
+    k = int(DUP_MAX_LAG * 4)                        # envelope frames are 0.25 s: search the same +-DUP_MAX_LAG
+    E = np.max([env[:, max(s, 0):env.shape[1] + min(s, 0)] @ env[:, max(-s, 0):env.shape[1] + min(-s, 0)].T
+                / (env.shape[1] - abs(s)) for s in range(-k, k + 1)], axis=0)
     L = int(DUP_MAX_LAG * DUP_SR)
 
     def same_recording(a, b):

@@ -1,0 +1,1742 @@
+{
+ "results": {
+  "primary": {
+   "real_own": 0.1629200448500424,
+   "real_other": 0.039132856765344844,
+   "mace_own": 0.05858625013924338,
+   "mace_other": 0.05347980231703998,
+   "d_real": 0.12378718808469756,
+   "d_real_ci": [
+    0.08509858362572022,
+    0.16385876428098387
+   ],
+   "d_mace": 0.005106447822203404,
+   "d_mace_ci": [
+    -0.008053159221967162,
+    0.018546399682284775
+   ],
+   "G": 0.11868074026249416,
+   "G_ci": [
+    0.0788115427354895,
+    0.1574866503169658
+   ],
+   "G_wilcoxon_p": 4.063655069685729e-06,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 8.329172421945166e-07,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.20882195504861734,
+   "H2_perm_p": 0.22747725227477253,
+   "n_real_pos": 40,
+   "n_mace_pos": 28,
+   "n_G_pos": 42,
+   "n": 52,
+   "own_diff": 0.10433379471079898,
+   "own_diff_ci": [
+    0.06886389240964806,
+    0.1411344623410573
+   ],
+   "own_diff_wilcoxon_p": 5.053237623843671e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 38,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   },
+   "per_piece": {
+    "kthjazz_gCH_sFM_sngl_d01_007": {
+     "ro": 0.07441362306332763,
+     "rx": 0.09042395853462624,
+     "mo": -0.028030825176638543,
+     "mx": 0.010628535684159186
+    },
+    "kthjazz_gCH_sFM_sngl_d01_008": {
+     "ro": 0.17551860887142615,
+     "rx": -0.001883676856277186,
+     "mo": 0.0954335295366114,
+     "mx": 0.040586784709664245
+    },
+    "kthjazz_gCH_sFM_sngl_d01_009": {
+     "ro": 0.014238110228467538,
+     "rx": 0.004236121167783633,
+     "mo": 0.07927040636878017,
+     "mx": 0.035682601691781494
+    },
+    "kthjazz_gCH_sFM_sngl_d01_019": {
+     "ro": 0.11725749632115656,
+     "rx": 0.0816993383362567,
+     "mo": 0.07358672187478874,
+     "mx": 0.08955173267381558
+    },
+    "kthjazz_gCH_sFM_sngl_d02_006": {
+     "ro": 0.2553012952546918,
+     "rx": -0.02949592474720179,
+     "mo": 0.03076298753783766,
+     "mx": 0.04366923603497494
+    },
+    "kthjazz_gCH_sFM_sngl_d02_018": {
+     "ro": -0.04482928722389732,
+     "rx": 0.06032294598962037,
+     "mo": 0.014789111835725954,
+     "mx": 0.05685188020890259
+    },
+    "kthjazz_gJZ_sFM_sngl_d01_001": {
+     "ro": 0.13923183863217206,
+     "rx": -0.08714034519253856,
+     "mo": 0.07468781471808235,
+     "mx": 0.030693554459203756
+    },
+    "kthjazz_gJZ_sFM_sngl_d01_002": {
+     "ro": -0.056338189380340804,
+     "rx": 0.0472148552254661,
+     "mo": 0.028260266385547548,
+     "mx": 0.030281794419942512
+    },
+    "kthjazz_gJZ_sFM_sngl_d01_020": {
+     "ro": 0.21395483032646487,
+     "rx": 0.07325626302207763,
+     "mo": 0.02436072811525034,
+     "mx": 0.06338312657033532
+    },
+    "kthjazz_gJZ_sFM_sngl_d02_003": {
+     "ro": 0.14745601042933873,
+     "rx": 0.11492961775687414,
+     "mo": 0.02079637567371,
+     "mx": 0.051131096347788306
+    },
+    "kthjazz_gJZ_sFM_sngl_d02_004": {
+     "ro": -0.0666849820311443,
+     "rx": 0.06537735627426187,
+     "mo": 0.10830454932317353,
+     "mx": 0.03276976436392628
+    },
+    "kthjazz_gTP_sFM_sngl_d01_010": {
+     "ro": 0.0905679072104835,
+     "rx": 0.03255710215116288,
+     "mo": 0.04374030497620203,
+     "mx": 0.028411790780236805
+    },
+    "kthjazz_gTP_sFM_sngl_d02_014": {
+     "ro": 0.33257630831408513,
+     "rx": 0.051978825945095744,
+     "mo": 0.059782882946010724,
+     "mx": 0.011700986292654753
+    },
+    "kthjazz_gTP_sFM_sngl_d02_016": {
+     "ro": 0.4071565134985214,
+     "rx": 0.06077635278095969,
+     "mo": -0.008410719800965074,
+     "mx": 0.02925002000309015
+    },
+    "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01": {
+     "ro": -0.08694621378260194,
+     "rx": 0.014074796233772436,
+     "mo": 0.07251727132256996,
+     "mx": 0.020452437411753642
+    },
+    "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03": {
+     "ro": 0.1801259816812813,
+     "rx": 0.02982321758810521,
+     "mo": -0.004083717910629657,
+     "mx": 0.065317406246652
+    },
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05": {
+     "ro": 0.1415130225440251,
+     "rx": -0.03338745340689432,
+     "mo": 0.033687265168675026,
+     "mx": 0.06799526030538303
+    },
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07": {
+     "ro": 0.24267916624310878,
+     "rx": 0.109398917523847,
+     "mo": 0.03574982120028983,
+     "mx": 0.04943362449934458
+    },
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000": {
+     "ro": 0.49698560874754566,
+     "rx": 0.05929760915794768,
+     "mo": 0.061894171885348064,
+     "mx": 0.05092704222847211
+    },
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001": {
+     "ro": 0.3309961453063839,
+     "rx": -0.023047310726128475,
+     "mo": 0.10013585889116534,
+     "mx": 0.06545807009167003
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12": {
+     "ro": -0.011073410200429033,
+     "rx": 0.015091802813389857,
+     "mo": 0.07289818772905293,
+     "mx": 0.035674391214440514
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13": {
+     "ro": 0.2628305731100849,
+     "rx": 0.13703328971097795,
+     "mo": 0.05077181314069647,
+     "mx": -0.04081746473677314
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01": {
+     "ro": 0.08812852133696362,
+     "rx": 0.11042455143845417,
+     "mo": 0.10686895170437676,
+     "mx": 0.01869500688761027
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02": {
+     "ro": 0.07694802314948429,
+     "rx": 0.08802247246466412,
+     "mo": 0.08253920819301203,
+     "mx": 0.12121531833588442
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03": {
+     "ro": 0.13506183217999748,
+     "rx": -0.0021559917110265726,
+     "mo": 0.07650797264632694,
+     "mx": 0.016211633393030937
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07": {
+     "ro": 0.21420633848870616,
+     "rx": 0.0988388398339582,
+     "mo": 0.05308540746496562,
+     "mx": 0.09533832109322408
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08": {
+     "ro": 0.27308955805114454,
+     "rx": 0.04825369354385476,
+     "mo": 0.07812944104340891,
+     "mx": 0.10569347603600383
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09": {
+     "ro": 0.3169051805635954,
+     "rx": 0.06503859570131976,
+     "mo": 0.0998924388718132,
+     "mx": 0.07109791183983219
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001": {
+     "ro": 0.357720385493812,
+     "rx": -0.09887518896882706,
+     "mo": 0.09621883100052041,
+     "mx": 0.07932436202837262
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005": {
+     "ro": 0.1500392592375291,
+     "rx": 0.07703167006211796,
+     "mo": 0.061671471184937376,
+     "mx": 0.06647937893501969
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001": {
+     "ro": 0.16667374147743017,
+     "rx": -0.0042266834085355,
+     "mo": 0.06290317056527917,
+     "mx": 0.030993418216680422
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001": {
+     "ro": 0.2019198159085555,
+     "rx": 0.03559417717926369,
+     "mo": 0.09202148586185827,
+     "mx": 0.05816423524861425
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001": {
+     "ro": 0.0962743207713437,
+     "rx": -0.07090613033538695,
+     "mo": 0.0819040664967422,
+     "mx": 0.08089263822227954
+    },
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003": {
+     "ro": 0.4550487855029426,
+     "rx": 0.05533842858117473,
+     "mo": 0.13358439044815063,
+     "mx": 0.040975344193176444
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002": {
+     "ro": 0.01240089612714881,
+     "rx": 0.015332522903201092,
+     "mo": 0.017078103852574286,
+     "mx": 0.03516028332605173
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001": {
+     "ro": 0.10893153750081024,
+     "rx": -0.017827270771553022,
+     "mo": -0.028069413432211837,
+     "mx": 0.04198783458597775
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001": {
+     "ro": 0.17390492116548587,
+     "rx": 0.051854123507421454,
+     "mo": 0.06883434151906939,
+     "mx": 0.04429786670105263
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001": {
+     "ro": 0.24079550564482885,
+     "rx": -0.028815408057796664,
+     "mo": 0.004397557413889988,
+     "mx": 0.041372378755971634
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001": {
+     "ro": 0.3545850522775936,
+     "rx": -0.009421954175666231,
+     "mo": 0.07058375111961754,
+     "mx": 0.06271457807032339
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002": {
+     "ro": 0.19470120333993224,
+     "rx": 0.06644728384064919,
+     "mo": 0.02344066838693855,
+     "mx": 0.05573224512962648
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002": {
+     "ro": 0.31592583092312165,
+     "rx": 0.038760641983211275,
+     "mo": 0.1781409087850192,
+     "mx": 0.14959680921706442
+    },
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001": {
+     "ro": 0.10334964755846736,
+     "rx": 0.02974414563902642,
+     "mo": 0.03170517832720491,
+     "mx": 0.05119897522416306
+    },
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001": {
+     "ro": 0.11600081386725725,
+     "rx": 0.002083214132520328,
+     "mo": 0.09872357233729231,
+     "mx": 0.04139742238011753
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02": {
+     "ro": 0.024440914213909617,
+     "rx": 0.09901790416048614,
+     "mo": 0.03520503346430781,
+     "mx": 0.14124142588389083
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03": {
+     "ro": 0.15892275684225773,
+     "rx": 0.1446649434724475,
+     "mo": -0.004797329668897278,
+     "mx": 0.08821516215226936
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05": {
+     "ro": 0.042295221418343,
+     "rx": 0.10439651186906015,
+     "mo": 0.060181440390917475,
+     "mx": 0.024156105880918342
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07": {
+     "ro": 0.044250295395920465,
+     "rx": 0.03339399439450151,
+     "mo": 0.09980801504356288,
+     "mx": 0.06283464709003377
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003": {
+     "ro": 0.24035313120101326,
+     "rx": -0.013820532876055811,
+     "mo": 0.04179315391717282,
+     "mx": 0.02234212877435241
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002": {
+     "ro": 0.028584910107688783,
+     "rx": 0.06951047479118161,
+     "mo": 0.0404157354515162,
+     "mx": 0.12162164476157425
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002": {
+     "ro": 0.28628569230504297,
+     "rx": 0.09234362890152849,
+     "mo": 0.13218987488078743,
+     "mx": 0.06441030689913214
+    },
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001": {
+     "ro": 0.1139056007450103,
+     "rx": 0.06510182313177323,
+     "mo": 0.0102865940987335,
+     "mx": 0.03710364753547685
+    },
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001": {
+     "ro": 0.023261682242716526,
+     "rx": 0.017226411287779148,
+     "mo": 0.10033618013048493,
+     "mx": 0.04145154218693547
+    }
+   },
+   "per_style": {
+    "gCH": {
+     "n": 6,
+     "d_real": 0.06443284734839407,
+     "d_mace": -0.0018598065043654432,
+     "n_real_pos": 4,
+     "n_mace_pos": 2
+    },
+    "gJZ": {
+     "n": 5,
+     "d_real": 0.03279635217806988,
+     "d_mace": 0.00963007961091352,
+     "n_real_pos": 3,
+     "n_mace_pos": 2
+    },
+    "gKR": {
+     "n": 6,
+     "d_real": 0.19153232239484885,
+     "d_mace": -0.0032805283709761352,
+     "n_real_pos": 5,
+     "n_mace_pos": 3
+    },
+    "gLH": {
+     "n": 22,
+     "d_real": 0.16308135944702984,
+     "d_mace": 0.011504954109346172,
+     "n_real_pos": 18,
+     "n_mace_pos": 13
+    },
+    "gLO": {
+     "n": 1,
+     "d_real": 0.11391759973473692,
+     "d_mace": 0.057326149957174784,
+     "n_real_pos": 1,
+     "n_mace_pos": 1
+    },
+    "gPO": {
+     "n": 9,
+     "d_real": 0.03894056059324453,
+     "d_mace": -0.009773101495110851,
+     "n_real_pos": 6,
+     "n_mace_pos": 5
+    },
+    "gTP": {
+     "n": 3,
+     "d_real": 0.22832948271529055,
+     "d_mace": 0.008583223681755325,
+     "n_real_pos": 3,
+     "n_mace_pos": 2
+    }
+   }
+  },
+  "match_random": {
+   "real_own": 0.1629200448500424,
+   "real_other": 0.034124064991285334,
+   "mace_own": 0.05858625013924338,
+   "mace_other": 0.056381009590136484,
+   "d_real": 0.12879597985875707,
+   "d_real_ci": [
+    0.09213651011170833,
+    0.16656555361518877
+   ],
+   "d_mace": 0.0022052405491069073,
+   "d_mace_ci": [
+    -0.01084680694661735,
+    0.016197104356881858
+   ],
+   "G": 0.12659073930965015,
+   "G_ci": [
+    0.0866654952941024,
+    0.16505223016469728
+   ],
+   "G_wilcoxon_p": 7.612206687142094e-07,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 1.4009935777924592e-07,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.5900497359961147,
+   "H2_perm_p": 0.38616138386161386,
+   "n_real_pos": 44,
+   "n_mace_pos": 26,
+   "n_G_pos": 43,
+   "n": 52,
+   "own_diff": 0.10433379471079898,
+   "own_diff_ci": [
+    0.06886389240964806,
+    0.1411344623410573
+   ],
+   "own_diff_wilcoxon_p": 5.053237623843671e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 38,
+   "config": {
+    "match": "random",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "music_db": {
+   "real_own": 0.16038388150180322,
+   "real_other": 0.03967448626274609,
+   "mace_own": 0.060483499887606255,
+   "mace_other": 0.0542998185118149,
+   "d_real": 0.12070939523905712,
+   "d_real_ci": [
+    0.0819875041921686,
+    0.1606101970960235
+   ],
+   "d_mace": 0.0061836813757913485,
+   "d_mace_ci": [
+    -0.009047429174003137,
+    0.021313990654595404
+   ],
+   "G": 0.11452571386326577,
+   "G_ci": [
+    0.07732675804454436,
+    0.15205512555036285
+   ],
+   "G_wilcoxon_p": 2.284342910039304e-06,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 1.142171455019652e-06,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.11290556461400009,
+   "H2_perm_p": 0.21487851214878512,
+   "n_real_pos": 41,
+   "n_mace_pos": 30,
+   "n_G_pos": 43,
+   "n": 52,
+   "own_diff": 0.09990038161419695,
+   "own_diff_ci": [
+    0.06552643549475706,
+    0.13453109522146764
+   ],
+   "own_diff_wilcoxon_p": 7.767427472252205e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 39,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms_db",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "music_aweighted": {
+   "real_own": 0.16426782402311021,
+   "real_other": 0.044885006922075865,
+   "mace_own": 0.05356658651409841,
+   "mace_other": 0.05103398276182425,
+   "d_real": 0.11938281710103434,
+   "d_real_ci": [
+    0.07234122864387246,
+    0.16697372866108634
+   ],
+   "d_mace": 0.002532603752274151,
+   "d_mace_ci": [
+    -0.014550602233987273,
+    0.01888686403353011
+   ],
+   "G": 0.1168502133487602,
+   "G_ci": [
+    0.07061872299908357,
+    0.16218813683312508
+   ],
+   "G_wilcoxon_p": 1.2875336485312644e-05,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 1.3446987300969442e-05,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.15387023659897597,
+   "H2_perm_p": 0.3865613438656134,
+   "n_real_pos": 41,
+   "n_mace_pos": 29,
+   "n_G_pos": 41,
+   "n": 52,
+   "own_diff": 0.11070123750901181,
+   "own_diff_ci": [
+    0.06907221723591253,
+    0.1524069794346614
+   ],
+   "own_diff_wilcoxon_p": 2.5833077351873657e-05,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 40,
+   "config": {
+    "match": "tempo_first",
+    "music": "aweighted_db",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "motion_mean_speed": {
+   "real_own": 0.1752970211337552,
+   "real_other": 0.04026119361764771,
+   "mace_own": 0.0627765544842752,
+   "mace_other": 0.05414263813669633,
+   "d_real": 0.1350358275161075,
+   "d_real_ci": [
+    0.09477121643631932,
+    0.176347543289436
+   ],
+   "d_mace": 0.008633916347578863,
+   "d_mace_ci": [
+    -0.005651651237233785,
+    0.023178348894231725
+   ],
+   "G": 0.1264019111685286,
+   "G_ci": [
+    0.0851160688546729,
+    0.16626704989596594
+   ],
+   "G_wilcoxon_p": 1.5918529209161371e-06,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 3.1549342237920426e-07,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.13524454771284766,
+   "H2_perm_p": 0.12098790120987901,
+   "n_real_pos": 42,
+   "n_mace_pos": 31,
+   "n_G_pos": 44,
+   "n": 52,
+   "own_diff": 0.11252046664948,
+   "own_diff_ci": [
+    0.07600703065095668,
+    0.15102026489780004
+   ],
+   "own_diff_wilcoxon_p": 1.6658344843890333e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 42,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "speed",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "motion_root_rel": {
+   "real_own": 0.16914225059631846,
+   "real_other": 0.03760666652748103,
+   "mace_own": 0.05765115081818696,
+   "mace_other": 0.05355633656586193,
+   "d_real": 0.13153558406883742,
+   "d_real_ci": [
+    0.09326179924725023,
+    0.1713935642623562
+   ],
+   "d_mace": 0.004094814252325033,
+   "d_mace_ci": [
+    -0.008774799601528058,
+    0.017149707639414778
+   ],
+   "G": 0.1274407698165124,
+   "G_ci": [
+    0.0873882931709756,
+    0.16627832444738588
+   ],
+   "G_wilcoxon_p": 9.607048884924568e-07,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 2.3752527398841883e-07,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.2387468142240226,
+   "H2_perm_p": 0.27147285271472854,
+   "n_real_pos": 41,
+   "n_mace_pos": 26,
+   "n_G_pos": 42,
+   "n": 52,
+   "own_diff": 0.11149109977813153,
+   "own_diff_ci": [
+    0.07595933354359154,
+    0.1483402694972371
+   ],
+   "own_diff_wilcoxon_p": 1.823834414422104e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 41,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy_root_rel",
+    "sigma": 15,
+    "lag": 9
+   }
+  },
+  "sigma_8": {
+   "real_own": 0.1500573607186352,
+   "real_other": 0.04611387664802298,
+   "mace_own": 0.06225042644693313,
+   "mace_other": 0.05891080595648987,
+   "d_real": 0.10394348407061223,
+   "d_real_ci": [
+    0.07323371313409069,
+    0.1359135079265269
+   ],
+   "d_mace": 0.003339620490443259,
+   "d_mace_ci": [
+    -0.006328028637968787,
+    0.013260260005513513
+   ],
+   "G": 0.10060386358016898,
+   "G_ci": [
+    0.06889509670975134,
+    0.13167312473514262
+   ],
+   "G_wilcoxon_p": 8.755131176333537e-07,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 3.00975169195882e-07,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.241578938236983,
+   "H2_perm_p": 0.2598740125987401,
+   "n_real_pos": 41,
+   "n_mace_pos": 29,
+   "n_G_pos": 40,
+   "n": 52,
+   "own_diff": 0.08780693427170208,
+   "own_diff_ci": [
+    0.05884849251050185,
+    0.1185362313985171
+   ],
+   "own_diff_wilcoxon_p": 2.7312213616333067e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 41,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 8,
+    "lag": 9
+   }
+  },
+  "sigma_30": {
+   "real_own": 0.17190835709647917,
+   "real_other": 0.03511575610176565,
+   "mace_own": 0.058609971736251695,
+   "mace_other": 0.051564158347726305,
+   "d_real": 0.13679260099471355,
+   "d_real_ci": [
+    0.08686617378495287,
+    0.18836791570109146
+   ],
+   "d_mace": 0.0070458133885253895,
+   "d_mace_ci": [
+    -0.011810838072680303,
+    0.02642134038280555
+   ],
+   "G": 0.12974678760618813,
+   "G_ci": [
+    0.07606184780082653,
+    0.18059820205719052
+   ],
+   "G_wilcoxon_p": 5.065634072805302e-05,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 7.599465625435569e-06,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.24442920612992686,
+   "H2_perm_p": 0.23997600239976002,
+   "n_real_pos": 38,
+   "n_mace_pos": 27,
+   "n_G_pos": 41,
+   "n": 52,
+   "own_diff": 0.11329838536022747,
+   "own_diff_ci": [
+    0.06879011380358026,
+    0.15857838530113785
+   ],
+   "own_diff_wilcoxon_p": 4.685361697700057e-05,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 38,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 30,
+    "lag": 9
+   }
+  },
+  "lag_0": {
+   "real_own": 0.13313291855651704,
+   "real_other": 0.008418749308087888,
+   "mace_own": 0.021326514832154735,
+   "mace_other": 0.016495633746876834,
+   "d_real": 0.12471416924842914,
+   "d_real_ci": [
+    0.0859224128392322,
+    0.16489499881053699
+   ],
+   "d_mace": 0.004830881085277903,
+   "d_mace_ci": [
+    -0.008993431743162604,
+    0.018955192061567594
+   ],
+   "G": 0.11988328816315122,
+   "G_ci": [
+    0.08008915228737758,
+    0.1585910140286405
+   ],
+   "G_wilcoxon_p": 2.7312213616333067e-06,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 5.269242000424915e-07,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.19851337578937794,
+   "H2_perm_p": 0.2536746325367463,
+   "n_real_pos": 41,
+   "n_mace_pos": 29,
+   "n_G_pos": 42,
+   "n": 52,
+   "own_diff": 0.1118064037243623,
+   "own_diff_ci": [
+    0.0763991471452835,
+    0.14874274432957668
+   ],
+   "own_diff_wilcoxon_p": 1.6658344843890333e-06,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 40,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 0
+   }
+  },
+  "lag_15": {
+   "real_own": 0.1797538158599883,
+   "real_other": 0.0584628994805378,
+   "mace_own": 0.08173894971231849,
+   "mace_other": 0.07656008148781597,
+   "d_real": 0.12129091637945047,
+   "d_real_ci": [
+    0.08304430525790776,
+    0.1610946745998573
+   ],
+   "d_mace": 0.005178868224502515,
+   "d_mace_ci": [
+    -0.007389197635024812,
+    0.018124078671100424
+   ],
+   "G": 0.11611204815494797,
+   "G_ci": [
+    0.07594010217725501,
+    0.15480971678412223
+   ],
+   "G_wilcoxon_p": 6.007147294117499e-06,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 1.0440592725681962e-06,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.1741190133772757,
+   "H2_perm_p": 0.2151784821517848,
+   "n_real_pos": 40,
+   "n_mace_pos": 29,
+   "n_G_pos": 42,
+   "n": 52,
+   "own_diff": 0.0980148661476698,
+   "own_diff_ci": [
+    0.06281992046388427,
+    0.13429854773858432
+   ],
+   "own_diff_wilcoxon_p": 1.1359389365368556e-05,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 38,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 15
+   }
+  },
+  "lag_30": {
+   "real_own": 0.2138018799731112,
+   "real_other": 0.09970854546776019,
+   "mace_own": 0.12957174827113044,
+   "mace_other": 0.12448325022840824,
+   "d_real": 0.11409333450535097,
+   "d_real_ci": [
+    0.07601069903005386,
+    0.15360991940443894
+   ],
+   "d_mace": 0.005088498042722169,
+   "d_mace_ci": [
+    -0.006249003219213715,
+    0.016600690633173744
+   ],
+   "G": 0.10900483646262883,
+   "G_ci": [
+    0.06887040764376105,
+    0.14832836295409654
+   ],
+   "G_wilcoxon_p": 1.5198931250871138e-05,
+   "G_perm_p": 9.999000099990002e-05,
+   "H1_wilcoxon_p": 3.566011256150609e-06,
+   "H1_perm_p": 9.999000099990002e-05,
+   "H2_wilcoxon_p": 0.2221414281962958,
+   "H2_perm_p": 0.18908109189081093,
+   "n_real_pos": 39,
+   "n_mace_pos": 29,
+   "n_G_pos": 38,
+   "n": 52,
+   "own_diff": 0.08423013170198075,
+   "own_diff_ci": [
+    0.05004066185445698,
+    0.11934710777455787
+   ],
+   "own_diff_wilcoxon_p": 4.685361697700057e-05,
+   "own_diff_perm_p": 9.999000099990002e-05,
+   "n_own_real_gt_mace": 37,
+   "config": {
+    "match": "tempo_first",
+    "music": "rms",
+    "motion": "energy",
+    "sigma": 15,
+    "lag": 30
+   }
+  }
+ },
+ "takes": [
+  "kthjazz_gCH_sFM_sngl_d01_007",
+  "kthjazz_gCH_sFM_sngl_d01_008",
+  "kthjazz_gCH_sFM_sngl_d01_009",
+  "kthjazz_gCH_sFM_sngl_d01_019",
+  "kthjazz_gCH_sFM_sngl_d02_006",
+  "kthjazz_gCH_sFM_sngl_d02_018",
+  "kthjazz_gJZ_sFM_sngl_d01_001",
+  "kthjazz_gJZ_sFM_sngl_d01_002",
+  "kthjazz_gJZ_sFM_sngl_d01_020",
+  "kthjazz_gJZ_sFM_sngl_d02_003",
+  "kthjazz_gJZ_sFM_sngl_d02_004",
+  "kthjazz_gTP_sFM_sngl_d01_010",
+  "kthjazz_gTP_sFM_sngl_d02_014",
+  "kthjazz_gTP_sFM_sngl_d02_015",
+  "kthjazz_gTP_sFM_sngl_d02_016",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_danstrams",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_danstrams_000",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yougonnaregretit_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_luco100bpm_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_bbonthespot_004",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_bombom_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_funk_002",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_justus2_002"
+ ],
+ "pieces": {
+  "kthjazz_gCH_sFM_sngl_d01_007": [
+   "kthjazz_gCH_sFM_sngl_d01_007"
+  ],
+  "kthjazz_gCH_sFM_sngl_d01_008": [
+   "kthjazz_gCH_sFM_sngl_d01_008"
+  ],
+  "kthjazz_gCH_sFM_sngl_d01_009": [
+   "kthjazz_gCH_sFM_sngl_d01_009"
+  ],
+  "kthjazz_gCH_sFM_sngl_d01_019": [
+   "kthjazz_gCH_sFM_sngl_d01_019"
+  ],
+  "kthjazz_gCH_sFM_sngl_d02_006": [
+   "kthjazz_gCH_sFM_sngl_d02_006"
+  ],
+  "kthjazz_gCH_sFM_sngl_d02_018": [
+   "kthjazz_gCH_sFM_sngl_d02_018"
+  ],
+  "kthjazz_gJZ_sFM_sngl_d01_001": [
+   "kthjazz_gJZ_sFM_sngl_d01_001"
+  ],
+  "kthjazz_gJZ_sFM_sngl_d01_002": [
+   "kthjazz_gJZ_sFM_sngl_d01_002"
+  ],
+  "kthjazz_gJZ_sFM_sngl_d01_020": [
+   "kthjazz_gJZ_sFM_sngl_d01_020"
+  ],
+  "kthjazz_gJZ_sFM_sngl_d02_003": [
+   "kthjazz_gJZ_sFM_sngl_d02_003"
+  ],
+  "kthjazz_gJZ_sFM_sngl_d02_004": [
+   "kthjazz_gJZ_sFM_sngl_d02_004"
+  ],
+  "kthjazz_gTP_sFM_sngl_d01_010": [
+   "kthjazz_gTP_sFM_sngl_d01_010"
+  ],
+  "kthjazz_gTP_sFM_sngl_d02_014": [
+   "kthjazz_gTP_sFM_sngl_d02_014",
+   "kthjazz_gTP_sFM_sngl_d02_015"
+  ],
+  "kthjazz_gTP_sFM_sngl_d02_016": [
+   "kthjazz_gTP_sFM_sngl_d02_016"
+  ],
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01": [
+   "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01"
+  ],
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03": [
+   "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03"
+  ],
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05": [
+   "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05"
+  ],
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07": [
+   "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07"
+  ],
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000": [
+   "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000"
+  ],
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001": [
+   "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_danstrams",
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_danstrams_000"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_thisisit_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003": [
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yougonnaregretit_002"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_luco100bpm_001"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002"
+  ],
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001": [
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001"
+  ],
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001": [
+   "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_funk_002"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_bbonthespot_004"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_bombom_001"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002"
+  ],
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001": [
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_justus2_002"
+  ],
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001": [
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+  ]
+ },
+ "bpm": {
+  "kthjazz_gCH_sFM_sngl_d01_007": 189.9878078683522,
+  "kthjazz_gCH_sFM_sngl_d01_008": 130.8485704787234,
+  "kthjazz_gCH_sFM_sngl_d01_009": 96.35267601602746,
+  "kthjazz_gCH_sFM_sngl_d01_019": 120.20215952080706,
+  "kthjazz_gCH_sFM_sngl_d02_006": 136.55948110527066,
+  "kthjazz_gCH_sFM_sngl_d02_018": 117.19476969602978,
+  "kthjazz_gJZ_sFM_sngl_d01_001": 89.13773911609499,
+  "kthjazz_gJZ_sFM_sngl_d01_002": 82.40055219471019,
+  "kthjazz_gJZ_sFM_sngl_d01_020": 96.20682565789474,
+  "kthjazz_gJZ_sFM_sngl_d02_003": 89.79866757122018,
+  "kthjazz_gJZ_sFM_sngl_d02_004": 111.06886061946902,
+  "kthjazz_gTP_sFM_sngl_d01_010": 129.35292881165918,
+  "kthjazz_gTP_sFM_sngl_d02_014": 150.7477044889993,
+  "kthjazz_gTP_sFM_sngl_d02_016": 187.08771510516252,
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01": 91.23778373266077,
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03": 199.43090459742737,
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05": 85.48638765507735,
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07": 144.51044440745673,
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000": 151.17959701976838,
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001": 94.11224376634291,
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12": 163.89124478079333,
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13": 197.21999123831776,
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01": 98.01543135015022,
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02": 95.99615355174525,
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03": 96.86309040359866,
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07": 94.93230712166171,
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08": 125.68651772398762,
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09": 192.50084524729516,
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001": 125.40520448049766,
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005": 92.03345600032087,
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001": 141.10345784023664,
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001": 181.5790913068845,
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001": 81.41474111143226,
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003": 95.31397491286668,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002": 139.31669048856548,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001": 104.08826897905759,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001": 93.99572448447637,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001": 102.62577629492601,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001": 93.0618135055693,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002": 100.10800393211922,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002": 94.22593997202392,
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001": 100.4454929675857,
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001": 152.95679354584647,
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02": 95.86827275668679,
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03": 122.65586209036742,
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05": 93.11655405405405,
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07": 89.31385387073864,
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003": 101.14483544499383,
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002": 100.0319949572127,
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002": 97.9976637423714,
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001": 97.02441069187323,
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001": 122.29103771115453
+ },
+ "style": {
+  "kthjazz_gCH_sFM_sngl_d01_007": "gCH",
+  "kthjazz_gCH_sFM_sngl_d01_008": "gCH",
+  "kthjazz_gCH_sFM_sngl_d01_009": "gCH",
+  "kthjazz_gCH_sFM_sngl_d01_019": "gCH",
+  "kthjazz_gCH_sFM_sngl_d02_006": "gCH",
+  "kthjazz_gCH_sFM_sngl_d02_018": "gCH",
+  "kthjazz_gJZ_sFM_sngl_d01_001": "gJZ",
+  "kthjazz_gJZ_sFM_sngl_d01_002": "gJZ",
+  "kthjazz_gJZ_sFM_sngl_d01_020": "gJZ",
+  "kthjazz_gJZ_sFM_sngl_d02_003": "gJZ",
+  "kthjazz_gJZ_sFM_sngl_d02_004": "gJZ",
+  "kthjazz_gTP_sFM_sngl_d01_010": "gTP",
+  "kthjazz_gTP_sFM_sngl_d02_014": "gTP",
+  "kthjazz_gTP_sFM_sngl_d02_016": "gTP",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01": "gKR",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03": "gKR",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05": "gKR",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07": "gKR",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000": "gKR",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001": "gKR",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002": "gLH",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001": "gLH",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001": "gLO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002": "gPO",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001": "gPO",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001": "gPO"
+ },
+ "matching": {
+  "tempo_first": {
+   "kthjazz_gCH_sFM_sngl_d01_007": [
+    "kthjazz_gCH_sFM_sngl_d01_009",
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003"
+   ],
+   "kthjazz_gCH_sFM_sngl_d01_008": [
+    "kthjazz_gTP_sFM_sngl_d01_010",
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+   ],
+   "kthjazz_gCH_sFM_sngl_d01_009": [
+    "kthjazz_gCH_sFM_sngl_d01_007",
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthjazz_gJZ_sFM_sngl_d01_020"
+   ],
+   "kthjazz_gCH_sFM_sngl_d01_019": [
+    "kthjazz_gCH_sFM_sngl_d02_018",
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03"
+   ],
+   "kthjazz_gCH_sFM_sngl_d02_006": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+    "kthjazz_gCH_sFM_sngl_d01_008"
+   ],
+   "kthjazz_gCH_sFM_sngl_d02_018": [
+    "kthjazz_gCH_sFM_sngl_d01_019",
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d01_001": [
+    "kthjazz_gJZ_sFM_sngl_d02_003",
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d01_002": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d01_020": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthjazz_gCH_sFM_sngl_d01_009",
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d02_003": [
+    "kthjazz_gJZ_sFM_sngl_d01_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d02_004": [
+    "kthjazz_gCH_sFM_sngl_d02_018",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001"
+   ],
+   "kthjazz_gTP_sFM_sngl_d01_010": [
+    "kthjazz_gCH_sFM_sngl_d01_008",
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+   ],
+   "kthjazz_gTP_sFM_sngl_d02_014": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07"
+   ],
+   "kthjazz_gTP_sFM_sngl_d02_016": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+    "kthjazz_gJZ_sFM_sngl_d02_003"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05": [
+    "kthjazz_gJZ_sFM_sngl_d01_002",
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthjazz_gJZ_sFM_sngl_d01_001"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+    "kthjazz_gTP_sFM_sngl_d02_014"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000": [
+    "kthjazz_gTP_sFM_sngl_d02_014",
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthjazz_gTP_sFM_sngl_d02_016"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+    "kthjazz_gJZ_sFM_sngl_d01_002",
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+    "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+    "kthjazz_gCH_sFM_sngl_d02_006"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+    "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthjazz_gJZ_sFM_sngl_d01_002",
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+    "kthjazz_gCH_sFM_sngl_d02_006",
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+    "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+    "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001"
+   ],
+   "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+    "kthjazz_gTP_sFM_sngl_d02_014",
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03": [
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001",
+    "kthjazz_gCH_sFM_sngl_d01_019",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+    "kthjazz_gTP_sFM_sngl_d02_016"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07": [
+    "kthjazz_gJZ_sFM_sngl_d01_001",
+    "kthjazz_gJZ_sFM_sngl_d02_003",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03"
+   ],
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+    "kthjazz_gCH_sFM_sngl_d01_019",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+   ]
+  },
+  "random": {
+   "kthjazz_gCH_sFM_sngl_d01_007": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001"
+   ],
+   "kthjazz_gCH_sFM_sngl_d01_008": [
+    "kthjazz_gCH_sFM_sngl_d01_007",
+    "kthjazz_gCH_sFM_sngl_d02_006",
+    "kthjazz_gCH_sFM_sngl_d01_019"
+   ],
+   "kthjazz_gCH_sFM_sngl_d01_009": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07"
+   ],
+   "kthjazz_gCH_sFM_sngl_d01_019": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001"
+   ],
+   "kthjazz_gCH_sFM_sngl_d02_006": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+    "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01"
+   ],
+   "kthjazz_gCH_sFM_sngl_d02_018": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+    "kthjazz_gCH_sFM_sngl_d01_008"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d01_001": [
+    "kthjazz_gJZ_sFM_sngl_d02_003",
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+    "kthjazz_gCH_sFM_sngl_d02_006"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d01_002": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthjazz_gCH_sFM_sngl_d02_006"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d01_020": [
+    "kthjazz_gCH_sFM_sngl_d01_008",
+    "kthjazz_gCH_sFM_sngl_d01_007",
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d02_003": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+    "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003"
+   ],
+   "kthjazz_gJZ_sFM_sngl_d02_004": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03"
+   ],
+   "kthjazz_gTP_sFM_sngl_d01_010": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001"
+   ],
+   "kthjazz_gTP_sFM_sngl_d02_014": [
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001"
+   ],
+   "kthjazz_gTP_sFM_sngl_d02_016": [
+    "kthjazz_gJZ_sFM_sngl_d01_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+    "kthjazz_gCH_sFM_sngl_d01_019"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05": [
+    "kthjazz_gTP_sFM_sngl_d02_014",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000": [
+    "kthjazz_gTP_sFM_sngl_d02_016",
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05"
+   ],
+   "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+    "kthjazz_gCH_sFM_sngl_d02_006",
+    "kthjazz_gCH_sFM_sngl_d01_009"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13": [
+    "kthjazz_gCH_sFM_sngl_d01_019",
+    "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+    "kthjazz_gCH_sFM_sngl_d01_009"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+    "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+    "kthjazz_gJZ_sFM_sngl_d01_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02": [
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+    "kthjazz_gTP_sFM_sngl_d01_010"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03": [
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+    "kthjazz_gCH_sFM_sngl_d02_006",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+    "kthjazz_gCH_sFM_sngl_d01_009"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+    "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+    "kthjazz_gCH_sFM_sngl_d01_009",
+    "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+    "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003": [
+    "kthjazz_gTP_sFM_sngl_d01_010",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002": [
+    "kthjazz_gTP_sFM_sngl_d02_016",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001": [
+    "kthjazz_gCH_sFM_sngl_d02_018",
+    "kthjazz_gJZ_sFM_sngl_d02_003",
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+    "kthjazz_gCH_sFM_sngl_d02_018",
+    "kthjazz_gCH_sFM_sngl_d01_007"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+    "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002": [
+    "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+    "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+    "kthjazz_gTP_sFM_sngl_d01_010"
+   ],
+   "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001": [
+    "kthjazz_gJZ_sFM_sngl_d01_001",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002"
+   ],
+   "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+    "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+    "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02": [
+    "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+    "kthjazz_gCH_sFM_sngl_d01_009"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+    "kthjazz_gJZ_sFM_sngl_d01_020"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05": [
+    "kthjazz_gCH_sFM_sngl_d01_007",
+    "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+    "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+    "kthjazz_gJZ_sFM_sngl_d01_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003": [
+    "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+    "kthjazz_gCH_sFM_sngl_d01_019",
+    "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002": [
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+    "kthjazz_gTP_sFM_sngl_d01_010",
+    "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002": [
+    "kthjazz_gJZ_sFM_sngl_d01_002",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+    "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001"
+   ],
+   "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001": [
+    "kthjazz_gTP_sFM_sngl_d02_014",
+    "kthjazz_gTP_sFM_sngl_d02_016",
+    "kthjazz_gJZ_sFM_sngl_d02_004"
+   ],
+   "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001": [
+    "kthjazz_gJZ_sFM_sngl_d01_001",
+    "kthjazz_gTP_sFM_sngl_d01_010",
+    "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001"
+   ]
+  }
+ },
+ "n_slices": 553
+}

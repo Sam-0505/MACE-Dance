@@ -185,18 +185,122 @@ The pool rules were set before the results were seen:
 - at least one 34 s slice;
 - not silent (drops 169, whose wav is 92% digital silence).
 
-That leaves 165 songs in **151 music pieces** (duets merged) and 1143 slices. Wrong songs are tempo-first matches from the same pool (median tempo gap 0.5%, max 3%), never a song's own duplicate. MACE is left out because it was trained on these songs.
+That leaves 165 songs in **150 music pieces** (duets merged) and 1143 slices. Wrong songs are tempo-first matches from the same pool (median tempo gap 0.5%, max 3%), never a song's own duplicate. MACE is left out because it was trained on these songs.
+
+Duplicates are the same recording in the first 30 s, allowing up to 1 s of offset: the 4 Hz loudness envelopes must correlate above 0.9 at some lag within ±1 s, and so must the waveforms. There are 21 pairs, including 096/165 "GoCrazy" (0.03 s offset) and 100/103, the explicit and clean versions of "Work It". A first version tested the envelopes at zero offset only and missed 100/103 (151 pieces, Δ +.114); fixing it reshuffles the tempo matches and random wrong-slice draws for many pieces.
 
 | variant | real own | real other | Δ real [95% CI] | pieces Δ > 0 |
 |---|---|---|---|---|
-| **primary** | .185 | .070 | **+.114 [.084, .145]** | 113/151 |
-| random wrong piece (any tempo) | .185 | .070 | +.115 [.085, .146] | 113/151 |
-| RMS dB / A-weighted dB | .187 / .178 | .073 / .073 | +.114 / +.105 | 110 / 114 |
-| mean speed / pelvis-relative | .221 / .185 | .075 / .070 | +.147 / +.115 | 119 / 114 |
-| σ = 8 / σ = 30 | .166 / .212 | .070 / .074 | +.096 / +.138 | 112 / 103 |
-| zero lag / ±0.5 s / ±1 s | .156 / .202 / .238 | .040 / .090 / .131 | +.116 / +.112 / +.108 | 111 / 115 / 115 |
+| **primary** | .184 | .083 | **+.101 [.072, .131]** | 109/150 |
+| random wrong piece (any tempo) | .184 | .062 | +.122 [.093, .152] | 115/150 |
+| RMS dB / A-weighted dB | .186 / .177 | .082 / .078 | +.104 / +.099 | 108 / 116 |
+| mean speed / pelvis-relative | .221 / .184 | .092 / .083 | +.129 / +.102 | 115 / 110 |
+| σ = 8 / σ = 30 | .165 / .212 | .080 / .090 | +.086 / +.121 | 112 / 104 |
+| zero lag / ±0.5 s / ±1 s | .155 / .201 / .238 | .051 / .102 / .144 | +.104 / +.099 / +.094 | 108 / 112 / 111 |
 
 One-sided p < .0001 (permutation and Wilcoxon) in every variant.
 
-- **The human effect replicates at the same size as on the test set** (+.114 vs +.117), now on 151 independent pieces.
-- **By genre:** Korean, Popping, Jazz and Hip-hop are strongest (Δ +.15 to +.18, 75–94% of pieces positive). ShenYun (+.04, 26 pieces) and Breaking (−.04, 10 pieces) are weakest. Loudness coupling is a strong cue in pop and street styles, and a weak one in Chinese classical and breaking.
+- **The human effect replicates at about the test-set size** (+.101 vs +.117), now on 150 independent pieces.
+- **By genre:** Popping, Jazz, Hip-hop and Korean are strongest (Δ +.13 to +.18, 77–94% of pieces positive). ShenYun (+.04, 26 pieces) and Breaking (−.04, 10 pieces) are weakest. Loudness coupling is a strong cue in pop and street styles, and a weak one in Chinese classical and breaking.
+
+## Motorica Dance (2026-10-27)
+
+### Data (`motorica_common.py`)
+
+- **Source:** the Motorica Dance dataset (Alexanderson et al., "Listen, denoise, action!", SIGGRAPH 2023; repo README). Public download, no form. License: research use only, no redistribution; the music has its own copyright holders. Stored in `data/motorica/` (gitignored).
+- **Contents:** 121 BVH takes (120 fps, 51 joints including 30 finger joints, cm, Y up). Only 74 have audio: no Casual audio was released, and 25 Locking/Jazz/Charleston songs exist only as YouTube links, which we did not use.
+- **Not documented in either paper:** whether the dancing was improvised or choreographed, and how music and motion were synced. In 59/74 pairs motion and audio lengths agree to < 0.1 s, so frame 0 = song time 0.
+- **Motion:** our own BVH forward kinematics, checked on one take (rigid bones, std 0.0000 m; hips 0.80 m; peak joint speed 9.3 m/s). We keep the 21 body joints (fingers dropped), in metres at 30 fps.
+- **Music:** loudness varies more than in FineDance (median std of smoothed RMS within a 34 s slice: 2.28 dB vs 1.79; AIST++ 0.69).
+- **Pool:** takes with audio, motion/audio lengths within 1 s, and at least one 34 s slice. That gives 62 takes in **52 pieces**; 9 groups of takes share one recording (two dancers on one song, or one recording reused at a 0.19 s offset or a different gain), and each group is one piece. 553 slices.
+- **MACE** (`gen_mace_motorica.py`): 10 samples per slice on that slice's audio. Styles: Hip-hop→Hiphop, Popping→Popping, Locking→Locking, Krump→Urban, Jazz/Charleston/Tap→Jazz. MACE never saw this data.
+
+### Loudness ↔ body energy, real vs MACE (`motorica_loudness.py`)
+
+Same procedure as FineDance: own wav vs 3 tempo-first matched wrong pieces, one random slice each, the same wrong slices for real and MACE; 11 variants (genre-first matching replaced by random pieces).
+
+| variant | Δ real [95% CI] | Δ MACE (p) | G [95% CI] | real own − MACE own |
+|---|---|---|---|---|
+| **primary** | **+.124 [.085, .164]** | +.005 (.23) | **+.119 [.079, .157]** | +.104 |
+| random wrong piece | +.129 | +.002 (.39) | +.127 | +.104 |
+| RMS dB / A-weighted dB | +.121 / +.119 | +.006 / +.003 | +.115 / +.117 | +.100 / +.111 |
+| mean speed / pelvis-relative | +.135 / +.132 | +.009 / +.004 | +.126 / +.127 | +.113 / +.111 |
+| σ = 8 / σ = 30 | +.104 / +.137 | +.003 / +.007 | +.101 / +.130 | +.088 / +.113 |
+| zero lag / ±0.5 s / ±1 s | +.125 / +.121 / +.114 | +.005 / +.005 / +.005 | +.120 / +.116 / +.109 | +.112 / +.098 / +.084 |
+
+Every Δ real, G and real own − MACE own has p ≤ .0001 (permutation). Every Δ MACE is non-significant (p .12–.39).
+
+- **The full FineDance result replicates on independent mocap data, for both sides.** Real dancers follow their own song's loudness (40/52 pieces), at the same size as FineDance (+.124 vs +.117 test, +.101 release). MACE does not (+.005), on music it never trained on.
+- **By style** (Δ real / Δ MACE): Hip-hop +.163 / +.012 (22 pieces), Krump +.192 / −.003 (6), Tap +.228 / +.009 (3), Charleston +.064 / −.002 (6), Popping +.039 / −.010 (9), Jazz +.033 / +.010 (5).
+- **Caveat:** real motion uses the 21-joint BVH body and MACE the 24-joint SMPL body, so "real own − MACE own" compares across skeletons. Δ and G each compare a dance with itself under two pieces of music, so they are not affected.
+
+## Summary across datasets (loudness ↔ body energy, primary pipeline)
+
+| dataset | units | Δ real | Δ MACE | G |
+|---|---|---|---|---|
+| FineDance test (clean motion) | 19 songs | +.117 (p = .02) | +.006 | +.111 (p = .019) |
+| FineDance release, non-test | 150 pieces | +.101 (p < .0001) | — (MACE trained on them) | — |
+| Motorica | 52 pieces | +.124 (p < .0001) | +.005 | +.119 (p < .0001) |
+| AIST++ advanced | 10 pieces | +.049 (p = .14) | −.028 | +.077 (p = .075) |
+| AIST++ basic | 60 pieces | −.022 | −.017 | −.004 |
+
+AIST++ basic dances are reused routines that were not choreographed to their music, and AIST++ music barely changes in loudness (0.7 dB), so they are not a test of the claim.
+
+## Percussion ↔ upper-body acceleration: beyond loudness? (2026-10-27, `perc_distinct.py`)
+
+Same Δ / G procedure, pools, tempo-first matching and slice pairing as the loudness runs on each dataset (FineDance test with clean motion, FineDance non-test release, Motorica). Music = RMS of the HPSS percussive part; motion = mean acceleration of 13 upper-body joints (11 on Motorica); σ = 2. Fixed in advance: percussion counts as a separate finding only if Δ real stays > 0 (p < .05) with loudness regressed out, or on the fast residual (σ 2 − σ 15), on the two large datasets.
+
+Source: Burger et al. (2013) found that, across 30 clips, more percussive music went with faster head (r = .67) and hand (.57) movement. That is a between-song finding with a different percussiveness measure (onset attack slope); our within-song version is an extension.
+
+| Δ real (Δ MACE) | FineDance test (19) | FineDance release (150) | Motorica (52) |
+|---|---|---|---|
+| primary: percussion ↔ upper-body acceleration | +.101 (+.008) | +.114 | +.114 (+.002) |
+| loudness ↔ upper-body acceleration | +.084 (+.001) | +.097 | +.111 (+.002) |
+| slow (σ 15) | +.191 (+.013) | +.193 | +.196 (+.013) |
+| fast residual (σ 2 − σ 15) | +.033 (+.002) | **+.047** | **+.058** (−.002) |
+| loudness regressed out of percussion | +.038, p = .052 (+.013) | **+.049** | **+.033**, p = .0003 (+.000) |
+| loudness out of music, body energy out of motion | +.062 (+.007) | +.055 | +.045 (+.001) |
+| head-to-head, fast scale: percussion − loudness | −.005 (p = .43) | **+.017** (p < .0001) | **+.015** (p = .0005) |
+
+Bold = p < .001. G on Motorica, loudness regressed out: +.033 (p = .0007).
+
+- **Most of the percussion effect is the loudness effect,** but 30–45 % of it survives with loudness removed, on both large datasets.
+- **On the fast (beat-to-beat) scale, upper-body accents follow percussive energy more closely than loudness.**
+- **MACE shows none of this extra part** (+.000 with loudness removed, −.002 on the fast residual).
+- The 19 test songs were too few to see it.
+
+## Bass and treble: does each drive its own body part? (2026-10-27, `bass_treble.py`)
+
+A 2 × 2 crossover on the same datasets. Bass = spectral flux 50–200 Hz, treble = 6.4–12.8 kHz; legs = pelvis, hips, knees, ankles, feet; head/hands = head, wrists (and SMPL hands). Primary motion is travel-free: the pelvis's horizontal position is subtracted from every joint, so walking across the floor is removed but bouncing is kept. The vertical axis differs by source (−X in the FineDance release, +Z in MACE output, +Y in Motorica) and is checked on every slice. Per piece: bass_pref = Δ(bass, legs) − Δ(bass, hands), treble_pref = Δ(treble, hands) − Δ(treble, legs), I = bass_pref + treble_pref. A general intensity effect raises all four cells equally and cancels out. Fixed in advance: body-part specificity counts only if I > 0 (p < .05) **and** both preferences are positive.
+
+Sources: Burger et al. (2013), between songs: 50–100 Hz flux went with head speed (r = .73; feet .31, not significant), 6.4–12.8 kHz flux with hand (.65) and head (.64) speed. Burger et al. (2018): strong low-band flux tightens beat-level timing of vertical hip and foot movement.
+
+| Δ real, primary | FineDance test | FineDance release | Motorica |
+|---|---|---|---|
+| bass → legs / hands | +.060 / +.062 | +.062 / +.062 | +.074 / +.063 |
+| treble → legs / hands | +.087 / +.094 | +.065 / +.076 | +.085 / +.083 |
+| I (one-sided p) | +.005 (.43) | +.010 (.10) | +.009 (.09) |
+| specific? | no | no | no |
+
+Variants (world coordinates, vertical-only leg speed, 50–100 Hz bass, loudness regressed out): none meets the rule on any dataset. I stays around +.01. The preference behind it switches between datasets: treble → hands on the FineDance release, bass → legs on Motorica.
+
+- **No body-part specificity:** bass and treble each reach the legs and the head/hands about equally.
+- **Treble carries song-specific information beyond loudness; bass mostly does not.** With loudness regressed out, treble keeps Δ real +.045 / +.053 (release, legs / hands) and +.060 / +.059 (Motorica), all p < .0001. Bass drops to +.012 to +.019.
+- **MACE:** about zero for bass. It shows a small treble response on Motorica (+.005 to +.009, p ≤ .016), against +.08 for real dancers (G ≈ +.077, p < .0001).
+
+## Treble vs percussion beyond loudness: one signal or two? (2026-10-27, `accent_overlap.py`)
+
+Music, σ = 2, regressions within each slice: treble and percussive RMS each with loudness regressed out, then each with loudness **and the other one** regressed out. Motion: upper-body acceleration (`uacc`) and travel-free whole-body speed (`body`). Fixed in advance: on the two large datasets, if neither keeps Δ real > 0 (p < .05) after removing the other, it is one shared signal; if only one does, that one contains the other; if both do, there are two parts.
+
+| Δ real (uacc / body) | FineDance test (19) | FineDance release (150) | Motorica (52) |
+|---|---|---|---|
+| treble, loudness removed | +.091 / +.079 | +.069 / +.057 | +.079 / +.065 |
+| treble, loudness + percussion removed | +.080 / +.071 | **+.058 / +.049** | **+.072 / +.057** |
+| percussion, loudness removed | +.038 / +.031 | +.049 / +.037 | +.033 / +.026 |
+| percussion, loudness + treble removed | +.035 / +.030 | +.033 / +.023 (p ≤ .0003) | +.017 (p = .023) / +.013 (p = .063) |
+
+Bold = p < .0001. Beyond loudness, the two music signals overlap little: median within-slice r = .21–.28. MACE, Motorica: treble with loudness and percussion removed +.003 / +.008 (G +.069 / +.050, p < .0001); percussion with loudness and treble removed −.001 / −.003.
+
+- **Treble is the main signal beyond loudness.** It loses only 9–16 % when percussion is removed. Even for upper-body acceleration, percussion's own partner, it is the stronger partner beyond loudness.
+- **Percussion keeps a small separate part** (+.017 to +.033). By the rule this counts as two parts, but on Motorica that part is marginal (body p = .063).
+- **MACE has neither** (|Δ| ≤ .008, against +.06 to +.07 for real dancers).
