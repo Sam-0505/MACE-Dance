@@ -755,6 +755,32 @@ Train-song CIs ≈ ±.035; test-song CIs ≈ ±.09; seed SD of the 34 s numbers 
 - **Even on training songs, sampling erases the gain.** Sampled Δ is +.059 for λ = 1e-3 vs +.055 for λ = 0. The x0 estimate along the λ = 0 sampling chain climbs from +.012 at t = 999 to +.060, the same level λ = 1e-3 reaches.
 - **The shortfall is long-horizon generation, not the music→energy mapping.** Generated as 8 s windows (the training length), every checkpoint scores at the real level on test songs (+.05 to +.14 vs +.101). On the same 8 s pieces taken out of the 34 s one-shot samples (the authors' test.py also samples 1020 frames in one shot), Δ falls to +.004 to +.036. The loss only sees 8 s windows, where the model already matches real dancers.
 
+**Stitched long-form sampling (2026-11-02, released model, no training).** `MaceSampler.sample_stitched`: each 34 s slice is cut into 7 windows of 240 frames (stride 130, overlap 110), all denoised together with the overlap set equal after every DDIM step (EDGE's long_ddim_sample), then joint positions are crossfaded over the overlap (EDGE's render_sample). 10 seeds, the same scoring as the sweep (`finetune_eval.py`, label `released_stitched`; authors' metrics by `authors_metrics.py`, which reproduces `Metric.calculate_metric` exactly).
+
+| own-song Δ (lag-max, test, 19 songs) | real | one-shot (G, p) | stitched (G, p) |
+|---|---|---|---|
+| trained pair: treble slow → energy | +.182 | +.044 (+.138, .029) | **+.177** (+.005, .93) |
+| treble fast → energy | +.107 | +.012 (+.095, .004) | +.078 (+.029, .22) |
+| treble unique slow → energy | +.081 | +.032 (+.049, .39) | +.071 (+.010, .84) |
+| perc slow → energy | +.147 | +.018 (+.130, .008) | +.141 (+.006, .90) |
+| perc fast → upper accel | +.101 | +.008 (+.093, < .001) | +.077 (+.024, .27) |
+| loud slow → energy | +.117 | +.006 (+.111, .019) | +.133 (−.016, .76) |
+
+| authors' metrics (10 seeds, mean ± SD) | GT | one-shot | stitched |
+|---|---|---|---|
+| FID_k ↓ | — | 15.4 ± 0.8 | 22.9 ± 0.5 |
+| FID_g ↓ | — | 25.7 ± 0.5 | 19.0 ± 0.3 |
+| Div_k | 10.3 | 10.1 | 8.6 |
+| Div_g | 7.5 | 8.1 | 7.3 |
+| BAS | .201 | .228 | .225 |
+| PFC ↓ | .216 | .210 | .179 |
+| speed (m/s) / power > 5 Hz | .57 / 1.6% | .59 / 5.0% | .54 / 5.5% |
+
+- **Stitching closes the musicality gap on every pair.** G drops from +.05 to +.14 (four pairs significant) to −.016 to +.029 (none significant). The zero-lag check agrees: whole-slice Δ +.189 vs real +.187 (one-shot +.056).
+- **The released MACE has the music → intensity mapping; one-shot 34 s sampling from a model trained on 8 s windows loses it.** The authors' test.py also samples one shot, so the published musicality shortfall is an inference choice.
+- **Quality is mixed.** FID_g and PFC improve; FID_k and Div_k get worse, and motion is slightly slower (.54 vs .59 m/s), likely from averaging over the overlaps. Overlap length and blending are not tuned.
+- **Consequence for the plan:** compare the musicality loss against stitched MACE, not one-shot MACE. On 8 s windows stitched MACE is already at the real-dance level for every pair tested, so the loss has to beat that.
+
 ### Phase 4 — FineDance
 
 - [ ] Precompute music signals (T, P, L) for all 19,892 training slices

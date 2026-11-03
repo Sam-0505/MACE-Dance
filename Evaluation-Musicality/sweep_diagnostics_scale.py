@@ -21,7 +21,7 @@ from sweep_diagnostics import score  # noqa: E402
 
 DEV = 'cuda'
 RUNS = {'released': 'mace_test', 'lambda_0': 'mace_test_sweep_l0', 'lambda_3e-4': 'mace_test_sweep_l3e-4',
-        'lambda_1e-3': 'mace_test_sweep_l1e-3'}
+        'lambda_1e-3': 'mace_test_sweep_l1e-3', 'released_stitched': 'mace_test_stitched'}
 D = '../Evaluation-Musicality/data'
 
 

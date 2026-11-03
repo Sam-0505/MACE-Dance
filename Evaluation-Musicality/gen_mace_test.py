@@ -4,6 +4,7 @@
     .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --seeds 10
     .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --checkpoint runs/train/<exp>/weights/train-<n>.pt \
         --out_dir ../Evaluation-Musicality/data/mace_test_<exp>
+    .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --stitch --out_dir ../Evaluation-Musicality/data/mace_test_stitched
 
 Writes Evaluation-Musicality/data/mace_test/joints.npy (clips, seeds, T, 24, 3) float16 + names.json.
 """
@@ -25,6 +26,7 @@ def main():
     ap.add_argument('--seeds', type=int, default=10)
     ap.add_argument('--out_dir', default=os.path.join(HERE, 'data', 'mace_test'))
     ap.add_argument('--checkpoint', default='./runs/train/exp/weights/train-3750.pt')
+    ap.add_argument('--stitch', action='store_true', help='overlapping 8 s windows (MaceSampler.sample_stitched)')
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -36,7 +38,8 @@ def main():
             genres.append(json.load(f)['style2'])
 
     sampler = MaceSampler(args.checkpoint)
-    out = np.stack([sampler.sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
+    sample = sampler.sample_stitched if args.stitch else sampler.sample
+    out = np.stack([sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
     np.save(os.path.join(args.out_dir, 'joints.npy'), out)
     with open(os.path.join(args.out_dir, 'names.json'), 'w') as f:
         json.dump({'names': names, 'genres': genres}, f)
