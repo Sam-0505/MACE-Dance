@@ -796,6 +796,18 @@ Genre classifier: logistic regression on the descriptors of all 19,892 real trai
 - **Style holds.** The windows of a stitched dance agree on genre as often as a real dancer's do (.86 vs .86), and match the song's genre (.84).
 - **Stitched dances change over time less than real dancers, not more.** Distance grows with separation, as in real dance (8.5 → 10.5 vs 11.4 → 14.1), and stays well below the distance to another song. One-shot dances barely change at all (5.6 at every separation), which fits their flat response to the music.
 - **Stitched dances repeat themselves more than real dancers, also beyond 8 s** (.34 vs .28). So the 8 s memory limit does not show up as a lack of returning motifs. One-shot repeats most (.44).
+- **Length curve (2026-11-03, `length_curve.py`, `results/length_curve.json`, `results/figures/length_curve.png`).** The released model samples the first L s of every test slice in one shot, 10 seeds, L = 8 to 34 s. Zero-lag own-song Δ of the whole L s, next to real dance cropped to the same L. Gap = real − model, 95% CI over 19 songs:
+
+  | L (s) | 8 | 10 | 12 | 15 | 17 | 20 | 25 | 30 | 34 |
+  |---|---|---|---|---|---|---|---|---|---|
+  | real | +.036 | +.090 | +.054 | +.148 | +.152 | +.168 | +.171 | +.168 | +.187 |
+  | MACE one-shot | +.067 | +.094 | +.170 | +.120 | +.119 | +.063 | +.083 | +.053 | +.056 |
+  | gap | −.03 | −.00 | −.12 | +.03 | +.03 | **+.105** [.00, .20] | +.088 [−.00, .18] | **+.115** [.01, .21] | **+.131** [.05, .21] |
+
+  - Up to 17 s (about twice the training length), one-shot MACE follows the music as well as real dancers. From 20 s on it falls behind, and the gap grows to +.13 at 34 s. Stitching at 34 s gives +.189 (real +.187).
+  - The real-dance Δ itself grows with length (longer stretches hold more intensity changes to follow). One-shot MACE peaks at 12 s and then declines.
+  - The averaged 8 s pieces show the same trend (gap −.03 to −.06 up to 12 s, +.07 to +.09 from 20 s), with CIs that include 0. The first-8-s view alone cannot decide whether the start of a long generation is also hurt: the real reference in one 8 s window per slice is only +.036.
+  - With 19 songs the onset is only roughly placed, somewhere between 17 and 20 s.
 - Videos (random slices 143_0, 132_0, 179_0, seed 0): `data/videos/stitch_<slice>_real_oneshot_stitched.mp4`, made by `render_stitch_compare.py`.
 
 ### Phase 4 — FineDance
