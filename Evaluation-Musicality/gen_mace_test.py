@@ -2,6 +2,8 @@
 
     cd Expert-Motion
     .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --seeds 10
+    .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --checkpoint runs/train/<exp>/weights/train-<n>.pt \
+        --out_dir ../Evaluation-Musicality/data/mace_test_<exp>
 
 Writes Evaluation-Musicality/data/mace_test/joints.npy (clips, seeds, T, 24, 3) float16 + names.json.
 """
@@ -22,6 +24,7 @@ def main():
     ap.add_argument('--gt_dir', default='data/test')
     ap.add_argument('--seeds', type=int, default=10)
     ap.add_argument('--out_dir', default=os.path.join(HERE, 'data', 'mace_test'))
+    ap.add_argument('--checkpoint', default='./runs/train/exp/weights/train-3750.pt')
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -32,7 +35,7 @@ def main():
         with open(os.path.join(args.gt_dir, 'label', n.split('_')[0] + '.json')) as f:
             genres.append(json.load(f)['style2'])
 
-    sampler = MaceSampler()
+    sampler = MaceSampler(args.checkpoint)
     out = np.stack([sampler.sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
     np.save(os.path.join(args.out_dir, 'joints.npy'), out)
     with open(os.path.join(args.out_dir, 'names.json'), 'w') as f:

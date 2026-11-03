@@ -164,7 +164,7 @@ class DanceDecoder(nn.Module):
         output = self.final_layer(x)
         return output
 
-    def train_pred(self, x, cond, genre, times):
+    def train_pred(self, x, cond, genre, times, return_beta=False):
         batch_size, device = x.shape[0], x.device
         beta = torch.rand(batch_size, device=device)
 
@@ -175,7 +175,7 @@ class DanceDecoder(nn.Module):
         uncond_pred = uncond_pred.detach()
 
         pred = beta.view(batch_size, 1, 1) * cond_pred + (1.0 - beta.view(batch_size, 1, 1)) * uncond_pred
-        return pred
+        return (pred, beta) if return_beta else pred
 
     @torch.no_grad()
     def infer_pred(self, x, cond, genre, times, beta=0.75):

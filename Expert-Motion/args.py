@@ -19,6 +19,14 @@ def parse_train_opt():
     parser.add_argument("--save_interval", type=int, default=50, help='Log model after every "save_period" epoch',)
     parser.add_argument("--ema_interval", type=int, default=1, help="ema every x steps")
     parser.add_argument( "--checkpoint", type=str, default="", help="trained checkpoint path (optional)")
+    parser.add_argument("--learning_rate", type=float, default=None, help="override the checkpoint's learning rate")
+    # musicality loss (model/musicality.py, musicality_experiment_plan.md Loss V1)
+    parser.add_argument("--music_signals", type=str, default="", help="precompute_music_signals.py output; logs r(music, energy) when set")
+    parser.add_argument("--lambda_dyn", type=float, default=0.0, help="weight of 1 - r(music, body energy)")
+    parser.add_argument("--dyn_music", type=str, default="treble", choices=["treble", "perc", "loud"])
+    parser.add_argument("--dyn_sigma", type=float, default=15, help="Gaussian smoothing sigma in frames (15 = slow, 2 = fast)")
+    parser.add_argument("--dyn_t_max", type=int, default=1000, help="use the term only for diffusion steps t < this")
+    parser.add_argument("--dyn_beta_min", type=float, default=0.0, help="use the term only for guidance mix beta >= this")
     opt = parser.parse_args()
     return opt
 

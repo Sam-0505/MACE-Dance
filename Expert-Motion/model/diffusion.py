@@ -17,6 +17,7 @@ from tqdm import tqdm
 from dataset.quaternion import ax_from_6v, quat_slerp
 from vis import skeleton_render
 
+from .musicality import musicality_terms, silent
 from .utils import extract, make_beta_schedule
 
 def identity(t, *args, **kwargs):
@@ -132,6 +133,13 @@ class GaussianDiffusion(nn.Module):
 
         ## get loss coefficients and initialize objective
         self.loss_fn = F.mse_loss if loss_type == "l2" else F.l1_loss
+
+        # musicality loss (model/musicality.py); set by EDGE.train_loop. Off unless lambda_dyn > 0.
+        self.normalizer = None
+        self.lambda_dyn = 0.0
+        self.dyn_sigma = 15
+        self.dyn_t_max = self.n_timestep  # use the term only for t < dyn_t_max
+        self.dyn_beta_min = 0.0  # use the term only for guidance mix beta >= dyn_beta_min
 
     # ------------------------------------------ sampling ------------------------------------------#
 
@@ -337,11 +345,11 @@ class GaussianDiffusion(nn.Module):
 
         return sample
 
-    def p_losses(self, x_start, cond, genre, t):
+    def p_losses(self, x_start, cond, genre, t, music=None):
         noise = torch.randn_like(x_start)
         x_noisy = self.q_sample(x_start=x_start, t=t, noise=noise)
 
-        x_recon = self.model.train_pred(x_noisy, cond, genre, t)
+        x_recon, beta = self.model.train_pred(x_noisy, cond, genre, t, return_beta=True)
         assert noise.shape == x_recon.shape
 
         model_out = x_recon
@@ -408,18 +416,32 @@ class GaussianDiffusion(nn.Module):
             0.646 * fk_loss.mean(),
             10.942 * foot_loss.mean(),
         )
-        return sum(losses), losses
+        total = sum(losses)
 
-    def loss(self, x, cond, genre, t_override=None):
+        # musicality loss: 1 - r(music, body energy) of the predicted x0. Also logged when lambda_dyn = 0.
+        dyn = {}
+        if music is not None:
+            with torch.set_grad_enabled(torch.is_grad_enabled() and self.lambda_dyn > 0):
+                r_pred, r_real = musicality_terms(x_recon, x_start, music, self.normalizer, self.smpl, self.dyn_sigma)
+            sound = ~silent(music)
+            keep = sound & (t < self.dyn_t_max) & (beta >= self.dyn_beta_min)
+            dyn_loss = (1 - r_pred[keep]).mean() if keep.any() else r_pred.sum() * 0
+            if self.lambda_dyn > 0:
+                total = total + self.lambda_dyn * dyn_loss
+            dyn = {"dyn_loss": dyn_loss.detach(), "r_pred": r_pred[sound].detach().mean(),
+                   "r_real": r_real[sound].mean(), "dyn_kept": keep.float().mean()}
+        return total, losses, dyn
+
+    def loss(self, x, cond, genre, t_override=None, music=None):
         batch_size = len(x)
         if t_override is None:
             t = torch.randint(0, self.n_timestep, (batch_size,), device=x.device).long()
         else:
             t = torch.full((batch_size,), t_override, device=x.device).long()
-        return self.p_losses(x, cond, genre, t)
+        return self.p_losses(x, cond, genre, t, music=music)
 
-    def forward(self, x, cond, genre, t_override=None):
-        return self.loss(x, cond, genre, t_override)
+    def forward(self, x, cond, genre, t_override=None, music=None):
+        return self.loss(x, cond, genre, t_override, music=music)
 
     def partial_denoise(self, x, cond, t):
         x_noisy = self.noise_to_t(x, t)

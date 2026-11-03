@@ -304,3 +304,68 @@ Bold = p < .0001. Beyond loudness, the two music signals overlap little: median 
 - **Treble is the main signal beyond loudness.** It loses only 9–16 % when percussion is removed. Even for upper-body acceleration, percussion's own partner, it is the stronger partner beyond loudness.
 - **Percussion keeps a small separate part** (+.017 to +.033). By the rule this counts as two parts, but on Motorica that part is marginal (body p = .063).
 - **MACE has neither** (|Δ| ≤ .008, against +.06 to +.07 for real dancers).
+
+## Unique parts of loudness, percussion and treble, fast and slow (2026-10-27, `unique_parts.py`)
+
+Each component's unique part = its music signal with the other two regressed out within the slice at the same scale. This equals its unique share in a joint linear model of all three. Scales: fast σ = 2 and slow σ = 15, with motion smoothed the same way. Motion: whole-body energy and travel-free whole-body speed. Benjamini–Hochberg over the 12 unique tests per dataset. Fixed in advance: a component has a unique part on a scale if q < .05 for at least one motion on **both** large datasets. Check: plain slow loudness ↔ energy reproduces the loudness results exactly (+.117 / +.101 / +.124).
+
+Δ real, energy / body. q is the smaller of the two:
+
+| | FineDance release (150): plain | unique (q) | Motorica (52): plain | unique (q) | unique part? |
+|---|---|---|---|---|---|
+| loudness, fast | +.067 / +.088 | +.029 / +.039 (.0002) | +.075 / +.093 | +.046 / +.054 (.0003) | **yes** |
+| loudness, slow | +.101 / +.129 | +.003 / +.009 (.26) | +.124 / +.142 | +.033 / +.036 (.009) | no (release) |
+| percussion, fast | +.077 / +.096 | +.019 / +.023 (.0004) | +.077 / +.092 | +.009 / +.013 (.069) | no (Motorica) |
+| percussion, slow | +.127 / +.160 | +.036 / +.045 (.0004) | +.149 / +.169 | +.024 / +.037 (.005) | **yes** |
+| treble, fast | +.066 / +.082 | +.040 / +.049 (.0002) | +.082 / +.093 | +.054 / +.057 (.0003) | **yes** |
+| treble, slow | +.132 / +.157 | +.053 / +.057 (.0002) | +.152 / +.158 | +.060 / +.051 (.001) | **yes** |
+
+FineDance test (19 songs): no unique part reaches q < .05 (smallest q = .064).
+
+- **Treble is the only component with a unique part on both scales and both datasets.**
+- **Loudness's unique part is on the fast scale.** Its slow effect, the headline loudness result, is almost entirely shared with percussion and treble on the FineDance release (+.003 / +.009 after removing them). On Motorica a small part remains (+.033 / +.036).
+- **On the slow scale, percussive and treble energy follow the dance more closely than overall loudness** (plain Δ +.127 to +.169 vs +.101 to +.142). The slow intensity effect is better described with them than with RMS alone.
+- **Percussion's unique part is on the slow scale.** Its fast unique part holds only on the FineDance release.
+- **MACE:** no unique part above +.008, except treble on Motorica (fast +.006 / +.008, q ≤ .03; slow +.014 / +.016, q = .066). Real dancers show +.05 to +.06 there.
+- **Caveat:** within a 34 s slice the three slow signals are strongly correlated, and σ = 15 leaves few independent points. The slow unique parts are therefore less precise than the fast ones.
+
+## Genre × genre matrix on FineDance and Motorica (2026-10-27, `genre_matrix.py`)
+
+Same method as the AIST++ matrix (`aist_genre_matrix.py`), but on dances made for their own music, and with all three intensity signals.
+- **Pieces:** all real FineDance dances (non-test pool plus the test songs; 168 pieces; test songs 130/131 excluded for a length mismatch) and the Motorica pool (52 pieces).
+- **Descriptors:** per 34 s slice, averaged per piece. Mean, std and p95 − p5 of σ = 15 loudness dB, percussive dB and log treble flux (music), and of log energy, log upper-body acceleration and log travel-free body speed (motion).
+- **Map:** leave-one-genre-out ridge from music to motion descriptors. Cell (A, B) = distance between the motion predicted from genre-A music and genre B's actual motion.
+- **Genres:** ≥ 7 pieces on FineDance (9 genres), ≥ 3 on Motorica (6 styles).
+- **One matrix per dataset:** skeletons, capture and mastering differ between the two.
+
+| | diagonal / shuffled | p | own genre closest (rows / cols) | CV R² (motion means: energy, upper accel, body speed) |
+|---|---|---|---|---|
+| FineDance, primary | 1.36 / 1.93 | **.040** | 0 / 0 of 9 | .05, **.51**, .08 |
+| FineDance, loudness ↔ energy only | 0.89 / 1.02 | .10 | 2 / 1 | .04 |
+| Motorica, primary | 2.39 / 2.39 | .46 | 0 / 0 of 6 | < 0 |
+| Motorica, loudness ↔ energy only | 1.38 / 1.36 | .47 | 0 / 1 | < 0 |
+
+- **FineDance: music character predicts dance character at the level of two families, not single genres.** The diagonal is closer than chance, but no genre's music predicts its own genre best. The matrix splits into blocks.
+  - Modern (Korean, Popping, Jazz, Hip-hop, Breaking): loud, percussive music (−22 to −23 dB percussive) and energetic dancing.
+  - Chinese traditional (ShenYun, HanTang, Dai): music 13–17 dB less percussive and calmer dancing.
+  - Miao breaks the pattern: fairly quiet music, energetic dancing.
+- **FineDance: the level link also holds within genres.** With genre means removed, a piece's percussive / treble / loudness level correlates with its dancers' movement level (r = .24–.40, all p ≤ .004). It is not only a genre or recording-session effect.
+- **Motorica: no link,** not across styles (Spearman ρ −.37 to +.37) and not within styles (r ≤ .27, p ≥ .06). Its swing-era styles (Charleston, Jazz, Tap) have the quietest recordings (10–12 dB below Hip-hop), yet Charleston is danced most energetically. This mirrors AIST++ Ballet Jazz.
+- **Why the between-genre matrix is fragile:** it compares absolute music levels across recordings, and those depend on recording era and mastering as well as on the music. The within-song Δ compares the *shape* of the curves and is immune to this. That is why Δ replicates across datasets and the matrix does not.
+
+Figures: `results/figures/genre_matrix_finedance.png`, `genre_matrix_motorica.png`, `genre_means_scatter.png`.
+
+### FineDance top-level styles (`genre_matrix.py --style1`)
+
+The same matrix over FineDance's own `style1` labels, set by the dataset authors: Street (70 pieces: Popping, Jazz, Hip-hop, Breaking, Locking, Urban), Classic (40: ShenYun, HanTang, DunHuang, Kun), Mix (37: Korean, Chinese, Choreography) and Folk (21: Dai, Miao, Wei). It uses the saved per-piece descriptors and was fixed before running.
+
+| | diagonal / shuffled | p | own style closest (rows / cols) |
+|---|---|---|---|
+| primary | 0.78 / 1.17 | .125 | 1 / 1 of 4 |
+| loudness ↔ energy only | 0.50 / 0.51 | .50 | 2 / 0 |
+
+- **Not significant.** With 4 styles there are only 24 column orders, so the smallest possible p is .04 and the test has little power.
+- **The same two groups appear.** Street and Mix music predict Street and Mix dancing (0.36–0.86), and Classic and Folk music predict Folk dancing (0.48–0.50). Across the two groups distances are large (Street ↔ Classic 1.9–2.4, Mix ↔ Classic 2.6). Only Folk's music predicts Folk best.
+- A test of the two groups ({Street, Mix} vs {Classic, Folk}) would still be chosen after seeing these matrices, so it would not be an independent test.
+
+Figure: `results/figures/genre_matrix_finedance_style1.png`.

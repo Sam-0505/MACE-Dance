@@ -141,6 +141,19 @@ class EDGE:
         # set normalizer
         self.normalizer = test_dataset.normalizer
 
+        # musicality loss: per-slice music signal (precompute_music_signals.py), looked up by wav name
+        music_of = None
+        if opt.music_signals:
+            sig = np.load(opt.music_signals)
+            music_of = dict(zip(sig["names"], torch.from_numpy(sig[opt.dyn_music])))
+            self.diffusion.normalizer = self.normalizer
+            self.diffusion.lambda_dyn = opt.lambda_dyn
+            self.diffusion.dyn_sigma = opt.dyn_sigma
+            self.diffusion.dyn_t_max = opt.dyn_t_max
+            self.diffusion.dyn_beta_min = opt.dyn_beta_min
+            print(f"musicality loss: lambda {opt.lambda_dyn}, {opt.dyn_music} -> body energy, sigma {opt.dyn_sigma}, "
+                  f"t < {opt.dyn_t_max}, beta >= {opt.dyn_beta_min}")
+
         # data loaders
         # decide number of workers based on cpu count
         import random, numpy
@@ -177,10 +190,16 @@ class EDGE:
             avg_vloss = 0
             avg_fkloss = 0
             avg_footloss = 0
+            avg_dyn = {}
             # train
             self.train()
             for step, (x, cond, filename, wavnames, genre) in enumerate(load_loop(train_data_loader)):
-                total_loss, (loss, v_loss, fk_loss, foot_loss) = self.diffusion(x, cond, genre, t_override=None)
+                music = None
+                if music_of is not None:
+                    music = torch.stack([music_of[os.path.splitext(os.path.basename(w))[0]] for w in wavnames])
+                    music = music.to(x.device)
+                total_loss, (loss, v_loss, fk_loss, foot_loss), dyn = self.diffusion(x, cond, genre, t_override=None,
+                                                                                     music=music)
                 self.optim.zero_grad()
                 self.accelerator.backward(total_loss)
                 self.optim.step()
@@ -191,6 +210,8 @@ class EDGE:
                     avg_vloss += v_loss.detach().cpu().numpy()
                     avg_fkloss += fk_loss.detach().cpu().numpy()
                     avg_footloss += foot_loss.detach().cpu().numpy()
+                    for k, v in dyn.items():
+                        avg_dyn[k] = avg_dyn.get(k, 0) + v.cpu().numpy()
                     if step % opt.ema_interval == 0:
                         self.diffusion.ema.update_model_average(self.diffusion.master_model, self.diffusion.model)
                         
@@ -200,7 +221,8 @@ class EDGE:
                 avg_fkloss /= len(train_data_loader)
                 avg_footloss /= len(train_data_loader)
                 log_dict = {"Train Loss": avg_loss, "V Loss": avg_vloss, "FK Loss": avg_fkloss, "Foot Loss": avg_footloss, }
-                print(log_dict)
+                log_dict.update({k: v / len(train_data_loader) for k, v in avg_dyn.items()})
+                print(f"epoch {epoch}", log_dict, flush=True)
 
             # Save model
             if (epoch % opt.save_interval) == 0:
