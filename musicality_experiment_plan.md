@@ -738,6 +738,23 @@ If successful:
 
 Real dance: Δ +.182, power > 5 Hz 1.6%. The loss raises r on the training-time x0 predictions (above the real .061 at λ = 1e-3) but not the own-song Δ of sampled test dances, on the trained pair or on any held-out pair. λ = 1e-3 starts adding jitter. The λ = 0 control itself drifts from the release (PFC .204 → .292), so the fine-tune recipe (lr 4e-4, batch 64) needs a lower learning rate.
 
+**Diagnostics (2026-11-02, `results/sweep_diagnostics.json`, `results/sweep_diagnostics_scale.json`).** Zero-lag own-song Δ (slow treble ↔ energy, σ = 15, the loss's own torch code; wrong = all windows of other songs in the split), on 8 s windows: 702 training-song windows (182 songs) and 168 test-song windows (19 songs).
+
+| | real | released | λ 0 | λ 3e-4 | λ 1e-3 |
+|---|---|---|---|---|---|
+| train songs, x0 from noised real motion, t = 10 / 400 / 950 | +.048 | .053 / .043 / .018 | .043 / .045 / .005 | .059 / .067 / .072 | .081 / .098 / .071 |
+| train songs, sampled 8 s (2 seeds) | +.048 | .036 / .039 | .060 / .049 | .056 / .038 | .059 / .059 |
+| test songs, x0, t = 10 / 400 / 950 | +.101 | .105 / .118 / .124 | .090 / .118 / .123 | .099 / .110 / .073 | .096 / .126 / .074 |
+| test songs, sampled 8 s (2 seeds) | +.101 | .136 / .062 | .125 / .053 | .112 / .078 | .123 / .131 |
+| test songs, same 8 s pieces cut from 34 s samples (10 seeds) | +.101 | .004 | .026 | .020 | .036 |
+| test songs, whole 34 s slice (10 seeds) | +.187 | .056 | .066 | .058 | .069 |
+
+Train-song CIs ≈ ±.035; test-song CIs ≈ ±.09; seed SD of the 34 s numbers ≈ .03.
+- **The x0 gain is not a low-t effect.** On training songs, λ = 1e-3 raises x0 Δ at every t, including t = 950 (+.071 vs +.005), and above real (+.048).
+- **The x0 gain does not reach test songs** (λ 1e-3 ≈ λ 0 ≈ released at every t; test CIs are wide).
+- **Even on training songs, sampling erases the gain.** Sampled Δ is +.059 for λ = 1e-3 vs +.055 for λ = 0. The x0 estimate along the λ = 0 sampling chain climbs from +.012 at t = 999 to +.060, the same level λ = 1e-3 reaches.
+- **The shortfall is long-horizon generation, not the music→energy mapping.** Generated as 8 s windows (the training length), every checkpoint scores at the real level on test songs (+.05 to +.14 vs +.101). On the same 8 s pieces taken out of the 34 s one-shot samples (the authors' test.py also samples 1020 frames in one shot), Δ falls to +.004 to +.036. The loss only sees 8 s windows, where the model already matches real dancers.
+
 ### Phase 4 — FineDance
 
 - [ ] Precompute music signals (T, P, L) for all 19,892 training slices
