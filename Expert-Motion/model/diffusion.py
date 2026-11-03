@@ -140,6 +140,8 @@ class GaussianDiffusion(nn.Module):
         self.dyn_sigma = 15
         self.dyn_t_max = self.n_timestep  # use the term only for t < dyn_t_max
         self.dyn_beta_min = 0.0  # use the term only for guidance mix beta >= dyn_beta_min
+        self.dyn_energy_sigma = 0  # change A: low-pass joints (frames) before body energy; 0 = off
+        self.dyn_hinge = False  # change B: loss max(0, r_real - r_pred) instead of 1 - r_pred
 
     # ------------------------------------------ sampling ------------------------------------------#
 
@@ -422,10 +424,12 @@ class GaussianDiffusion(nn.Module):
         dyn = {}
         if music is not None:
             with torch.set_grad_enabled(torch.is_grad_enabled() and self.lambda_dyn > 0):
-                r_pred, r_real = musicality_terms(x_recon, x_start, music, self.normalizer, self.smpl, self.dyn_sigma)
+                r_pred, r_real = musicality_terms(x_recon, x_start, music, self.normalizer, self.smpl, self.dyn_sigma,
+                                                  self.dyn_energy_sigma)
             sound = ~silent(music)
             keep = sound & (t < self.dyn_t_max) & (beta >= self.dyn_beta_min)
-            dyn_loss = (1 - r_pred[keep]).mean() if keep.any() else r_pred.sum() * 0
+            gap = (r_real - r_pred).clamp_min(0) if self.dyn_hinge else 1 - r_pred
+            dyn_loss = gap[keep].mean() if keep.any() else r_pred.sum() * 0
             if self.lambda_dyn > 0:
                 total = total + self.lambda_dyn * dyn_loss
             dyn = {"dyn_loss": dyn_loss.detach(), "r_pred": r_pred[sound].detach().mean(),

@@ -56,10 +56,27 @@ def silent(music_raw):
     return music_raw.std(1) < 1e-8
 
 
-def musicality_terms(pred, target, music_raw, normalizer, smpl, sigma):
+def lowpass_joints(joints, sigma):
+    """(B, T, J, 3) -> same, Gaussian-smoothed over time (sigma in frames; 0 = unchanged).
+
+    Change A (2026-11-03): energy from low-passed joints, so fast jitter cannot raise body energy. Squared speed
+    weights a frequency f by f^2, which made switching jitter on and off with the music the cheapest way to raise r.
+    """
+    if not sigma:
+        return joints
+    b, t, j, c = joints.shape
+    x = joints.permute(0, 2, 3, 1).reshape(b * j * c, t)
+    return gaussian_smooth(x, sigma).reshape(b, j, c, t).permute(0, 3, 1, 2)
+
+
+def body_energy(x, normalizer, smpl, sigma, energy_sigma=0):
+    return gaussian_smooth(motion_energy(lowpass_joints(pose_to_joints(x, normalizer, smpl), energy_sigma)), sigma)
+
+
+def musicality_terms(pred, target, music_raw, normalizer, smpl, sigma, energy_sigma=0):
     """Per-sample r(music, energy) for the prediction and for the real motion (no gradient), both (B,)."""
     m = gaussian_smooth(music_raw, sigma)
-    r_pred = pearson(m, gaussian_smooth(motion_energy(pose_to_joints(pred, normalizer, smpl)), sigma))
+    r_pred = pearson(m, body_energy(pred, normalizer, smpl, sigma, energy_sigma))
     with torch.no_grad():
-        r_real = pearson(m, gaussian_smooth(motion_energy(pose_to_joints(target, normalizer, smpl)), sigma))
+        r_real = pearson(m, body_energy(target, normalizer, smpl, sigma, energy_sigma))
     return r_pred, r_real

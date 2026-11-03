@@ -27,9 +27,14 @@ def parse_train_opt():
     parser.add_argument("--dyn_sigma", type=float, default=15, help="Gaussian smoothing sigma in frames (15 = slow, 2 = fast)")
     parser.add_argument("--dyn_t_max", type=int, default=1000, help="use the term only for diffusion steps t < this")
     parser.add_argument("--dyn_beta_min", type=float, default=0.0, help="use the term only for guidance mix beta >= this")
+    parser.add_argument("--dyn_energy_sigma", type=float, default=0, help="change A: Gaussian low-pass of the joints "
+                        "(frames) before body energy, so jitter cannot raise it; 0 = off")
+    parser.add_argument("--dyn_hinge", action="store_true", help="change B: loss max(0, r_real - r_pred), no reward past real")
     # long-clip fine-tune (build_long_clips.py, dataset/long_clips.py)
     parser.add_argument("--long_clips", type=str, default="", help="train on these long clips instead of the 8 s slices; "
                         "the npz also holds their music signals, so pass it as --music_signals too")
+    parser.add_argument("--lora_rank", type=int, default=0, help="fine-tune LoRA adapters of this rank only (model/lora.py); 0 = full fine-tune")
+    parser.add_argument("--lora_alpha", type=float, default=None, help="LoRA scale alpha (default = rank)")
     parser.add_argument("--slim_ckpt", action="store_true", help="save model, EMA and normalizer only (no optimizer)")
     opt = parser.parse_args()
     return opt

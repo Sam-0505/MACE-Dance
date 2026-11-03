@@ -15,6 +15,7 @@ from tqdm import tqdm
 
 from dataset.dance_dataset import AISTPPDataset
 from dataset.long_clips import LongClipDataset
+from model.lora import lora_state_dict, plain_state_dict
 from dataset.preprocess import increment_path
 from model.adan import Adan
 from model.diffusion import GaussianDiffusion
@@ -155,8 +156,11 @@ class EDGE:
             self.diffusion.dyn_sigma = opt.dyn_sigma
             self.diffusion.dyn_t_max = opt.dyn_t_max
             self.diffusion.dyn_beta_min = opt.dyn_beta_min
+            self.diffusion.dyn_energy_sigma = opt.dyn_energy_sigma
+            self.diffusion.dyn_hinge = opt.dyn_hinge
             print(f"musicality loss: lambda {opt.lambda_dyn}, {opt.dyn_music} -> body energy, sigma {opt.dyn_sigma}, "
-                  f"t < {opt.dyn_t_max}, beta >= {opt.dyn_beta_min}")
+                  f"t < {opt.dyn_t_max}, beta >= {opt.dyn_beta_min}, joint low-pass {opt.dyn_energy_sigma}, "
+                  f"{'max(0, r_real - r_pred)' if opt.dyn_hinge else '1 - r_pred'}")
 
         # data loaders
         # decide number of workers based on cpu count
@@ -236,7 +240,11 @@ class EDGE:
                 if self.accelerator.is_main_process:
                     self.eval()
                     wandb.log(log_dict)
-                    ckpt = {"ema_state_dict": self.diffusion.master_model.state_dict(), "model_state_dict": self.accelerator.unwrap_model(self.model).state_dict(), "optimizer_state_dict": self.optim.state_dict(), "normalizer": self.normalizer, }
+                    net = self.accelerator.unwrap_model(self.model)
+                    # plain_state_dict merges LoRA adapters into the weights (model/lora.py); a no-op otherwise
+                    ckpt = {"ema_state_dict": plain_state_dict(self.diffusion.master_model), "model_state_dict": plain_state_dict(net), "optimizer_state_dict": self.optim.state_dict(), "normalizer": self.normalizer, }
+                    if opt.lora_rank:
+                        ckpt["lora_state_dict"] = lora_state_dict(net)
                     if opt.slim_ckpt:
                         del ckpt["optimizer_state_dict"]
                     torch.save(ckpt, os.path.join(wdir, f"train-{epoch}.pt"))

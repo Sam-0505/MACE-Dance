@@ -25,8 +25,10 @@ from model.metric import SMPLSkeleton  # noqa: E402
 from multicomponent import UPPER  # noqa: E402
 from finedance_common import SLICE_LEN, SLICE_STRIDE, release_joints  # noqa: E402
 from accent_overlap import full_music  # noqa: E402
+import metrics as M  # noqa: E402
 import perc_distinct as PD  # noqa: E402
 import unique_parts as UP  # noqa: E402
+from scipy.ndimage import gaussian_filter1d  # noqa: E402
 
 OUT = os.path.join(HERE, 'results', 'finetune_sweep.json')
 PAIRS = {'trained: treble slow -> energy': ('treble_slow', 'energy_slow'),
@@ -55,7 +57,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--label', required=True)
     ap.add_argument('--mace_dir', required=True)
+    ap.add_argument('--energy_sigma', type=float, default=0,
+                    help='low-pass the joints (Gaussian, frames) before body energy, real and generated alike, so jitter '
+                         'cannot raise energy; 2 = ~2 Hz (loss change A). Results saved under <label>_es<sigma>')
     args = ap.parse_args()
+    if args.energy_sigma:
+        raw = M.motion_energy
+        M.motion_energy = lambda j: raw(gaussian_filter1d(np.asarray(j, dtype=np.float64), args.energy_sigma, axis=0))
+        args.label = f'{args.label}_es{args.energy_sigma:g}'
     PD.MACE_DIR = args.mace_dir
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     smpl = SMPLSkeleton(device)

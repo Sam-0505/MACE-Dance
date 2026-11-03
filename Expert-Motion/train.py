@@ -11,6 +11,8 @@ import torch
 
 from args import parse_train_opt
 from EDGE import EDGE
+from model.adan import Adan
+from model.lora import add_lora
 
 
 def train(opt):
@@ -19,6 +21,16 @@ def train(opt):
         ckpt = torch.load(opt.checkpoint, map_location=model.accelerator.device)
         model.optim.load_state_dict(ckpt["optimizer_state_dict"])
         model.diffusion.master_model.load_state_dict(ckpt["ema_state_dict"])
+    if opt.lora_rank:
+        # LoRA (model/lora.py): freeze the released weights, train only low-rank adapters, fresh optimizer over them.
+        # The EMA copy gets identical adapters so EMA.update_model_average still pairs parameters one to one.
+        net = model.accelerator.unwrap_model(model.model)
+        assert net is model.diffusion.model
+        n = add_lora(net, opt.lora_rank, opt.lora_alpha)
+        add_lora(model.diffusion.master_model, opt.lora_rank, opt.lora_alpha)
+        model.optim = model.accelerator.prepare(
+            Adan([p for p in net.parameters() if p.requires_grad], lr=opt.learning_rate or 1e-4, weight_decay=0.02))
+        print(f"LoRA rank {opt.lora_rank}, alpha {opt.lora_alpha or opt.lora_rank}: {n:,} trainable parameters")
     if opt.learning_rate is not None:
         for g in model.optim.param_groups:
             g["lr"] = opt.learning_rate
