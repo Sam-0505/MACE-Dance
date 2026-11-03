@@ -14,6 +14,7 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 from dataset.dance_dataset import AISTPPDataset
+from dataset.long_clips import LongClipDataset
 from dataset.preprocess import increment_path
 from model.adan import Adan
 from model.diffusion import GaussianDiffusion
@@ -140,6 +141,9 @@ class EDGE:
 
         # set normalizer
         self.normalizer = test_dataset.normalizer
+        if opt.long_clips:
+            train_dataset = LongClipDataset(train_dataset, opt.long_clips)
+            print(f"long clips: {len(train_dataset)} x {train_dataset.features.shape[1]} frames from {opt.long_clips}")
 
         # musicality loss: per-slice music signal (precompute_music_signals.py), looked up by wav name
         music_of = None
@@ -233,6 +237,8 @@ class EDGE:
                     self.eval()
                     wandb.log(log_dict)
                     ckpt = {"ema_state_dict": self.diffusion.master_model.state_dict(), "model_state_dict": self.accelerator.unwrap_model(self.model).state_dict(), "optimizer_state_dict": self.optim.state_dict(), "normalizer": self.normalizer, }
+                    if opt.slim_ckpt:
+                        del ckpt["optimizer_state_dict"]
                     torch.save(ckpt, os.path.join(wdir, f"train-{epoch}.pt"))
                     print(f"[MODEL SAVED at Epoch {epoch}]")
 

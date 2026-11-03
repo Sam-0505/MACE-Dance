@@ -12,7 +12,10 @@ Per slice and seed, then averaged over seeds per song; 95% CI by bootstrap over 
     cd Expert-Motion
     .venv/bin/python ../Evaluation-Musicality/length_curve.py
     .venv/bin/python ../Evaluation-Musicality/length_curve.py --plot   # figure only, from results/length_curve.json
+    .venv/bin/python ../Evaluation-Musicality/length_curve.py --checkpoint runs/train/long_l0/weights/train-30.pt \
+        --label long_l0   # a fine-tuned checkpoint -> results/length_curve_long_l0.json
 """
+import argparse
 import json
 import os
 import pickle
@@ -63,9 +66,11 @@ def song_ci(per_slice, song, rng):
             'per_song': per.tolist()}
 
 
-def main():
+def main(checkpoint=None, label='released'):
     rng = np.random.default_rng(0)
-    os.makedirs(CACHE, exist_ok=True)
+    cache = CACHE if label == 'released' else os.path.join(CACHE, label)
+    out = OUT if label == 'released' else OUT.replace('.json', f'_{label}.json')
+    os.makedirs(cache, exist_ok=True)
     dt = pickle.load(open('data/dataset_backups/test_tensor_dataset.pkl', 'rb')).data
     names = [os.path.splitext(os.path.basename(f))[0] for f in dt['filenames']]
     song = np.array([n.split('_slice')[0] for n in names])
@@ -73,14 +78,14 @@ def main():
     genres = [style2s[int(g)] for g in dt['genres']]
     music = torch.stack([torch.from_numpy(np.asarray(full_music(f'data/test/wavs_sliced/{n}.wav')['treble'][:1020],
                                                      dtype=np.float32)) for n in names]).cuda()
-    sampler = MaceSampler()
+    sampler = MaceSampler(checkpoint) if checkpoint else MaceSampler()
     with torch.no_grad():
         real = MU.motion_energy(MU.pose_to_joints(dt['pose'].cuda(), sampler.model.normalizer,
                                                   sampler.model.diffusion.smpl))
 
     res = {'lengths_s': [L / 30 for L in LENGTHS], 'real': {}, 'model': {}}
     for L in LENGTHS:
-        path = os.path.join(CACHE, f'energy_{L}.npy')
+        path = os.path.join(cache, f'energy_{L}.npy')
         if not os.path.exists(path):
             e = [MU.motion_energy(torch.from_numpy(sampler.sample(feats[:, :L], genres, seed=s))).numpy()
                  for s in range(SEEDS)]
@@ -95,10 +100,11 @@ def main():
         res['real'][L]['energy_mean'] = float(real[:, :L].mean())
         print(f'{L / 30:5.1f} s  ' + '  '.join(f"{v}: real {res['real'][L][v]['mean']:+.3f} model "
                                                 f"{res['model'][L][v]['mean']:+.3f}" for v in rv), flush=True)
-        with open(OUT, 'w') as f:
+        with open(out, 'w') as f:
             json.dump(res, f, indent=1)
-    print('saved', OUT)
-    plot()
+    print('saved', out)
+    if label == 'released':
+        plot()
 
 
 def plot():
@@ -161,4 +167,9 @@ def plot():
 
 
 if __name__ == '__main__':
-    plot() if '--plot' in sys.argv else main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--plot', action='store_true')
+    ap.add_argument('--checkpoint')
+    ap.add_argument('--label', default='released')
+    a = ap.parse_args()
+    plot() if a.plot else main(a.checkpoint, a.label)
