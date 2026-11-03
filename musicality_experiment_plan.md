@@ -781,6 +781,23 @@ Train-song CIs ≈ ±.035; test-song CIs ≈ ±.09; seed SD of the 34 s numbers 
 - **Quality is mixed.** FID_g and PFC improve; FID_k and Div_k get worse, and motion is slightly slower (.54 vs .59 m/s), likely from averaging over the overlaps. Overlap length and blending are not tuned.
 - **Consequence for the plan:** compare the musicality loss against stitched MACE, not one-shot MACE. On 8 s windows stitched MACE is already at the real-dance level for every pair tested, so the loss has to beat that.
 
+**Is a stitched dance consistent over 34 s? (2026-11-02, `consistency_check.py`, `results/consistency_check.json`).** Yaw-invariant pose and movement descriptors per 8 s window (four per slice); 84 test slices, 10 seeds per model; 95% CI over the 19 songs.
+
+| | real | one-shot | stitched |
+|---|---|---|---|
+| style: share of a slice's four windows given its majority genre | .855 [.80, .91] | .914 [.86, .96] | .863 [.79, .93] |
+| genre accuracy against the song's label | .671 [.50, .83] | .861 [.75, .95] | .835 [.74, .92] |
+| drift: descriptor distance between windows 8 / 16 / 24 s apart | 11.4 / 13.0 / 14.1 | 5.6 / 5.6 / 5.7 | 8.5 / 9.7 / 10.5 |
+| distance to a window of another song | 15.3 | 13.6 | 14.3 |
+| repetition: 1 s segments that recur 4–8 s later | .186 [.12, .26] | .252 [.18, .33] | .264 [.21, .33] |
+| repetition: recur more than 8 s later | .275 [.22, .34] | .435 [.33, .53] | .343 [.29, .39] |
+
+Genre classifier: logistic regression on the descriptors of all 19,892 real training slices (the authors' `model/cls.py` weights are not in the release). Recurrence threshold: the 25th percentile of the real nearest-segment ratios.
+- **Style holds.** The windows of a stitched dance agree on genre as often as a real dancer's do (.86 vs .86), and match the song's genre (.84).
+- **Stitched dances change over time less than real dancers, not more.** Distance grows with separation, as in real dance (8.5 → 10.5 vs 11.4 → 14.1), and stays well below the distance to another song. One-shot dances barely change at all (5.6 at every separation), which fits their flat response to the music.
+- **Stitched dances repeat themselves more than real dancers, also beyond 8 s** (.34 vs .28). So the 8 s memory limit does not show up as a lack of returning motifs. One-shot repeats most (.44).
+- Videos (random slices 143_0, 132_0, 179_0, seed 0): `data/videos/stitch_<slice>_real_oneshot_stitched.mp4`, made by `render_stitch_compare.py`.
+
 ### Phase 4 — FineDance
 
 - [ ] Precompute music signals (T, P, L) for all 19,892 training slices
