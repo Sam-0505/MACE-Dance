@@ -7,6 +7,8 @@ Each slice is 34 s of the take's own wav; baseline features are extracted from t
 FineDance test slices). Style labels: motorica_common.STYLE_TO_MACE. Own- and wrong-music scores use the same MACE
 dance, so the label does not enter Delta.
 Writes data/motorica/mace/joints.npy (slices, seeds, 1020, 24, 3) float16 and slices.json.
+--local_attn 2 (2026-11-04): +-2 s cross-attention mask (length_curve.local_cross_attention), written to
+data/motorica/<--out_name, default mace_local2s>; seeds are the same as the released run (paired noise).
 """
 import argparse
 import json
@@ -27,8 +29,11 @@ BATCH = 64
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--seeds', type=int, default=10)
+    ap.add_argument('--local_attn', type=float, help='half-width (s) of the local cross-attention mask')
+    ap.add_argument('--out_name', help="output folder under data/motorica (default 'mace', or 'mace_local<w>s')")
     args = ap.parse_args()
-    out_dir = os.path.join(os.path.dirname(ROOT), 'mace')
+    name = args.out_name or ('mace' if not args.local_attn else f'mace_local{args.local_attn:g}s')
+    out_dir = os.path.join(os.path.dirname(ROOT), name)
     os.makedirs(out_dir, exist_ok=True)
 
     slices, feats = [], []
@@ -43,6 +48,9 @@ def main():
     print(len(slices), 'slices')
 
     sampler = MaceSampler()
+    if args.local_attn:
+        from length_curve import local_cross_attention
+        local_cross_attention(sampler.model.diffusion.model, round(args.local_attn * 30))
     out = np.zeros((len(slices), args.seeds, SLICE_LEN, 24, 3), dtype=np.float16)
     for s in range(args.seeds):
         for b in range(0, len(slices), BATCH):
