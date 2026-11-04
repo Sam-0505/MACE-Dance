@@ -5,6 +5,7 @@
     .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --checkpoint runs/train/<exp>/weights/train-<n>.pt \
         --out_dir ../Evaluation-Musicality/data/mace_test_<exp>
     .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --stitch --out_dir ../Evaluation-Musicality/data/mace_test_stitched
+    .venv/bin/python ../Evaluation-Musicality/gen_mace_test.py --local_attn 2 --out_dir ../Evaluation-Musicality/data/mace_test_local2s
 
 Writes Evaluation-Musicality/data/mace_test/joints.npy (clips, seeds, T, 24, 3) float16 + names.json.
 """
@@ -27,6 +28,8 @@ def main():
     ap.add_argument('--out_dir', default=os.path.join(HERE, 'data', 'mace_test'))
     ap.add_argument('--checkpoint', default='./runs/train/exp/weights/train-3750.pt')
     ap.add_argument('--stitch', action='store_true', help='overlapping 8 s windows (MaceSampler.sample_stitched)')
+    ap.add_argument('--local_attn', type=float,
+                    help='seconds: restrict cross-attention to +- this around each frame (length_curve.local_cross_attention)')
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -38,6 +41,9 @@ def main():
             genres.append(json.load(f)['style2'])
 
     sampler = MaceSampler(args.checkpoint)
+    if args.local_attn:
+        from length_curve import local_cross_attention
+        local_cross_attention(sampler.model.diffusion.model, round(args.local_attn * 30))
     sample = sampler.sample_stitched if args.stitch else sampler.sample
     out = np.stack([sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
     np.save(os.path.join(args.out_dir, 'joints.npy'), out)

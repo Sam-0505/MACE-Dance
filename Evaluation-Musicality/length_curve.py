@@ -14,6 +14,8 @@ Per slice and seed, then averaged over seeds per song; 95% CI by bootstrap over 
     .venv/bin/python ../Evaluation-Musicality/length_curve.py --plot   # figure only, from results/length_curve.json
     .venv/bin/python ../Evaluation-Musicality/length_curve.py --checkpoint runs/train/long_l0/weights/train-30.pt \
         --label long_l0   # a fine-tuned checkpoint -> results/length_curve_long_l0.json
+    .venv/bin/python ../Evaluation-Musicality/length_curve.py --local_attn 2 --label released_local2s
+        # causal test (2026-11-03): cross-attention restricted to music within +-2 s of each dance frame
 """
 import argparse
 import json
@@ -66,7 +68,24 @@ def song_ci(per_slice, song, rng):
             'per_song': per.tolist()}
 
 
-def main(checkpoint=None, label='released'):
+def local_cross_attention(net, half_width):
+    """Restrict every dance layer's cross-attention to music frames within +-half_width frames of the query.
+    attention_check.py found that at 34 s the attention no longer stays near the current frame."""
+    for layer in net.dancelayerstack:
+        t = layer.transformer
+
+        def forward(x, mem, t=t):
+            q = torch.arange(x.shape[1], device=x.device)
+            k = torch.arange(mem.shape[1], device=x.device)
+            mask = (q[:, None] - k[None]).abs() > half_width  # True = not allowed
+            kv = t.norm_music(mem)
+            x = t.dropout_cross(t.cross_attn(t.norm_dance(x), kv, kv, attn_mask=mask, need_weights=False)[0])
+            return t.dropout2(t.linear2(t.dropout1(t.activation(t.linear1(t.norm(x))))))
+
+        t.forward = forward
+
+
+def main(checkpoint=None, label='released', local_attn=None):
     rng = np.random.default_rng(0)
     cache = CACHE if label == 'released' else os.path.join(CACHE, label)
     out = OUT if label == 'released' else OUT.replace('.json', f'_{label}.json')
@@ -79,6 +98,9 @@ def main(checkpoint=None, label='released'):
     music = torch.stack([torch.from_numpy(np.asarray(full_music(f'data/test/wavs_sliced/{n}.wav')['treble'][:1020],
                                                      dtype=np.float32)) for n in names]).cuda()
     sampler = MaceSampler(checkpoint) if checkpoint else MaceSampler()
+    if local_attn:
+        assert label != 'released', 'give a local-attention run its own --label'
+        local_cross_attention(sampler.model.diffusion.model, round(local_attn * 30))
     with torch.no_grad():
         real = MU.motion_energy(MU.pose_to_joints(dt['pose'].cuda(), sampler.model.normalizer,
                                                   sampler.model.diffusion.smpl))
@@ -171,5 +193,6 @@ if __name__ == '__main__':
     ap.add_argument('--plot', action='store_true')
     ap.add_argument('--checkpoint')
     ap.add_argument('--label', default='released')
+    ap.add_argument('--local_attn', type=float, help='seconds: restrict cross-attention to +- this around each frame')
     a = ap.parse_args()
-    plot() if a.plot else main(a.checkpoint, a.label)
+    plot() if a.plot else main(a.checkpoint, a.label, a.local_attn)
