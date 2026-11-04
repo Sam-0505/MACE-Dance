@@ -1,0 +1,47 @@
+{
+ "real_fixed_fit_r_median": 0.3800851265697578,
+ "runs": [
+  {
+   "segment_s": 30,
+   "r_plant": 0.2,
+   "decay": 0.01885649222150376,
+   "decay_surrogate": 0.006986084400320806,
+   "p": 0.0
+  },
+  {
+   "segment_s": 30,
+   "r_plant": 0.3,
+   "decay": 0.028459132795840874,
+   "decay_surrogate": 0.01089002661496419,
+   "p": 0.0
+  },
+  {
+   "segment_s": 30,
+   "r_plant": 0.5,
+   "decay": 0.0621625497113205,
+   "decay_surrogate": 0.005901717717980796,
+   "p": 0.0
+  },
+  {
+   "segment_s": 60,
+   "r_plant": 0.2,
+   "decay": 0.008042782181628263,
+   "decay_surrogate": 0.008160277725382376,
+   "p": 0.6
+  },
+  {
+   "segment_s": 60,
+   "r_plant": 0.3,
+   "decay": 0.027499294685494145,
+   "decay_surrogate": 0.007754832646094387,
+   "p": 0.1
+  },
+  {
+   "segment_s": 60,
+   "r_plant": 0.5,
+   "decay": 0.06197248645267383,
+   "decay_surrogate": 0.0050704148874351545,
+   "p": 0.0
+  }
+ ]
+}
