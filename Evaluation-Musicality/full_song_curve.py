@@ -20,6 +20,12 @@ to ~34 s and then falls; the released model with the +-2 s cross-attention mask 
         --checkpoint runs/train/lora_l0/weights/train-30.pt
     .venv/bin/python ../Evaluation-Musicality/full_song_curve.py --label released_stitched --stitch
     .venv/bin/python ../Evaluation-Musicality/full_song_curve.py --report    # table of all labels run so far
+
+Motorica (2026-11-04, --dataset motorica): the 62 Motorica takes with audio (motorica_common.pool(); improvised
+dance, other capture setup, never seen by MACE; median 174 s). Real dance = the 21 BVH body joints (motion energy is
+used only through correlations, so the joint set and scale do not matter). Baseline features: af.extract_baseline on
+the whole take; style label motorica_common.STYLE_TO_MACE. 5 samples per take (cost), bins up to 170+ s, cache
+data/full_song_motorica/, output results/full_song_curve_motorica.json. Add --dataset motorica to every call.
 """
 import argparse
 import glob
@@ -41,6 +47,25 @@ SEEDS, CHUNK, SIGMA, FPS = 10, 5, 15, 30
 WINDOWS = {'8s': 240, '34s': 1020}
 BINS = [0, 34, 68, 102, 1e9]  # window start, seconds
 BIN_NAMES = ['0-34 s', '34-68 s', '68-102 s', '102+ s']
+DATASET = 'finedance'
+
+
+def configure(dataset):
+    global CACHE, OUT, SEEDS, BINS, BIN_NAMES, DATASET
+    DATASET = dataset
+    if dataset == 'motorica':
+        CACHE = os.path.join(HERE, 'data', 'full_song_motorica')
+        OUT = os.path.join(HERE, 'results', 'full_song_curve_motorica.json')
+        SEEDS = 5
+        BINS = [0, 34, 68, 102, 136, 170, 1e9]
+        BIN_NAMES = ['0-34 s', '34-68 s', '68-102 s', '102-136 s', '136-170 s', '170+ s']
+
+
+def chunk(T):
+    """Samples of one song per batch. Checked 2026-11-04 on the longest Motorica take (8690 frames): 5 samples with
+    full or +-2 s masked cross-attention peak at ~2 GB (the attention kernel does not store the T x T matrix), so
+    CHUNK is kept; fewer only for sequences far beyond that."""
+    return CHUNK if T <= 20000 else max(1, int(CHUNK * (20000 / T) ** 2))
 
 
 def songs():
@@ -53,12 +78,35 @@ def usable_length(song):
     return 240 + 130 * ((t - 240) // 130)
 
 
+def motorica_take(t):
+    import audio_features as af
+    from accent_overlap import full_music
+    from motorica_common import STYLE_TO_MACE, body_joints, style, wav_path
+    f = af.extract_baseline(af.load_audio(wav_path(t))).astype(np.float32)
+    tr = np.asarray(full_music(wav_path(t))['treble'], dtype=np.float32)
+    j = body_joints(t).astype(np.float32)
+    T = min(len(f), len(tr), len(j))
+    T = 240 + 130 * ((T - 240) // 130)
+    e = MU.motion_energy(torch.from_numpy(j[:T])[None])[0].numpy()
+    return t, STYLE_TO_MACE[style(t)], f[:T], tr[:T], e
+
+
 def prepare():
     """Cache per song: baseline features, treble flux, real-dance energy, genre."""
     os.makedirs(CACHE, exist_ok=True)
     path = os.path.join(CACHE, 'inputs.npz')
     if os.path.exists(path):
         return dict(np.load(path, allow_pickle=True))
+    if DATASET == 'motorica':
+        from multiprocessing import Pool
+        from motorica_common import pool
+        with Pool(8) as p:
+            rows = p.map(motorica_take, pool())
+        obj = {k: np.array([r[i] for r in rows], dtype=object)
+               for i, k in enumerate(['songs', 'genres', 'feats', 'treble', 'real_energy'])}
+        np.savez(path, **obj)
+        print(len(rows), 'takes', sum(len(r[2]) for r in rows) / FPS, 's', flush=True)
+        return obj
     from build_long_clips import baseline_features
     from accent_overlap import full_music
     from finedance_common import release_joints
@@ -96,11 +144,12 @@ def generate(label, checkpoint, local_attn, stitch, inp):
         path = os.path.join(d, f'{s}.npy')
         if os.path.exists(path):
             continue
-        e = []
-        for c in range(SEEDS // CHUNK):  # CHUNK samples of one song per batch; seed c -> distinct noise per row
-            j = sample(np.repeat(f[None], CHUNK, 0), [g] * CHUNK, seed=c)
+        e, n = [], chunk(len(f))
+        for c in range(-(-SEEDS // n)):  # n samples of one song per batch; seed c -> distinct noise per row
+            j = sample(np.repeat(f[None], n, 0), [g] * n, seed=c)
             e.append(MU.motion_energy(torch.from_numpy(j)).numpy())
-        np.save(path, np.concatenate(e).astype(np.float32))  # (SEEDS, T)
+            torch.cuda.empty_cache()
+        np.save(path, np.concatenate(e)[:SEEDS].astype(np.float32))  # (SEEDS, T)
         print(label, s, len(f) / FPS, 's', flush=True)
 
 
@@ -186,7 +235,9 @@ if __name__ == '__main__':
     ap.add_argument('--local_attn', type=float)
     ap.add_argument('--stitch', action='store_true')
     ap.add_argument('--report', action='store_true')
+    ap.add_argument('--dataset', choices=('finedance', 'motorica'), default='finedance')
     a = ap.parse_args()
+    configure(a.dataset)
     if a.report:
         report()
     else:

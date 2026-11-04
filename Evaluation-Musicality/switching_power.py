@@ -7,6 +7,7 @@ Also reports the real dance's whole-song fixed-fit r, so r_plant can be compared
 
     cd Expert-Motion
     .venv/bin/python ../Evaluation-Musicality/switching_power.py
+    .venv/bin/python ../Evaluation-Musicality/switching_power.py --dataset motorica   # -> switching_power_motorica.json
 """
 import json
 import os
@@ -66,9 +67,14 @@ def main():
             agg, sur, p = run(data, keep, seg_s, r, rng)
             out['runs'].append({'segment_s': seg_s, 'r_plant': r, 'decay': agg, 'decay_surrogate': sur, 'p': p})
             print(f'segment {seg_s} s, r_plant {r}: decay {agg:+.3f} vs surrogate {sur:+.3f}, p {p:.2f}', flush=True)
-    with open(os.path.join(HERE, 'results', 'switching_power.json'), 'w') as f:
+    name = 'switching_power.json' if S.DATASET == 'finedance' else f'switching_power_{S.DATASET}.json'
+    with open(os.path.join(HERE, 'results', name), 'w') as f:
         json.dump(out, f, indent=1)
 
 
 if __name__ == '__main__':
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--dataset', choices=('finedance', 'motorica'), default='finedance')
+    S.configure(ap.parse_args().dataset)
     main()

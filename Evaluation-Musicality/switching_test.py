@@ -21,6 +21,10 @@ songs. p = share of surrogate dataset averages >= the real one. Other-song trans
 
     cd Expert-Motion
     .venv/bin/python ../Evaluation-Musicality/switching_test.py
+    .venv/bin/python ../Evaluation-Musicality/switching_test.py --dataset motorica   # 62 Motorica takes (2026-11-04)
+
+Motorica: motorica_common.pool() takes, real motion = 21 BVH body joints (energy enters only via correlations);
+cache data/switching/signals_motorica.npz, output results/switching_test_motorica.json.
 """
 import glob
 import json
@@ -46,10 +50,27 @@ FPS, SIGMA, WIN, RIDGE, N_SUR = 30, 15, 300, 1.0, 50
 NEAR, FAR = (1, 2), 5
 CACHE = os.path.join(HERE, 'data', 'switching', 'signals.npz')
 OUT = os.path.join(HERE, 'results', 'switching_test.json')
+DATASET = 'finedance'
 
 
-def music_signals(song):
-    path = os.path.join(RELEASE, 'music_wav', song + '.wav')
+def configure(dataset):
+    global CACHE, OUT, DATASET
+    DATASET = dataset
+    if dataset == 'motorica':
+        CACHE = os.path.join(HERE, 'data', 'switching', 'signals_motorica.npz')
+        OUT = os.path.join(HERE, 'results', 'switching_test_motorica.json')
+
+
+def wav_of(song):
+    if DATASET == 'motorica':
+        from motorica_common import wav_path
+        return wav_path(song)
+    return os.path.join(RELEASE, 'music_wav', song + '.wav')
+
+
+def music_signals(song, dataset='finedance'):
+    configure(dataset)
+    path = wav_of(song)
     y = af.load_audio(path)
     harm, perc = librosa.effects.hpss(y)
     y48, _ = librosa.load(path, sr=FLUX_SR)
@@ -61,6 +82,9 @@ def music_signals(song):
 
 
 def songs():
+    if DATASET == 'motorica':
+        from motorica_common import pool
+        return pool()
     out = []
     for p in sorted(glob.glob(os.path.join(RELEASE, 'motion', '*.npy'))):
         s = os.path.basename(p)[:-4]
@@ -77,12 +101,17 @@ def build():
     from model.metric import SMPLSkeleton
     from model import musicality as MU
     names = songs()
+    from functools import partial
     with Pool(8) as p:
-        music = dict(p.map(music_signals, names))
+        music = dict(p.map(partial(music_signals, dataset=DATASET), names))
     smpl = SMPLSkeleton('cuda')
     data = {}
     for s in names:
-        j = torch.as_tensor(np.asarray(release_joints(s, smpl, 'cuda')), dtype=torch.float32)
+        if DATASET == 'motorica':
+            from motorica_common import body_joints
+            j = torch.as_tensor(body_joints(s), dtype=torch.float32)
+        else:
+            j = torch.as_tensor(np.asarray(release_joints(s, smpl, 'cuda')), dtype=torch.float32)
         e = MU.motion_energy(j[None])[0].numpy()
         T = min(len(e), *(len(v) for v in music[s].values()))
         data[s] = {'energy': e[:T], **{c: np.asarray(music[s][c][:T], dtype=np.float32) for c in COMPS}}
@@ -191,4 +220,8 @@ def main():
 
 
 if __name__ == '__main__':
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--dataset', choices=('finedance', 'motorica'), default='finedance')
+    configure(ap.parse_args().dataset)
     main()
