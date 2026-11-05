@@ -30,6 +30,7 @@ from model.musicality import gaussian_smooth, pose_to_joints
 
 BEAT_COL = 34  # baseline features: librosa beat_track one-hot (0 = onset envelope, 33 = onset peaks)
 SPEED_SIGMA = 5  # frames, as the evaluation (tmd_beat_metrics.SMOOTH)
+W_MIN = 1e-6  # total accent weight (m/frame summed over frames) below which R is undefined and set to 0
 
 
 def speed(joints, sigma=SPEED_SIGMA):
@@ -53,25 +54,32 @@ def beat_phase(beats):
 
 
 def locking(v, beats, wide_sigma):
-    """v (B, T-1) speed, beats (B, T) one-hot -> R (B,) and the number of beats (B,)."""
+    """v (B, T-1) speed, beats (B, T) one-hot -> R (B,) and the number of beats (B,).
+
+    Fix 2026-11-05: a clip with < 2 beats (silence) gives no frame a phase, so the total weight was 0 and R was
+    1e-6 / 1e-12 = 1e6, which wrecked the first pilot. R is now 0 there, and callers drop clips with few beats."""
     w = torch.relu(v - gaussian_smooth(v, wide_sigma))
     phase, ok = beat_phase(beats[:, :v.shape[1]])
     w = w * ok
     ang = 2 * math.pi * phase
     c, s = (w * ang.cos()).sum(1), (w * ang.sin()).sum(1)
-    r = (c ** 2 + s ** 2 + 1e-12).sqrt() / w.sum(1).clamp_min(1e-12)
-    return r, (beats > 0.5).sum(1)
+    tot = w.sum(1)
+    r = (c ** 2 + s ** 2 + 1e-20).sqrt() / tot.clamp_min(W_MIN)
+    return torch.where(tot > W_MIN, r, torch.zeros_like(r)), (beats > 0.5).sum(1)
 
 
 def locking_terms(pred, target, cond, normalizer, smpl, wide_sigma, null=True):
     """Per-sample locking D (or R if null is False) of the predicted x0 and of the real motion (no gradient), plus
-    the number of own beats; all (B,)."""
+    the number of beats of the clip (with null: the smaller of the own and the other clip's count); all (B,)."""
     beats = cond[:, :, BEAT_COL]
     other = beats.roll(1, 0)
 
     def score(v):
         r, n = locking(v, beats, wide_sigma)
-        return (r - locking(v, other, wide_sigma)[0] if null else r), n
+        if not null:
+            return r, n
+        r_o, n_o = locking(v, other, wide_sigma)
+        return r - r_o, torch.minimum(n, n_o)
 
     d_pred, n = score(speed(pose_to_joints(pred, normalizer, smpl)))
     with torch.no_grad():

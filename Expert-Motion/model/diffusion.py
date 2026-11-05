@@ -449,7 +449,7 @@ class GaussianDiffusion(nn.Module):
             with torch.set_grad_enabled(torch.is_grad_enabled() and self.lambda_lock > 0):
                 d_pred, d_real, n_beats = locking_terms(x_recon, x_start, cond, self.normalizer, self.smpl,
                                                         self.lock_wide, self.lock_null)
-            keep = (n_beats >= self.lock_min_beats) & (t < self.lock_t_max)
+            keep = (n_beats >= self.lock_min_beats) & (t < self.lock_t_max) & d_pred.isfinite() & d_real.isfinite()
             if not keep.any():
                 lock_loss = d_pred.sum() * 0
             elif self.lock_batch:
@@ -458,8 +458,9 @@ class GaussianDiffusion(nn.Module):
                 lock_loss = (d_real - d_pred).clamp_min(0)[keep].mean()
             if self.lambda_lock > 0:
                 total = total + self.lambda_lock * lock_loss
-            dyn.update({"lock_loss": lock_loss.detach(), "lock_pred": d_pred.detach().mean(),
-                        "lock_real": d_real.mean(), "lock_kept": keep.float().mean()})
+            dyn.update({"lock_loss": lock_loss.detach(), "lock_kept": keep.float().mean(),
+                        "lock_pred": d_pred[keep].detach().mean() if keep.any() else d_pred.sum().detach() * 0,
+                        "lock_real": d_real[keep].mean() if keep.any() else d_real.sum() * 0})
         return total, losses, dyn
 
     def loss(self, x, cond, genre, t_override=None, music=None):

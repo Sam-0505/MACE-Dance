@@ -217,7 +217,13 @@ def influence(sets, n_clips=84):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dataset', choices=('finedance', 'motorica', 'aist'), required=True)
+    ap.add_argument('--fd_models', nargs='*', help='finedance: label=data_dir pairs to score instead of FD_MODELS '
+                    '(released is always kept)')
+    ap.add_argument('--tag', default='', help='suffix of the results file')
     a = ap.parse_args()
+    if a.fd_models:
+        FD_MODELS.clear()
+        FD_MODELS.update({'released': 'mace_test', **dict(x.split('=', 1) for x in a.fd_models)})
     group, beats, sets, nulls = {'finedance': load_finedance, 'motorica': load_motorica, 'aist': load_aist}[a.dataset]()
     print(a.dataset, len(group), 'clips,', len(set(group)), 'groups,', {k: len(v[0]) for k, v in sets.items()},
           'dances in first clip', flush=True)
@@ -229,7 +235,7 @@ def main():
     for t, v in tests.items():
         if ' - real ' in t and 'delta_other' in t or ' - released ' in t and 'delta_other' in t:
             print(t, {k: (round(x, 4) if isinstance(x, float) else x) for k, x in v.items()})
-    with open(os.path.join(HERE, 'results', f'beat_suite_{a.dataset}.json'), 'w') as f:
+    with open(os.path.join(HERE, 'results', f'beat_suite_{a.dataset}{a.tag}.json'), 'w') as f:
         json.dump(out, f, indent=1)
 
 
