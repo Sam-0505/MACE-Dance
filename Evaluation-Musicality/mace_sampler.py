@@ -71,6 +71,52 @@ class MaceSampler:
             out = torch.cat([out[:, :-ov], blend, j[:, k, ov:]], 1)
         return out.numpy()
 
+    def sample_guided(self, feats, genres, seed, scale, t_max=600, joint_sigma=2, wide=10, root_relative=True):
+        """DDIM sampling as diffusion.ddim_sample (same noise for the same seed; scale 0 gives identical samples),
+        with beat-locking guidance (2026-11-05): at steps with t <= t_max the model's x0 prediction is moved along
+        the gradient of the chance-corrected, windowed locking score (model.beatlock.windowed_locking, on joints
+        low-passed with joint_sigma frames), normalised per sample to RMS 1, times scale; the noise estimate is then
+        recomputed from the moved x0. No backprop through the network.
+        root_relative: score the joints minus the root, so guidance cannot create speed peaks by jerking the root
+        translation (with world joints, scale 0.003 locked at real-dance level by raising root speed 0.33 -> 1.22 m/s
+        while the body motion stayed the same).
+        The batch should hold several songs, sorted by song (the null beats are other clips of the batch)."""
+        from model.beatlock import BEAT_COL, windowed_locking
+        from model.musicality import lowpass_joints, pose_to_joints
+        cond = torch.as_tensor(np.asarray(feats), dtype=torch.float32, device=self.device)
+        genre = torch.tensor([style2s.index(g) for g in genres], dtype=torch.long, device=self.device)
+        d = self.model.diffusion
+        beats = cond[:, :, BEAT_COL]
+        torch.manual_seed(seed)
+        times = list(reversed(torch.linspace(-1, d.n_timestep - 1, steps=51).int().tolist()))
+        b = cond.shape[0]
+        x = torch.randn((b, cond.shape[1], self.model.repr_dim), device=self.device)
+        self.guide_log = []
+        for time, time_next in zip(times[:-1], times[1:]):
+            tc = torch.full((b,), time, device=self.device, dtype=torch.long)
+            with torch.no_grad():
+                pred_noise, x_start = d.model_predictions(x, cond, genre, tc, clip_x_start=d.clip_denoised)
+            if scale > 0 and time <= t_max:
+                with torch.enable_grad():
+                    x0 = x_start.detach().requires_grad_(True)
+                    j = pose_to_joints(x0, self.model.normalizer, d.smpl)
+                    if root_relative:
+                        j = j - j[:, :, :1]
+                    j = lowpass_joints(j, joint_sigma)
+                    score = windowed_locking(j, beats, wide)
+                    g, = torch.autograd.grad(score.sum(), x0)
+                g = g / g.pow(2).mean((1, 2), keepdim=True).sqrt().clamp_min(1e-12)
+                self.guide_log.append((time, float(score.mean())))
+                x_start = x_start + scale * g
+                pred_noise = d.predict_noise_from_start(x, tc, x_start)
+            if time_next < 0:
+                x = x_start
+                continue
+            a, an = d.alphas_cumprod[time], d.alphas_cumprod[time_next]
+            sigma = ((1 - a / an) * (1 - an) / (1 - a)).sqrt()
+            x = x_start * an.sqrt() + (1 - an - sigma ** 2).sqrt() * pred_noise + sigma * torch.randn_like(x)
+        return self.to_joints(x)
+
     def to_joints(self, x):
         """Normalized samples (B, T, 151) -> (B, T, 24, 3) joints as numpy."""
         d = self.model.diffusion

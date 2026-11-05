@@ -88,3 +88,28 @@ def locking_terms(pred, target, cond, normalizer, smpl, wide_sigma, null=True, j
     with torch.no_grad():
         d_real, _ = score(speed(joints(target)))
     return d_pred, d_real, n
+
+
+def windowed_locking(joints, beats, wide_sigma, win=240, n_null=3):
+    """Sampling-time guidance score (2026-11-05): chance-corrected locking of (B, T, J, 3) joints, averaged over
+    half-overlapping windows of win frames, each with its own offset (real dancers' offset drifts slowly).
+    The null is the beats of n_null other clips of the batch (rolled by B * k / (n_null + 1)), so with a batch
+    sorted by song they come from other songs. Windows with < 4 own or null beats are left out. Returns (B,)."""
+    v = speed(joints)
+    b, t1 = v.shape
+    starts = list(range(0, max(t1 - win, 0) + 1, win // 2))
+    shifts = [max(1, b * k // (n_null + 1)) for k in range(1, n_null + 1)]
+    tot = torch.zeros(b, device=v.device)
+    cnt = torch.zeros(b, device=v.device)
+    for s in starts:
+        vw, bw = v[:, s:s + win], beats[:, s:s + win + 1]
+        r, n = locking(vw, bw, wide_sigma)
+        ok = n >= 4
+        null = 0
+        for sh in shifts:
+            ro, no = locking(vw, bw.roll(sh, 0), wide_sigma)
+            null = null + ro / len(shifts)
+            ok = ok & (no >= 4)
+        tot = tot + torch.where(ok, r - null, torch.zeros_like(r))
+        cnt = cnt + ok.float()
+    return tot / cnt.clamp_min(1)
