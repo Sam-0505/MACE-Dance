@@ -1,0 +1,98 @@
+{
+ "n_groups": 70,
+ "table": {
+  "real": {
+   "BAS": 0.2824290104072444,
+   "BAS_delta_other": 0.04716547885812555,
+   "BAS_delta_other_p": 5e-05,
+   "BAS_delta_other_pos": "58/70",
+   "BAS_delta_same_bpm": 0.006922048620810074,
+   "BAS_delta_same_bpm_p": 0.26875,
+   "BAS_delta_same_bpm_pos": "38/63",
+   "PLV": 0.5480881984789256,
+   "PLV_delta_other": 0.24294465033733809,
+   "PLV_delta_other_p": 0.0,
+   "PLV_delta_other_pos": "60/70",
+   "PLV_delta_same_bpm": -0.016421824074142288,
+   "PLV_delta_same_bpm_p": 0.40235,
+   "PLV_delta_same_bpm_pos": "42/63",
+   "BPS": 0.8306764340006093,
+   "BPS_delta_other": 0.11095396928357493,
+   "BPS_delta_other_p": 0.0,
+   "BPS_delta_other_pos": "59/70",
+   "BPS_delta_same_bpm": -0.018691565950360246,
+   "BPS_delta_same_bpm_p": 0.2341,
+   "BPS_delta_same_bpm_pos": "34/63"
+  },
+  "released": {
+   "BAS": 0.25187339221918525,
+   "BAS_delta_other": 0.017433986416407164,
+   "BAS_delta_other_p": 0.0,
+   "BAS_delta_other_pos": "53/70",
+   "BAS_delta_same_bpm": -0.0007215783742973146,
+   "BAS_delta_same_bpm_p": 0.6882,
+   "BAS_delta_same_bpm_pos": "38/63",
+   "PLV": 0.29684207790556283,
+   "PLV_delta_other": -0.025558364493630976,
+   "PLV_delta_other_p": 0.0011,
+   "PLV_delta_other_pos": "24/70",
+   "PLV_delta_same_bpm": -0.00481932002094787,
+   "PLV_delta_same_bpm_p": 0.29175,
+   "PLV_delta_same_bpm_pos": "25/63",
+   "BPS": 0.6954818803061271,
+   "BPS_delta_other": 0.011246775895375044,
+   "BPS_delta_other_p": 0.4077,
+   "BPS_delta_other_pos": "42/70",
+   "BPS_delta_same_bpm": 0.0004922912283278938,
+   "BPS_delta_same_bpm_p": 0.9499,
+   "BPS_delta_same_bpm_pos": "20/63"
+  }
+ },
+ "tests": {
+  "released - real BAS own": {
+   "diff": -0.030555618188059137,
+   "p": 0.04605,
+   "groups_real_higher": 42
+  },
+  "released - real PLV own": {
+   "diff": -0.25124612057336265,
+   "p": 0.0,
+   "groups_real_higher": 63
+  },
+  "released - real BPS own": {
+   "diff": -0.13519455369448208,
+   "p": 0.0,
+   "groups_real_higher": 56
+  },
+  "released - real BAS delta_other": {
+   "diff": -0.029731492441718382,
+   "p": 0.0082,
+   "groups_real_higher": 48
+  },
+  "released - real PLV delta_other": {
+   "diff": -0.26850301483096906,
+   "p": 0.0,
+   "groups_real_higher": 63
+  },
+  "released - real BPS delta_other": {
+   "diff": -0.09970719338819986,
+   "p": 5e-05,
+   "groups_real_higher": 52
+  },
+  "released - real BAS delta_same_bpm": {
+   "diff": -0.007643626995107387,
+   "p": 0.20735,
+   "groups_real_higher": 39
+  },
+  "released - real PLV delta_same_bpm": {
+   "diff": 0.011602504053194412,
+   "p": 0.52175,
+   "groups_real_higher": 43
+  },
+  "released - real BPS delta_same_bpm": {
+   "diff": 0.019183857178688136,
+   "p": 0.36725,
+   "groups_real_higher": 40
+  }
+ }
+}
