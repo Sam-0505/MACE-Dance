@@ -37,6 +37,12 @@ def parse_train_opt():
     parser.add_argument("--lock_no_null", action="store_true", help="plain R instead of R(own) - R(other clip's beats)")
     parser.add_argument("--lock_batch", action="store_true", help="hinge on batch means: max(0, mean D_real - mean D_pred); "
                         "the per-clip hinge has a positive floor because D_real of one 8 s clip is noisy")
+    parser.add_argument("--lock_t_min", type=int, default=0, help="use the term only for diffusion steps t >= this "
+                        "(pilot 1: at low noise the model met it by sharpening the input's own timing)")
+    parser.add_argument("--lock_joint_sigma", type=float, default=0, help="Gaussian low-pass of the joints (frames) "
+                        "before the speed, so jitter cannot raise the locking score; 0 = off")
+    parser.add_argument("--beat_phase_input", action="store_true", help="add a zero-initialised projection of "
+                        "cos/sin of the beat phase (from the beat column) to the music conditioning")
     parser.add_argument("--lock_t_max", type=int, default=1000, help="use the term only for diffusion steps t < this")
     # long-clip fine-tune (build_long_clips.py, dataset/long_clips.py)
     parser.add_argument("--long_clips", type=str, default="", help="train on these long clips instead of the 8 s slices; "

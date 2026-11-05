@@ -42,6 +42,7 @@ class EDGE:
         EMA=True,
         learning_rate=4e-4,
         weight_decay=0.02,
+        beat_phase_input=False,
     ):
 
         ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
@@ -67,6 +68,9 @@ class EDGE:
         if checkpoint_path != "":
             checkpoint = torch.load(checkpoint_path, map_location=self.accelerator.device)
             self.normalizer = checkpoint["normalizer"]
+            # a checkpoint fine-tuned with the beat-phase input carries its projection: build the model with it
+            beat_phase_input = beat_phase_input or "phase_projection.weight" in checkpoint["model_state_dict"]
+        self.beat_phase_input = beat_phase_input
 
         model = DanceDecoder(
             nfeats=repr_dim,
@@ -78,6 +82,7 @@ class EDGE:
             dropout=0.1,
             cond_feature_dim=feature_dim,
             activation=F.gelu,
+            beat_phase_input=beat_phase_input,
         )
 
         smpl = SMPLSkeleton(self.accelerator.device)
@@ -99,11 +104,17 @@ class EDGE:
 
         self.model = self.accelerator.prepare(model)
         self.diffusion = diffusion.to(self.accelerator.device)
-        optim = Adan(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+        # the beat-phase projection is not in the released optimizer state; train.py adds it as a second group
+        optim = Adan([p for n, p in model.named_parameters() if not n.startswith("phase_projection")],
+                     lr=learning_rate, weight_decay=weight_decay)
         self.optim = self.accelerator.prepare(optim)
 
         if checkpoint_path != "":
-            self.model.load_state_dict(maybe_wrap(checkpoint["model_state_dict"], num_processes,))
+            missing, unexpected = self.model.load_state_dict(maybe_wrap(checkpoint["model_state_dict"], num_processes,),
+                                                             strict=False)
+            assert not unexpected and all(k.startswith("phase_projection") for k in missing), (missing, unexpected)
+            if missing:
+                print("beat-phase input: new zero-initialised projection", missing)
 
     def eval(self):
         self.diffusion.eval()
@@ -171,8 +182,11 @@ class EDGE:
             self.diffusion.lock_null = not opt.lock_no_null
             self.diffusion.lock_t_max = opt.lock_t_max
             self.diffusion.lock_batch = opt.lock_batch
+            self.diffusion.lock_t_min = opt.lock_t_min
+            self.diffusion.lock_joint_sigma = opt.lock_joint_sigma
             print(f"beat-locking loss: lambda {opt.lambda_lock}, wide {opt.lock_wide}, "
-                  f"{'R' if opt.lock_no_null else 'R(own) - R(other)'}, t < {opt.lock_t_max}, "
+                  f"{'R' if opt.lock_no_null else 'R(own) - R(other)'}, {opt.lock_t_min} <= t < {opt.lock_t_max}, "
+                  f"joint low-pass {opt.lock_joint_sigma}, "
                   f"hinge on {'batch means' if opt.lock_batch else 'each clip'}")
 
         # data loaders

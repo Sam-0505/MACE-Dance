@@ -16,11 +16,18 @@ from model.lora import add_lora
 
 
 def train(opt):
-    model = EDGE(opt.feature_type, checkpoint_path=opt.checkpoint)
+    model = EDGE(opt.feature_type, checkpoint_path=opt.checkpoint, beat_phase_input=opt.beat_phase_input)
     if opt.checkpoint:
         ckpt = torch.load(opt.checkpoint, map_location=model.accelerator.device)
-        model.optim.load_state_dict(ckpt["optimizer_state_dict"])
-        model.diffusion.master_model.load_state_dict(ckpt["ema_state_dict"])
+        if "optimizer_state_dict" in ckpt:
+            model.optim.load_state_dict(ckpt["optimizer_state_dict"])
+        missing, unexpected = model.diffusion.master_model.load_state_dict(ckpt["ema_state_dict"], strict=False)
+        assert not unexpected and all(k.startswith("phase_projection") for k in missing), (missing, unexpected)
+    net = model.accelerator.unwrap_model(model.model)
+    if hasattr(net, "phase_projection"):
+        # beat-phase input: its projection is trained with the rest, as a second optimizer group
+        model.optim.optimizer.add_param_group({"params": list(net.phase_projection.parameters())})
+        print("beat-phase input on")
     if opt.lora_rank:
         # LoRA (model/lora.py): freeze the released weights, train only low-rank adapters, fresh optimizer over them.
         # The EMA copy gets identical adapters so EMA.update_model_average still pairs parameters one to one.

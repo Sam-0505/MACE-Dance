@@ -26,7 +26,7 @@ import math
 
 import torch
 
-from model.musicality import gaussian_smooth, pose_to_joints
+from model.musicality import gaussian_smooth, lowpass_joints, pose_to_joints
 
 BEAT_COL = 34  # baseline features: librosa beat_track one-hot (0 = onset envelope, 33 = onset peaks)
 SPEED_SIGMA = 5  # frames, as the evaluation (tmd_beat_metrics.SMOOTH)
@@ -68,7 +68,7 @@ def locking(v, beats, wide_sigma):
     return torch.where(tot > W_MIN, r, torch.zeros_like(r)), (beats > 0.5).sum(1)
 
 
-def locking_terms(pred, target, cond, normalizer, smpl, wide_sigma, null=True):
+def locking_terms(pred, target, cond, normalizer, smpl, wide_sigma, null=True, joint_sigma=0):
     """Per-sample locking D (or R if null is False) of the predicted x0 and of the real motion (no gradient), plus
     the number of beats of the clip (with null: the smaller of the own and the other clip's count); all (B,)."""
     beats = cond[:, :, BEAT_COL]
@@ -81,7 +81,10 @@ def locking_terms(pred, target, cond, normalizer, smpl, wide_sigma, null=True):
         r_o, n_o = locking(v, other, wide_sigma)
         return r - r_o, torch.minimum(n, n_o)
 
-    d_pred, n = score(speed(pose_to_joints(pred, normalizer, smpl)))
+    def joints(x):
+        return lowpass_joints(pose_to_joints(x, normalizer, smpl), joint_sigma)
+
+    d_pred, n = score(speed(joints(pred)))
     with torch.no_grad():
-        d_real, _ = score(speed(pose_to_joints(target, normalizer, smpl)))
+        d_real, _ = score(speed(joints(target)))
     return d_pred, d_real, n

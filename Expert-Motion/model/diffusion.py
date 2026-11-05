@@ -149,6 +149,8 @@ class GaussianDiffusion(nn.Module):
         self.lock_wide = 10  # frames, local-mean filter of the accent weight
         self.lock_null = True  # chance-corrected D = R(own beats) - R(other clip's beats)
         self.lock_t_max = self.n_timestep
+        self.lock_t_min = 0  # pilot 2: only steps where the timing must come from the music, not the noisy input
+        self.lock_joint_sigma = 0  # pilot 2: low-pass the joints (frames) so jitter cannot raise the score
         self.lock_min_beats = 4
         self.lock_batch = False  # hinge on the batch means instead of per clip (D_real of one 8 s clip is noisy)
 
@@ -448,8 +450,8 @@ class GaussianDiffusion(nn.Module):
         if self.lock_on:
             with torch.set_grad_enabled(torch.is_grad_enabled() and self.lambda_lock > 0):
                 d_pred, d_real, n_beats = locking_terms(x_recon, x_start, cond, self.normalizer, self.smpl,
-                                                        self.lock_wide, self.lock_null)
-            keep = (n_beats >= self.lock_min_beats) & (t < self.lock_t_max) & d_pred.isfinite() & d_real.isfinite()
+                                                        self.lock_wide, self.lock_null, self.lock_joint_sigma)
+            keep = (n_beats >= self.lock_min_beats) & (t < self.lock_t_max) & (t >= self.lock_t_min) & d_pred.isfinite() & d_real.isfinite()
             if not keep.any():
                 lock_loss = d_pred.sum() * 0
             elif self.lock_batch:
