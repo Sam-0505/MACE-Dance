@@ -17,6 +17,7 @@ from tqdm import tqdm
 from dataset.quaternion import ax_from_6v, quat_slerp
 from vis import skeleton_render
 
+from .beatlock import locking_terms
 from .musicality import musicality_terms, silent
 from .utils import extract, make_beta_schedule
 
@@ -142,6 +143,14 @@ class GaussianDiffusion(nn.Module):
         self.dyn_beta_min = 0.0  # use the term only for guidance mix beta >= dyn_beta_min
         self.dyn_energy_sigma = 0  # change A: low-pass joints (frames) before body energy; 0 = off
         self.dyn_hinge = False  # change B: loss max(0, r_real - r_pred) instead of 1 - r_pred
+        # beat-locking loss (model/beatlock.py); set by EDGE.train_loop. Computed (and logged) only if lock_on.
+        self.lock_on = False
+        self.lambda_lock = 0.0
+        self.lock_wide = 10  # frames, local-mean filter of the accent weight
+        self.lock_null = True  # chance-corrected D = R(own beats) - R(other clip's beats)
+        self.lock_t_max = self.n_timestep
+        self.lock_min_beats = 4
+        self.lock_batch = False  # hinge on the batch means instead of per clip (D_real of one 8 s clip is noisy)
 
     # ------------------------------------------ sampling ------------------------------------------#
 
@@ -434,6 +443,23 @@ class GaussianDiffusion(nn.Module):
                 total = total + self.lambda_dyn * dyn_loss
             dyn = {"dyn_loss": dyn_loss.detach(), "r_pred": r_pred[sound].detach().mean(),
                    "r_real": r_real[sound].mean(), "dyn_kept": keep.float().mean()}
+
+        # beat-locking loss: max(0, D_real - D_pred) of the predicted x0 (model/beatlock.py)
+        if self.lock_on:
+            with torch.set_grad_enabled(torch.is_grad_enabled() and self.lambda_lock > 0):
+                d_pred, d_real, n_beats = locking_terms(x_recon, x_start, cond, self.normalizer, self.smpl,
+                                                        self.lock_wide, self.lock_null)
+            keep = (n_beats >= self.lock_min_beats) & (t < self.lock_t_max)
+            if not keep.any():
+                lock_loss = d_pred.sum() * 0
+            elif self.lock_batch:
+                lock_loss = (d_real[keep].mean() - d_pred[keep].mean()).clamp_min(0)
+            else:
+                lock_loss = (d_real - d_pred).clamp_min(0)[keep].mean()
+            if self.lambda_lock > 0:
+                total = total + self.lambda_lock * lock_loss
+            dyn.update({"lock_loss": lock_loss.detach(), "lock_pred": d_pred.detach().mean(),
+                        "lock_real": d_real.mean(), "lock_kept": keep.float().mean()})
         return total, losses, dyn
 
     def loss(self, x, cond, genre, t_override=None, music=None):

@@ -162,6 +162,19 @@ class EDGE:
                   f"t < {opt.dyn_t_max}, beta >= {opt.dyn_beta_min}, joint low-pass {opt.dyn_energy_sigma}, "
                   f"{'max(0, r_real - r_pred)' if opt.dyn_hinge else '1 - r_pred'}")
 
+        # beat-locking loss (model/beatlock.py): uses the beat column of the conditioning, no extra data
+        if opt.lambda_lock > 0 or opt.lock_log:
+            self.diffusion.normalizer = self.normalizer
+            self.diffusion.lock_on = True
+            self.diffusion.lambda_lock = opt.lambda_lock
+            self.diffusion.lock_wide = opt.lock_wide
+            self.diffusion.lock_null = not opt.lock_no_null
+            self.diffusion.lock_t_max = opt.lock_t_max
+            self.diffusion.lock_batch = opt.lock_batch
+            print(f"beat-locking loss: lambda {opt.lambda_lock}, wide {opt.lock_wide}, "
+                  f"{'R' if opt.lock_no_null else 'R(own) - R(other)'}, t < {opt.lock_t_max}, "
+                  f"hinge on {'batch means' if opt.lock_batch else 'each clip'}")
+
         # data loaders
         # decide number of workers based on cpu count
         import random, numpy
