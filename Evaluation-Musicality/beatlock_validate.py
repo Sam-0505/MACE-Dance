@@ -36,6 +36,11 @@ def soft(joints, beats, wide):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--models', nargs='*', default=[], help='extra label=data_dir pairs (gen_mace_test.py outputs)')
+    ap.add_argument('--tag', default='')
+    args = ap.parse_args()
     from motion_quality_extra import real_joints
     names = json.load(open(os.path.join(HERE, 'data', 'mace_test', 'names.json')))['names']
     song = np.array([n.split('_')[0] for n in names])
@@ -46,6 +51,9 @@ def main():
     real = np.stack(real_joints(names))[:, None]  # (84, 1, 1020, 24, 3)
     mace = np.load(os.path.join(HERE, 'data', 'mace_test', 'joints.npy'), mmap_mode='r')
     sets = {'real': real, 'released': mace}
+    for x in args.models:
+        lab, d = x.split('=', 1)
+        sets[lab] = np.load(os.path.join(HERE, 'data', d, 'joints.npy'), mmap_mode='r')
     res, tests, track = {}, {}, {}
     per_song = {}
     for label, J in sets.items():
@@ -81,13 +89,14 @@ def main():
                 ok = ~np.isnan(b)
                 track[str(wd)] = float(np.corrcoef(a[ok], b[ok])[0, 1])
         print(label, json.dumps(res[label]), flush=True)
-    for k in per_song['real']:
-        d = per_song['released'][k] - per_song['real'][k]
-        tests[f'released - real {k}'] = {'diff': float(d.mean()), 'p': signflip(d, rng),
-                                         'songs_real_higher': int((d < 0).sum())}
+    for lab in [x for x in sets if x != 'real']:
+        for k in per_song['real']:
+            d = per_song[lab][k] - per_song['real'][k]
+            tests[f'{lab} - real {k}'] = {'diff': float(d.mean()), 'p': signflip(d, rng),
+                                          'songs_real_higher': int((d < 0).sum())}
     print('corr(soft R, hard PLV) over real windows', track)
     print(json.dumps(tests, indent=1))
-    with open(OUT, 'w') as f:
+    with open(OUT.replace('.json', f'{args.tag}.json'), 'w') as f:
         json.dump({'table': res, 'tests': tests, 'corr_soft_vs_plv_real': track}, f, indent=1)
 
 
