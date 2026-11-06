@@ -5,8 +5,9 @@ Complements beat_suite.py --dataset motorica (beat locking). All sets on the sam
 (motorica_common.body_joints); models = SMPL joints mapped to the same body parts (SMPL_TO_BODY). First 3 samples
 per slice for every model (released MACE has 10; the others 3).
 
-Energy coupling: the motorica_loudness.py primary test (robustness_loud.PRIMARY: RMS loudness -> motion energy,
-sigma 15 frames, lag-max over +-9 frames, wrong music = one slice of each of 3 tempo-matched other pieces; pieces =
+Energy coupling: loud slow and perc slow -> body energy, as finetune_eval.py PAIRS on FineDance (loud = RMS,
+perc = RMS of the HPSS percussive part; music and motion energy smoothed sigma 15 frames; lag-max over +-9 frames;
+loud slow = the motorica_loudness.py primary test, robustness_loud.PRIMARY), wrong music = one slice of each of 3 tempo-matched other pieces; pieces =
 finedance_release_loud.music_groups), restricted to these slices. Also with root-relative energy, so whole-body
 travel cannot carry it. Delta = own - wrong per piece; sign-flip tests over pieces, model - real paired.
 
@@ -134,6 +135,18 @@ def fid_scores(sets, sets24):
     return out
 
 
+COUPLING = {'loud slow -> energy': ('loud', 'energy'), 'perc slow -> energy': ('perc', 'energy'),
+            'loud slow -> energy (root-rel)': ('loud', 'energy_root_rel'),
+            'perc slow -> energy (root-rel)': ('perc', 'energy_root_rel')}
+
+
+def print_coupling(sets, coup):
+    print('\ncoupling own - wrong music (per piece mean, sign-flip p, pieces > 0)')
+    for lab in sets:
+        print(f'{lab:18s} ' + ' | '.join(f"{pr.split(' ->')[0]}{' rr' if 'root' in pr else ''} {c['delta']:+.3f} "
+                                          f"p {c['p']:.3f} {c['pos']}" for pr, c in coup[lab].items()))
+
+
 def signflip(x, rng):
     x = x[~np.isnan(x)]
     s = rng.choice([-1, 1], (20000, len(x)))
@@ -144,6 +157,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--models', nargs='+', required=True, help='label=dir under data/motorica')
     ap.add_argument('--tag', default='')
+    ap.add_argument('--coupling_only', action='store_true', help='skip motion statistics and FID')
     args = ap.parse_args()
     models = dict(x.split('=', 1) for x in args.models)
 
@@ -175,8 +189,13 @@ def main():
         sets[lab] = [x[:, :, SMPL_TO_BODY] for x in sets24[lab]]
     print({k: v[0].shape for k, v in sets.items()}, flush=True)
 
-    # ---- energy coupling
-    music = {t: loudness_signals(af.load_audio(wav_path(t))) for t in takes}
+    # ---- energy coupling: loud slow and perc slow -> body energy (finetune_eval.py PAIRS on FineDance)
+    import librosa
+    music = {}
+    for t in takes:
+        y = af.load_audio(wav_path(t))
+        music[t] = {'loud': loudness_signals(y)[PRIMARY['music']],
+                    'perc': librosa.feature.rms(y=librosa.effects.percussive(y), hop_length=af.HOP_LENGTH)[0]}
     genre = {p: style(p) for p in pieces}
     bpm = {p: bpm_from_wav(wav_path(p)) for p in pieces}
     mt = matches(pieces, genre, bpm, 'tempo_first')
@@ -184,26 +203,37 @@ def main():
     rng = np.random.default_rng(SEED)
     wrong = [[piece_slices[w][int(rng.integers(len(piece_slices[w])))] for w in mt[group[t]]] for t, _ in slices]
     sig, lag = PRIMARY['sigma'], PRIMARY['lag']
-    ms = lambda t, o: smooth(music[t][PRIMARY['music']][o:o + SLICE_LEN], sig)  # noqa: E731
+    ms = lambda t, o, c: smooth(np.asarray(music[t][c][o:o + SLICE_LEN], np.float64), sig)  # noqa: E731
     sc = lambda a, b: M.lagged_corr(a, b, lag)[1]  # noqa: E731
     coup, per_piece = {}, {}
     for lab, clips in sets.items():
         per_piece[lab] = {}
         coup[lab] = {}
-        for kind in ('energy', 'energy_root_rel'):
+        mot = [[{k: smooth(v, sig) for k, v in signals(x).items()} for x in js] for js in clips]
+        for pair, (c, kind) in COUPLING.items():
             own_r, wrong_r = [], []
             for i, (t, o) in enumerate(slices):
-                own = ms(t, o)
-                wr = [ms(wt, wo) for wt, wo in wrong[i]]
-                mot = [smooth(signals(x)[kind], sig) for x in clips[i]]
-                own_r.append(np.mean([sc(own, m) for m in mot]))
-                wrong_r.append(np.mean([sc(w, m) for m in mot for w in wr]))
+                own = ms(t, o, c)
+                wr = [ms(wt, wo, c) for wt, wo in wrong[i]]
+                own_r.append(np.mean([sc(own, m[kind]) for m in mot[i]]))
+                wrong_r.append(np.mean([sc(w, m[kind]) for m in mot[i] for w in wr]))
             own_r, wrong_r = np.array(own_r), np.array(wrong_r)
             d = np.array([(own_r - wrong_r)[slice_piece == p].mean() for p in pieces])
-            per_piece[lab][kind] = d
-            coup[lab][kind] = {'own': float(own_r.mean()), 'wrong': float(wrong_r.mean()), 'delta': float(d.mean()),
+            per_piece[lab][pair] = d
+            coup[lab][pair] = {'own': float(own_r.mean()), 'wrong': float(wrong_r.mean()), 'delta': float(d.mean()),
                                'p': signflip(d, rng), 'pos': f'{int((d > 0).sum())}/{len(d)}'}
         print(lab, 'coupling', json.dumps(coup[lab]), flush=True)
+    if args.coupling_only:
+        tests = {}
+        for lab in sets:
+            if lab != 'real':
+                for pair in COUPLING:
+                    d = per_piece[lab][pair] - per_piece['real'][pair]
+                    tests[f'{lab} - real {pair}'] = {'diff': float(d.mean()), 'p': signflip(d, rng)}
+        print_coupling(sets, coup)
+        with open(OUT.replace('.json', f'{args.tag}.json'), 'w') as f:
+            json.dump({'slices': len(slices), 'pieces': pieces, 'coupling': coup, 'tests': tests}, f, indent=1)
+        return
 
     # ---- motion statistics
     mstat, mpiece = {}, {}
@@ -224,19 +254,14 @@ def main():
     for lab in sets:
         if lab == 'real':
             continue
-        for kind in ('energy', 'energy_root_rel'):
-            d = per_piece[lab][kind] - per_piece['real'][kind]
-            tests[f'{lab} - real coupling {kind}'] = {'diff': float(d.mean()), 'p': signflip(d, rng)}
+        for pair in COUPLING:
+            d = per_piece[lab][pair] - per_piece['real'][pair]
+            tests[f'{lab} - real {pair}'] = {'diff': float(d.mean()), 'p': signflip(d, rng)}
         for k in KEYS:
             d = mpiece[lab][k] - mpiece['real'][k]
             tests[f'{lab} - real {k}'] = {'diff': float(np.nanmean(d)), 'p': signflip(d, rng)}
 
-    print('\ncoupling (own - wrong music, per piece)')
-    for lab in sets:
-        c = coup[lab]
-        print(f"{lab:18s} energy {c['energy']['delta']:+.3f} p {c['energy']['p']:.3f} {c['energy']['pos']:>6s} | "
-              f"root-rel {c['energy_root_rel']['delta']:+.3f} p {c['energy_root_rel']['p']:.3f} "
-              f"{c['energy_root_rel']['pos']:>6s}")
+    print_coupling(sets, coup)
     print('\n' + f'{"":18s}' + ''.join(f'{k:>9s}' for k in KEYS + ['seed_div']))
     for lab in sets:
         print(f'{lab:18s}' + ''.join(f'{mstat[lab][k]:9.3f}' for k in KEYS + ['seed_div']))

@@ -1,0 +1,367 @@
+{
+ "slices": 289,
+ "pieces": [
+  "kthjazz_gCH_sFM_sngl_d01_007",
+  "kthjazz_gCH_sFM_sngl_d01_008",
+  "kthjazz_gCH_sFM_sngl_d01_009",
+  "kthjazz_gCH_sFM_sngl_d01_019",
+  "kthjazz_gCH_sFM_sngl_d02_006",
+  "kthjazz_gCH_sFM_sngl_d02_018",
+  "kthjazz_gJZ_sFM_sngl_d01_001",
+  "kthjazz_gJZ_sFM_sngl_d01_002",
+  "kthjazz_gJZ_sFM_sngl_d01_020",
+  "kthjazz_gJZ_sFM_sngl_d02_003",
+  "kthjazz_gJZ_sFM_sngl_d02_004",
+  "kthjazz_gTP_sFM_sngl_d01_010",
+  "kthjazz_gTP_sFM_sngl_d02_014",
+  "kthjazz_gTP_sFM_sngl_d02_016",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+ ],
+ "coupling": {
+  "real": {
+   "loud slow -> energy": {
+    "own": 0.18245705108793195,
+    "wrong": 0.03559751728558362,
+    "delta": 0.16015871950097404,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.19308487531992014,
+    "wrong": 0.02916719882615716,
+    "delta": 0.18054639610129847,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.18702568294324068,
+    "wrong": 0.02988167422975274,
+    "delta": 0.16858042218595148,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.2024326755836545,
+    "wrong": 0.02538278141438775,
+    "delta": 0.19456142915386243,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "released": {
+   "loud slow -> energy": {
+    "own": 0.07186155920333638,
+    "wrong": 0.06364952100946028,
+    "delta": 0.01354590759461527,
+    "p": 0.29455,
+    "pos": "31/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.07831205174271354,
+    "wrong": 0.06680952391214845,
+    "delta": 0.018412954306574473,
+    "p": 0.1276,
+    "pos": "28/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.07437740175611204,
+    "wrong": 0.06423466995004692,
+    "delta": 0.0160270926455516,
+    "p": 0.2361,
+    "pos": "30/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.08022379236640685,
+    "wrong": 0.06790050234493938,
+    "delta": 0.02108077996975571,
+    "p": 0.1234,
+    "pos": "26/52"
+   }
+  },
+  "mask_2s": {
+   "loud slow -> energy": {
+    "own": 0.24484737686613442,
+    "wrong": 0.07113032102206575,
+    "delta": 0.17521187284534226,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.25376735360668423,
+    "wrong": 0.07351497372072481,
+    "delta": 0.18923670600319856,
+    "p": 0.0,
+    "pos": "45/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.24400637350378362,
+    "wrong": 0.07118276259100667,
+    "delta": 0.17397850148720256,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.252744040854473,
+    "wrong": 0.0720086792022036,
+    "delta": 0.19042638364400977,
+    "p": 0.0,
+    "pos": "45/52"
+   }
+  },
+  "guide_s0.003": {
+   "loud slow -> energy": {
+    "own": 0.08050766825215261,
+    "wrong": 0.07298489718064616,
+    "delta": 0.012508898404280957,
+    "p": 0.33195,
+    "pos": "30/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.08231494568690817,
+    "wrong": 0.07409378115084346,
+    "delta": 0.01500118135485607,
+    "p": 0.2757,
+    "pos": "29/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.07721066853165612,
+    "wrong": 0.0733211509655221,
+    "delta": 0.008484570573888153,
+    "p": 0.4959,
+    "pos": "28/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.08057035820420327,
+    "wrong": 0.0737954607663995,
+    "delta": 0.013092830680331765,
+    "p": 0.34975,
+    "pos": "29/52"
+   }
+  },
+  "mask_guide_s0.003": {
+   "loud slow -> energy": {
+    "own": 0.20430945835150696,
+    "wrong": 0.07674705838391,
+    "delta": 0.13297954865972675,
+    "p": 0.0,
+    "pos": "42/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.21698341700546014,
+    "wrong": 0.07939251065040942,
+    "delta": 0.14741598607940934,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.1925749607304732,
+    "wrong": 0.0753163926296171,
+    "delta": 0.1249363601212802,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.20366332071600424,
+    "wrong": 0.07839443457788739,
+    "delta": 0.13695907778419036,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "edge": {
+   "loud slow -> energy": {
+    "own": 0.06485544749945898,
+    "wrong": 0.03244096219991893,
+    "delta": 0.03603563818531216,
+    "p": 0.00795,
+    "pos": "38/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.04944193449759173,
+    "wrong": 0.03262307643436954,
+    "delta": 0.018089714846969265,
+    "p": 0.22435,
+    "pos": "31/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.07027348587083958,
+    "wrong": 0.032813798804702046,
+    "delta": 0.04159020714100077,
+    "p": 0.0015,
+    "pos": "37/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.05299461019948082,
+    "wrong": 0.03478119928536175,
+    "delta": 0.019689219826055208,
+    "p": 0.18025,
+    "pos": "29/52"
+   }
+  },
+  "lodge": {
+   "loud slow -> energy": {
+    "own": 0.1483133645153318,
+    "wrong": 0.038319608238167255,
+    "delta": 0.12065335053110818,
+    "p": 0.0,
+    "pos": "46/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.11570104252077307,
+    "wrong": 0.046140453303756775,
+    "delta": 0.07791296756348881,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.1518153044279105,
+    "wrong": 0.0384713382154148,
+    "delta": 0.12373762201689907,
+    "p": 0.0,
+    "pos": "45/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.11747331793737621,
+    "wrong": 0.046078488817627786,
+    "delta": 0.07966328040989816,
+    "p": 0.0,
+    "pos": "40/52"
+   }
+  }
+ },
+ "tests": {
+  "released - real loud slow -> energy": {
+   "diff": -0.1466128119063588,
+   "p": 0.0
+  },
+  "released - real perc slow -> energy": {
+   "diff": -0.16213344179472394,
+   "p": 0.0
+  },
+  "released - real loud slow -> energy (root-rel)": {
+   "diff": -0.15255332954039988,
+   "p": 0.0
+  },
+  "released - real perc slow -> energy (root-rel)": {
+   "diff": -0.17348064918410674,
+   "p": 0.0
+  },
+  "mask_2s - real loud slow -> energy": {
+   "diff": 0.015053153344368167,
+   "p": 0.5797
+  },
+  "mask_2s - real perc slow -> energy": {
+   "diff": 0.008690309901900093,
+   "p": 0.72155
+  },
+  "mask_2s - real loud slow -> energy (root-rel)": {
+   "diff": 0.005398079301251086,
+   "p": 0.8432
+  },
+  "mask_2s - real perc slow -> energy (root-rel)": {
+   "diff": -0.00413504550985267,
+   "p": 0.87045
+  },
+  "guide_s0.003 - real loud slow -> energy": {
+   "diff": -0.1476498210966931,
+   "p": 0.0
+  },
+  "guide_s0.003 - real perc slow -> energy": {
+   "diff": -0.16554521474644235,
+   "p": 0.0
+  },
+  "guide_s0.003 - real loud slow -> energy (root-rel)": {
+   "diff": -0.16009585161206333,
+   "p": 0.0
+  },
+  "guide_s0.003 - real perc slow -> energy (root-rel)": {
+   "diff": -0.18146859847353064,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real loud slow -> energy": {
+   "diff": -0.0271791708412473,
+   "p": 0.32815
+  },
+  "mask_guide_s0.003 - real perc slow -> energy": {
+   "diff": -0.03313041002188909,
+   "p": 0.204
+  },
+  "mask_guide_s0.003 - real loud slow -> energy (root-rel)": {
+   "diff": -0.04364406206467126,
+   "p": 0.09275
+  },
+  "mask_guide_s0.003 - real perc slow -> energy (root-rel)": {
+   "diff": -0.0576023513696721,
+   "p": 0.0298
+  },
+  "edge - real loud slow -> energy": {
+   "diff": -0.12412308131566188,
+   "p": 5e-05
+  },
+  "edge - real perc slow -> energy": {
+   "diff": -0.16245668125432916,
+   "p": 0.0
+  },
+  "edge - real loud slow -> energy (root-rel)": {
+   "diff": -0.1269902150449507,
+   "p": 0.0
+  },
+  "edge - real perc slow -> energy (root-rel)": {
+   "diff": -0.17487220932780723,
+   "p": 0.0
+  },
+  "lodge - real loud slow -> energy": {
+   "diff": -0.039505368969865895,
+   "p": 0.10295
+  },
+  "lodge - real perc slow -> energy": {
+   "diff": -0.10263342853780966,
+   "p": 0.00015
+  },
+  "lodge - real loud slow -> energy (root-rel)": {
+   "diff": -0.04484280016905241,
+   "p": 0.07535
+  },
+  "lodge - real perc slow -> energy (root-rel)": {
+   "diff": -0.11489814874396427,
+   "p": 0.0
+  }
+ }
+}
