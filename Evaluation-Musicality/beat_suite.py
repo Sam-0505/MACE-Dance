@@ -38,6 +38,7 @@ HARM = (1, 2, 0.5, 4, 0.25, 3, 1 / 3)
 FD_MODELS = {'released': 'mace_test', 'mask_2s': 'mace_test_local2s', 'nobeat': 'mace_test_nobeat',
              'norhythm': 'mace_test_norhythm', 'beta1': 'mace_test_beta1', 'beta05': 'mace_test_beta05',
              'mask_2s_beta1': 'mace_test_local2s_beta1'}
+MOT_MODELS = {'released': 'mace', 'mask_2s': 'mace_local2s'}
 
 
 def bps(minima, beats):
@@ -87,11 +88,15 @@ def load_motorica():
             cache = {t: body_joints(t)}
         real.append([cache[t][o:o + 1020].astype(np.float32)])
     sets = {'real': real}
-    for label, d in (('released', 'mace'), ('mask_2s', 'mace_local2s')):
+    for label, d in MOT_MODELS.items():
         p = os.path.join(mot, d, 'joints.npy')
         if os.path.exists(p):
             J = np.load(p, mmap_mode='r')
-            sets[label] = [np.asarray(J[k], dtype=np.float32) for k in keep]
+            if J.shape[0] == len(keep):  # generated on the kept slices only (gen_mace_motorica.py --lock_guide)
+                assert [tuple(x) for x in json.load(open(os.path.join(mot, d, 'slices.json')))['slices']] == slices
+                sets[label] = [np.asarray(J[i], dtype=np.float32) for i in range(len(keep))]
+            else:
+                sets[label] = [np.asarray(J[k], dtype=np.float32) for k in keep]
     return group, beats, sets, {'other': None}
 
 
@@ -219,12 +224,23 @@ def main():
     ap.add_argument('--dataset', choices=('finedance', 'motorica', 'aist'), required=True)
     ap.add_argument('--fd_models', nargs='*', help='finedance: label=data_dir pairs to score instead of FD_MODELS '
                     '(released is always kept)')
+    ap.add_argument('--mot_models', nargs='*', help='motorica: label=dir (under data/motorica) pairs to score instead '
+                    'of MOT_MODELS (released is always kept)')
+    ap.add_argument('--beats_shift', type=int, default=0,
+                    help='placebo check: score every clip against the beats (and song) of the clip this many places '
+                    'earlier (gen_mace_test.py --lock_guide_shift)')
     ap.add_argument('--tag', default='', help='suffix of the results file')
     a = ap.parse_args()
     if a.fd_models:
         FD_MODELS.clear()
         FD_MODELS.update({'released': 'mace_test', **dict(x.split('=', 1) for x in a.fd_models)})
+    if a.mot_models:
+        MOT_MODELS.clear()
+        MOT_MODELS.update({'released': 'mace', **dict(x.split('=', 1) for x in a.mot_models)})
     group, beats, sets, nulls = {'finedance': load_finedance, 'motorica': load_motorica, 'aist': load_aist}[a.dataset]()
+    if a.beats_shift:
+        n, k = len(group), a.beats_shift
+        group, beats = [group[(i - k) % n] for i in range(n)], [beats[(i - k) % n] for i in range(n)]
     print(a.dataset, len(group), 'clips,', len(set(group)), 'groups,', {k: len(v[0]) for k, v in sets.items()},
           'dances in first clip', flush=True)
     res, tests, ng = evaluate(group, beats, sets, nulls)

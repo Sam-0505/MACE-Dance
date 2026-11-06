@@ -71,7 +71,8 @@ class MaceSampler:
             out = torch.cat([out[:, :-ov], blend, j[:, k, ov:]], 1)
         return out.numpy()
 
-    def sample_guided(self, feats, genres, seed, scale, t_max=600, joint_sigma=2, wide=10, root_relative=True):
+    def sample_guided(self, feats, genres, seed, scale, t_max=600, joint_sigma=2, wide=10, root_relative=True,
+                      guide_shift=0, groups=None, n_null=3):
         """DDIM sampling as diffusion.ddim_sample (same noise for the same seed; scale 0 gives identical samples),
         with beat-locking guidance (2026-11-05): at steps with t <= t_max the model's x0 prediction is moved along
         the gradient of the chance-corrected, windowed locking score (model.beatlock.windowed_locking, on joints
@@ -80,13 +81,25 @@ class MaceSampler:
         root_relative: score the joints minus the root, so guidance cannot create speed peaks by jerking the root
         translation (with world joints, scale 0.003 locked at real-dance level by raising root speed 0.33 -> 1.22 m/s
         while the body motion stayed the same).
-        The batch should hold several songs, sorted by song (the null beats are other clips of the batch)."""
+        The batch should hold several songs, sorted by song (the null beats are other clips of the batch).
+        guide_shift (placebo): guide towards the beats of the clip guide_shift places earlier in the batch (another
+        song) instead of the clip's own beats; the model's conditioning is unchanged.
+        groups: song / take of each clip; if given, the null beats are those of n_null random clips of other groups
+        (fixed rng) instead of the rolled batch."""
         from model.beatlock import BEAT_COL, windowed_locking
         from model.musicality import lowpass_joints, pose_to_joints
         cond = torch.as_tensor(np.asarray(feats), dtype=torch.float32, device=self.device)
         genre = torch.tensor([style2s.index(g) for g in genres], dtype=torch.long, device=self.device)
         d = self.model.diffusion
         beats = cond[:, :, BEAT_COL]
+        if guide_shift:
+            beats = beats.roll(guide_shift, 0)
+        null_beats = None
+        if groups is not None:
+            g = np.asarray(groups)
+            rng = np.random.default_rng(0)
+            idx = np.stack([rng.choice(np.flatnonzero(g != g[i]), n_null, replace=False) for i in range(len(g))])
+            null_beats = [beats[torch.as_tensor(idx[:, k], device=self.device)] for k in range(n_null)]
         torch.manual_seed(seed)
         times = list(reversed(torch.linspace(-1, d.n_timestep - 1, steps=51).int().tolist()))
         b = cond.shape[0]
@@ -103,7 +116,7 @@ class MaceSampler:
                     if root_relative:
                         j = j - j[:, :, :1]
                     j = lowpass_joints(j, joint_sigma)
-                    score = windowed_locking(j, beats, wide)
+                    score = windowed_locking(j, beats, wide, null_beats=null_beats)
                     g, = torch.autograd.grad(score.sum(), x0)
                 g = g / g.pow(2).mean((1, 2), keepdim=True).sqrt().clamp_min(1e-12)
                 self.guide_log.append((time, float(score.mean())))

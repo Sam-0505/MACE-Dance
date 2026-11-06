@@ -1,0 +1,127 @@
+{
+ "songs": [
+  "012",
+  "036",
+  "037",
+  "063",
+  "065",
+  "092",
+  "098",
+  "109",
+  "130",
+  "132",
+  "137",
+  "143",
+  "144",
+  "161",
+  "179",
+  "193",
+  "198",
+  "204",
+  "211"
+ ],
+ "sets": {
+  "real": {
+   "concentration_all": 0.31073564981397733,
+   "concentration_within_song": 0.8863889234769847,
+   "concentration_within_slice_across_seeds": NaN,
+   "mean_offset": 0.9863921560376389,
+   "share_locked": 0.6785714285714286,
+   "hist8_weighted": [
+    0.208,
+    0.203,
+    0.005,
+    0.065,
+    0.131,
+    0.084,
+    0.081,
+    0.224
+   ]
+  },
+  "released": {
+   "concentration_all": 0.01895871606842414,
+   "concentration_within_song": 0.7920687790458459,
+   "concentration_within_slice_across_seeds": 0.548095181715904,
+   "mean_offset": 0.05478861668435123,
+   "share_locked": 0.48095238095238096,
+   "hist8_weighted": [
+    0.129,
+    0.125,
+    0.145,
+    0.101,
+    0.129,
+    0.115,
+    0.136,
+    0.119
+   ]
+  },
+  "guide_s0.002": {
+   "concentration_all": 0.027433211581328037,
+   "concentration_within_song": 0.6830209277887196,
+   "concentration_within_slice_across_seeds": 0.4115955140457335,
+   "mean_offset": 0.9228801716637358,
+   "share_locked": 0.7130952380952381,
+   "hist8_weighted": [
+    0.113,
+    0.134,
+    0.111,
+    0.138,
+    0.111,
+    0.108,
+    0.155,
+    0.131
+   ]
+  },
+  "guide_s0.003": {
+   "concentration_all": 0.027848477623891397,
+   "concentration_within_song": 0.67036612345047,
+   "concentration_within_slice_across_seeds": 0.3703118891924639,
+   "mean_offset": 0.9583022296122357,
+   "share_locked": 0.7714285714285715,
+   "hist8_weighted": [
+    0.112,
+    0.129,
+    0.118,
+    0.127,
+    0.119,
+    0.108,
+    0.147,
+    0.14
+   ]
+  },
+  "guide_s0.003_t300": {
+   "concentration_all": 0.029546204658497312,
+   "concentration_within_song": 0.6701358520595658,
+   "concentration_within_slice_across_seeds": 0.3783649301953349,
+   "mean_offset": 0.04341062782782994,
+   "share_locked": 0.7761904761904762,
+   "hist8_weighted": [
+    0.112,
+    0.137,
+    0.12,
+    0.123,
+    0.131,
+    0.108,
+    0.127,
+    0.143
+   ]
+  },
+  "placebo_s0.003": {
+   "concentration_all": 0.11890376924554001,
+   "concentration_within_song": 0.8411240385746444,
+   "concentration_within_slice_across_seeds": 0.9068764396325492,
+   "mean_offset": 0.9258583249019785,
+   "share_locked": 0.3611111111111111,
+   "hist8_weighted": [
+    0.056,
+    0.141,
+    0.131,
+    0.076,
+    0.129,
+    0.11,
+    0.12,
+    0.237
+   ]
+  }
+ }
+}

@@ -10,7 +10,7 @@
 Beat-input tests (2026-11-04): --zero_cols 34 removes the beat one-hot, --zero_cols 0 33 34 the onset envelope,
 onset peaks and beats; --beta sets the GFT guidance mix at inference (released 0.75; trained on U(0, 1)).
 Same seeds as the released run, so differences are paired.
-Beat-locking guidance (2026-11-05): --lock_guide <scale> [--lock_guide_tmax 600].
+Beat-locking guidance (2026-11-05): --lock_guide <scale> [--lock_guide_tmax 600] [--lock_guide_shift 10 (placebo)].
 
 Writes Evaluation-Musicality/data/mace_test/joints.npy (clips, seeds, T, 24, 3) float16 + names.json.
 """
@@ -40,6 +40,8 @@ def main():
     ap.add_argument('--lock_guide', type=float, default=0, help='beat-locking guidance scale (MaceSampler.sample_guided)')
     ap.add_argument('--lock_guide_tmax', type=int, default=600, help='guide only at steps t <= this')
     ap.add_argument('--lock_guide_world', action='store_true', help='score world joints (default: root-relative)')
+    ap.add_argument('--lock_guide_shift', type=int, default=0,
+                    help='placebo: guide towards the beats of the clip this many places earlier (another song)')
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -63,7 +65,7 @@ def main():
     if args.lock_guide:
         import functools
         sample = functools.partial(sampler.sample_guided, scale=args.lock_guide, t_max=args.lock_guide_tmax,
-                                   root_relative=not args.lock_guide_world)
+                                   root_relative=not args.lock_guide_world, guide_shift=args.lock_guide_shift)
     out = np.stack([sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
     np.save(os.path.join(args.out_dir, 'joints.npy'), out)
     with open(os.path.join(args.out_dir, 'names.json'), 'w') as f:

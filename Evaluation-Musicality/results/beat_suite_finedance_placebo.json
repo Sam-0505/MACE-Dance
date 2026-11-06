@@ -1,0 +1,213 @@
+{
+ "n_groups": 19,
+ "table": {
+  "real": {
+   "BAS": 0.21114307578751026,
+   "BAS_delta_other": -0.009764305630140418,
+   "BAS_delta_other_p": 0.42865,
+   "BAS_delta_other_pos": "6/19",
+   "PLV": 0.2891671590092747,
+   "PLV_delta_other": 0.12232946733006862,
+   "PLV_delta_other_p": 0.0005,
+   "PLV_delta_other_pos": "16/19",
+   "BPS": 0.750189246806626,
+   "BPS_delta_other": -0.001755694359991717,
+   "BPS_delta_other_p": 0.96585,
+   "BPS_delta_other_pos": "10/19"
+  },
+  "released": {
+   "BAS": 0.23184234856529948,
+   "BAS_delta_other": 0.0003516429614029941,
+   "BAS_delta_other_p": 0.74515,
+   "BAS_delta_other_pos": "11/19",
+   "PLV": 0.16678165553681956,
+   "PLV_delta_other": 0.003523241727639266,
+   "PLV_delta_other_p": 0.3297,
+   "PLV_delta_other_pos": "9/19",
+   "BPS": 0.7184274999796166,
+   "BPS_delta_other": -0.05324851508041674,
+   "BPS_delta_other_p": 0.15445,
+   "BPS_delta_other_pos": "8/19"
+  },
+  "guide_s0.003": {
+   "BAS": 0.229203134907765,
+   "BAS_delta_other": -0.0042647899256866165,
+   "BAS_delta_other_p": 0.65235,
+   "BAS_delta_other_pos": "9/19",
+   "PLV": 0.26877583515371867,
+   "PLV_delta_other": 0.11153794357768909,
+   "PLV_delta_other_p": 0.0,
+   "PLV_delta_other_pos": "19/19",
+   "BPS": 0.7370757934120449,
+   "BPS_delta_other": -0.03475389003263709,
+   "BPS_delta_other_p": 0.38645,
+   "BPS_delta_other_pos": "11/19"
+  },
+  "placebo_s0.003": {
+   "BAS": 0.23107205266055791,
+   "BAS_delta_other": -0.004305214642292264,
+   "BAS_delta_other_p": 0.7903,
+   "BAS_delta_other_pos": "9/19",
+   "PLV": 0.15268473077149866,
+   "PLV_delta_other": -0.01668752840396976,
+   "PLV_delta_other_p": 0.0256,
+   "PLV_delta_other_pos": "6/19",
+   "BPS": 0.7427200266041308,
+   "BPS_delta_other": -0.02872602512307956,
+   "BPS_delta_other_p": 0.3456,
+   "BPS_delta_other_pos": "10/19"
+  }
+ },
+ "tests": {
+  "released - real BAS own": {
+   "diff": 0.020699272777789313,
+   "p": 0.11005,
+   "groups_real_higher": 7
+  },
+  "released - real PLV own": {
+   "diff": -0.12238550347245514,
+   "p": 0.00055,
+   "groups_real_higher": 16
+  },
+  "released - real BPS own": {
+   "diff": -0.031761746827009406,
+   "p": 0.3423,
+   "groups_real_higher": 12
+  },
+  "released - real BAS delta_other": {
+   "diff": 0.010115948591543411,
+   "p": 0.41805,
+   "groups_real_higher": 6
+  },
+  "released - real PLV delta_other": {
+   "diff": -0.11880622560242934,
+   "p": 0.00065,
+   "groups_real_higher": 15
+  },
+  "released - real BPS delta_other": {
+   "diff": -0.05149282072042501,
+   "p": 0.2095,
+   "groups_real_higher": 10
+  },
+  "guide_s0.003 - real BAS own": {
+   "diff": 0.018060059120254827,
+   "p": 0.26025,
+   "groups_real_higher": 6
+  },
+  "guide_s0.003 - real PLV own": {
+   "diff": -0.020391323855556046,
+   "p": 0.46925,
+   "groups_real_higher": 9
+  },
+  "guide_s0.003 - real BPS own": {
+   "diff": -0.013113453394581129,
+   "p": 0.6983,
+   "groups_real_higher": 12
+  },
+  "guide_s0.003 - real BAS delta_other": {
+   "diff": 0.0054995157044538025,
+   "p": 0.73915,
+   "groups_real_higher": 7
+  },
+  "guide_s0.003 - real PLV delta_other": {
+   "diff": -0.010791523752379526,
+   "p": 0.7054,
+   "groups_real_higher": 10
+  },
+  "guide_s0.003 - real BPS delta_other": {
+   "diff": -0.03299819567264537,
+   "p": 0.3457,
+   "groups_real_higher": 10
+  },
+  "guide_s0.003 - released BAS own": {
+   "diff": -0.0026392136575344844,
+   "p": 0.7316
+  },
+  "guide_s0.003 - released PLV own": {
+   "diff": 0.10199417961689909,
+   "p": 0.0
+  },
+  "guide_s0.003 - released BPS own": {
+   "diff": 0.018648293432428277,
+   "p": 0.1932
+  },
+  "guide_s0.003 - released BAS delta_other": {
+   "diff": -0.00461643288708961,
+   "p": 0.5573
+  },
+  "guide_s0.003 - released PLV delta_other": {
+   "diff": 0.10801470185004984,
+   "p": 0.0
+  },
+  "guide_s0.003 - released BPS delta_other": {
+   "diff": 0.018494625047779635,
+   "p": 0.21035
+  },
+  "placebo_s0.003 - real BAS own": {
+   "diff": 0.019928976873047708,
+   "p": 0.22015,
+   "groups_real_higher": 7
+  },
+  "placebo_s0.003 - real PLV own": {
+   "diff": -0.1364824282377761,
+   "p": 0.0,
+   "groups_real_higher": 17
+  },
+  "placebo_s0.003 - real BPS own": {
+   "diff": -0.007469220202495215,
+   "p": 0.8142,
+   "groups_real_higher": 12
+  },
+  "placebo_s0.003 - real BAS delta_other": {
+   "diff": 0.005459090987848154,
+   "p": 0.7263,
+   "groups_real_higher": 6
+  },
+  "placebo_s0.003 - real PLV delta_other": {
+   "diff": -0.13901699573403836,
+   "p": 5e-05,
+   "groups_real_higher": 18
+  },
+  "placebo_s0.003 - real BPS delta_other": {
+   "diff": -0.02697033076308785,
+   "p": 0.43405,
+   "groups_real_higher": 11
+  },
+  "placebo_s0.003 - released BAS own": {
+   "diff": -0.0007702959047416031,
+   "p": 0.91585
+  },
+  "placebo_s0.003 - released PLV own": {
+   "diff": -0.014096924765320932,
+   "p": 0.08055
+  },
+  "placebo_s0.003 - released BPS own": {
+   "diff": 0.02429252662451419,
+   "p": 0.09175
+  },
+  "placebo_s0.003 - released BAS delta_other": {
+   "diff": -0.004656857603695258,
+   "p": 0.68055
+  },
+  "placebo_s0.003 - released PLV delta_other": {
+   "diff": -0.020210770131609025,
+   "p": 0.02175
+  },
+  "placebo_s0.003 - released BPS delta_other": {
+   "diff": 0.024522489957337162,
+   "p": 0.1387
+  }
+ },
+ "influence": {
+  "guide_s0.003": {
+   "dist_to_released_same_seed_m": 0.012250714004039764,
+   "dist_between_seeds_m": 0.17984922230243683,
+   "ratio": 0.06811658293008804
+  },
+  "placebo_s0.003": {
+   "dist_to_released_same_seed_m": 0.01221073791384697,
+   "dist_between_seeds_m": 0.17984922230243683,
+   "ratio": 0.06789430230855942
+  }
+ }
+}

@@ -90,11 +90,13 @@ def locking_terms(pred, target, cond, normalizer, smpl, wide_sigma, null=True, j
     return d_pred, d_real, n
 
 
-def windowed_locking(joints, beats, wide_sigma, win=240, n_null=3):
+def windowed_locking(joints, beats, wide_sigma, win=240, n_null=3, null_beats=None):
     """Sampling-time guidance score (2026-11-05): chance-corrected locking of (B, T, J, 3) joints, averaged over
     half-overlapping windows of win frames, each with its own offset (real dancers' offset drifts slowly).
     The null is the beats of n_null other clips of the batch (rolled by B * k / (n_null + 1)), so with a batch
-    sorted by song they come from other songs. Windows with < 4 own or null beats are left out. Returns (B,)."""
+    sorted by song they come from other songs. Windows with < 4 own or null beats are left out. Returns (B,).
+    null_beats: optional list of (B, T) beat one-hots used as the null instead of the rolled batch (for batches that
+    are not sorted by song, e.g. Motorica, where a take spans up to 16 slices)."""
     v = speed(joints)
     b, t1 = v.shape
     starts = list(range(0, max(t1 - win, 0) + 1, win // 2))
@@ -106,9 +108,10 @@ def windowed_locking(joints, beats, wide_sigma, win=240, n_null=3):
         r, n = locking(vw, bw, wide_sigma)
         ok = n >= 4
         null = 0
-        for sh in shifts:
-            ro, no = locking(vw, bw.roll(sh, 0), wide_sigma)
-            null = null + ro / len(shifts)
+        nulls = [bw.roll(sh, 0) for sh in shifts] if null_beats is None else [nb[:, s:s + win + 1] for nb in null_beats]
+        for nb in nulls:
+            ro, no = locking(vw, nb, wide_sigma)
+            null = null + ro / len(nulls)
             ok = ok & (no >= 4)
         tot = tot + torch.where(ok, r - null, torch.zeros_like(r))
         cnt = cnt + ok.float()
