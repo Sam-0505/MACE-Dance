@@ -1,0 +1,20 @@
+{
+ "real": {
+  "pelvis_speed": 80.24961292590845,
+  "pelvis_jitter": 30.472803931267897,
+  "torso_speed": 80.91185264681114,
+  "torso_jitter": 30.34298250058831
+ },
+ "released": {
+  "pelvis_speed": 57.9145171455987,
+  "pelvis_jitter": 13.002083955628775,
+  "torso_speed": 65.39210787292816,
+  "torso_jitter": 15.18039999811343
+ },
+ "mask_guide": {
+  "pelvis_speed": 60.85321888604792,
+  "pelvis_jitter": 16.685491055243087,
+  "torso_speed": 67.64204268716455,
+  "torso_jitter": 18.725341105507614
+ }
+}

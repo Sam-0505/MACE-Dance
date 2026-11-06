@@ -1,0 +1,38 @@
+{
+ "real": {
+  "pelvis_speed": 80.24961292590845,
+  "pelvis_jitter": 30.472803931267897,
+  "torso_speed": 80.91185264681114,
+  "torso_jitter": 30.34298250058831
+ },
+ "released": {
+  "pelvis_speed": 57.73183312903753,
+  "pelvis_jitter": 13.133500012890721,
+  "torso_speed": 65.35827391056982,
+  "torso_jitter": 15.455190727663012
+ },
+ "mask_guide": {
+  "pelvis_speed": 61.35936295957149,
+  "pelvis_jitter": 15.99597831398913,
+  "torso_speed": 68.2776345030071,
+  "torso_jitter": 18.001432354136742
+ },
+ "foot": {
+  "pelvis_speed": 61.0382392737595,
+  "pelvis_jitter": 15.840316296672288,
+  "torso_speed": 67.96332962154462,
+  "torso_jitter": 17.851347185852898
+ },
+ "foot_frz3": {
+  "pelvis_speed": 56.417658930565885,
+  "pelvis_jitter": 14.36966361394298,
+  "torso_speed": 63.14245869514097,
+  "torso_jitter": 16.496084700330336
+ },
+ "foot_frz5": {
+  "pelvis_speed": 56.49251623116922,
+  "pelvis_jitter": 14.36994157300115,
+  "torso_speed": 63.54507663525055,
+  "torso_jitter": 16.694940714428206
+ }
+}

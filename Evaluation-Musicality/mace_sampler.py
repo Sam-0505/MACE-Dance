@@ -72,7 +72,8 @@ class MaceSampler:
         return out.numpy()
 
     def sample_guided(self, feats, genres, seed, scale, t_max=600, joint_sigma=2, wide=10, root_relative=True,
-                      guide_shift=0, groups=None, n_null=3, foot_iters=0, foot_mu=0.1, contact_thresh=0.95):
+                      guide_shift=0, groups=None, n_null=3, foot_iters=0, foot_mu=0.1, contact_thresh=0.95,
+                      freeze_root_rot=False):
         """DDIM sampling as diffusion.ddim_sample (same noise for the same seed; scale 0 gives identical samples),
         with beat-locking guidance (2026-11-05): at steps with t <= t_max the model's x0 prediction is moved along
         the gradient of the chance-corrected, windowed locking score (model.beatlock.windowed_locking, on joints
@@ -95,7 +96,11 @@ class MaceSampler:
         locking step's size moved the root by cm per frame and raised L 30-fold (FSR 26 -> 83 % on 8 clips); repeated
         small loss-sized steps lower it (final released samples: FSR 18.6 -> 7.6 % with 30 x 0.1).
         Guidance makes accents by moving the body around the root, and the planted feet were dragged along (Lodge FSR
-        16.5 -> 26.9 % on FineDance); this term moves the root so they stay put."""
+        16.5 -> 26.9 % on FineDance); this term moves the root so they stay put.
+        freeze_root_rot (option, 2026-11-06; False = as before): zero the locking gradient on the root's global
+        rotation (6D channels 7:13) before normalising. Without it 69 % of the step's energy went to those 6 of 151
+        channels: guidance made accents by twitching the whole skeleton about the pelvis (visible as a rotation
+        jitter), the cheapest way to move every joint at once. Frozen, accents must come from the joints."""
         from model.beatlock import BEAT_COL, windowed_locking
         from model.musicality import lowpass_joints, pose_to_joints
         cond = torch.as_tensor(np.asarray(feats), dtype=torch.float32, device=self.device)
@@ -127,6 +132,8 @@ class MaceSampler:
                     j = lowpass_joints(j, joint_sigma)
                     score = windowed_locking(j, beats, wide, null_beats=null_beats)
                     g, = torch.autograd.grad(score.sum(), x0)
+                if freeze_root_rot:
+                    g[:, :, 7:13] = 0
                 g = g / g.pow(2).mean((1, 2), keepdim=True).sqrt().clamp_min(1e-12)
                 x_start = x_start + scale * g
                 if foot_iters:

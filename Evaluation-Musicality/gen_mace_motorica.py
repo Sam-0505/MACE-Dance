@@ -38,6 +38,7 @@ def main():
     ap.add_argument('--lock_guide_tmax', type=int, default=600)
     ap.add_argument('--lock_foot', type=int, default=0, help='foot-contact correction steps (sample_guided foot_iters)')
     ap.add_argument('--lock_foot_mu', type=float, default=0.1)
+    ap.add_argument('--lock_freeze_root', action='store_true')
     args = ap.parse_args()
     name = args.out_name or ('mace' if not args.local_attn else f'mace_local{args.local_attn:g}s')
     if args.lock_guide and not args.out_name:
@@ -70,7 +71,8 @@ def main():
                 out[b:b + BATCH, s] = sampler.sample_guided(
                     feats[b:b + BATCH], styles[b:b + BATCH], seed=s * 1000 + b, scale=args.lock_guide,
                     t_max=args.lock_guide_tmax, groups=[t for t, _ in slices[b:b + BATCH]],
-                    foot_iters=args.lock_foot, foot_mu=args.lock_foot_mu)
+                    foot_iters=args.lock_foot, foot_mu=args.lock_foot_mu,
+                    freeze_root_rot=args.lock_freeze_root)
             else:
                 out[b:b + BATCH, s] = sampler.sample(feats[b:b + BATCH], styles[b:b + BATCH], seed=s * 1000 + b)
         print('seed', s, 'done')

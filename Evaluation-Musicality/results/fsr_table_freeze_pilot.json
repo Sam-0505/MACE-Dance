@@ -1,0 +1,26 @@
+{
+ "finedance": {
+  "foot": {
+   "FSR_pct": 15.510974124756016,
+   "left_pct": 16.060391772963996,
+   "right_pct": 14.961556476548008,
+   "n_clips": 840,
+   "clips_without_contact": 10
+  },
+  "foot_frz3": {
+   "FSR_pct": 13.116090150882531,
+   "left_pct": 13.948943734734334,
+   "right_pct": 12.283236567030738,
+   "n_clips": 840,
+   "clips_without_contact": 6
+  },
+  "foot_frz5": {
+   "FSR_pct": 15.593334849103337,
+   "left_pct": 16.169226276509903,
+   "right_pct": 15.01744342169678,
+   "n_clips": 252,
+   "clips_without_contact": 1
+  }
+ },
+ "motorica": {}
+}
