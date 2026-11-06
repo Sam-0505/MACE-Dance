@@ -1,0 +1,704 @@
+{
+ "slices": 289,
+ "pieces": [
+  "kthjazz_gCH_sFM_sngl_d01_007",
+  "kthjazz_gCH_sFM_sngl_d01_008",
+  "kthjazz_gCH_sFM_sngl_d01_009",
+  "kthjazz_gCH_sFM_sngl_d01_019",
+  "kthjazz_gCH_sFM_sngl_d02_006",
+  "kthjazz_gCH_sFM_sngl_d02_018",
+  "kthjazz_gJZ_sFM_sngl_d01_001",
+  "kthjazz_gJZ_sFM_sngl_d01_002",
+  "kthjazz_gJZ_sFM_sngl_d01_020",
+  "kthjazz_gJZ_sFM_sngl_d02_003",
+  "kthjazz_gJZ_sFM_sngl_d02_004",
+  "kthjazz_gTP_sFM_sngl_d01_010",
+  "kthjazz_gTP_sFM_sngl_d02_014",
+  "kthjazz_gTP_sFM_sngl_d02_016",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+ ],
+ "coupling": {
+  "real": {
+   "energy": {
+    "own": 0.18245705108793195,
+    "wrong": 0.03559751728558362,
+    "delta": 0.16015871950097404,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "energy_root_rel": {
+    "own": 0.18702568294324068,
+    "wrong": 0.02988167422975274,
+    "delta": 0.16858042218595148,
+    "p": 0.0,
+    "pos": "40/52"
+   }
+  },
+  "released": {
+   "energy": {
+    "own": 0.07186155920333638,
+    "wrong": 0.06364952100946028,
+    "delta": 0.01354590759461527,
+    "p": 0.2929,
+    "pos": "31/52"
+   },
+   "energy_root_rel": {
+    "own": 0.07437740175611204,
+    "wrong": 0.06423466995004692,
+    "delta": 0.0160270926455516,
+    "p": 0.23355,
+    "pos": "30/52"
+   }
+  },
+  "mask_2s": {
+   "energy": {
+    "own": 0.24484737686613442,
+    "wrong": 0.07113032102206575,
+    "delta": 0.17521187284534226,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "energy_root_rel": {
+    "own": 0.24400637350378362,
+    "wrong": 0.07118276259100667,
+    "delta": 0.17397850148720256,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "guide_s0.003": {
+   "energy": {
+    "own": 0.08050766825215261,
+    "wrong": 0.07298489718064616,
+    "delta": 0.012508898404280957,
+    "p": 0.3346,
+    "pos": "30/52"
+   },
+   "energy_root_rel": {
+    "own": 0.07721066853165612,
+    "wrong": 0.0733211509655221,
+    "delta": 0.008484570573888153,
+    "p": 0.50355,
+    "pos": "28/52"
+   }
+  },
+  "mask_guide_s0.003": {
+   "energy": {
+    "own": 0.20430945835150696,
+    "wrong": 0.07674705838391,
+    "delta": 0.13297954865972675,
+    "p": 0.0,
+    "pos": "42/52"
+   },
+   "energy_root_rel": {
+    "own": 0.1925749607304732,
+    "wrong": 0.0753163926296171,
+    "delta": 0.1249363601212802,
+    "p": 0.0,
+    "pos": "43/52"
+   }
+  },
+  "edge": {
+   "energy": {
+    "own": 0.06485544749945898,
+    "wrong": 0.03244096219991893,
+    "delta": 0.03603563818531216,
+    "p": 0.0092,
+    "pos": "38/52"
+   },
+   "energy_root_rel": {
+    "own": 0.07027348587083958,
+    "wrong": 0.032813798804702046,
+    "delta": 0.04159020714100077,
+    "p": 0.00165,
+    "pos": "37/52"
+   }
+  },
+  "lodge": {
+   "energy": {
+    "own": 0.1483133645153318,
+    "wrong": 0.038319608238167255,
+    "delta": 0.12065335053110818,
+    "p": 0.0,
+    "pos": "46/52"
+   },
+   "energy_root_rel": {
+    "own": 0.1518153044279105,
+    "wrong": 0.0384713382154148,
+    "delta": 0.12373762201689907,
+    "p": 0.0,
+    "pos": "45/52"
+   }
+  }
+ },
+ "motion": {
+  "real": {
+   "speed": 0.6626540434264789,
+   "accel": 7.6996042804672715,
+   "hf5": 0.025024659690560717,
+   "freeze": 0.08120371818237372,
+   "travel": 11.4344893510396,
+   "skate": 0.14965451392478427,
+   "contact": 0.29533804299505967,
+   "float": 0.027363216998038512,
+   "seed_div": NaN
+  },
+  "released": {
+   "speed": 0.4514789226214316,
+   "accel": 7.090042424509369,
+   "hf5": 0.07759374273553941,
+   "freeze": 0.15366292128436387,
+   "travel": 8.597518808279954,
+   "skate": 0.24543590370672227,
+   "contact": 0.17433940880794413,
+   "float": 0.051499431953228335,
+   "seed_div": 0.12015362161573279
+  },
+  "mask_2s": {
+   "speed": 0.434882527994685,
+   "accel": 6.825960453807031,
+   "hf5": 0.07283734812468162,
+   "freeze": 0.17512174814063922,
+   "travel": 8.413938258527654,
+   "skate": 0.25116838620355275,
+   "contact": 0.1225672127322029,
+   "float": 0.06916270223826375,
+   "seed_div": 0.11358427877082478
+  },
+  "guide_s0.003": {
+   "speed": 0.5022708988131984,
+   "accel": 7.933121093750714,
+   "hf5": 0.05748814201557287,
+   "freeze": 0.10061420515296866,
+   "travel": 8.619871513099248,
+   "skate": 0.3835958778149743,
+   "contact": 0.09153559288955508,
+   "float": 0.06053004257456772,
+   "seed_div": 0.12321582550773685
+  },
+  "mask_guide_s0.003": {
+   "speed": 0.48692559626748183,
+   "accel": 7.687407735320617,
+   "hf5": 0.059076738176634266,
+   "freeze": 0.10944655583394544,
+   "travel": 8.45883905936555,
+   "skate": 0.38088931163503204,
+   "contact": 0.06996740776488078,
+   "float": 0.07564866242585357,
+   "seed_div": 0.11708830667222409
+  },
+  "edge": {
+   "speed": 0.7164998284922639,
+   "accel": 12.106862593535775,
+   "hf5": 0.07331874436405403,
+   "freeze": 0.013516552414982248,
+   "travel": 14.163129174912168,
+   "skate": 0.45308694530579446,
+   "contact": 0.013408791792930653,
+   "float": 0.11635292466209825,
+   "seed_div": 0.15835099734652502
+  },
+  "lodge": {
+   "speed": 0.37854287670804226,
+   "accel": 4.69610440975678,
+   "hf5": 0.030426326020907134,
+   "freeze": 0.0752385310959894,
+   "travel": 5.191754307742106,
+   "skate": 0.3871059185198369,
+   "contact": 0.006261687157479601,
+   "float": 0.13707322760312646,
+   "seed_div": 0.0834433822409035
+  }
+ },
+ "fid": {
+  "real": {
+   "Div_k_mot": {
+    "mean": 10.263076400903499,
+    "sd": 0.0
+   }
+  },
+  "released": {
+   "FID_k_mot": {
+    "mean": 72.84783519333307,
+    "sd": 0.34466011174363104
+   },
+   "Div_k_mot": {
+    "mean": 7.714327372084455,
+    "sd": 0.03303854724429502
+   },
+   "FID_k_fd": {
+    "mean": 48.70293279353813,
+    "sd": 0.15036049361037626
+   },
+   "FID_g_fd": {
+    "mean": 39.415389404672375,
+    "sd": 0.2808419553601168
+   },
+   "Div_k": {
+    "mean": 10.969567494072791,
+    "sd": 0.06573522224738725
+   },
+   "Div_g": {
+    "mean": 8.2504840886518,
+    "sd": 0.012462742508398232
+   },
+   "PFC": {
+    "mean": 0.16092034352828136,
+    "sd": 0.0026446779699540344
+   }
+  },
+  "mask_2s": {
+   "FID_k_mot": {
+    "mean": 80.49472676086765,
+    "sd": 0.3159489599556682
+   },
+   "Div_k_mot": {
+    "mean": 6.529309390218505,
+    "sd": 0.015162058174448864
+   },
+   "FID_k_fd": {
+    "mean": 44.90366786235936,
+    "sd": 0.31195976833180966
+   },
+   "FID_g_fd": {
+    "mean": 34.270220263495965,
+    "sd": 0.3695163437653
+   },
+   "Div_k": {
+    "mean": 9.190063867663078,
+    "sd": 0.02065166147430291
+   },
+   "Div_g": {
+    "mean": 7.069653448593489,
+    "sd": 0.026480907375090346
+   },
+   "PFC": {
+    "mean": 0.16590894502734874,
+    "sd": 0.003604182535615881
+   }
+  },
+  "guide_s0.003": {
+   "FID_k_mot": {
+    "mean": 60.43155887512904,
+    "sd": 0.3118972017825822
+   },
+   "Div_k_mot": {
+    "mean": 7.4647055819876975,
+    "sd": 0.017499165732073753
+   },
+   "FID_k_fd": {
+    "mean": 46.566886462443705,
+    "sd": 0.12478640018587914
+   },
+   "FID_g_fd": {
+    "mean": 49.393358078789845,
+    "sd": 0.17205007775990291
+   },
+   "Div_k": {
+    "mean": 10.758102602764962,
+    "sd": 0.03744038881083877
+   },
+   "Div_g": {
+    "mean": 7.545570914231706,
+    "sd": 0.013272853272754775
+   },
+   "PFC": {
+    "mean": 0.26822845309747106,
+    "sd": 0.0027060825405553716
+   }
+  },
+  "mask_guide_s0.003": {
+   "FID_k_mot": {
+    "mean": 66.73828870021724,
+    "sd": 0.27764274779833253
+   },
+   "Div_k_mot": {
+    "mean": 6.3385864711489175,
+    "sd": 0.026197451419492822
+   },
+   "FID_k_fd": {
+    "mean": 40.3546263370624,
+    "sd": 0.12457628632537067
+   },
+   "FID_g_fd": {
+    "mean": 44.518425378041606,
+    "sd": 0.17070599165308675
+   },
+   "Div_k": {
+    "mean": 9.046184410242855,
+    "sd": 0.02961569323610145
+   },
+   "Div_g": {
+    "mean": 6.399387655388953,
+    "sd": 0.029750354501062
+   },
+   "PFC": {
+    "mean": 0.26036035436042115,
+    "sd": 0.001309211008781742
+   }
+  },
+  "edge": {
+   "FID_k_mot": {
+    "mean": 24.350824100256304,
+    "sd": 0.5525624296159181
+   },
+   "Div_k_mot": {
+    "mean": 6.703285695405614,
+    "sd": 0.23145330087662278
+   },
+   "FID_k_fd": {
+    "mean": 93.95520853706496,
+    "sd": 4.452011684689193
+   },
+   "FID_g_fd": {
+    "mean": 68.15618280793828,
+    "sd": 1.1727071272096645
+   },
+   "Div_k": {
+    "mean": 9.276782317297835,
+    "sd": 0.3267113973108256
+   },
+   "Div_g": {
+    "mean": 4.749807140482827,
+    "sd": 0.12519431999333538
+   },
+   "PFC": {
+    "mean": 0.5185476682275612,
+    "sd": 0.007050441768171157
+   }
+  },
+  "lodge": {
+   "FID_k_mot": {
+    "mean": 120.79429789109525,
+    "sd": 0.2767438312090831
+   },
+   "Div_k_mot": {
+    "mean": 3.1155329881135465,
+    "sd": 0.03964746253319364
+   },
+   "FID_k_fd": {
+    "mean": 82.65536342482022,
+    "sd": 0.2799257101226692
+   },
+   "FID_g_fd": {
+    "mean": 131.53043885566848,
+    "sd": 0.10254854655830736
+   },
+   "Div_k": {
+    "mean": 4.336152135997373,
+    "sd": 0.05478260480480631
+   },
+   "Div_g": {
+    "mean": 4.488137575291554,
+    "sd": 0.05689351231674809
+   },
+   "PFC": {
+    "mean": 0.059718212254278535,
+    "sd": 0.0007364123245023582
+   }
+  }
+ },
+ "tests": {
+  "released - real coupling energy": {
+   "diff": -0.1466128119063588,
+   "p": 0.0
+  },
+  "released - real coupling energy_root_rel": {
+   "diff": -0.15255332954039988,
+   "p": 0.0
+  },
+  "released - real speed": {
+   "diff": -0.21117512080504722,
+   "p": 0.0
+  },
+  "released - real accel": {
+   "diff": -0.6095618559579038,
+   "p": 0.20235
+  },
+  "released - real hf5": {
+   "diff": 0.05256908304497871,
+   "p": 0.0
+  },
+  "released - real freeze": {
+   "diff": 0.07245920310199015,
+   "p": 0.01045
+  },
+  "released - real travel": {
+   "diff": -2.8369705427596474,
+   "p": 0.0
+  },
+  "released - real skate": {
+   "diff": 0.09578138978193801,
+   "p": 0.0
+  },
+  "released - real contact": {
+   "diff": -0.12099863418711553,
+   "p": 0.0
+  },
+  "released - real float": {
+   "diff": 0.02413621495518982,
+   "p": 0.0
+  },
+  "mask_2s - real coupling energy": {
+   "diff": 0.015053153344368167,
+   "p": 0.5854
+  },
+  "mask_2s - real coupling energy_root_rel": {
+   "diff": 0.005398079301251086,
+   "p": 0.84005
+  },
+  "mask_2s - real speed": {
+   "diff": -0.22777151543179383,
+   "p": 0.0
+  },
+  "mask_2s - real accel": {
+   "diff": -0.8736438266602404,
+   "p": 0.05485
+  },
+  "mask_2s - real hf5": {
+   "diff": 0.047812688434120905,
+   "p": 0.0
+  },
+  "mask_2s - real freeze": {
+   "diff": 0.09391802995826551,
+   "p": 0.0001
+  },
+  "mask_2s - real travel": {
+   "diff": -3.020551092511947,
+   "p": 0.0
+  },
+  "mask_2s - real skate": {
+   "diff": 0.10151387227876851,
+   "p": 0.0
+  },
+  "mask_2s - real contact": {
+   "diff": -0.17277083026285675,
+   "p": 0.0
+  },
+  "mask_2s - real float": {
+   "diff": 0.04179948524022525,
+   "p": 0.0
+  },
+  "guide_s0.003 - real coupling energy": {
+   "diff": -0.1476498210966931,
+   "p": 0.0
+  },
+  "guide_s0.003 - real coupling energy_root_rel": {
+   "diff": -0.16009585161206333,
+   "p": 0.0
+  },
+  "guide_s0.003 - real speed": {
+   "diff": -0.16038314461328051,
+   "p": 0.0
+  },
+  "guide_s0.003 - real accel": {
+   "diff": 0.2335168132834415,
+   "p": 0.6142
+  },
+  "guide_s0.003 - real hf5": {
+   "diff": 0.032463482325012144,
+   "p": 0.0
+  },
+  "guide_s0.003 - real freeze": {
+   "diff": 0.01941048697059492,
+   "p": 0.33535
+  },
+  "guide_s0.003 - real travel": {
+   "diff": -2.814617837940352,
+   "p": 0.0
+  },
+  "guide_s0.003 - real skate": {
+   "diff": 0.23394136389019005,
+   "p": 0.0
+  },
+  "guide_s0.003 - real contact": {
+   "diff": -0.20380245010550457,
+   "p": 0.0
+  },
+  "guide_s0.003 - real float": {
+   "diff": 0.033166825576529196,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real coupling energy": {
+   "diff": -0.0271791708412473,
+   "p": 0.32095
+  },
+  "mask_guide_s0.003 - real coupling energy_root_rel": {
+   "diff": -0.04364406206467126,
+   "p": 0.0952
+  },
+  "mask_guide_s0.003 - real speed": {
+   "diff": -0.17572844715899713,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real accel": {
+   "diff": -0.012196545146656938,
+   "p": 0.97765
+  },
+  "mask_guide_s0.003 - real hf5": {
+   "diff": 0.03405207848607354,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real freeze": {
+   "diff": 0.02824283765157171,
+   "p": 0.1254
+  },
+  "mask_guide_s0.003 - real travel": {
+   "diff": -2.975650291674052,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real skate": {
+   "diff": 0.2312347977102478,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real contact": {
+   "diff": -0.22537063523017886,
+   "p": 0.0
+  },
+  "mask_guide_s0.003 - real float": {
+   "diff": 0.048285445427815064,
+   "p": 0.0
+  },
+  "edge - real coupling energy": {
+   "diff": -0.12412308131566188,
+   "p": 0.0001
+  },
+  "edge - real coupling energy_root_rel": {
+   "diff": -0.1269902150449507,
+   "p": 0.0
+  },
+  "edge - real speed": {
+   "diff": 0.05384578506578482,
+   "p": 0.03885
+  },
+  "edge - real accel": {
+   "diff": 4.4072583130685,
+   "p": 0.0
+  },
+  "edge - real hf5": {
+   "diff": 0.04829408467349331,
+   "p": 0.0
+  },
+  "edge - real freeze": {
+   "diff": -0.06768716576739146,
+   "p": 0.0
+  },
+  "edge - real travel": {
+   "diff": 2.728639823872564,
+   "p": 0.0
+  },
+  "edge - real skate": {
+   "diff": 0.3034324313810102,
+   "p": 0.0
+  },
+  "edge - real contact": {
+   "diff": -0.28192925120212897,
+   "p": 0.0
+  },
+  "edge - real float": {
+   "diff": 0.08898970766405973,
+   "p": 0.0
+  },
+  "lodge - real coupling energy": {
+   "diff": -0.039505368969865895,
+   "p": 0.1028
+  },
+  "lodge - real coupling energy_root_rel": {
+   "diff": -0.04484280016905241,
+   "p": 0.07205
+  },
+  "lodge - real speed": {
+   "diff": -0.2841111667184368,
+   "p": 0.0
+  },
+  "lodge - real accel": {
+   "diff": -3.003499870710492,
+   "p": 0.0
+  },
+  "lodge - real hf5": {
+   "diff": 0.005401666330346416,
+   "p": 0.0041
+  },
+  "lodge - real freeze": {
+   "diff": -0.0059651870863843375,
+   "p": 0.64225
+  },
+  "lodge - real travel": {
+   "diff": -6.242735043297496,
+   "p": 0.0
+  },
+  "lodge - real skate": {
+   "diff": 0.23745140459505262,
+   "p": 0.0
+  },
+  "lodge - real contact": {
+   "diff": -0.28907635583758007,
+   "p": 0.0
+  },
+  "lodge - real float": {
+   "diff": 0.10971001060508791,
+   "p": 0.0
+  }
+ },
+ "smpl_to_body": [
+  0,
+  3,
+  6,
+  12,
+  15,
+  13,
+  16,
+  18,
+  20,
+  14,
+  17,
+  19,
+  21,
+  1,
+  4,
+  7,
+  10,
+  2,
+  5,
+  8,
+  11
+ ],
+ "samples_per_slice": 3
+}
