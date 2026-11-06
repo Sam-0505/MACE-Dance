@@ -1,0 +1,74 @@
+motorica 289 clips, 62 groups, {'real': 1, 'released': 10, 'edge': 3, 'lodge': 3, 'bailando': 3, 'mega': 3, 'final': 3} dances in first clip
+real {'BAS': 0.242, 'BAS_delta_other': 0.002, 'BAS_delta_other_p': 0.729, 'BAS_delta_other_pos': '40/62', 'BAS_delta_tempo': 0.0, 'BAS_delta_tempo_p': 0.911, 'BAS_delta_tempo_pos': '37/62', 'PLV': 0.262, 'PLV_delta_other': 0.084, 'PLV_delta_other_p': 0.0, 'PLV_delta_other_pos': '53/62', 'PLV_delta_tempo': 0.029, 'PLV_delta_tempo_p': 0.0, 'PLV_delta_tempo_pos': '48/62', 'BPS': 0.683, 'BPS_delta_other': 0.008, 'BPS_delta_other_p': 0.696, 'BPS_delta_other_pos': '31/62', 'BPS_delta_tempo': -0.008, 'BPS_delta_tempo_p': 0.022, 'BPS_delta_tempo_pos': '23/62'}
+released {'BAS': 0.243, 'BAS_delta_other': 0.0, 'BAS_delta_other_p': 0.578, 'BAS_delta_other_pos': '37/62', 'BAS_delta_tempo': 0.001, 'BAS_delta_tempo_p': 0.289, 'BAS_delta_tempo_pos': '31/62', 'PLV': 0.169, 'PLV_delta_other': 0.003, 'PLV_delta_other_p': 0.185, 'PLV_delta_other_pos': '35/62', 'PLV_delta_tempo': 0.001, 'PLV_delta_tempo_p': 0.504, 'PLV_delta_tempo_pos': '36/62', 'BPS': 0.644, 'BPS_delta_other': -0.009, 'BPS_delta_other_p': 0.618, 'BPS_delta_other_pos': '26/62', 'BPS_delta_tempo': 0.002, 'BPS_delta_tempo_p': 0.485, 'BPS_delta_tempo_pos': '29/62'}
+edge {'BAS': 0.256, 'BAS_delta_other': 0.004, 'BAS_delta_other_p': 0.009, 'BAS_delta_other_pos': '41/62', 'BAS_delta_tempo': 0.004, 'BAS_delta_tempo_p': 0.006, 'BAS_delta_tempo_pos': '37/62', 'PLV': 0.178, 'PLV_delta_other': 0.014, 'PLV_delta_other_p': 0.001, 'PLV_delta_other_pos': '45/62', 'PLV_delta_tempo': 0.009, 'PLV_delta_tempo_p': 0.005, 'PLV_delta_tempo_pos': '43/62', 'BPS': 0.612, 'BPS_delta_other': -0.002, 'BPS_delta_other_p': 0.937, 'BPS_delta_other_pos': '27/62', 'BPS_delta_tempo': 0.003, 'BPS_delta_tempo_p': 0.434, 'BPS_delta_tempo_pos': '29/62'}
+lodge {'BAS': 0.256, 'BAS_delta_other': -0.002, 'BAS_delta_other_p': 0.421, 'BAS_delta_other_pos': '31/62', 'BAS_delta_tempo': -0.001, 'BAS_delta_tempo_p': 0.42, 'BAS_delta_tempo_pos': '34/62', 'PLV': 0.161, 'PLV_delta_other': 0.003, 'PLV_delta_other_p': 0.28, 'PLV_delta_other_pos': '37/62', 'PLV_delta_tempo': 0.002, 'PLV_delta_tempo_p': 0.409, 'PLV_delta_tempo_pos': '31/62', 'BPS': 0.637, 'BPS_delta_other': 0.009, 'BPS_delta_other_p': 0.649, 'BPS_delta_other_pos': '29/62', 'BPS_delta_tempo': 0.006, 'BPS_delta_tempo_p': 0.176, 'BPS_delta_tempo_pos': '33/62'}
+bailando {'BAS': 0.224, 'BAS_delta_other': 0.004, 'BAS_delta_other_p': 0.126, 'BAS_delta_other_pos': '32/62', 'BAS_delta_tempo': 0.002, 'BAS_delta_tempo_p': 0.348, 'BAS_delta_tempo_pos': '33/62', 'PLV': 0.193, 'PLV_delta_other': 0.017, 'PLV_delta_other_p': 0.032, 'PLV_delta_other_pos': '33/62', 'PLV_delta_tempo': 0.015, 'PLV_delta_tempo_p': 0.037, 'PLV_delta_tempo_pos': '37/62', 'BPS': 0.735, 'BPS_delta_other': 0.003, 'BPS_delta_other_p': 0.83, 'BPS_delta_other_pos': '33/62', 'BPS_delta_tempo': -0.001, 'BPS_delta_tempo_p': 0.789, 'BPS_delta_tempo_pos': '29/62'}
+mega {'BAS': 0.259, 'BAS_delta_other': 0.006, 'BAS_delta_other_p': 0.024, 'BAS_delta_other_pos': '33/62', 'BAS_delta_tempo': 0.005, 'BAS_delta_tempo_p': 0.071, 'BAS_delta_tempo_pos': '35/62', 'PLV': 0.169, 'PLV_delta_other': -0.003, 'PLV_delta_other_p': 0.56, 'PLV_delta_other_pos': '26/62', 'PLV_delta_tempo': -0.011, 'PLV_delta_tempo_p': 0.029, 'PLV_delta_tempo_pos': '25/62', 'BPS': 0.645, 'BPS_delta_other': -0.005, 'BPS_delta_other_p': 0.8, 'BPS_delta_other_pos': '27/62', 'BPS_delta_tempo': -0.005, 'BPS_delta_tempo_p': 0.144, 'BPS_delta_tempo_pos': '27/62'}
+final {'BAS': 0.24, 'BAS_delta_other': 0.001, 'BAS_delta_other_p': 0.318, 'BAS_delta_other_pos': '36/62', 'BAS_delta_tempo': 0.002, 'BAS_delta_tempo_p': 0.21, 'BAS_delta_tempo_pos': '35/62', 'PLV': 0.273, 'PLV_delta_other': 0.102, 'PLV_delta_other_p': 0.0, 'PLV_delta_other_pos': '62/62', 'PLV_delta_tempo': 0.049, 'PLV_delta_tempo_p': 0.0, 'PLV_delta_tempo_pos': '59/62', 'BPS': 0.672, 'BPS_delta_other': 0.004, 'BPS_delta_other_p': 0.837, 'BPS_delta_other_pos': '29/62', 'BPS_delta_tempo': 0.001, 'BPS_delta_tempo_p': 0.732, 'BPS_delta_tempo_pos': '28/62'}
+released - real BAS delta_other {'diff': -0.0011, 'p': 0.8148, 'groups_real_higher': 37}
+released - real PLV delta_other {'diff': -0.0808, 'p': 0.0, 'groups_real_higher': 50}
+released - real BPS delta_other {'diff': -0.0176, 'p': 0.3529, 'groups_real_higher': 41}
+released - real BAS delta_tempo {'diff': 0.0003, 'p': 0.9513, 'groups_real_higher': 35}
+released - real PLV delta_tempo {'diff': -0.0277, 'p': 0.0, 'groups_real_higher': 44}
+released - real BPS delta_tempo {'diff': 0.0097, 'p': 0.0544, 'groups_real_higher': 25}
+edge - real BAS delta_other {'diff': 0.0029, 'p': 0.4703, 'groups_real_higher': 31}
+edge - real PLV delta_other {'diff': -0.0701, 'p': 0.0, 'groups_real_higher': 51}
+edge - real BPS delta_other {'diff': -0.0099, 'p': 0.5794, 'groups_real_higher': 35}
+edge - real BAS delta_tempo {'diff': 0.0038, 'p': 0.3457, 'groups_real_higher': 29}
+edge - real PLV delta_tempo {'diff': -0.0196, 'p': 0.0032, 'groups_real_higher': 38}
+edge - real BPS delta_tempo {'diff': 0.0107, 'p': 0.0473, 'groups_real_higher': 24}
+edge - released BAS delta_other {'diff': 0.004, 'p': 0.0488}
+edge - released PLV delta_other {'diff': 0.0107, 'p': 0.0127}
+edge - released BPS delta_other {'diff': 0.0078, 'p': 0.4733}
+edge - released BAS delta_tempo {'diff': 0.0036, 'p': 0.0437}
+edge - released PLV delta_tempo {'diff': 0.0081, 'p': 0.0204}
+edge - released BPS delta_tempo {'diff': 0.001, 'p': 0.6389}
+lodge - real BAS delta_other {'diff': -0.0031, 'p': 0.534, 'groups_real_higher': 37}
+lodge - real PLV delta_other {'diff': -0.0802, 'p': 0.0, 'groups_real_higher': 51}
+lodge - real BPS delta_other {'diff': 0.0012, 'p': 0.9504, 'groups_real_higher': 38}
+lodge - real BAS delta_tempo {'diff': -0.0018, 'p': 0.6865, 'groups_real_higher': 36}
+lodge - real PLV delta_tempo {'diff': -0.0266, 'p': 0.0004, 'groups_real_higher': 40}
+lodge - real BPS delta_tempo {'diff': 0.0131, 'p': 0.0115, 'groups_real_higher': 27}
+lodge - released BAS delta_other {'diff': -0.002, 'p': 0.3343}
+lodge - released PLV delta_other {'diff': 0.0006, 'p': 0.8646}
+lodge - released BPS delta_other {'diff': 0.0188, 'p': 0.021}
+lodge - released BAS delta_tempo {'diff': -0.002, 'p': 0.2645}
+lodge - released PLV delta_tempo {'diff': 0.001, 'p': 0.7089}
+lodge - released BPS delta_tempo {'diff': 0.0034, 'p': 0.0853}
+bailando - real BAS delta_other {'diff': 0.0028, 'p': 0.591, 'groups_real_higher': 31}
+bailando - real PLV delta_other {'diff': -0.0669, 'p': 0.0, 'groups_real_higher': 50}
+bailando - real BPS delta_other {'diff': -0.0049, 'p': 0.8182, 'groups_real_higher': 34}
+bailando - real BAS delta_tempo {'diff': 0.0019, 'p': 0.6917, 'groups_real_higher': 33}
+bailando - real PLV delta_tempo {'diff': -0.014, 'p': 0.1098, 'groups_real_higher': 39}
+bailando - real BPS delta_tempo {'diff': 0.0068, 'p': 0.0241, 'groups_real_higher': 27}
+bailando - released BAS delta_other {'diff': 0.0039, 'p': 0.1716}
+bailando - released PLV delta_other {'diff': 0.0138, 'p': 0.0495}
+bailando - released BPS delta_other {'diff': 0.0127, 'p': 0.3678}
+bailando - released BAS delta_tempo {'diff': 0.0017, 'p': 0.5081}
+bailando - released PLV delta_tempo {'diff': 0.0137, 'p': 0.0461}
+bailando - released BPS delta_tempo {'diff': -0.0028, 'p': 0.5139}
+mega - real BAS delta_other {'diff': 0.0048, 'p': 0.3086, 'groups_real_higher': 28}
+mega - real PLV delta_other {'diff': -0.0868, 'p': 0.0, 'groups_real_higher': 52}
+mega - real BPS delta_other {'diff': -0.0135, 'p': 0.4864, 'groups_real_higher': 34}
+mega - real BAS delta_tempo {'diff': 0.0048, 'p': 0.3352, 'groups_real_higher': 31}
+mega - real PLV delta_tempo {'diff': -0.0397, 'p': 0.0001, 'groups_real_higher': 46}
+mega - real BPS delta_tempo {'diff': 0.0028, 'p': 0.4078, 'groups_real_higher': 28}
+mega - released BAS delta_other {'diff': 0.0059, 'p': 0.0527}
+mega - released PLV delta_other {'diff': -0.006, 'p': 0.2243}
+mega - released BPS delta_other {'diff': 0.0041, 'p': 0.803}
+mega - released BAS delta_tempo {'diff': 0.0045, 'p': 0.1429}
+mega - released PLV delta_tempo {'diff': -0.0121, 'p': 0.0165}
+mega - released BPS delta_tempo {'diff': -0.0069, 'p': 0.2193}
+final - real BAS delta_other {'diff': -0.0002, 'p': 0.9689, 'groups_real_higher': 31}
+final - real PLV delta_other {'diff': 0.018, 'p': 0.0843, 'groups_real_higher': 27}
+final - real BPS delta_other {'diff': -0.0044, 'p': 0.8283, 'groups_real_higher': 38}
+final - real BAS delta_tempo {'diff': 0.0011, 'p': 0.799, 'groups_real_higher': 36}
+final - real PLV delta_tempo {'diff': 0.0199, 'p': 0.0112, 'groups_real_higher': 25}
+final - real BPS delta_tempo {'diff': 0.0084, 'p': 0.0455, 'groups_real_higher': 24}
+final - released BAS delta_other {'diff': 0.0009, 'p': 0.5298}
+final - released PLV delta_other {'diff': 0.0988, 'p': 0.0}
+final - released BPS delta_other {'diff': 0.0132, 'p': 0.0396}
+final - released BAS delta_tempo {'diff': 0.0008, 'p': 0.5614}
+final - released PLV delta_tempo {'diff': 0.0475, 'p': 0.0}
+final - released BPS delta_tempo {'diff': -0.0013, 'p': 0.6875}

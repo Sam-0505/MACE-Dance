@@ -150,6 +150,8 @@ def null_sets(group, nulls, rng):
                 ok = [k for k in ok if spec[1][k] == spec[1][i]]
             if spec is not None and spec[0] == 'bpm':
                 ok = [k for k in ok if spec[1][k] == spec[1][i] and spec[2][k] == spec[2][i]]
+            if spec is not None and spec[0] == 'tempo':  # the N_NULL other-song clips nearest in tempo
+                ok = sorted(ok, key=lambda k: abs(np.log(spec[1][k] / spec[1][i])))[:N_NULL]
             cand.append(list(rng.choice(ok, min(N_NULL, len(ok)), replace=False)) if ok else [])
         out[name] = cand
     return out
@@ -230,6 +232,9 @@ def main():
                     help='placebo check: score every clip against the beats (and song) of the clip this many places '
                     'earlier (gen_mace_test.py --lock_guide_shift)')
     ap.add_argument('--tag', default='', help='suffix of the results file')
+    ap.add_argument('--tempo_null', action='store_true',
+                    help='finedance / motorica: also a tempo-matched null, the 12 clips of other songs nearest in tempo '
+                    '(BPM from a line fit of the beat input times), next to the random one')
     a = ap.parse_args()
     if a.fd_models:
         FD_MODELS.clear()
@@ -238,6 +243,11 @@ def main():
         MOT_MODELS.clear()
         MOT_MODELS.update({'released': 'mace', **dict(x.split('=', 1) for x in a.mot_models)})
     group, beats, sets, nulls = {'finedance': load_finedance, 'motorica': load_motorica, 'aist': load_aist}[a.dataset]()
+    if a.tempo_null:
+        # sub-frame tempo: slope of a line fit of beat frame vs beat index (a median interval is whole frames,
+        # +-3 % at 120 BPM, which left FineDance's matched songs 5.5 % apart)
+        bpm = np.array([60 * FPS / np.polyfit(np.arange(len(b)), b, 1)[0] if len(b) > 2 else np.nan for b in beats])
+        nulls = {**nulls, 'tempo': ('tempo', bpm)}
     if a.beats_shift:
         n, k = len(group), a.beats_shift
         group, beats = [group[(i - k) % n] for i in range(n)], [beats[(i - k) % n] for i in range(n)]
@@ -249,7 +259,7 @@ def main():
         out['influence'] = influence(sets)
         print('influence', json.dumps(out['influence'], indent=1))
     for t, v in tests.items():
-        if ' - real ' in t and 'delta_other' in t or ' - released ' in t and 'delta_other' in t:
+        if (' - real ' in t or ' - released ' in t) and ('delta_other' in t or 'delta_tempo' in t):
             print(t, {k: (round(x, 4) if isinstance(x, float) else x) for k, x in v.items()})
     with open(os.path.join(HERE, 'results', f'beat_suite_{a.dataset}{a.tag}.json'), 'w') as f:
         json.dump(out, f, indent=1)
