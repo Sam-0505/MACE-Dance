@@ -133,7 +133,7 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
     strip.legend(loc='upper right', fontsize=7, ncol=npan + 1)
     cursor = strip.axvline(0, color='red', lw=1.5)
     sup = fig.suptitle('')
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0, 1, 0.95))  # keep the suptitle clear of the panel titles
 
     out = os.path.join(out_dir, f'{key}_{n}_{suffix}.mp4')
     wav = os.path.join('data/test/wavs_sliced', n + '.wav')
