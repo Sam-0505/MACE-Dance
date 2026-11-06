@@ -1,0 +1,493 @@
+{
+ "slices": 289,
+ "pieces": [
+  "kthjazz_gCH_sFM_sngl_d01_007",
+  "kthjazz_gCH_sFM_sngl_d01_008",
+  "kthjazz_gCH_sFM_sngl_d01_009",
+  "kthjazz_gCH_sFM_sngl_d01_019",
+  "kthjazz_gCH_sFM_sngl_d02_006",
+  "kthjazz_gCH_sFM_sngl_d02_018",
+  "kthjazz_gJZ_sFM_sngl_d01_001",
+  "kthjazz_gJZ_sFM_sngl_d01_002",
+  "kthjazz_gJZ_sFM_sngl_d01_020",
+  "kthjazz_gJZ_sFM_sngl_d02_003",
+  "kthjazz_gJZ_sFM_sngl_d02_004",
+  "kthjazz_gTP_sFM_sngl_d01_010",
+  "kthjazz_gTP_sFM_sngl_d02_014",
+  "kthjazz_gTP_sFM_sngl_d02_016",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+ ],
+ "coupling": {
+  "real": {
+   "loud slow -> energy": {
+    "own": 0.18245705108793195,
+    "wrong": 0.03559751728558362,
+    "delta": 0.16015871950097404,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.19308487531992014,
+    "wrong": 0.02916719882615716,
+    "delta": 0.18054639610129847,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.18702568294324068,
+    "wrong": 0.02988167422975274,
+    "delta": 0.16858042218595148,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.2024326755836545,
+    "wrong": 0.02538278141438775,
+    "delta": 0.19456142915386243,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "released": {
+   "loud slow -> energy": {
+    "own": 0.07186155920333638,
+    "wrong": 0.06364952100946028,
+    "delta": 0.01354590759461527,
+    "p": 0.29455,
+    "pos": "31/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.07831205174271354,
+    "wrong": 0.06680952391214845,
+    "delta": 0.018412954306574473,
+    "p": 0.1276,
+    "pos": "28/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.07437740175611204,
+    "wrong": 0.06423466995004692,
+    "delta": 0.0160270926455516,
+    "p": 0.2361,
+    "pos": "30/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.08022379236640685,
+    "wrong": 0.06790050234493938,
+    "delta": 0.02108077996975571,
+    "p": 0.1234,
+    "pos": "26/52"
+   }
+  },
+  "foot": {
+   "loud slow -> energy": {
+    "own": 0.16770520388066795,
+    "wrong": 0.07506027034608817,
+    "delta": 0.10097608428523888,
+    "p": 0.0,
+    "pos": "39/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.18102751129953448,
+    "wrong": 0.0791376670634291,
+    "delta": 0.11327946990080463,
+    "p": 0.0,
+    "pos": "42/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.19766239086834334,
+    "wrong": 0.07540430568246115,
+    "delta": 0.12934958013778658,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.20831401857696916,
+    "wrong": 0.07845482956778081,
+    "delta": 0.14120095372718303,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "final": {
+   "loud slow -> energy": {
+    "own": 0.23579264187260648,
+    "wrong": 0.07460750814724124,
+    "delta": 0.16249078103386042,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.24184238306875172,
+    "wrong": 0.07793140381553341,
+    "delta": 0.17177370294351502,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.24126532213950072,
+    "wrong": 0.07340740283591966,
+    "delta": 0.16941426713101862,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.2448668954035078,
+    "wrong": 0.0758748910397131,
+    "delta": 0.17843559391452157,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  }
+ },
+ "motion": {
+  "real": {
+   "speed": 0.6626540434264789,
+   "accel": 7.6996042804672715,
+   "hf5": 0.025024659690560717,
+   "freeze": 0.08120371818237372,
+   "travel": 11.4344893510396,
+   "skate": 0.14965451392478427,
+   "contact": 0.29533804299505967,
+   "float": 0.027363216998038512,
+   "seed_div": NaN
+  },
+  "released": {
+   "speed": 0.4514789226214316,
+   "accel": 7.090042424509369,
+   "hf5": 0.07759374273553941,
+   "freeze": 0.15366292128436387,
+   "travel": 8.597518808279954,
+   "skate": 0.24543590370672227,
+   "contact": 0.17433940880794413,
+   "float": 0.051499431953228335,
+   "seed_div": 0.12015362161573279
+  },
+  "foot": {
+   "speed": 0.4935393847761486,
+   "accel": 7.149126447483302,
+   "hf5": 0.03976460516046117,
+   "freeze": 0.10368496381131319,
+   "travel": 9.802626548265431,
+   "skate": 0.25106209602155344,
+   "contact": 0.07333942011628469,
+   "float": 0.07501935767118263,
+   "seed_div": 0.1169117802447868
+  },
+  "final": {
+   "speed": 0.4318092841088975,
+   "accel": 6.182147718564499,
+   "hf5": 0.04997708446768189,
+   "freeze": 0.14642547848509577,
+   "travel": 8.380904470527414,
+   "skate": 0.21459397855162993,
+   "contact": 0.11518215989204704,
+   "float": 0.06985599503849015,
+   "seed_div": 0.11462180392989509
+  }
+ },
+ "fid": {
+  "real": {
+   "Div_k_mot": {
+    "mean": 10.263076400903499,
+    "sd": 0.0
+   }
+  },
+  "released": {
+   "FID_k_mot": {
+    "mean": 72.84783519333307,
+    "sd": 0.34466011174363104
+   },
+   "Div_k_mot": {
+    "mean": 7.714327372084455,
+    "sd": 0.03303854724429502
+   },
+   "FID_k_fd": {
+    "mean": 48.70293279353813,
+    "sd": 0.15036049361037626
+   },
+   "FID_g_fd": {
+    "mean": 39.415389404672375,
+    "sd": 0.2808419553601168
+   },
+   "Div_k": {
+    "mean": 10.969567494072791,
+    "sd": 0.06573522224738725
+   },
+   "Div_g": {
+    "mean": 8.2504840886518,
+    "sd": 0.012462742508398232
+   },
+   "PFC": {
+    "mean": 0.16092034352828136,
+    "sd": 0.0026446779699540344
+   }
+  },
+  "foot": {
+   "FID_k_mot": {
+    "mean": 65.75695385881087,
+    "sd": 0.3260345255684819
+   },
+   "Div_k_mot": {
+    "mean": 6.100885301526656,
+    "sd": 0.026114169770876095
+   },
+   "FID_k_fd": {
+    "mean": 49.220117429224196,
+    "sd": 0.09875683693099015
+   },
+   "FID_g_fd": {
+    "mean": 36.39232795936312,
+    "sd": 0.09966416857833307
+   },
+   "Div_k": {
+    "mean": 8.834549061658977,
+    "sd": 0.031686194846901536
+   },
+   "Div_g": {
+    "mean": 6.33161274109317,
+    "sd": 0.016244705322000407
+   },
+   "PFC": {
+    "mean": 0.1655507926715879,
+    "sd": 0.000405226062998944
+   }
+  },
+  "final": {
+   "FID_k_mot": {
+    "mean": 79.43578973849507,
+    "sd": 0.33996610820104384
+   },
+   "Div_k_mot": {
+    "mean": 6.215386785330963,
+    "sd": 0.028472627299880558
+   },
+   "FID_k_fd": {
+    "mean": 43.074847762082605,
+    "sd": 0.2122195512812308
+   },
+   "FID_g_fd": {
+    "mean": 32.54319841158359,
+    "sd": 0.11003742228372504
+   },
+   "Div_k": {
+    "mean": 8.770294177720107,
+    "sd": 0.03425098595623246
+   },
+   "Div_g": {
+    "mean": 6.6160884135108295,
+    "sd": 0.015433299438548825
+   },
+   "PFC": {
+    "mean": 0.11533422413401712,
+    "sd": 0.000877497315613963
+   }
+  }
+ },
+ "tests": {
+  "released - real loud slow -> energy": {
+   "diff": -0.1466128119063588,
+   "p": 0.0
+  },
+  "released - real perc slow -> energy": {
+   "diff": -0.16213344179472394,
+   "p": 0.0
+  },
+  "released - real loud slow -> energy (root-rel)": {
+   "diff": -0.15255332954039988,
+   "p": 0.0
+  },
+  "released - real perc slow -> energy (root-rel)": {
+   "diff": -0.17348064918410674,
+   "p": 0.0
+  },
+  "released - real speed": {
+   "diff": -0.21117512080504722,
+   "p": 0.0
+  },
+  "released - real accel": {
+   "diff": -0.6095618559579038,
+   "p": 0.2037
+  },
+  "released - real hf5": {
+   "diff": 0.05256908304497871,
+   "p": 0.0
+  },
+  "released - real freeze": {
+   "diff": 0.07245920310199015,
+   "p": 0.00975
+  },
+  "released - real travel": {
+   "diff": -2.8369705427596474,
+   "p": 0.0
+  },
+  "released - real skate": {
+   "diff": 0.09578138978193801,
+   "p": 0.0
+  },
+  "released - real contact": {
+   "diff": -0.12099863418711553,
+   "p": 0.0
+  },
+  "released - real float": {
+   "diff": 0.02413621495518982,
+   "p": 0.0
+  },
+  "foot - real loud slow -> energy": {
+   "diff": -0.05918263521573518,
+   "p": 0.0297
+  },
+  "foot - real perc slow -> energy": {
+   "diff": -0.06726692620049382,
+   "p": 0.0128
+  },
+  "foot - real loud slow -> energy (root-rel)": {
+   "diff": -0.03923084204816491,
+   "p": 0.13125
+  },
+  "foot - real perc slow -> energy (root-rel)": {
+   "diff": -0.05336047542667942,
+   "p": 0.0437
+  },
+  "foot - real speed": {
+   "diff": -0.1691146586503302,
+   "p": 0.0
+  },
+  "foot - real accel": {
+   "diff": -0.550477832983971,
+   "p": 0.1949
+  },
+  "foot - real hf5": {
+   "diff": 0.014739945469900448,
+   "p": 0.0
+  },
+  "foot - real freeze": {
+   "diff": 0.022481245628939446,
+   "p": 0.20135
+  },
+  "foot - real travel": {
+   "diff": -1.6318628027741708,
+   "p": 0.00015
+  },
+  "foot - real skate": {
+   "diff": 0.1014075820967692,
+   "p": 0.0
+  },
+  "foot - real contact": {
+   "diff": -0.22199862287877503,
+   "p": 0.0
+  },
+  "foot - real float": {
+   "diff": 0.047656140673144096,
+   "p": 0.0
+  },
+  "final - real loud slow -> energy": {
+   "diff": 0.002332061532886334,
+   "p": 0.9352
+  },
+  "final - real perc slow -> energy": {
+   "diff": -0.008772693157783455,
+   "p": 0.73635
+  },
+  "final - real loud slow -> energy (root-rel)": {
+   "diff": 0.0008338449450671039,
+   "p": 0.9766
+  },
+  "final - real perc slow -> energy (root-rel)": {
+   "diff": -0.016125835239340854,
+   "p": 0.54055
+  },
+  "final - real speed": {
+   "diff": -0.2308447593175815,
+   "p": 0.0
+  },
+  "final - real accel": {
+   "diff": -1.5174565619027722,
+   "p": 0.0008
+  },
+  "final - real hf5": {
+   "diff": 0.024952424777121177,
+   "p": 0.0
+  },
+  "final - real freeze": {
+   "diff": 0.06522176030272203,
+   "p": 0.00325
+  },
+  "final - real travel": {
+   "diff": -3.0535848805121883,
+   "p": 0.0
+  },
+  "final - real skate": {
+   "diff": 0.06493946462684566,
+   "p": 0.0
+  },
+  "final - real contact": {
+   "diff": -0.1801558831030127,
+   "p": 0.0
+  },
+  "final - real float": {
+   "diff": 0.04249277804045164,
+   "p": 0.0
+  }
+ },
+ "smpl_to_body": [
+  0,
+  3,
+  6,
+  12,
+  15,
+  13,
+  16,
+  18,
+  20,
+  14,
+  17,
+  19,
+  21,
+  1,
+  4,
+  7,
+  10,
+  2,
+  5,
+  8,
+  11
+ ],
+ "samples_per_slice": 3
+}
