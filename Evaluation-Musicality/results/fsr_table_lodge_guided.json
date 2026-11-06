@@ -1,0 +1,33 @@
+{
+ "finedance": {
+  "lodge": {
+   "FSR_pct": 3.1630603743793215,
+   "left_pct": 3.1400155885140486,
+   "right_pct": 3.1861051602445922,
+   "n_clips": 840,
+   "clips_without_contact": 27
+  },
+  "lodge_guide_frz_foot": {
+   "FSR_pct": 3.6931094016103505,
+   "left_pct": 3.717834358884959,
+   "right_pct": 3.668384444335742,
+   "n_clips": 840,
+   "clips_without_contact": 27
+  },
+  "released": {
+   "FSR_pct": 16.46472477967525,
+   "left_pct": 17.20987842610638,
+   "right_pct": 15.71957113324414,
+   "n_clips": 840,
+   "clips_without_contact": 19
+  },
+  "final": {
+   "FSR_pct": 13.116090150882531,
+   "left_pct": 13.948943734734334,
+   "right_pct": 12.283236567030738,
+   "n_clips": 840,
+   "clips_without_contact": 6
+  }
+ },
+ "motorica": {}
+}

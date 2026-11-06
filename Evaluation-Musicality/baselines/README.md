@@ -37,3 +37,16 @@ Motorica slices. Output `data/mace_test_{bailando,mega}/` and `data/motorica/{ba
 - `fix_lodge_axes.py`: the Lodge arrays had up = -x (heading rotation applied to Y-up FK output); fixed in the
   generation scripts and in the stored arrays (originals kept as joints_upx_bug.npy).
 - Scoring: `Expert-Motion/run_baselines2.sh`.
+
+## Our sampling fixes on Lodge (2026-11-06)
+
+`lodge_gen_finedance_guided.py` (Lodge's venv; official repo files untouched, the local diffusion's `inpaint_soft_ddim`
+is replaced on the instance by a line-by-line copy with an optional guidance step): beat-locking guidance (scale
+0.003, t <= 600, root rotation frozen) + foot-contact term (10 x 0.1 Polyak) on Lodge's LOCAL stage, as in
+`mace_sampler.sample_guided`; no attention mask (Lodge's local model already sees 8.5 s windows, its training length).
+Lodge-specific: guidance and foot steps are zero on the entries the local stage pins to the global key frames; the
+score is computed on the 4 local windows concatenated and cut to the evaluated 1020 frames; null beats = clips i-21,
+i-42, i-63 (MACE's batch roll). The docstring gives the mapping and the reasons. All options off reproduces the stored
+`mace_test_lodge` raw outputs up to GPU nondeterminism (max |diff| ~1e-4, same as two runs of the official code).
+Work dir `dance_baselines/LODGE/finedance_work_guided/<tag>/` (raw, global, per-step guidance logs). Output
+`data/mace_test_lodge_guide_frz_foot/`; generation + scoring: `Expert-Motion/run_lodge_guided.sh`.

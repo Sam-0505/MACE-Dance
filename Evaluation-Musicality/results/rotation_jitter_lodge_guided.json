@@ -1,0 +1,32 @@
+{
+ "real": {
+  "pelvis_speed": 80.24961292590845,
+  "pelvis_jitter": 30.472803931267897,
+  "torso_speed": 80.91185264681114,
+  "torso_jitter": 30.34298250058831
+ },
+ "released": {
+  "pelvis_speed": 57.73183312903753,
+  "pelvis_jitter": 13.133500012890721,
+  "torso_speed": 65.35827391056982,
+  "torso_jitter": 15.455190727663012
+ },
+ "final": {
+  "pelvis_speed": 56.417658930565885,
+  "pelvis_jitter": 14.36966361394298,
+  "torso_speed": 63.14245869514097,
+  "torso_jitter": 16.496084700330336
+ },
+ "lodge": {
+  "pelvis_speed": 64.77462840454075,
+  "pelvis_jitter": 22.339611073729138,
+  "torso_speed": 67.75491742264482,
+  "torso_jitter": 23.842438271318755
+ },
+ "lodge_guide_frz_foot": {
+  "pelvis_speed": 64.79784306350436,
+  "pelvis_jitter": 22.188122214604935,
+  "torso_speed": 69.93522965883986,
+  "torso_jitter": 28.101415066092176
+ }
+}

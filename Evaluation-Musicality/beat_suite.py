@@ -166,7 +166,7 @@ def null_sets(group, nulls, rng):
     return out
 
 
-def evaluate(group, beats, sets, nulls):
+def evaluate(group, beats, sets, nulls, pairs=()):
     rng = np.random.default_rng(0)
     nidx = null_sets(group, nulls, rng)
     groups = list(dict.fromkeys(group))
@@ -209,6 +209,12 @@ def evaluate(group, beats, sets, nulls):
                 for m, name in enumerate(NAMES):
                     tests[f'{label} - released {name} {key}'] = {'diff': float(np.nanmean(d[:, m])),
                                                                 'p': signflip(d[:, m], rng)}
+    for label, ref in pairs:   # --pairs: extra paired comparisons (2026-11-06; after all default tests, same rng order)
+        for key in per_group[label]:
+            d = per_group[label][key] - per_group[ref][key]
+            for m, name in enumerate(NAMES):
+                tests[f'{label} - {ref} {name} {key}'] = {'diff': float(np.nanmean(d[:, m])), 'p': signflip(d[:, m], rng),
+                                                         'groups_higher': int((d[:, m] > 0).sum())}
     return res, tests, len(groups)
 
 
@@ -244,6 +250,8 @@ def main():
     ap.add_argument('--tempo_null', action='store_true',
                     help='finedance / motorica: also a tempo-matched null, the 12 clips of other songs nearest in tempo '
                     '(BPM from a line fit of the beat input times), next to the random one')
+    ap.add_argument('--pairs', nargs='*', default=[],
+                    help='extra paired per-song tests label=reference_label (e.g. lodge_guided=lodge)')
     a = ap.parse_args()
     if a.fd_models:
         FD_MODELS.clear()
@@ -262,13 +270,14 @@ def main():
         nulls = {**nulls, 'tempo': ('tempo', bpm)}
     print(a.dataset, len(group), 'clips,', len(set(group)), 'groups,', {k: len(v[0]) for k, v in sets.items()},
           'dances in first clip', flush=True)
-    res, tests, ng = evaluate(group, beats, sets, nulls)
+    res, tests, ng = evaluate(group, beats, sets, nulls, [tuple(x.split('=', 1)) for x in a.pairs])
     out = {'n_groups': ng, 'table': res, 'tests': tests}
     if a.dataset == 'finedance':
         out['influence'] = influence(sets)
         print('influence', json.dumps(out['influence'], indent=1))
     for t, v in tests.items():
-        if (' - real ' in t or ' - released ' in t) and ('delta_other' in t or 'delta_tempo' in t):
+        if (' - real ' in t or ' - released ' in t or any(t.startswith(f'{x} - {y} ') for x, y in
+                                                           (p.split('=', 1) for p in a.pairs))) and ('delta_other' in t or 'delta_tempo' in t):
             print(t, {k: (round(x, 4) if isinstance(x, float) else x) for k, x in v.items()})
     with open(os.path.join(HERE, 'results', f'beat_suite_{a.dataset}{a.tag}.json'), 'w') as f:
         json.dump(out, f, indent=1)

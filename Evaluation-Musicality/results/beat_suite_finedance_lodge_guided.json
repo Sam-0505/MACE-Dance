@@ -1,0 +1,472 @@
+{
+ "n_groups": 19,
+ "table": {
+  "real": {
+   "BAS": 0.21114307578751026,
+   "BAS_delta_other": -0.009764305630140418,
+   "BAS_delta_other_p": 0.4323,
+   "BAS_delta_other_pos": "6/19",
+   "BAS_delta_tempo": -0.00983692412453941,
+   "BAS_delta_tempo_p": 0.4209,
+   "BAS_delta_tempo_pos": "7/19",
+   "PLV": 0.2891671590092747,
+   "PLV_delta_other": 0.12232946733006862,
+   "PLV_delta_other_p": 0.0006,
+   "PLV_delta_other_pos": "16/19",
+   "PLV_delta_tempo": 0.11015043252100162,
+   "PLV_delta_tempo_p": 0.00055,
+   "PLV_delta_tempo_pos": "16/19",
+   "BPS": 0.750189246806626,
+   "BPS_delta_other": -0.001755694359991717,
+   "BPS_delta_other_p": 0.96645,
+   "BPS_delta_other_pos": "10/19",
+   "BPS_delta_tempo": 0.014868831499740828,
+   "BPS_delta_tempo_p": 0.4917,
+   "BPS_delta_tempo_pos": "11/19"
+  },
+  "released": {
+   "BAS": 0.23184234856529948,
+   "BAS_delta_other": 0.0003516429614029941,
+   "BAS_delta_other_p": 0.73805,
+   "BAS_delta_other_pos": "11/19",
+   "BAS_delta_tempo": -0.0005267229399131124,
+   "BAS_delta_tempo_p": 0.67135,
+   "BAS_delta_tempo_pos": "10/19",
+   "PLV": 0.16678165553681956,
+   "PLV_delta_other": 0.003523241727639266,
+   "PLV_delta_other_p": 0.33545,
+   "PLV_delta_other_pos": "9/19",
+   "PLV_delta_tempo": 0.0014980365076507497,
+   "PLV_delta_tempo_p": 0.72305,
+   "PLV_delta_tempo_pos": "9/19",
+   "BPS": 0.7184274999796166,
+   "BPS_delta_other": -0.05324851508041674,
+   "BPS_delta_other_p": 0.15485,
+   "BPS_delta_other_pos": "8/19",
+   "BPS_delta_tempo": -0.014813000239371111,
+   "BPS_delta_tempo_p": 0.4322,
+   "BPS_delta_tempo_pos": "4/19"
+  },
+  "lodge": {
+   "BAS": 0.2505566258707963,
+   "BAS_delta_other": -0.0025096475045540954,
+   "BAS_delta_other_p": 0.4394,
+   "BAS_delta_other_pos": "7/19",
+   "BAS_delta_tempo": -0.0029180601348898208,
+   "BAS_delta_tempo_p": 0.15685,
+   "BAS_delta_tempo_pos": "6/19",
+   "PLV": 0.14975737265495556,
+   "PLV_delta_other": -0.014966623393811253,
+   "PLV_delta_other_p": 0.00365,
+   "PLV_delta_other_pos": "2/19",
+   "PLV_delta_tempo": -0.011576199618089535,
+   "PLV_delta_tempo_p": 0.07095,
+   "PLV_delta_tempo_pos": "7/19",
+   "BPS": 0.7239691411502267,
+   "BPS_delta_other": -0.015216295102436916,
+   "BPS_delta_other_p": 0.6877,
+   "BPS_delta_other_pos": "12/19",
+   "BPS_delta_tempo": 0.0002991070708146088,
+   "BPS_delta_tempo_p": 0.98825,
+   "BPS_delta_tempo_pos": "9/19"
+  },
+  "lodge_guide_frz_foot": {
+   "BAS": 0.2525391703509139,
+   "BAS_delta_other": -0.004696676237570928,
+   "BAS_delta_other_p": 0.35155,
+   "BAS_delta_other_pos": "8/19",
+   "BAS_delta_tempo": -0.0047567243148223005,
+   "BAS_delta_tempo_p": 0.23015,
+   "BAS_delta_tempo_pos": "9/19",
+   "PLV": 0.2717804434244903,
+   "PLV_delta_other": 0.1148909733883267,
+   "PLV_delta_other_p": 0.0,
+   "PLV_delta_other_pos": "19/19",
+   "PLV_delta_tempo": 0.08220406718419784,
+   "PLV_delta_tempo_p": 0.0,
+   "PLV_delta_tempo_pos": "19/19",
+   "BPS": 0.731372787183764,
+   "BPS_delta_other": -0.004235789063726347,
+   "BPS_delta_other_p": 0.91195,
+   "BPS_delta_other_pos": "12/19",
+   "BPS_delta_tempo": 0.0050314183448151506,
+   "BPS_delta_tempo_p": 0.83265,
+   "BPS_delta_tempo_pos": "8/19"
+  },
+  "final": {
+   "BAS": 0.23081483239398845,
+   "BAS_delta_other": 0.0016521192076805907,
+   "BAS_delta_other_p": 0.3491,
+   "BAS_delta_other_pos": "10/19",
+   "BAS_delta_tempo": 0.0017356514483700702,
+   "BAS_delta_tempo_p": 0.32245,
+   "BAS_delta_tempo_pos": "12/19",
+   "PLV": 0.2601732460076444,
+   "PLV_delta_other": 0.09722380988682715,
+   "PLV_delta_other_p": 0.0,
+   "PLV_delta_other_pos": "19/19",
+   "PLV_delta_tempo": 0.06808500931155374,
+   "PLV_delta_tempo_p": 0.0,
+   "PLV_delta_tempo_pos": "19/19",
+   "BPS": 0.715817449254481,
+   "BPS_delta_other": -0.06750397964235107,
+   "BPS_delta_other_p": 0.1378,
+   "BPS_delta_other_pos": "11/19",
+   "BPS_delta_tempo": -0.012215827421804465,
+   "BPS_delta_tempo_p": 0.5525,
+   "BPS_delta_tempo_pos": "6/19"
+  }
+ },
+ "tests": {
+  "released - real BAS own": {
+   "diff": 0.020699272777789313,
+   "p": 0.1116,
+   "groups_real_higher": 7
+  },
+  "released - real PLV own": {
+   "diff": -0.12238550347245514,
+   "p": 0.0003,
+   "groups_real_higher": 16
+  },
+  "released - real BPS own": {
+   "diff": -0.031761746827009406,
+   "p": 0.3478,
+   "groups_real_higher": 12
+  },
+  "released - real BAS delta_other": {
+   "diff": 0.010115948591543411,
+   "p": 0.42015,
+   "groups_real_higher": 6
+  },
+  "released - real PLV delta_other": {
+   "diff": -0.11880622560242934,
+   "p": 0.00045,
+   "groups_real_higher": 15
+  },
+  "released - real BPS delta_other": {
+   "diff": -0.05149282072042501,
+   "p": 0.2115,
+   "groups_real_higher": 10
+  },
+  "released - real BAS delta_tempo": {
+   "diff": 0.009310201184626297,
+   "p": 0.4403,
+   "groups_real_higher": 6
+  },
+  "released - real PLV delta_tempo": {
+   "diff": -0.10865239601335086,
+   "p": 0.00055,
+   "groups_real_higher": 16
+  },
+  "released - real BPS delta_tempo": {
+   "diff": -0.02968183173911194,
+   "p": 0.07715,
+   "groups_real_higher": 12
+  },
+  "lodge - real BAS own": {
+   "diff": 0.0394135500832861,
+   "p": 0.0158,
+   "groups_real_higher": 5
+  },
+  "lodge - real PLV own": {
+   "diff": -0.1394097863543192,
+   "p": 0.00015,
+   "groups_real_higher": 17
+  },
+  "lodge - real BPS own": {
+   "diff": -0.026220105656399283,
+   "p": 0.4517,
+   "groups_real_higher": 13
+  },
+  "lodge - real BAS delta_other": {
+   "diff": 0.007254658125586321,
+   "p": 0.59975,
+   "groups_real_higher": 9
+  },
+  "lodge - real PLV delta_other": {
+   "diff": -0.13729609072387988,
+   "p": 0.00015,
+   "groups_real_higher": 17
+  },
+  "lodge - real BPS delta_other": {
+   "diff": -0.013460600742445197,
+   "p": 0.6902,
+   "groups_real_higher": 8
+  },
+  "lodge - real BAS delta_tempo": {
+   "diff": 0.0069188639896495905,
+   "p": 0.60585,
+   "groups_real_higher": 8
+  },
+  "lodge - real PLV delta_tempo": {
+   "diff": -0.12172663213909117,
+   "p": 5e-05,
+   "groups_real_higher": 17
+  },
+  "lodge - real BPS delta_tempo": {
+   "diff": -0.014569724428926217,
+   "p": 0.234,
+   "groups_real_higher": 14
+  },
+  "lodge - released BAS own": {
+   "diff": 0.018714277305496792,
+   "p": 0.00935
+  },
+  "lodge - released PLV own": {
+   "diff": -0.01702428288186404,
+   "p": 0.0141
+  },
+  "lodge - released BPS own": {
+   "diff": 0.005541641170610123,
+   "p": 0.85665
+  },
+  "lodge - released BAS delta_other": {
+   "diff": -0.00286129046595709,
+   "p": 0.37
+  },
+  "lodge - released PLV delta_other": {
+   "diff": -0.018489865121450517,
+   "p": 0.01485
+  },
+  "lodge - released BPS delta_other": {
+   "diff": 0.03803221997797981,
+   "p": 0.2042
+  },
+  "lodge - released BAS delta_tempo": {
+   "diff": -0.0023913371949767087,
+   "p": 0.3339
+  },
+  "lodge - released PLV delta_tempo": {
+   "diff": -0.013074236125740286,
+   "p": 0.0724
+  },
+  "lodge - released BPS delta_tempo": {
+   "diff": 0.015112107310185717,
+   "p": 0.2204
+  },
+  "lodge_guide_frz_foot - real BAS own": {
+   "diff": 0.041396094563403776,
+   "p": 0.01715,
+   "groups_real_higher": 5
+  },
+  "lodge_guide_frz_foot - real PLV own": {
+   "diff": -0.017386715584784395,
+   "p": 0.50695,
+   "groups_real_higher": 11
+  },
+  "lodge_guide_frz_foot - real BPS own": {
+   "diff": -0.01881645962286211,
+   "p": 0.55595,
+   "groups_real_higher": 13
+  },
+  "lodge_guide_frz_foot - real BAS delta_other": {
+   "diff": 0.0050676293925694905,
+   "p": 0.7425,
+   "groups_real_higher": 9
+  },
+  "lodge_guide_frz_foot - real PLV delta_other": {
+   "diff": -0.007438493941741931,
+   "p": 0.77685,
+   "groups_real_higher": 10
+  },
+  "lodge_guide_frz_foot - real BPS delta_other": {
+   "diff": -0.002480094703734629,
+   "p": 0.93695,
+   "groups_real_higher": 8
+  },
+  "lodge_guide_frz_foot - real BAS delta_tempo": {
+   "diff": 0.00508019980971711,
+   "p": 0.72735,
+   "groups_real_higher": 9
+  },
+  "lodge_guide_frz_foot - real PLV delta_tempo": {
+   "diff": -0.02794636533680377,
+   "p": 0.2535,
+   "groups_real_higher": 12
+  },
+  "lodge_guide_frz_foot - real BPS delta_tempo": {
+   "diff": -0.009837413154925674,
+   "p": 0.46565,
+   "groups_real_higher": 10
+  },
+  "lodge_guide_frz_foot - released BAS own": {
+   "diff": 0.02069682178561446,
+   "p": 0.0068
+  },
+  "lodge_guide_frz_foot - released PLV own": {
+   "diff": 0.10499878788767075,
+   "p": 0.0
+  },
+  "lodge_guide_frz_foot - released BPS own": {
+   "diff": 0.0129452872041473,
+   "p": 0.65635
+  },
+  "lodge_guide_frz_foot - released BAS delta_other": {
+   "diff": -0.0050483191989739214,
+   "p": 0.26645
+  },
+  "lodge_guide_frz_foot - released PLV delta_other": {
+   "diff": 0.11136773166068742,
+   "p": 0.0
+  },
+  "lodge_guide_frz_foot - released BPS delta_other": {
+   "diff": 0.049012726016690385,
+   "p": 0.105
+  },
+  "lodge_guide_frz_foot - released BAS delta_tempo": {
+   "diff": -0.0042300013749091885,
+   "p": 0.30975
+  },
+  "lodge_guide_frz_foot - released PLV delta_tempo": {
+   "diff": 0.08070603067654711,
+   "p": 0.0
+  },
+  "lodge_guide_frz_foot - released BPS delta_tempo": {
+   "diff": 0.019844418584186264,
+   "p": 0.07435
+  },
+  "final - real BAS own": {
+   "diff": 0.019671756606478262,
+   "p": 0.11675,
+   "groups_real_higher": 5
+  },
+  "final - real PLV own": {
+   "diff": -0.028993913001630317,
+   "p": 0.26785,
+   "groups_real_higher": 12
+  },
+  "final - real BPS own": {
+   "diff": -0.03437179755214494,
+   "p": 0.3516,
+   "groups_real_higher": 11
+  },
+  "final - real BAS delta_other": {
+   "diff": 0.011416424837821008,
+   "p": 0.32775,
+   "groups_real_higher": 8
+  },
+  "final - real PLV delta_other": {
+   "diff": -0.02510565744324147,
+   "p": 0.3594,
+   "groups_real_higher": 11
+  },
+  "final - real BPS delta_other": {
+   "diff": -0.06574828528235935,
+   "p": 0.15575,
+   "groups_real_higher": 10
+  },
+  "final - real BAS delta_tempo": {
+   "diff": 0.011572575572909484,
+   "p": 0.31835,
+   "groups_real_higher": 6
+  },
+  "final - real PLV delta_tempo": {
+   "diff": -0.042065423209447894,
+   "p": 0.09855,
+   "groups_real_higher": 13
+  },
+  "final - real BPS delta_tempo": {
+   "diff": -0.027084658921545296,
+   "p": 0.07085,
+   "groups_real_higher": 11
+  },
+  "final - released BAS own": {
+   "diff": -0.001027516171311052,
+   "p": 0.7921
+  },
+  "final - released PLV own": {
+   "diff": 0.09339159047082482,
+   "p": 0.0
+  },
+  "final - released BPS own": {
+   "diff": -0.0026100507251355376,
+   "p": 0.8628
+  },
+  "final - released BAS delta_other": {
+   "diff": 0.0013004762462775967,
+   "p": 0.58655
+  },
+  "final - released PLV delta_other": {
+   "diff": 0.09370056815918787,
+   "p": 0.0
+  },
+  "final - released BPS delta_other": {
+   "diff": -0.014255464561934342,
+   "p": 0.3809
+  },
+  "final - released BAS delta_tempo": {
+   "diff": 0.0022623743882831822,
+   "p": 0.375
+  },
+  "final - released PLV delta_tempo": {
+   "diff": 0.06658697280390298,
+   "p": 0.0
+  },
+  "final - released BPS delta_tempo": {
+   "diff": 0.0025971728175666433,
+   "p": 0.79875
+  },
+  "lodge_guide_frz_foot - lodge BAS own": {
+   "diff": 0.0019825444801176676,
+   "p": 0.42935,
+   "groups_higher": 14
+  },
+  "lodge_guide_frz_foot - lodge PLV own": {
+   "diff": 0.12202307076953481,
+   "p": 0.0,
+   "groups_higher": 19
+  },
+  "lodge_guide_frz_foot - lodge BPS own": {
+   "diff": 0.007403646033537176,
+   "p": 0.5016,
+   "groups_higher": 13
+  },
+  "lodge_guide_frz_foot - lodge BAS delta_other": {
+   "diff": -0.002187028733016832,
+   "p": 0.4103,
+   "groups_higher": 10
+  },
+  "lodge_guide_frz_foot - lodge PLV delta_other": {
+   "diff": 0.12985759678213793,
+   "p": 0.0,
+   "groups_higher": 19
+  },
+  "lodge_guide_frz_foot - lodge BPS delta_other": {
+   "diff": 0.010980506038710569,
+   "p": 0.42255,
+   "groups_higher": 12
+  },
+  "lodge_guide_frz_foot - lodge BAS delta_tempo": {
+   "diff": -0.0018386641799324798,
+   "p": 0.5289,
+   "groups_higher": 10
+  },
+  "lodge_guide_frz_foot - lodge PLV delta_tempo": {
+   "diff": 0.09378026680228739,
+   "p": 0.0,
+   "groups_higher": 19
+  },
+  "lodge_guide_frz_foot - lodge BPS delta_tempo": {
+   "diff": 0.004732311274000545,
+   "p": 0.33775,
+   "groups_higher": 13
+  }
+ },
+ "influence": {
+  "lodge": {
+   "dist_to_released_same_seed_m": 0.2703838050365448,
+   "dist_between_seeds_m": 0.17984922230243683,
+   "ratio": 1.5033916234970093
+  },
+  "lodge_guide_frz_foot": {
+   "dist_to_released_same_seed_m": 0.270425409078598,
+   "dist_between_seeds_m": 0.17984922230243683,
+   "ratio": 1.5036228895187378
+  },
+  "final": {
+   "dist_to_released_same_seed_m": 0.1778477281332016,
+   "dist_between_seeds_m": 0.17984922230243683,
+   "ratio": 0.9888712763786316
+  }
+ }
+}
