@@ -73,7 +73,34 @@ def perc_example(n, gt, one, fix):
             'window': WINDOW}
 
 
-EXAMPLES = {'loudness': ('012_slice3', loudness_example), 'perc': ('198_slice0', perc_example)}
+def beat_example(n, gt, one, fix):
+    """Beat locking (2026-11-06): body-speed accents against the song's beat grid. Score = the clip's Lock Δ as in
+    beat_suite.py --tempo_null: PLV of the accents' beat phases, own beats minus the mean over the 12 other-song slices
+    nearest in tempo."""
+    from beat_suite import N_NULL, null_sets
+    from tmd_beat_metrics import accents, velocity
+    from tmd_beat_phase import phases, plv
+    names = json.load(open(os.path.join(ONESHOT, 'names.json')))['names']
+    beats = [np.flatnonzero(np.load(os.path.join('data/test/baseline_feats', x + '.npy'))[:, 34]) for x in names]
+    bpm = np.array([60 * M.FPS / np.polyfit(np.arange(len(b)), b, 1)[0] for b in beats])
+    i = names.index(n)
+    null = null_sets([x.split('_')[0] for x in names], {'t': ('tempo', bpm)}, np.random.default_rng(0))['t'][i]
+    assert len(null) == N_NULL
+    A = beats[i]
+
+    def score(j):
+        m = accents(velocity(j, '3d'))
+        return plv(phases(m, A)) - np.mean([plv(phases(m, beats[k])) for k in null])
+    T = min(len(gt), one.shape[1])
+    return {'title': f'Beat locking: body-speed accents vs the beats ({bpm[i]:.0f} BPM)', 'metric': 'Lock', 'score': score,
+            'curve': lambda j: zs(velocity(j[:T], '3d')), 'accents': lambda j: accents(velocity(j[:T], '3d')),
+            'beats': A[A < T], 'phase': lambda m: phases(m, A), 'music': None, 'music_label': None, 'T': T, 'hot': None,
+            'xlabel': 'seconds · grey lines = beats, dots = accents (peaks of body speed) · Lock = own beats − 12 '
+                      'tempo-matched songs; clock: each accent’s place in its beat', 'window': 6.0}
+
+
+EXAMPLES = {'loudness': ('012_slice3', loudness_example), 'perc': ('198_slice0', perc_example),
+            'beat': ('161_slice3', beat_example)}
 
 
 def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_label='MACE + ±2 s mask',
@@ -122,12 +149,38 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
                              color=color if c in ex['hot'] else '0.55')[0] for c in range(1, 24)]
         else:
             lines = [ax.plot([], [], lw=2, color='tab:red' if c in LEFT else 'k')[0] for c in range(1, 24)]
-        panels.append((rel, h, up, sgn, lines))
+        beat_art = None
+        if ex.get('beats') is not None:
+            # beat lamp (lit just after each beat), accent flash on the skeleton, and a beat clock of the accents so far
+            xl, yl = ax.get_xlim(), ax.get_ylim()
+            lamp = ax.plot([xl[0] + 0.08 * (xl[1] - xl[0])], [yl[1] - 0.06 * (yl[1] - yl[0])], 'o', ms=16,
+                           color='0.88')[0]
+            ax.text(xl[0] + 0.15 * (xl[1] - xl[0]), yl[1] - 0.06 * (yl[1] - yl[0]), 'beat', va='center', fontsize=9,
+                    color='0.4')
+            clock = ax.inset_axes([0.70, 0.72, 0.28, 0.28])
+            clock.set_xlim(-1.3, 1.3); clock.set_ylim(-1.3, 1.3); clock.set_aspect('equal'); clock.axis('off')
+            u = np.linspace(0, 2 * np.pi, 100)
+            clock.plot(np.sin(u), np.cos(u), color='0.6', lw=1)
+            clock.plot([0], [1], 'v', color='0.3', ms=5)
+            dots = clock.plot([], [], 'o', color=color, ms=3.5, alpha=0.7)[0]
+            arrow = clock.plot([], [], color=color, lw=2.5)[0]
+            acc = ex['accents'](joints)
+            beat_art = (lamp, dots, arrow, acc, ex['phase'](acc), color)
+        panels.append((rel, h, up, sgn, lines, beat_art))
     t = np.arange(T) / M.FPS
     strip = fig.add_subplot(gs[1, :])
-    strip.plot(t, ex['music'], color='k', lw=1.5, label=ex['music_label'])
-    for joints, label, color in panels_def:
-        strip.plot(t, ex['curve'](joints), color=color, lw=1.1, label=label.split('   ')[0])
+    if ex.get('beats') is not None:
+        for b in ex['beats']:
+            strip.axvline(b / M.FPS, color='0.82', lw=0.9)
+        for r, (joints, label, color) in enumerate(panels_def):
+            c, acc = ex['curve'](joints), ex['accents'](joints)
+            off = -3.2 * r
+            strip.plot(t[:len(c)], c + off, color=color, lw=1.1, label=label.split('   ')[0])
+            strip.plot(acc / M.FPS, c[acc] + off, 'o', color=color, ms=4)
+    else:
+        strip.plot(t, ex['music'], color='k', lw=1.5, label=ex['music_label'])
+        for joints, label, color in panels_def:
+            strip.plot(t, ex['curve'](joints), color=color, lw=1.1, label=label.split('   ')[0])
     strip.set_xlim(0, T / M.FPS); strip.set_yticks([])
     strip.set_xlabel(ex['xlabel'])
     strip.legend(loc='upper right', fontsize=7, ncol=npan + 1)
@@ -141,10 +194,24 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
                              '-s', f'{W}x640', '-r', str(M.FPS), '-i', '-', '-i', wav, '-c:v', 'libx264',
                              '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-shortest', out], stdin=subprocess.PIPE)
     for fr in range(T):
-        for rel, h, up, sgn, lines in panels:
+        for rel, h, up, sgn, lines, beat_art in panels:
+            flash = False
+            if beat_art is not None:
+                lamp, dots, arrow, acc, ph, color = beat_art
+                B = ex['beats']
+                lamp.set_color('#16213a' if ((fr - B >= 0) & (fr - B < 4)).any() else '0.88')
+                flash = bool(((fr - acc >= 0) & (fr - acc < 4)).any())
+                seen = ph[:np.searchsorted(acc[(acc >= B[0]) & (acc < B[-1])], fr, side='right')]
+                if len(seen):
+                    z = np.exp(2j * np.pi * seen)
+                    dots.set_data(np.sin(2 * np.pi * seen), np.cos(2 * np.pi * seen))
+                    r = z.mean()
+                    arrow.set_data([0, r.imag], [0, r.real])
             for c, ln in zip(range(1, 24), lines):
                 p = PARENTS[c]
                 ln.set_data([rel[fr, p, h], rel[fr, c, h]], [sgn * rel[fr, p, up], sgn * rel[fr, c, up]])
+                if beat_art is not None:
+                    ln.set_linewidth(3.6 if flash else 2)
         now = fr / M.FPS
         if ex['window']:
             lo = min(max(0.0, now - ex['window'] / 2), t[-1] - ex['window'])
