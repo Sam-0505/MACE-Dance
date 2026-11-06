@@ -11,6 +11,12 @@ difference between the two MACE panels is the attention mask. The fixed model's 
     .venv/bin/python ../Evaluation-Musicality/render_fix_compare.py --ffmpeg /path/to/ffmpeg
 
 Writes data/videos/<example>_<slice>_real_oneshot_fixed.mp4.
+
+Final-model version (2026-11-06): --fixed_dir / --fixed_label / --oneshot_label / --suffix put any other run in the
+third panel, e.g. ours = mask + guidance + foot term (same seed again, so the panels share the starting noise):
+    .venv/bin/python ../Evaluation-Musicality/render_fix_compare.py --ffmpeg $FF \
+        --fixed_dir ../Evaluation-Musicality/data/mace_test_mask2s_guide10_s0.003_foot10_10seeds \
+        --fixed_label 'Ours: mask + guidance + foot' --oneshot_label 'MACE released' --suffix real_released_ours
 """
 import argparse
 import json
@@ -70,13 +76,14 @@ def perc_example(n, gt, one, fix):
 EXAMPLES = {'loudness': ('012_slice3', loudness_example), 'perc': ('198_slice0', perc_example)}
 
 
-def render(key, names, smpl, device, ffmpeg, out_dir):
+def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_label='MACE + ±2 s mask',
+           oneshot_label='MACE one-shot', suffix='real_oneshot_fixed'):
     n, make = EXAMPLES[key]
     i = names.index(n)
     with open(os.path.join('data/test/motions_sliced', n + '.pkl'), 'rb') as f:
         m = pickle.load(f)
     gt = fk(smpl, [m['q']], [m['pos']], device, from_pred=False)[0]
-    one, fix = load(names, ONESHOT, i), load(names, FIXED, i)
+    one, fix = load(names, ONESHOT, i), load(names, fixed_dir, i)
     ex = make(n, gt, one, fix)
     T = ex['T']
     gt, one, fix = gt[:T], one[:, :T], fix[:, :T]
@@ -86,8 +93,8 @@ def render(key, names, smpl, device, ffmpeg, out_dir):
     s_gt = ex['score'](gt)
     met = ex['metric']
     panels_def = [(gt, f'Real dancer   {met} {s_gt:+.2f}', 'tab:blue'),
-                  (one[k], f'MACE one-shot (seed {k})   {met} {s_one[k]:+.2f}', 'tab:orange'),
-                  (fix[k], f'MACE + ±2 s mask (seed {k})   {met} {s_fix[k]:+.2f}', 'tab:green')]
+                  (one[k], f'{oneshot_label} (seed {k})   {met} {s_one[k]:+.2f}', 'tab:orange'),
+                  (fix[k], f'{fixed_label} (seed {k})   {met} {s_fix[k]:+.2f}', 'tab:green')]
 
     fig = plt.figure(figsize=(14.4, 6.4), dpi=100)
     gs = fig.add_gridspec(2, 3, height_ratios=[3, 1.3])
@@ -119,7 +126,7 @@ def render(key, names, smpl, device, ffmpeg, out_dir):
     sup = fig.suptitle('')
     fig.tight_layout()
 
-    out = os.path.join(out_dir, f'{key}_{n}_real_oneshot_fixed.mp4')
+    out = os.path.join(out_dir, f'{key}_{n}_{suffix}.mp4')
     wav = os.path.join('data/test/wavs_sliced', n + '.wav')
     proc = subprocess.Popen([ffmpeg, '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba',
                              '-s', '1440x640', '-r', str(M.FPS), '-i', '-', '-i', wav, '-c:v', 'libx264',
@@ -150,15 +157,19 @@ def main():
     ap.add_argument('--examples', nargs='*', default=list(EXAMPLES))
     ap.add_argument('--out_dir', default=os.path.join(HERE, 'data', 'videos'))
     ap.add_argument('--ffmpeg', default='ffmpeg')
+    ap.add_argument('--fixed_dir', default=FIXED, help='run shown in the third panel')
+    ap.add_argument('--fixed_label', default='MACE + ±2 s mask')
+    ap.add_argument('--oneshot_label', default='MACE one-shot')
+    ap.add_argument('--suffix', default='real_oneshot_fixed')
     a = ap.parse_args()
     with open(os.path.join(ONESHOT, 'names.json')) as f:
         names = json.load(f)['names']
-    with open(os.path.join(FIXED, 'names.json')) as f:
+    with open(os.path.join(a.fixed_dir, 'names.json')) as f:
         assert json.load(f)['names'] == names
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     smpl = SMPLSkeleton(device)
     for key in a.examples:
-        render(key, names, smpl, device, a.ffmpeg, a.out_dir)
+        render(key, names, smpl, device, a.ffmpeg, a.out_dir, a.fixed_dir, a.fixed_label, a.oneshot_label, a.suffix)
 
 
 if __name__ == '__main__':
