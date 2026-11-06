@@ -19,3 +19,21 @@ MACE). Output: `data/motorica/<model>/joints.npy` (289, 3, 1020, 24, 3), SMPL jo
 (`data/finedance_test_wav/`, symlinks to Expert-Motion/data/test/wavs_sliced, 44.1 or 48 kHz), 10 seeds, Lodge genre =
 FineDance style2 label. Output `data/mace_test_{edge,lodge}/`. Scoring: `Expert-Motion/run_baselines_finedance.sh`
 (our music metrics); FID / Div / PFC / BAS for EDGE and Lodge are taken from the MACE paper, Table 2.
+
+## Bailando and MEGADance (2026-11-06)
+
+Generation scripts run in their own environments under `/home/sam0505/Documents/Code/dance_baselines/{Bailando,MEGADance}`
+(copies here: `bailando_gen_mace_eval.py`, `mega_gen_mace_eval.py`), on both the 84 FineDance test slices and the 289
+Motorica slices. Output `data/mace_test_{bailando,mega}/` and `data/motorica/{bailando,mega}/`.
+
+- Bailando (lisiyao21/Bailando, AIST++; VQ-VAE sep_vqvae_root epoch 500 + actor-critic GPT epoch 10, the paper's final
+  model): its 7.5 fps librosa/essentia features, demo-mode start codes 423 / 12, 60 -> 30 fps, Y-up -> Z-up.
+- MEGADance (XulongT/MEGADance, FineDance; cls 30, fsq 120, gpt 90): the repo's demo path with its 30 fps features
+  (checked against its own precomputed FineDance features: correlation 1.000), genre = the slice's style label,
+  start pose Pretrained/Init1.pkl, features padded 1021 -> 1024 rows, Y-up -> Z-up.
+- Both pick the arg-max code at each step, so they are deterministic: one dance per slice, copied to every seed slot.
+- Env notes: MEGA needs torch 2.7.1+cu128 with the prebuilt mamba_ssm 2.3.0 / causal_conv1d 1.6.2.post1 wheels
+  (2.3.2 pulls a kernel package that upgrades torch); its Google Drive archives are 7-zip (py7zr).
+- `fix_lodge_axes.py`: the Lodge arrays had up = -x (heading rotation applied to Y-up FK output); fixed in the
+  generation scripts and in the stored arrays (originals kept as joints_upx_bug.npy).
+- Scoring: `Expert-Motion/run_baselines2.sh`.

@@ -204,6 +204,9 @@ def smpl_fk(rot6d22, root):
             pos.append(quaternion_apply(rotw[p], off[j].expand_as(root)) + pos[p])
             rotw.append(quaternion_multiply(rotw[p], q[:, :, j]))
     x = torch.stack(pos, dim=2).float()
+    # Lodge's FK output is Y-up: convert to Z-up ((x, y, z) -> (x, -z, y)) before MACE's align_axis heading
+    # rotation (fixed 2026-11-06; before this, stored joints had up = -x)
+    x = torch.stack([x[..., 0], -x[..., 2], x[..., 1]], dim=-1)
     rot = RotateAxisAngle(90, axis='z', degrees=True)
     return rot.transform_points(x.reshape(-1, 3)).reshape(x.shape)
 
