@@ -133,12 +133,25 @@ def motorica(pool):
 
 
 def main():
+    import argparse
+    global FD, MOT, OUT
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--fd', nargs='*', help='label=dir (under data/) FineDance models instead of FD (real always kept)')
+    ap.add_argument('--mot', nargs='*', help='label=dir (under data/motorica) Motorica models instead of MOT')
+    ap.add_argument('--tag', default='')
+    args = ap.parse_args()
+    if args.fd is not None or args.mot is not None:
+        FD = {'real': None, **dict(x.split('=', 1) for x in (args.fd or []))}
+        MOT = {'real': None, **dict(x.split('=', 1) for x in (args.mot or []))}
+    OUT = OUT.replace('.json', f'{args.tag}.json')
     with Pool(12) as pool:
         out = {'settings': {'sigma': MAIN, 'tau': MAIN, 'smooth': SMOOTH, 'fps': 30, 'motorica_samples': MOT_S},
-               'finedance': finedance(pool), 'motorica': motorica(pool)}
+               'finedance': finedance(pool) if len(FD) > 1 else {}, 'motorica': motorica(pool) if len(MOT) > 1 else {}}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     json.dump(out, open(OUT, 'w'), indent=1)
     for ds in ('finedance', 'motorica'):
+        if not out[ds]:
+            continue
         for view in ('2d', '3d'):
             print(f'\n{ds} {view}: {"model":10s} VBCS   CSD    ABHS   HSD    MDAlign  n')
             for lab, r in out[ds].items():

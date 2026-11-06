@@ -1,0 +1,12 @@
+{
+ "finedance": {},
+ "motorica": {
+  "mask_guide_foot10": {
+   "FSR_pct": 9.461830105255292,
+   "left_pct": 9.259262226647051,
+   "right_pct": 9.664397983863525,
+   "n_clips": 867,
+   "clips_without_contact": 5
+  }
+ }
+}
