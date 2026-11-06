@@ -1,0 +1,47 @@
+finedance 84 clips, 19 groups, {'real': 1, 'released': 10, 'mask_guide': 10, 'foot': 10} dances in first clip
+real {'BAS': 0.211, 'BAS_delta_other': -0.01, 'BAS_delta_other_p': 0.432, 'BAS_delta_other_pos': '6/19', 'BAS_delta_tempo': -0.01, 'BAS_delta_tempo_p': 0.421, 'BAS_delta_tempo_pos': '7/19', 'PLV': 0.289, 'PLV_delta_other': 0.122, 'PLV_delta_other_p': 0.001, 'PLV_delta_other_pos': '16/19', 'PLV_delta_tempo': 0.11, 'PLV_delta_tempo_p': 0.001, 'PLV_delta_tempo_pos': '16/19', 'BPS': 0.75, 'BPS_delta_other': -0.002, 'BPS_delta_other_p': 0.966, 'BPS_delta_other_pos': '10/19', 'BPS_delta_tempo': 0.015, 'BPS_delta_tempo_p': 0.492, 'BPS_delta_tempo_pos': '11/19'}
+released {'BAS': 0.232, 'BAS_delta_other': 0.0, 'BAS_delta_other_p': 0.738, 'BAS_delta_other_pos': '11/19', 'BAS_delta_tempo': -0.001, 'BAS_delta_tempo_p': 0.671, 'BAS_delta_tempo_pos': '10/19', 'PLV': 0.167, 'PLV_delta_other': 0.004, 'PLV_delta_other_p': 0.335, 'PLV_delta_other_pos': '9/19', 'PLV_delta_tempo': 0.001, 'PLV_delta_tempo_p': 0.723, 'PLV_delta_tempo_pos': '9/19', 'BPS': 0.718, 'BPS_delta_other': -0.053, 'BPS_delta_other_p': 0.155, 'BPS_delta_other_pos': '8/19', 'BPS_delta_tempo': -0.015, 'BPS_delta_tempo_p': 0.432, 'BPS_delta_tempo_pos': '4/19'}
+mask_guide {'BAS': 0.23, 'BAS_delta_other': 0.003, 'BAS_delta_other_p': 0.335, 'BAS_delta_other_pos': '11/19', 'BAS_delta_tempo': 0.003, 'BAS_delta_tempo_p': 0.217, 'BAS_delta_tempo_pos': '12/19', 'PLV': 0.251, 'PLV_delta_other': 0.087, 'PLV_delta_other_p': 0.0, 'PLV_delta_other_pos': '18/19', 'PLV_delta_tempo': 0.058, 'PLV_delta_tempo_p': 0.0, 'PLV_delta_tempo_pos': '17/19', 'BPS': 0.723, 'BPS_delta_other': -0.067, 'BPS_delta_other_p': 0.136, 'BPS_delta_other_pos': '11/19', 'BPS_delta_tempo': -0.018, 'BPS_delta_tempo_p': 0.362, 'BPS_delta_tempo_pos': '5/19'}
+foot {'BAS': 0.225, 'BAS_delta_other': 0.001, 'BAS_delta_other_p': 0.534, 'BAS_delta_other_pos': '9/19', 'BAS_delta_tempo': 0.001, 'BAS_delta_tempo_p': 0.54, 'BAS_delta_tempo_pos': '11/19', 'PLV': 0.265, 'PLV_delta_other': 0.101, 'PLV_delta_other_p': 0.0, 'PLV_delta_other_pos': '18/19', 'PLV_delta_tempo': 0.068, 'PLV_delta_tempo_p': 0.0, 'PLV_delta_tempo_pos': '18/19', 'BPS': 0.736, 'BPS_delta_other': -0.057, 'BPS_delta_other_p': 0.177, 'BPS_delta_other_pos': '11/19', 'BPS_delta_tempo': -0.017, 'BPS_delta_tempo_p': 0.223, 'BPS_delta_tempo_pos': '5/19'}
+influence {
+ "mask_guide": {
+  "dist_to_released_same_seed_m": 0.1786881685256958,
+  "dist_between_seeds_m": 0.17984922230243683,
+  "ratio": 0.9935442805290222
+ },
+ "foot": {
+  "dist_to_released_same_seed_m": 0.17862188816070557,
+  "dist_between_seeds_m": 0.17984922230243683,
+  "ratio": 0.993175745010376
+ }
+}
+released - real BAS delta_other {'diff': 0.0101, 'p': 0.4127, 'groups_real_higher': 6}
+released - real PLV delta_other {'diff': -0.1188, 'p': 0.0009, 'groups_real_higher': 15}
+released - real BPS delta_other {'diff': -0.0515, 'p': 0.2087, 'groups_real_higher': 10}
+released - real BAS delta_tempo {'diff': 0.0093, 'p': 0.4444, 'groups_real_higher': 6}
+released - real PLV delta_tempo {'diff': -0.1087, 'p': 0.0002, 'groups_real_higher': 16}
+released - real BPS delta_tempo {'diff': -0.0297, 'p': 0.0793, 'groups_real_higher': 12}
+mask_guide - real BAS delta_other {'diff': 0.0124, 'p': 0.2897, 'groups_real_higher': 8}
+mask_guide - real PLV delta_other {'diff': -0.0357, 'p': 0.219, 'groups_real_higher': 11}
+mask_guide - real BPS delta_other {'diff': -0.0651, 'p': 0.193, 'groups_real_higher': 11}
+mask_guide - real BAS delta_tempo {'diff': 0.0127, 'p': 0.2766, 'groups_real_higher': 6}
+mask_guide - real PLV delta_tempo {'diff': -0.0526, 'p': 0.0415, 'groups_real_higher': 13}
+mask_guide - real BPS delta_tempo {'diff': -0.033, 'p': 0.037, 'groups_real_higher': 13}
+mask_guide - released BAS delta_other {'diff': 0.0023, 'p': 0.5252}
+mask_guide - released PLV delta_other {'diff': 0.0832, 'p': 0.0}
+mask_guide - released BPS delta_other {'diff': -0.0136, 'p': 0.4}
+mask_guide - released BAS delta_tempo {'diff': 0.0034, 'p': 0.2914}
+mask_guide - released PLV delta_tempo {'diff': 0.0561, 'p': 0.0}
+mask_guide - released BPS delta_tempo {'diff': -0.0033, 'p': 0.6308}
+foot - real BAS delta_other {'diff': 0.0107, 'p': 0.3696, 'groups_real_higher': 8}
+foot - real PLV delta_other {'diff': -0.0217, 'p': 0.4207, 'groups_real_higher': 12}
+foot - real BPS delta_other {'diff': -0.0553, 'p': 0.2851, 'groups_real_higher': 9}
+foot - real BAS delta_tempo {'diff': 0.0107, 'p': 0.3664, 'groups_real_higher': 6}
+foot - real PLV delta_tempo {'diff': -0.0417, 'p': 0.0903, 'groups_real_higher': 13}
+foot - real BPS delta_tempo {'diff': -0.0322, 'p': 0.0386, 'groups_real_higher': 11}
+foot - released BAS delta_other {'diff': 0.0006, 'p': 0.7776}
+foot - released PLV delta_other {'diff': 0.0971, 'p': 0.0}
+foot - released BPS delta_other {'diff': -0.0038, 'p': 0.8137}
+foot - released BAS delta_tempo {'diff': 0.0013, 'p': 0.4637}
+foot - released PLV delta_tempo {'diff': 0.067, 'p': 0.0}
+foot - released BPS delta_tempo {'diff': -0.0025, 'p': 0.7399}

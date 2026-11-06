@@ -1,0 +1,47 @@
+finedance 84 clips, 19 groups, {'real': 1, 'released': 10, 'guide_s0.003': 3, 'placebo_s0.003': 3} dances in first clip
+real {'BAS': 0.206, 'BAS_delta_other': -0.009, 'BAS_delta_other_p': 0.034, 'BAS_delta_other_pos': '8/19', 'BAS_delta_tempo': -0.008, 'BAS_delta_tempo_p': 0.065, 'BAS_delta_tempo_pos': '8/19', 'PLV': 0.182, 'PLV_delta_other': 0.002, 'PLV_delta_other_p': 0.881, 'PLV_delta_other_pos': '11/19', 'PLV_delta_tempo': 0.0, 'PLV_delta_tempo_p': 0.997, 'PLV_delta_tempo_pos': '8/19', 'BPS': 0.761, 'BPS_delta_other': -0.012, 'BPS_delta_other_p': 0.765, 'BPS_delta_other_pos': '13/19', 'BPS_delta_tempo': -0.002, 'BPS_delta_tempo_p': 0.885, 'BPS_delta_tempo_pos': '7/19'}
+released {'BAS': 0.228, 'BAS_delta_other': -0.0, 'BAS_delta_other_p': 0.858, 'BAS_delta_other_pos': '5/19', 'BAS_delta_tempo': -0.0, 'BAS_delta_tempo_p': 0.966, 'BAS_delta_tempo_pos': '6/19', 'PLV': 0.167, 'PLV_delta_other': -0.0, 'PLV_delta_other_p': 0.952, 'PLV_delta_other_pos': '7/19', 'PLV_delta_tempo': -0.001, 'PLV_delta_tempo_p': 0.925, 'PLV_delta_tempo_pos': '8/19', 'BPS': 0.752, 'BPS_delta_other': -0.014, 'BPS_delta_other_p': 0.688, 'BPS_delta_other_pos': '12/19', 'BPS_delta_tempo': 0.001, 'BPS_delta_tempo_p': 0.965, 'BPS_delta_tempo_pos': '8/19'}
+guide_s0.003 {'BAS': 0.232, 'BAS_delta_other': 0.003, 'BAS_delta_other_p': 0.609, 'BAS_delta_other_pos': '9/19', 'BAS_delta_tempo': 0.003, 'BAS_delta_tempo_p': 0.451, 'BAS_delta_tempo_pos': '10/19', 'PLV': 0.162, 'PLV_delta_other': -0.008, 'PLV_delta_other_p': 0.344, 'PLV_delta_other_pos': '8/19', 'PLV_delta_tempo': -0.007, 'PLV_delta_tempo_p': 0.579, 'PLV_delta_tempo_pos': '9/19', 'BPS': 0.756, 'BPS_delta_other': -0.006, 'BPS_delta_other_p': 0.873, 'BPS_delta_other_pos': '12/19', 'BPS_delta_tempo': 0.011, 'BPS_delta_tempo_p': 0.628, 'BPS_delta_tempo_pos': '12/19'}
+placebo_s0.003 {'BAS': 0.233, 'BAS_delta_other': 0.002, 'BAS_delta_other_p': 0.767, 'BAS_delta_other_pos': '8/19', 'BAS_delta_tempo': 0.001, 'BAS_delta_tempo_p': 0.756, 'BAS_delta_tempo_pos': '9/19', 'PLV': 0.281, 'PLV_delta_other': 0.123, 'PLV_delta_other_p': 0.0, 'PLV_delta_other_pos': '19/19', 'PLV_delta_tempo': 0.081, 'PLV_delta_tempo_p': 0.0, 'PLV_delta_tempo_pos': '18/19', 'BPS': 0.76, 'BPS_delta_other': -0.004, 'BPS_delta_other_p': 0.902, 'BPS_delta_other_pos': '12/19', 'BPS_delta_tempo': 0.011, 'BPS_delta_tempo_p': 0.662, 'BPS_delta_tempo_pos': '12/19'}
+influence {
+ "guide_s0.003": {
+  "dist_to_released_same_seed_m": 0.012250714004039764,
+  "dist_between_seeds_m": 0.17984922230243683,
+  "ratio": 0.06811658293008804
+ },
+ "placebo_s0.003": {
+  "dist_to_released_same_seed_m": 0.01221073791384697,
+  "dist_between_seeds_m": 0.17984922230243683,
+  "ratio": 0.06789430230855942
+ }
+}
+released - real BAS delta_other {'diff': 0.0081, 'p': 0.0749, 'groups_real_higher': 7}
+released - real PLV delta_other {'diff': -0.0022, 'p': 0.8819, 'groups_real_higher': 11}
+released - real BPS delta_other {'diff': -0.0015, 'p': 0.9653, 'groups_real_higher': 8}
+released - real BAS delta_tempo {'diff': 0.0075, 'p': 0.1095, 'groups_real_higher': 8}
+released - real PLV delta_tempo {'diff': -0.0006, 'p': 0.9749, 'groups_real_higher': 8}
+released - real BPS delta_tempo {'diff': 0.0028, 'p': 0.8516, 'groups_real_higher': 11}
+guide_s0.003 - real BAS delta_other {'diff': 0.0112, 'p': 0.0853, 'groups_real_higher': 8}
+guide_s0.003 - real PLV delta_other {'diff': -0.0095, 'p': 0.5175, 'groups_real_higher': 13}
+guide_s0.003 - real BPS delta_other {'diff': 0.0068, 'p': 0.8741, 'groups_real_higher': 7}
+guide_s0.003 - real BAS delta_tempo {'diff': 0.0109, 'p': 0.0924, 'groups_real_higher': 8}
+guide_s0.003 - real PLV delta_tempo {'diff': -0.0073, 'p': 0.5574, 'groups_real_higher': 9}
+guide_s0.003 - real BPS delta_tempo {'diff': 0.0131, 'p': 0.3959, 'groups_real_higher': 7}
+guide_s0.003 - released BAS delta_other {'diff': 0.0031, 'p': 0.2495}
+guide_s0.003 - released PLV delta_other {'diff': -0.0073, 'p': 0.4788}
+guide_s0.003 - released BPS delta_other {'diff': 0.0083, 'p': 0.49}
+guide_s0.003 - released BAS delta_tempo {'diff': 0.0034, 'p': 0.1815}
+guide_s0.003 - released PLV delta_tempo {'diff': -0.0066, 'p': 0.726}
+guide_s0.003 - released BPS delta_tempo {'diff': 0.0103, 'p': 0.0785}
+placebo_s0.003 - real BAS delta_other {'diff': 0.0101, 'p': 0.1056, 'groups_real_higher': 7}
+placebo_s0.003 - real PLV delta_other {'diff': 0.1215, 'p': 0.0, 'groups_real_higher': 1}
+placebo_s0.003 - real BPS delta_other {'diff': 0.0085, 'p': 0.7868, 'groups_real_higher': 8}
+placebo_s0.003 - real BAS delta_tempo {'diff': 0.0089, 'p': 0.1271, 'groups_real_higher': 6}
+placebo_s0.003 - real PLV delta_tempo {'diff': 0.0807, 'p': 0.0009, 'groups_real_higher': 4}
+placebo_s0.003 - real BPS delta_tempo {'diff': 0.013, 'p': 0.4431, 'groups_real_higher': 7}
+placebo_s0.003 - released BAS delta_other {'diff': 0.002, 'p': 0.5158}
+placebo_s0.003 - released PLV delta_other {'diff': 0.1237, 'p': 0.0}
+placebo_s0.003 - released BPS delta_other {'diff': 0.01, 'p': 0.3715}
+placebo_s0.003 - released BAS delta_tempo {'diff': 0.0014, 'p': 0.642}
+placebo_s0.003 - released PLV delta_tempo {'diff': 0.0814, 'p': 0.0001}
+placebo_s0.003 - released BPS delta_tempo {'diff': 0.0102, 'p': 0.118}

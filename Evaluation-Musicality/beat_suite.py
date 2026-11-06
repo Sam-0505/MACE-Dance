@@ -252,14 +252,14 @@ def main():
         MOT_MODELS.clear()
         MOT_MODELS.update({'released': 'mace', **dict(x.split('=', 1) for x in a.mot_models)})
     group, beats, sets, nulls = {'finedance': load_finedance, 'motorica': load_motorica, 'aist': load_aist}[a.dataset]()
+    if a.beats_shift:
+        n, k = len(group), a.beats_shift
+        group, beats = [group[(i - k) % n] for i in range(n)], [beats[(i - k) % n] for i in range(n)]
     if a.tempo_null:
         # sub-frame tempo: slope of a line fit of beat frame vs beat index (a median interval is whole frames,
         # +-3 % at 120 BPM, which left FineDance's matched songs 5.5 % apart)
         bpm = np.array([60 * FPS / np.polyfit(np.arange(len(b)), b, 1)[0] if len(b) > 2 else np.nan for b in beats])
         nulls = {**nulls, 'tempo': ('tempo', bpm)}
-    if a.beats_shift:
-        n, k = len(group), a.beats_shift
-        group, beats = [group[(i - k) % n] for i in range(n)], [beats[(i - k) % n] for i in range(n)]
     print(a.dataset, len(group), 'clips,', len(set(group)), 'groups,', {k: len(v[0]) for k, v in sets.items()},
           'dances in first clip', flush=True)
     res, tests, ng = evaluate(group, beats, sets, nulls)
