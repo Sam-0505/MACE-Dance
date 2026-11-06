@@ -88,6 +88,17 @@ def signflip(x, rng):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--models', nargs='*', help='label=data_dir pairs to score instead of MODELS (released is kept); '
+                    'tests are then each model - released')
+    ap.add_argument('--tag', default='', help='suffix of the results file')
+    args = ap.parse_args()
+    out = OUT
+    if args.models:
+        MODELS.clear()
+        MODELS.update({'released': 'mace_test', **dict(x.split('=', 1) for x in args.models)})
+        out = OUT.replace('.json', f'{args.tag}.json')
     from model.metric import Metric
     rng = np.random.default_rng(0)
     names = json.load(open(os.path.join(HERE, 'data', 'mace_test', 'names.json')))['names']
@@ -118,11 +129,11 @@ def main():
         res[label].update({'div_k': a['Div_k']['mean'], 'div_g': a['Div_g']['mean']})
         print(label, {k: round(v, 3) for k, v in res[label].items()}, flush=True)
     res['tests'] = {}
-    for label in ('mask_2s', 'mask_4s', 'stitched'):
+    for label in [m for m in MODELS if m != 'released']:
         res['tests'][f'{label} - released'] = {
             k: {'diff': float((songwise[label][k] - songwise['released'][k]).mean()),
                 'p': signflip(songwise[label][k] - songwise['released'][k], rng)} for k in songwise[label]}
-    with open(OUT, 'w') as f:
+    with open(out, 'w') as f:
         json.dump(res, f, indent=1)
     keys = ['speed', 'freeze', 'travel', 'skate', 'contact', 'float', 'seed_div', 'div_k', 'div_g']
     print('\n' + f'{"":10s}' + ''.join(f'{k:>10s}' for k in keys))
