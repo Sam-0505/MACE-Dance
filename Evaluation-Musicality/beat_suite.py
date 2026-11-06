@@ -82,6 +82,9 @@ def load_motorica():
     slices = [tuple(meta['slices'][k]) for k in keep]
     assert [tuple(s) for s in z['slices'].tolist()] == slices
     group = [t for t, _ in slices]
+    from finedance_release_loud import music_groups
+    from motorica_common import wav_path
+    MUSIC.update(music_groups(sorted(set(group)), path=wav_path))  # null excludes other takes of the same music
     real, cache = [], {}
     for t, o in slices:
         if t not in cache:
@@ -134,8 +137,14 @@ def load_aist():
 
 
 # ---------------------------------------------------------------- scoring
+MUSIC = {}  # group -> music piece, where several groups share one recording (Motorica takes, set by load_motorica)
+
+
 def song_of(g):
-    """AIST groups are '<piece>_<kind>': the null must exclude the same piece in the other kind."""
+    """AIST groups are '<piece>_<kind>': the null must exclude the same piece in the other kind. Motorica: takes danced
+    to the same recording (finedance_release_loud.music_groups: 62 takes, 52 pieces) count as the same song."""
+    if g in MUSIC:
+        return MUSIC[g]
     return g.split('_')[0] if g.endswith(('_basic', '_adv')) else g
 
 
