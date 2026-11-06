@@ -12,3 +12,10 @@ MACE). Output: `data/motorica/<model>/joints.npy` (289, 3, 1020, 24, 3), SMPL jo
   `lodge_check_motorica.py` (sanity numbers).
 - `robust_variants.py`: lodge_seamfix, edge_despike.
 - Scoring: `Expert-Motion/run_baselines_motorica.sh` -> `results/beat_suite_motorica_baselines.json`.
+
+## FineDance test (2026-11-06)
+
+`edge_gen_finedance.py`, `lodge_gen_finedance.py`: the same pipelines on the 84 FineDance test slices
+(`data/finedance_test_wav/`, symlinks to Expert-Motion/data/test/wavs_sliced, 44.1 or 48 kHz), 10 seeds, Lodge genre =
+FineDance style2 label. Output `data/mace_test_{edge,lodge}/`. Scoring: `Expert-Motion/run_baselines_finedance.sh`
+(our music metrics); FID / Div / PFC / BAS for EDGE and Lodge are taken from the MACE paper, Table 2.
