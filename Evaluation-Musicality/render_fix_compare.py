@@ -77,7 +77,8 @@ EXAMPLES = {'loudness': ('012_slice3', loudness_example), 'perc': ('198_slice0',
 
 
 def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_label='MACE + ±2 s mask',
-           oneshot_label='MACE one-shot', suffix='real_oneshot_fixed'):
+           oneshot_label='MACE one-shot', suffix='real_oneshot_fixed', extra=()):
+    """extra: (dir, label) runs shown between the one-shot and the fixed panel (same seed)."""
     n, make = EXAMPLES[key]
     i = names.index(n)
     with open(os.path.join('data/test/motions_sliced', n + '.pkl'), 'rb') as f:
@@ -90,14 +91,22 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
     s_one = [ex['score'](j) for j in one]
     s_fix = [ex['score'](j) for j in fix]
     k = int(np.argsort(s_one)[len(s_one) // 2])  # the earlier video's sample
+    mids = []
+    for (d, lab), col in zip(extra, ('tab:purple', 'tab:brown', 'tab:pink')):
+        x = load(names, d, i)[:, :T]
+        sx = [ex['score'](j) for j in x]
+        mids.append((x[k], f'{lab} (seed {k})   {ex["metric"]} {sx[k]:+.2f}', col))
+        print(f'  {lab}: seed {k} {sx[k]:+.2f} (10 seeds median {np.median(sx):+.2f})', flush=True)
     s_gt = ex['score'](gt)
     met = ex['metric']
     panels_def = [(gt, f'Real dancer   {met} {s_gt:+.2f}', 'tab:blue'),
-                  (one[k], f'{oneshot_label} (seed {k})   {met} {s_one[k]:+.2f}', 'tab:orange'),
+                  (one[k], f'{oneshot_label} (seed {k})   {met} {s_one[k]:+.2f}', 'tab:orange'), *mids,
                   (fix[k], f'{fixed_label} (seed {k})   {met} {s_fix[k]:+.2f}', 'tab:green')]
+    npan = len(panels_def)
+    W = 480 * npan
 
-    fig = plt.figure(figsize=(14.4, 6.4), dpi=100)
-    gs = fig.add_gridspec(2, 3, height_ratios=[3, 1.3])
+    fig = plt.figure(figsize=(W / 100, 6.4), dpi=100)
+    gs = fig.add_gridspec(2, npan, height_ratios=[3, 1.3])
     panels = []
     for col, (joints, label, color) in enumerate(panels_def):
         ax = fig.add_subplot(gs[0, col])
@@ -121,7 +130,7 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
         strip.plot(t, ex['curve'](joints), color=color, lw=1.1, label=label.split('   ')[0])
     strip.set_xlim(0, T / M.FPS); strip.set_yticks([])
     strip.set_xlabel(ex['xlabel'])
-    strip.legend(loc='upper right', fontsize=7, ncol=4)
+    strip.legend(loc='upper right', fontsize=7, ncol=npan + 1)
     cursor = strip.axvline(0, color='red', lw=1.5)
     sup = fig.suptitle('')
     fig.tight_layout()
@@ -129,7 +138,7 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
     out = os.path.join(out_dir, f'{key}_{n}_{suffix}.mp4')
     wav = os.path.join('data/test/wavs_sliced', n + '.wav')
     proc = subprocess.Popen([ffmpeg, '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgba',
-                             '-s', '1440x640', '-r', str(M.FPS), '-i', '-', '-i', wav, '-c:v', 'libx264',
+                             '-s', f'{W}x640', '-r', str(M.FPS), '-i', '-', '-i', wav, '-c:v', 'libx264',
                              '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-shortest', out], stdin=subprocess.PIPE)
     for fr in range(T):
         for rel, h, up, sgn, lines in panels:
@@ -161,6 +170,8 @@ def main():
     ap.add_argument('--fixed_label', default='MACE + ±2 s mask')
     ap.add_argument('--oneshot_label', default='MACE one-shot')
     ap.add_argument('--suffix', default='real_oneshot_fixed')
+    ap.add_argument('--extra', nargs=2, action='append', default=[], metavar=('DIR', 'LABEL'),
+                    help='extra run panel between one-shot and fixed (repeatable)')
     a = ap.parse_args()
     with open(os.path.join(ONESHOT, 'names.json')) as f:
         names = json.load(f)['names']
@@ -169,7 +180,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     smpl = SMPLSkeleton(device)
     for key in a.examples:
-        render(key, names, smpl, device, a.ffmpeg, a.out_dir, a.fixed_dir, a.fixed_label, a.oneshot_label, a.suffix)
+        render(key, names, smpl, device, a.ffmpeg, a.out_dir, a.fixed_dir, a.fixed_label, a.oneshot_label, a.suffix, a.extra)
 
 
 if __name__ == '__main__':
