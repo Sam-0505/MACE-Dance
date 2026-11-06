@@ -1,0 +1,33 @@
+{
+ "finedance": {
+  "released": {
+   "FSR_pct": 16.46932394068592,
+   "left_pct": 17.24992606338624,
+   "right_pct": 15.688721817985613,
+   "n_clips": 252,
+   "clips_without_contact": 4
+  },
+  "mask_guide": {
+   "FSR_pct": 26.874702800064913,
+   "left_pct": 27.081362777884856,
+   "right_pct": 26.668042822244985,
+   "n_clips": 252,
+   "clips_without_contact": 4
+  },
+  "foot10": {
+   "FSR_pct": 15.440784538431945,
+   "left_pct": 15.956083609712893,
+   "right_pct": 14.925485467150997,
+   "n_clips": 252,
+   "clips_without_contact": 4
+  },
+  "foot30": {
+   "FSR_pct": 10.578793543904027,
+   "left_pct": 11.648037332853276,
+   "right_pct": 9.509549754954781,
+   "n_clips": 252,
+   "clips_without_contact": 4
+  }
+ },
+ "motorica": {}
+}

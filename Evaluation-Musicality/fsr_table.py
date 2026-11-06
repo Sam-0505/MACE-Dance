@@ -71,8 +71,20 @@ def samples(J, i, s_max):
 
 
 def main():
+    import argparse
     from motion_quality_extra import real_joints
     from motorica_common import body_joints
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--fd', nargs='*', help='label=dir (under data/) FineDance models to score instead of FD')
+    ap.add_argument('--mot', nargs='*', help='label=dir (under data/motorica) Motorica models instead of MOT')
+    ap.add_argument('--seeds', type=int, default=None, help='score only the first n samples per slice')
+    ap.add_argument('--tag', default='')
+    args = ap.parse_args()
+    global FD, MOT, OUT
+    if args.fd is not None or args.mot is not None:
+        FD = dict(x.split('=', 1) for x in (args.fd or []))
+        MOT = dict(x.split('=', 1) for x in (args.mot or []))
+    OUT = OUT.replace('.json', f'{args.tag}.json')
     out = {'finedance': {}, 'motorica': {}}
     names = json.load(open(os.path.join(HERE, 'data', 'mace_test', 'names.json')))['names']
     for lab, d in FD.items():
@@ -80,10 +92,13 @@ def main():
             rows = [fsr(j, SMPL_FEET, 2) for j in real_joints(names)]
         else:
             J = np.load(os.path.join(HERE, 'data', d, 'joints.npy'), mmap_mode='r')
-            rows = [fsr(j, SMPL_FEET, 2) for i in range(len(names)) for j in samples(J, i, J.shape[1])]
+            rows = [fsr(j, SMPL_FEET, 2) for i in range(len(names)) for j in samples(J, i, args.seeds or J.shape[1])]
         out['finedance'][lab] = summarize(rows)
         print('finedance', lab, out['finedance'][lab], flush=True)
 
+    if not MOT:
+        json.dump(out, open(OUT, 'w'), indent=1)
+        return
     mot = os.path.join(HERE, 'data', 'motorica')
     meta = json.load(open(os.path.join(mot, 'mace', 'slices.json')))
     keep = [k for k, (t, o) in enumerate(meta['slices']) if o % 1020 == 0]
@@ -98,7 +113,7 @@ def main():
         else:
             J = np.load(os.path.join(mot, d, 'joints.npy'), mmap_mode='r')
             rws = range(len(slices)) if J.shape[0] == len(slices) else keep
-            rows = [fsr(j, SMPL_FEET, 2) for r in rws for j in samples(J, r, 3)]
+            rows = [fsr(j, SMPL_FEET, 2) for r in rws for j in samples(J, r, args.seeds or 3)]
         out['motorica'][lab] = summarize(rows)
         print('motorica', lab, out['motorica'][lab], flush=True)
     json.dump(out, open(OUT, 'w'), indent=1)

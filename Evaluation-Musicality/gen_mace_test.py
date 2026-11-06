@@ -42,6 +42,9 @@ def main():
     ap.add_argument('--lock_guide_world', action='store_true', help='score world joints (default: root-relative)')
     ap.add_argument('--lock_guide_shift', type=int, default=0,
                     help='placebo: guide towards the beats of the clip this many places earlier (another song)')
+    ap.add_argument('--lock_foot', type=int, default=0,
+                    help='foot-contact correction steps after each guidance step (sample_guided foot_iters; 0 = off)')
+    ap.add_argument('--lock_foot_mu', type=float, default=0.1, help='fraction of the Polyak step per foot step')
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -65,7 +68,8 @@ def main():
     if args.lock_guide:
         import functools
         sample = functools.partial(sampler.sample_guided, scale=args.lock_guide, t_max=args.lock_guide_tmax,
-                                   root_relative=not args.lock_guide_world, guide_shift=args.lock_guide_shift)
+                                   root_relative=not args.lock_guide_world, guide_shift=args.lock_guide_shift,
+                                   foot_iters=args.lock_foot, foot_mu=args.lock_foot_mu)
     out = np.stack([sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
     np.save(os.path.join(args.out_dir, 'joints.npy'), out)
     with open(os.path.join(args.out_dir, 'names.json'), 'w') as f:
