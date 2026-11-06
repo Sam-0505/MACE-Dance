@@ -1,0 +1,104 @@
+{
+ "finedance": {
+  "real": {
+   "FSR_pct": 6.396410110027248,
+   "left_pct": 7.269635818885753,
+   "right_pct": 5.523184401168744,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "edge": {
+   "FSR_pct": 32.3001117219859,
+   "left_pct": 32.2475079431356,
+   "right_pct": 32.35271550083616,
+   "n_clips": 840,
+   "clips_without_contact": 64
+  },
+  "lodge": {
+   "FSR_pct": 3.1630603743793215,
+   "left_pct": 3.1400155885140486,
+   "right_pct": 3.1861051602445922,
+   "n_clips": 840,
+   "clips_without_contact": 27
+  },
+  "bailando": {
+   "FSR_pct": 20.784897086138365,
+   "left_pct": 20.31598348298589,
+   "right_pct": 21.25381068929084,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "mega": {
+   "FSR_pct": 10.137683905753576,
+   "left_pct": 10.727355011620295,
+   "right_pct": 9.548012799886854,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "released": {
+   "FSR_pct": 16.46472477967525,
+   "left_pct": 17.20987842610638,
+   "right_pct": 15.71957113324414,
+   "n_clips": 840,
+   "clips_without_contact": 19
+  },
+  "ours": {
+   "FSR_pct": 26.88598197658457,
+   "left_pct": 27.134924383805664,
+   "right_pct": 26.63703956936346,
+   "n_clips": 840,
+   "clips_without_contact": 10
+  }
+ },
+ "motorica": {
+  "real": {
+   "FSR_pct": 8.334825414784019,
+   "left_pct": 7.682197188605759,
+   "right_pct": 8.98745364096229,
+   "n_clips": 289,
+   "clips_without_contact": 1
+  },
+  "edge": {
+   "FSR_pct": 23.93492285695539,
+   "left_pct": 23.62084200328722,
+   "right_pct": 24.249003710623548,
+   "n_clips": 867,
+   "clips_without_contact": 75
+  },
+  "lodge": {
+   "FSR_pct": 1.520432910423618,
+   "left_pct": 1.7690541997371783,
+   "right_pct": 1.2718116211100556,
+   "n_clips": 867,
+   "clips_without_contact": 20
+  },
+  "bailando": {
+   "FSR_pct": 18.70231378910528,
+   "left_pct": 18.53373920875395,
+   "right_pct": 18.87088836945661,
+   "n_clips": 289,
+   "clips_without_contact": 1
+  },
+  "mega": {
+   "FSR_pct": 9.507193726944996,
+   "left_pct": 10.292221500777302,
+   "right_pct": 8.722165953112693,
+   "n_clips": 289,
+   "clips_without_contact": 1
+  },
+  "released": {
+   "FSR_pct": 10.737061667290494,
+   "left_pct": 11.38168972685493,
+   "right_pct": 10.092433607726072,
+   "n_clips": 867,
+   "clips_without_contact": 6
+  },
+  "ours": {
+   "FSR_pct": 21.279273352086662,
+   "left_pct": 21.136519104571626,
+   "right_pct": 21.422027599601705,
+   "n_clips": 867,
+   "clips_without_contact": 5
+  }
+ }
+}
