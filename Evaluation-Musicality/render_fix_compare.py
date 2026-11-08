@@ -239,7 +239,13 @@ def main():
     ap.add_argument('--suffix', default='real_oneshot_fixed')
     ap.add_argument('--extra', nargs=2, action='append', default=[], metavar=('DIR', 'LABEL'),
                     help='extra run panel between one-shot and fixed (repeatable)')
+    ap.add_argument('--slice', default=None,
+                    help='render this test slice instead of the example\'s default (one example only), e.g. '
+                         '--examples perc --slice 063_slice0')
     a = ap.parse_args()
+    if a.slice:
+        assert len(a.examples) == 1, '--slice needs exactly one --examples entry'
+        EXAMPLES[a.examples[0]] = (a.slice, EXAMPLES[a.examples[0]][1])
     with open(os.path.join(ONESHOT, 'names.json')) as f:
         names = json.load(f)['names']
     with open(os.path.join(a.fixed_dir, 'names.json')) as f:
