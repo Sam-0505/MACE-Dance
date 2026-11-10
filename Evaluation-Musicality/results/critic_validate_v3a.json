@@ -1,0 +1,25 @@
+{
+ "real": {
+  "delta_mean": 0.01767311990261078,
+  "p": 0.0884,
+  "songs_positive": "13/19",
+  "n_runs": 1
+ },
+ "released": {
+  "delta_mean": 0.005408343859016895,
+  "p": 0.03915,
+  "songs_positive": "14/19",
+  "n_runs": 10
+ },
+ "final": {
+  "delta_mean": 0.010779820382595062,
+  "p": 0.00295,
+  "songs_positive": "16/19",
+  "n_runs": 10
+ },
+ "retrieval_real": {
+  "top1": 0.5119047619047619,
+  "top5": 0.9047619047619048,
+  "chance_top1": 0.32544110981610974
+ }
+}

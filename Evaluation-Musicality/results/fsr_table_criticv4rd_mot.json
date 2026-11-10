@@ -1,0 +1,12 @@
+{
+ "finedance": {},
+ "motorica": {
+  "critic_v4_rd": {
+   "FSR_pct": 9.117471181037134,
+   "left_pct": 9.26042990178467,
+   "right_pct": 8.9745124602896,
+   "n_clips": 289,
+   "clips_without_contact": 1
+  }
+ }
+}

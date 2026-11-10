@@ -1,0 +1,12 @@
+{
+ "finedance": {
+  "gain": {
+   "FSR_pct": 13.36880527342332,
+   "left_pct": 14.316706324040243,
+   "right_pct": 12.420904222806406,
+   "n_clips": 840,
+   "clips_without_contact": 5
+  }
+ },
+ "motorica": {}
+}

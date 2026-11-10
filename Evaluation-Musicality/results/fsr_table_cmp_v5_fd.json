@@ -1,0 +1,54 @@
+{
+ "finedance": {
+  "mask_2s": {
+   "FSR_pct": 16.81528943538064,
+   "left_pct": 17.650511482194077,
+   "right_pct": 15.980067388567187,
+   "n_clips": 840,
+   "clips_without_contact": 7
+  },
+  "final": {
+   "FSR_pct": 13.116090150882531,
+   "left_pct": 13.948943734734334,
+   "right_pct": 12.283236567030738,
+   "n_clips": 840,
+   "clips_without_contact": 6
+  },
+  "critic_v5": {
+   "FSR_pct": 15.21511206147101,
+   "left_pct": 16.115472607372304,
+   "right_pct": 14.314751515569723,
+   "n_clips": 840,
+   "clips_without_contact": 5
+  },
+  "edge": {
+   "FSR_pct": 32.3001117219859,
+   "left_pct": 32.2475079431356,
+   "right_pct": 32.35271550083616,
+   "n_clips": 840,
+   "clips_without_contact": 64
+  },
+  "lodge": {
+   "FSR_pct": 3.1630603743793215,
+   "left_pct": 3.1400155885140486,
+   "right_pct": 3.1861051602445922,
+   "n_clips": 840,
+   "clips_without_contact": 27
+  },
+  "bailando": {
+   "FSR_pct": 20.784897086138365,
+   "left_pct": 20.31598348298589,
+   "right_pct": 21.25381068929084,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "lodge_guided": {
+   "FSR_pct": 3.6931094016103505,
+   "left_pct": 3.717834358884959,
+   "right_pct": 3.668384444335742,
+   "n_clips": 840,
+   "clips_without_contact": 27
+  }
+ },
+ "motorica": {}
+}

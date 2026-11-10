@@ -1,0 +1,19 @@
+{
+ "finedance": {
+  "final": {
+   "FSR_pct": 13.116090150882531,
+   "left_pct": 13.948943734734334,
+   "right_pct": 12.283236567030738,
+   "n_clips": 840,
+   "clips_without_contact": 6
+  },
+  "critic": {
+   "FSR_pct": 13.58938956342195,
+   "left_pct": 14.295716862432768,
+   "right_pct": 12.883062264411125,
+   "n_clips": 840,
+   "clips_without_contact": 7
+  }
+ },
+ "motorica": {}
+}

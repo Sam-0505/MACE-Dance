@@ -1,0 +1,20 @@
+{
+ "real": {
+  "pelvis_speed": 80.24961292590845,
+  "pelvis_jitter": 30.472803931267897,
+  "torso_speed": 80.91185264681114,
+  "torso_jitter": 30.34298250058831
+ },
+ "gain": {
+  "pelvis_speed": 56.80956043064443,
+  "pelvis_jitter": 13.978183809907506,
+  "torso_speed": 63.38301556186895,
+  "torso_jitter": 16.202962153392768
+ },
+ "released": {
+  "pelvis_speed": 58.01792909713359,
+  "pelvis_jitter": 13.400662221136878,
+  "torso_speed": 65.91111159261615,
+  "torso_jitter": 15.863337457758709
+ }
+}

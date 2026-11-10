@@ -1,0 +1,255 @@
+{
+ "slices": 289,
+ "pieces": [
+  "kthjazz_gCH_sFM_sngl_d01_007",
+  "kthjazz_gCH_sFM_sngl_d01_008",
+  "kthjazz_gCH_sFM_sngl_d01_009",
+  "kthjazz_gCH_sFM_sngl_d01_019",
+  "kthjazz_gCH_sFM_sngl_d02_006",
+  "kthjazz_gCH_sFM_sngl_d02_018",
+  "kthjazz_gJZ_sFM_sngl_d01_001",
+  "kthjazz_gJZ_sFM_sngl_d01_002",
+  "kthjazz_gJZ_sFM_sngl_d01_020",
+  "kthjazz_gJZ_sFM_sngl_d02_003",
+  "kthjazz_gJZ_sFM_sngl_d02_004",
+  "kthjazz_gTP_sFM_sngl_d01_010",
+  "kthjazz_gTP_sFM_sngl_d02_014",
+  "kthjazz_gTP_sFM_sngl_d02_016",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+ ],
+ "coupling": {
+  "real": {
+   "loud slow -> energy": {
+    "own": 0.18245705108793195,
+    "wrong": 0.03559751728558362,
+    "delta": 0.16015871950097404,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.19308487531992014,
+    "wrong": 0.02916719882615716,
+    "delta": 0.18054639610129847,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.18702568294324068,
+    "wrong": 0.02988167422975274,
+    "delta": 0.16858042218595148,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.2024326755836545,
+    "wrong": 0.02538278141438775,
+    "delta": 0.19456142915386243,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "gain": {
+   "loud slow -> energy": {
+    "own": 0.24200218783746608,
+    "wrong": 0.07211177236420031,
+    "delta": 0.16964743569801063,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.24775708108748548,
+    "wrong": 0.07423604258131856,
+    "delta": 0.18121534415666016,
+    "p": 0.0,
+    "pos": "44/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.2460679693409491,
+    "wrong": 0.07159958931857471,
+    "delta": 0.17492926118546576,
+    "p": 0.0,
+    "pos": "45/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.24938469652516335,
+    "wrong": 0.07348309853165234,
+    "delta": 0.18526428463932293,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  }
+ },
+ "motion": {
+  "real": {
+   "speed": 0.6626540434264789,
+   "accel": 7.6996042804672715,
+   "hf5": 0.025024659690560717,
+   "freeze": 0.08120371818237372,
+   "travel": 11.4344893510396,
+   "skate": 0.14965451392478427,
+   "contact": 0.29533804299505967,
+   "float": 0.027363216998038512,
+   "seed_div": NaN
+  },
+  "gain": {
+   "speed": 0.42980301654172154,
+   "accel": 6.433246777306729,
+   "hf5": 0.054014761733593576,
+   "freeze": 0.17477296946138948,
+   "travel": 8.470701284494101,
+   "skate": 0.20868090829735386,
+   "contact": 0.11842735219973934,
+   "float": 0.06951193704321755,
+   "seed_div": 0.11424607180402374
+  }
+ },
+ "fid": {
+  "real": {
+   "Div_k_mot": {
+    "mean": 10.263076400903499,
+    "sd": 0.0
+   }
+  },
+  "gain": {
+   "FID_k_mot": {
+    "mean": 81.05658085260063,
+    "sd": 0.28136169640703385
+   },
+   "Div_k_mot": {
+    "mean": 6.5781072283897215,
+    "sd": 0.025012114473210684
+   },
+   "FID_k_fd": {
+    "mean": 45.34002208349424,
+    "sd": 0.20928120805908326
+   },
+   "FID_g_fd": {
+    "mean": 32.52527763313425,
+    "sd": 0.033127774233282226
+   },
+   "Div_k": {
+    "mean": 9.31230351106946,
+    "sd": 0.0329173168147959
+   },
+   "Div_g": {
+    "mean": 7.096117128428168,
+    "sd": 0.02586114714108294
+   },
+   "PFC": {
+    "mean": 0.11675804265527513,
+    "sd": 0.0012147609189887038
+   }
+  }
+ },
+ "tests": {
+  "gain - real loud slow -> energy": {
+   "diff": 0.009488716197036593,
+   "p": 0.7448
+  },
+  "gain - real perc slow -> energy": {
+   "diff": 0.0006689480553617433,
+   "p": 0.9794
+  },
+  "gain - real loud slow -> energy (root-rel)": {
+   "diff": 0.0063488389995142985,
+   "p": 0.82385
+  },
+  "gain - real perc slow -> energy (root-rel)": {
+   "diff": -0.009297144514539508,
+   "p": 0.7308
+  },
+  "gain - real speed": {
+   "diff": -0.23285102688475734,
+   "p": 0.0
+  },
+  "gain - real accel": {
+   "diff": -1.266357503160544,
+   "p": 0.00725
+  },
+  "gain - real hf5": {
+   "diff": 0.028990102043032855,
+   "p": 0.0
+  },
+  "gain - real freeze": {
+   "diff": 0.09356925127901575,
+   "p": 0.00055
+  },
+  "gain - real travel": {
+   "diff": -2.9637880665454994,
+   "p": 0.0
+  },
+  "gain - real skate": {
+   "diff": 0.059026394372569596,
+   "p": 0.0
+  },
+  "gain - real contact": {
+   "diff": -0.17691069079532035,
+   "p": 0.0
+  },
+  "gain - real float": {
+   "diff": 0.042148720045179035,
+   "p": 0.0
+  }
+ },
+ "smpl_to_body": [
+  0,
+  3,
+  6,
+  12,
+  15,
+  13,
+  16,
+  18,
+  20,
+  14,
+  17,
+  19,
+  21,
+  1,
+  4,
+  7,
+  10,
+  2,
+  5,
+  8,
+  11
+ ],
+ "samples_per_slice": 3
+}

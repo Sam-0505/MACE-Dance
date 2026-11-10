@@ -1,0 +1,37 @@
+{
+ "real": {
+  "delta_mean": -0.0014520195545628667,
+  "p": 0.9442,
+  "songs_positive": "7/19",
+  "n_runs": 1
+ },
+ "released": {
+  "delta_mean": -0.012336976826190948,
+  "p": 0.1443,
+  "songs_positive": "9/19",
+  "n_runs": 10
+ },
+ "mask": {
+  "delta_mean": -0.010393653996288776,
+  "p": 0.22825,
+  "songs_positive": "10/19",
+  "n_runs": 10
+ },
+ "final": {
+  "delta_mean": -0.0027950326912105083,
+  "p": 0.84695,
+  "songs_positive": "12/19",
+  "n_runs": 10
+ },
+ "critic_v1": {
+  "delta_mean": 0.023223398253321648,
+  "p": 0.06555,
+  "songs_positive": "15/19",
+  "n_runs": 10
+ },
+ "retrieval_real": {
+  "top1": 0.3333333333333333,
+  "top5": 0.7976190476190477,
+  "chance_top1": 0.32544110981610974
+ }
+}

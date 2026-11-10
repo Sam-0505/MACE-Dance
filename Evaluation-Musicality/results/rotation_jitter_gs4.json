@@ -1,0 +1,32 @@
+{
+ "real": {
+  "pelvis_speed": 80.24961292590845,
+  "pelvis_jitter": 30.472803931267897,
+  "torso_speed": 80.91185264681114,
+  "torso_jitter": 30.34298250058831
+ },
+ "v5": {
+  "pelvis_speed": 56.6454249517284,
+  "pelvis_jitter": 14.18961979088742,
+  "torso_speed": 63.28660117466667,
+  "torso_jitter": 16.49782369547619
+ },
+ "A_gs4": {
+  "pelvis_speed": 56.657422955975754,
+  "pelvis_jitter": 14.13246564013413,
+  "torso_speed": 63.172841310158425,
+  "torso_jitter": 16.225268978444817
+ },
+ "B_gs4_t300": {
+  "pelvis_speed": 56.655890410170045,
+  "pelvis_jitter": 14.243418792416609,
+  "torso_speed": 63.17601116582665,
+  "torso_jitter": 16.337720738553486
+ },
+ "released": {
+  "pelvis_speed": 57.93931551058133,
+  "pelvis_jitter": 13.759475303865688,
+  "torso_speed": 65.56443620082429,
+  "torso_jitter": 16.096219033988124
+ }
+}
