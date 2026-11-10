@@ -77,7 +77,8 @@ def facing_direction(first_pose):
     return forward / np.linalg.norm(forward)
 
 
-def render_frames(verts, faces, forward, width=720, height=1280, body_fraction=0.62):
+def render_frames(verts, faces, forward, width=720, height=1280, body_fraction=0.62,
+                  body_color=(0.85, 0.62, 0.55, 1.0), bg_color=(0.78, 0.80, 0.82, 1.0)):
     """Render all frames from one fixed camera in front of the dancer.
 
     "Front" is the direction the root faces in frame 0; the camera is then held
@@ -87,12 +88,12 @@ def render_frames(verts, faces, forward, width=720, height=1280, body_fraction=0
     eye = center + np.array([forward[0], forward[1], 0.0]) * dist
     cam_pose = _look_at(eye, center, np.array([0.0, 0.0, 1.0]))
 
-    scene = pyrender.Scene(bg_color=[0.78, 0.80, 0.82, 1.0], ambient_light=[0.45, 0.45, 0.45])
+    scene = pyrender.Scene(bg_color=list(bg_color), ambient_light=[0.45, 0.45, 0.45])
     camera = pyrender.PerspectiveCamera(yfov=FOV_Y, aspectRatio=width / height)
     scene.add(camera, pose=cam_pose)
     scene.add(pyrender.DirectionalLight(color=np.ones(3), intensity=3.0), pose=cam_pose)
     material = pyrender.MetallicRoughnessMaterial(
-        metallicFactor=0.0, roughnessFactor=0.8, baseColorFactor=[0.85, 0.62, 0.55, 1.0]
+        metallicFactor=0.0, roughnessFactor=0.8, baseColorFactor=list(body_color)
     )
 
     renderer = pyrender.OffscreenRenderer(width, height)
