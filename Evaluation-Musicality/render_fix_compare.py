@@ -99,12 +99,33 @@ def beat_example(n, gt, one, fix):
                       'tempo-matched songs; clock: each accent’s place in its beat', 'window': 6.0}
 
 
+def lock_example(n, gt, one, fix):
+    """Continuous beat phase locking (2026-11-08, lock_models.py): score = Lock r of the clip, own beats, no chance
+    correction (QoM band-passed at the beat rate, 15 % width, Hilbert phase against the beat phase, 4 s trimmed at each end).
+    Curve = the band-passed QoM, dots = its peaks, clock = the peaks' place in their beat interval."""
+    from scipy.signal import argrelextrema
+    import lock_models as LM
+    from tmd_beat_phase import phases
+    names = json.load(open(os.path.join(ONESHOT, 'names.json')))['names']
+    A = np.flatnonzero(np.load(os.path.join('data/test/baseline_feats', n + '.npy'))[:, 34])
+    iv = LM.interval(A)
+    T = min(len(gt), one.shape[1])
+    assert T == LM.T, T
+    band = lambda j: LM.analytic_at(LM.motion_signals(np.asarray(j[:T]))['speed'], 1 / iv).real  # noqa: E731
+    return {'title': f'Beat phase locking: whole-body motion at the beat rate vs the beats ({60 * M.FPS / iv:.0f} BPM)',
+            'metric': 'Lock', 'score': lambda j: LM.lock_r(LM.motion_signals(np.asarray(j[:T]))['speed'], iv, A, 1.0, 120),
+            'curve': lambda j: zs(band(j)), 'accents': lambda j: argrelextrema(band(j), np.greater)[0],
+            'beats': A[A < T], 'phase': lambda m: phases(m, A), 'music': None, 'music_label': None, 'T': T, 'hot': None,
+            'xlabel': 'seconds · grey lines = beats, dots = peaks of whole-body motion at the beat rate · Lock = phase '
+                      'stability vs the beats (0.29 = noise, 1 = fixed offset) · clock: peak place in its beat', 'window': 6.0, 'seed_by_gap': True}
+
+
 EXAMPLES = {'loudness': ('012_slice3', loudness_example), 'perc': ('198_slice0', perc_example),
-            'beat': ('161_slice3', beat_example)}
+            'beat': ('161_slice3', beat_example), 'lock': ('161_slice2', lock_example)}
 
 
 def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_label='MACE + ±2 s mask',
-           oneshot_label='MACE one-shot', suffix='real_oneshot_fixed', extra=()):
+           oneshot_label='MACE one-shot', suffix='real_oneshot_fixed', extra=(), seed=None):
     """extra: (dir, label) runs shown between the one-shot and the fixed panel (same seed)."""
     n, make = EXAMPLES[key]
     i = names.index(n)
@@ -118,6 +139,13 @@ def render(key, names, smpl, device, ffmpeg, out_dir, fixed_dir=FIXED, fixed_lab
     s_one = [ex['score'](j) for j in one]
     s_fix = [ex['score'](j) for j in fix]
     k = int(np.argsort(s_one)[len(s_one) // 2])  # the earlier video's sample
+    if ex.get('seed_by_gap'):  # the seed whose (fixed - one-shot) gap is closest to the median gap of the 10 seeds
+        gap = np.array(s_fix) - np.array(s_one)
+        k = int(np.argmin(np.abs(gap - np.median(gap))))
+        print(f'  seed {k}: gap {gap[k]:+.3f} (median gap {np.median(gap):+.3f}, range {gap.min():+.3f}..{gap.max():+.3f})',
+              flush=True)
+    if seed is not None:  # forced seed, e.g. to match an earlier video of the same slice
+        k = seed
     mids = []
     for (d, lab), col in zip(extra, ('tab:purple', 'tab:brown', 'tab:pink')):
         x = load(names, d, i)[:, :T]
@@ -239,6 +267,7 @@ def main():
     ap.add_argument('--suffix', default='real_oneshot_fixed')
     ap.add_argument('--extra', nargs=2, action='append', default=[], metavar=('DIR', 'LABEL'),
                     help='extra run panel between one-shot and fixed (repeatable)')
+    ap.add_argument('--seed', type=int, default=None, help='show this seed instead of the median-score one')
     ap.add_argument('--slice', default=None,
                     help='render this test slice instead of the example\'s default (one example only), e.g. '
                          '--examples perc --slice 063_slice0')
@@ -253,7 +282,7 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     smpl = SMPLSkeleton(device)
     for key in a.examples:
-        render(key, names, smpl, device, a.ffmpeg, a.out_dir, a.fixed_dir, a.fixed_label, a.oneshot_label, a.suffix, a.extra)
+        render(key, names, smpl, device, a.ffmpeg, a.out_dir, a.fixed_dir, a.fixed_label, a.oneshot_label, a.suffix, a.extra, a.seed)
 
 
 if __name__ == '__main__':
