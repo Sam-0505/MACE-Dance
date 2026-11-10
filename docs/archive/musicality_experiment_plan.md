@@ -1,3 +1,7 @@
+> **Superseded (2026-11-10).** This is the original Loss V1 blueprint. The training-time losses it describes were tried and did not
+> transfer to sampled dances; the shipped method is training-free (±2 s cross-attention mask + critic v5 guidance + foot term + frozen
+> root rotation + motion-proportional gain). See `NEGATIVE_RESULTS.md` at the repository root for what was tried and where the code is.
+
 # Musicality-Aware Dance Generation: Experiment Plan
 
 **Status:** Experiment blueprint  

@@ -14,6 +14,14 @@ Everything runs in `Expert-Motion/.venv` on 3D joints at 30 fps.
 `*_max` versions take the best Pearson r over ±0.5 s of lag, and `*_lag` reports that lag (positive = motion follows music).
 Every score is also computed against **mismatched music** (from another song or choreography). A metric only says something about musicality if matched scores beat that chance level.
 
+## Current metric scripts
+
+Run from `Expert-Motion` with `.venv/bin/python` (the old Loud / beat-lock scripts were removed 2026-11-10; see `../NEGATIVE_RESULTS.md`).
+
+- `loud_models.py`, `loud_models_motorica.py`: Loud, Gaussian sigma 15 QoM vs audio RMS, zero lag, own − wrong songs.
+- `lock_models.py`, `lock_metric_table.py`: Lock, continuous beat phase locking after Burger 2014 (whole-body QoM, 15 % band-pass at the beat rate, Hilbert phase, 4 s trim), own-beat r.
+- They import `robustness_loud.py`, `multicomponent.py`, `finedance_release_loud.py`, `metrics.py` and `motorica_common.py` (signal, matching and statistics helpers), so those stay.
+
 ## Settings
 
 - **BAS** is the authors' code (`Expert-Motion/model/metric.py`) copied unchanged: loop over music beats, Gaussian smoothing 5, `exp(-d²/(2·9))` with d in frames. The only change is that `get_db` no longer hard-codes 24 joints.
