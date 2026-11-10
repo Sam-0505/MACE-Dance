@@ -16,7 +16,8 @@ from model.lora import add_lora
 
 
 def train(opt):
-    model = EDGE(opt.feature_type, checkpoint_path=opt.checkpoint, beat_phase_input=opt.beat_phase_input)
+    model = EDGE(opt.feature_type, checkpoint_path=opt.checkpoint, beat_phase_input=opt.beat_phase_input, arch=opt.arch,
+                 edge_seq_len=opt.edge_seq_len)
     if opt.checkpoint:
         ckpt = torch.load(opt.checkpoint, map_location=model.accelerator.device)
         if "optimizer_state_dict" in ckpt:
@@ -35,6 +36,10 @@ def train(opt):
         assert net is model.diffusion.model
         n = add_lora(net, opt.lora_rank, opt.lora_alpha)
         add_lora(model.diffusion.master_model, opt.lora_rank, opt.lora_alpha)
+        for m_ in (net, model.diffusion.master_model):  # add_lora froze everything; the new beat-phase block must train
+            if hasattr(m_, "phase_projection"):
+                for p_ in m_.phase_projection.parameters():
+                    p_.requires_grad_(True)
         model.optim = model.accelerator.prepare(
             Adan([p for p in net.parameters() if p.requires_grad], lr=opt.learning_rate or 1e-4, weight_decay=0.02))
         print(f"LoRA rank {opt.lora_rank}, alpha {opt.lora_alpha or opt.lora_rank}: {n:,} trainable parameters")

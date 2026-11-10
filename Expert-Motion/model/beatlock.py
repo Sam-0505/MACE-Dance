@@ -116,3 +116,35 @@ def windowed_locking(joints, beats, wide_sigma, win=240, n_null=3, null_beats=No
         tot = tot + torch.where(ok, r - null, torch.zeros_like(r))
         cnt = cnt + ok.float()
     return tot / cnt.clamp_min(1)
+
+
+def contrastive_locking(pred, cond, songs, normalizer, smpl, wide_sigma, joint_sigma=0, n_neg=7, tau=0.05, min_beats=4):
+    """Contrastive beat locking (2026-11-07): InfoNCE of own beats against the beats of other songs.
+
+    For each clip i of the batch, R_i0 = locking of the predicted x0 against the clip's own beats and R_ik, k = 1..n_neg,
+    its locking against the beats of other clips of the batch. The negatives are clips of OTHER songs (songs: one label
+    per clip) with the closest beat count (same length of clip, so closest tempo): a tempo score cannot tell them apart,
+    only the phase of the beat grid can. loss_i = -log softmax(R_i / tau)[0]. R is the offset-free locking (|resultant|
+    of the accents' beat phases), so a dancer's own offset is not penalised, and there is no hinge against real dance:
+    the term only asks that the dance fits its own song better than other songs.
+    Returns per-clip loss (B,), the clip's own R and mean negative R (B,), and keep (B,): clip has >= min_beats beats
+    and at least one valid negative. Clips with fewer valid negatives than n_neg mask the missing ones (-inf logit)."""
+    beats = cond[:, :, BEAT_COL]
+    joints = lowpass_joints(pose_to_joints(pred, normalizer, smpl), joint_sigma)
+    v = speed(joints)
+    r_own, n_own = locking(v, beats, wide_sigma)
+    nb = (beats > 0.5).sum(1).float()
+    b = beats.shape[0]
+    same = torch.as_tensor(songs, device=beats.device).view(-1, 1) == torch.as_tensor(songs, device=beats.device).view(1, -1)
+    bad = same | (nb < min_beats).view(1, -1)
+    dist = (nb.view(-1, 1) - nb.view(1, -1)).abs() + 1e6 * bad.float()
+    k = min(n_neg, b - 1)
+    d_k, idx = dist.topk(k, dim=1, largest=False)
+    valid = d_k < 1e5
+    r_neg = torch.stack([locking(v, beats[idx[:, j]], wide_sigma)[0] for j in range(k)], 1)
+    logits = torch.cat([r_own.unsqueeze(1), r_neg], 1) / tau
+    logits = torch.cat([logits[:, :1], logits[:, 1:].masked_fill(~valid, float('-inf'))], 1)
+    loss = -torch.log_softmax(logits, 1)[:, 0]
+    keep = (n_own >= min_beats) & valid.any(1) & loss.isfinite()
+    r_neg_mean = (r_neg * valid).sum(1) / valid.sum(1).clamp_min(1)
+    return loss, r_own, r_neg_mean, keep

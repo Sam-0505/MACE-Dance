@@ -17,7 +17,7 @@ from tqdm import tqdm
 from dataset.quaternion import ax_from_6v, quat_slerp
 from vis import skeleton_render
 
-from .beatlock import locking_terms
+from .beatlock import contrastive_locking, locking_terms
 from .musicality import musicality_terms, silent
 from .utils import extract, make_beta_schedule
 
@@ -152,6 +152,13 @@ class GaussianDiffusion(nn.Module):
         self.lock_t_min = 0  # pilot 2: only steps where the timing must come from the music, not the noisy input
         self.lock_joint_sigma = 0  # pilot 2: low-pass the joints (frames) so jitter cannot raise the score
         self.lock_min_beats = 4
+        # contrastive beat locking (model/beatlock.py:contrastive_locking); set by EDGE.train_loop
+        self.con_on = False
+        self.lambda_con = 0.0
+        self.con_n_neg = 7
+        self.con_tau = 0.05
+        self.con_t_min = 0
+        self.con_t_max = 500  # locking in x0 only rises at low-to-mid noise (pilots 1 and 2)
         self.lock_batch = False  # hinge on the batch means instead of per clip (D_real of one 8 s clip is noisy)
 
     # ------------------------------------------ sampling ------------------------------------------#
@@ -358,7 +365,7 @@ class GaussianDiffusion(nn.Module):
 
         return sample
 
-    def p_losses(self, x_start, cond, genre, t, music=None):
+    def p_losses(self, x_start, cond, genre, t, music=None, songs=None):
         noise = torch.randn_like(x_start)
         x_noisy = self.q_sample(x_start=x_start, t=t, noise=noise)
 
@@ -463,18 +470,33 @@ class GaussianDiffusion(nn.Module):
             dyn.update({"lock_loss": lock_loss.detach(), "lock_kept": keep.float().mean(),
                         "lock_pred": d_pred[keep].detach().mean() if keep.any() else d_pred.sum().detach() * 0,
                         "lock_real": d_real[keep].mean() if keep.any() else d_real.sum() * 0})
+
+        # contrastive beat locking: own song's beats against other songs' beats, on the predicted x0
+        if self.con_on:
+            with torch.set_grad_enabled(torch.is_grad_enabled() and self.lambda_con > 0):
+                c_loss, r_own, r_neg, c_ok = contrastive_locking(x_recon, cond, songs, self.normalizer, self.smpl,
+                                                                 self.lock_wide, self.lock_joint_sigma, self.con_n_neg,
+                                                                 self.con_tau)
+            keep = c_ok & (t < self.con_t_max) & (t >= self.con_t_min)
+            con_loss = c_loss[keep].mean() if keep.any() else c_loss.sum() * 0
+            if self.lambda_con > 0:
+                total = total + self.lambda_con * con_loss
+            z = r_own.sum().detach() * 0
+            dyn.update({"con_loss": con_loss.detach(), "con_kept": keep.float().mean(),
+                        "con_own": r_own[keep].detach().mean() if keep.any() else z,
+                        "con_neg": r_neg[keep].detach().mean() if keep.any() else z})
         return total, losses, dyn
 
-    def loss(self, x, cond, genre, t_override=None, music=None):
+    def loss(self, x, cond, genre, t_override=None, music=None, songs=None):
         batch_size = len(x)
         if t_override is None:
             t = torch.randint(0, self.n_timestep, (batch_size,), device=x.device).long()
         else:
             t = torch.full((batch_size,), t_override, device=x.device).long()
-        return self.p_losses(x, cond, genre, t, music=music)
+        return self.p_losses(x, cond, genre, t, music=music, songs=songs)
 
-    def forward(self, x, cond, genre, t_override=None, music=None):
-        return self.loss(x, cond, genre, t_override, music=music)
+    def forward(self, x, cond, genre, t_override=None, music=None, songs=None):
+        return self.loss(x, cond, genre, t_override, music=music, songs=songs)
 
     def partial_denoise(self, x, cond, t):
         x_noisy = self.noise_to_t(x, t)

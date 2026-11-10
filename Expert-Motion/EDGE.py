@@ -20,6 +20,7 @@ from dataset.preprocess import increment_path
 from model.adan import Adan
 from model.diffusion import GaussianDiffusion
 from model.model import DanceDecoder
+from model.edge_model import EDGEDecoder
 from vis import SMPLSkeleton
 from einops import rearrange
 import numpy as np
@@ -43,6 +44,8 @@ class EDGE:
         learning_rate=4e-4,
         weight_decay=0.02,
         beat_phase_input=False,
+        arch="mace",
+        edge_seq_len=240,
     ):
 
         ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
@@ -61,6 +64,13 @@ class EDGE:
         horizon_seconds = 40
         FPS = 30
         self.horizon = horizon = horizon_seconds * FPS
+        if checkpoint_path != "":  # the architecture is read from the checkpoint: the original EDGE denoiser has a "net." prefix
+            _keys = torch.load(checkpoint_path, map_location="cpu")["model_state_dict"]
+            if any(k.startswith("net.") for k in _keys):
+                arch, edge_seq_len = "edge", _keys["net.null_cond_embed"].shape[1]
+        self.arch = arch
+        if arch == "edge":
+            self.horizon = horizon = edge_seq_len
 
         self.accelerator.wait_for_everyone()
 
@@ -72,18 +82,21 @@ class EDGE:
             beat_phase_input = beat_phase_input or "phase_projection.weight" in checkpoint["model_state_dict"]
         self.beat_phase_input = beat_phase_input
 
-        model = DanceDecoder(
-            nfeats=repr_dim,
-            seq_len=horizon,
-            latent_dim=512,
-            ff_size=1024,
-            num_layers=4,
-            num_heads=8,
-            dropout=0.1,
-            cond_feature_dim=feature_dim,
-            activation=F.gelu,
-            beat_phase_input=beat_phase_input,
-        )
+        if arch == "edge":
+            model = EDGEDecoder(nfeats=repr_dim, seq_len=horizon, cond_feature_dim=feature_dim)
+        else:
+            model = DanceDecoder(
+                nfeats=repr_dim,
+                seq_len=horizon,
+                latent_dim=512,
+                ff_size=1024,
+                num_layers=4,
+                num_heads=8,
+                dropout=0.1,
+                cond_feature_dim=feature_dim,
+                activation=F.gelu,
+                beat_phase_input=beat_phase_input,
+            )
 
         smpl = SMPLSkeleton(self.accelerator.device)
         diffusion = GaussianDiffusion(
@@ -173,6 +186,20 @@ class EDGE:
                   f"t < {opt.dyn_t_max}, beta >= {opt.dyn_beta_min}, joint low-pass {opt.dyn_energy_sigma}, "
                   f"{'max(0, r_real - r_pred)' if opt.dyn_hinge else '1 - r_pred'}")
 
+        # contrastive beat locking (model/beatlock.py): uses the beat column of the conditioning and the song of each slice
+        if opt.lambda_con > 0 or opt.con_log:
+            self.diffusion.normalizer = self.normalizer
+            self.diffusion.con_on = True
+            self.diffusion.lambda_con = opt.lambda_con
+            self.diffusion.con_n_neg = opt.con_n_neg
+            self.diffusion.con_tau = opt.con_tau
+            self.diffusion.con_t_min = opt.con_t_min
+            self.diffusion.con_t_max = opt.con_t_max
+            self.diffusion.lock_wide = opt.lock_wide
+            self.diffusion.lock_joint_sigma = opt.lock_joint_sigma
+            print(f"contrastive locking: lambda {opt.lambda_con}, {opt.con_n_neg} tempo-matched other-song negatives, "
+                  f"tau {opt.con_tau}, {opt.con_t_min} <= t < {opt.con_t_max}, wide {opt.lock_wide}, "
+                  f"joint low-pass {opt.lock_joint_sigma}")
         # beat-locking loss (model/beatlock.py): uses the beat column of the conditioning, no extra data
         if opt.lambda_lock > 0 or opt.lock_log:
             self.diffusion.normalizer = self.normalizer
@@ -207,7 +234,7 @@ class EDGE:
         # boot up multi-gpu training. test dataloader is only on main process
         load_loop = (partial(tqdm, position=1, desc="Batch") if self.accelerator.is_main_process else lambda x: x)
         if self.accelerator.is_main_process:
-            save_dir = str(increment_path(Path(opt.project) / opt.exp_name))
+            save_dir = str(increment_path(Path(opt.project) / opt.exp_name, exist_ok=opt.start_epoch > 1))
             opt.exp_name = save_dir.split("/")[-1]
             wandb.init(project=opt.wandb_pj_name, name=opt.exp_name)
             save_dir = Path(save_dir)
@@ -216,11 +243,13 @@ class EDGE:
 
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         gt_dir = './data/test'
-        print('Build metric')
-        metric = Metric(gt_dir, device)
+        metric = None
+        if not opt.skip_sample:
+            print('Build metric')
+            metric = Metric(gt_dir, device)
 
         self.accelerator.wait_for_everyone()
-        for epoch in range(1, opt.epochs + 1):
+        for epoch in range(opt.start_epoch, opt.epochs + 1):
             avg_loss = 0
             avg_vloss = 0
             avg_fkloss = 0
@@ -233,8 +262,12 @@ class EDGE:
                 if music_of is not None:
                     music = torch.stack([music_of[os.path.splitext(os.path.basename(w))[0]] for w in wavnames])
                     music = music.to(x.device)
+                songs = None
+                if self.diffusion.con_on:  # song of each slice: ".../<song>_slice<k>.npy"
+                    ids = {}
+                    songs = [ids.setdefault(os.path.basename(f).split("_")[0], len(ids)) for f in filename]
                 total_loss, (loss, v_loss, fk_loss, foot_loss), dyn = self.diffusion(x, cond, genre, t_override=None,
-                                                                                     music=music)
+                                                                                     music=music, songs=songs)
                 self.optim.zero_grad()
                 self.accelerator.backward(total_loss)
                 self.optim.step()
@@ -277,7 +310,8 @@ class EDGE:
                     torch.save(ckpt, os.path.join(wdir, f"train-{epoch}.pt"))
                     print(f"[MODEL SAVED at Epoch {epoch}]")
 
-                    # 后面要把下面接触注解
+                    if opt.skip_sample:
+                        continue
                     print("Generating Sample")
                     # draw a music from the test dataset
                     (x, cond, filename, wavnames, genre) = next(iter(test_data_loader))

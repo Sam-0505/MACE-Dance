@@ -10,7 +10,10 @@ from torch.nn import functional as F
 from model.utils import SinusoidalPosEmb
 from model.beatlock import BEAT_COL, beat_phase
 from model.rotary_embedding_torch import RotaryEmbedding
-from mamba_ssm import Mamba
+try:
+    from mamba_ssm import Mamba
+except ImportError:  # --arch edge does not use Mamba
+    Mamba = None
 
 
 class DenseFiLM(nn.Module):
