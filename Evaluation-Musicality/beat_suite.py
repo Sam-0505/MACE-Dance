@@ -35,6 +35,7 @@ from tmd_beat_phase import phases, plv  # noqa: E402
 
 N_NULL = 12
 HARM = (1, 2, 0.5, 4, 0.25, 3, 1 / 3)
+ROOT_REL = False  # --root_relative
 FD_MODELS = {'released': 'mace_test', 'mask_2s': 'mace_test_local2s', 'nobeat': 'mace_test_nobeat',
              'norhythm': 'mace_test_norhythm', 'beta1': 'mace_test_beta1', 'beta05': 'mace_test_beta05',
              'mask_2s_beta1': 'mace_test_local2s_beta1'}
@@ -176,7 +177,7 @@ def evaluate(group, beats, sets, nulls, pairs=()):
         own = np.full((len(clips), 3), np.nan)
         delta = {nm: np.full((len(clips), 3), np.nan) for nm in nidx}
         for i, js in enumerate(clips):
-            vs = [velocity(j, '3d') for j in js]
+            vs = [velocity(j - j[:, :1] if ROOT_REL else j, '3d') for j in js]
             o = np.nanmean([scores(v, beats[i]) for v in vs], 0)
             own[i] = o
             for nm, cand in nidx.items():
@@ -252,7 +253,12 @@ def main():
                     '(BPM from a line fit of the beat input times), next to the random one')
     ap.add_argument('--pairs', nargs='*', default=[],
                     help='extra paired per-song tests label=reference_label (e.g. lodge_guided=lodge)')
+    ap.add_argument('--root_relative', action='store_true',
+                    help='robustness check (2026-11-08): accents from root-relative joint speed, so root translation '
+                    'cannot create them (default: world joints, as reported)')
     a = ap.parse_args()
+    global ROOT_REL
+    ROOT_REL = a.root_relative
     if a.fd_models:
         FD_MODELS.clear()
         FD_MODELS.update({'released': 'mace_test', **dict(x.split('=', 1) for x in a.fd_models)})

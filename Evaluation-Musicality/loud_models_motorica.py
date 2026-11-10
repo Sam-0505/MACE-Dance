@@ -37,12 +37,21 @@ MODELS = {
     'MACE mask2s': 'mace_local2s',
     'Ours final': 'mace_local2s_guide_s0.003_foot10_frz',
     'Ours critic v5': 'mace_local2s_criticv5_s0.003_foot10_frz',
+    'Ours critic v5 + gain': 'mace_local2s_criticv5_s0.003_foot10_frz_gain',
+    'Ours mask + guidance': 'mace_local2s_guide_s0.003',
+    'Ours + foot term': 'mace_local2s_guide_s0.003_foot10',
     'EDGE': 'edge',
     'Lodge': 'lodge',
     'Bailando': 'bailando',
     'MEGADance': 'mega',
 }
-OUT = os.path.join(HERE, 'results', f'loud_models_motorica_{N_SEEDS}seed.json')
+TAG = ''
+if '--gain_only' in sys.argv:
+    # 2026-11-08: other models + only Ours = critic v5 + mask + motion gain (generate with gen_mace_motorica.py --gain_ref 0.49)
+    MODELS = {k: v for k, v in MODELS.items() if not k.startswith(('Ours', 'MACE mask'))}
+    MODELS['Ours (critic v5 + mask + gain)'] = 'mace_local2s_criticv5_s0.003_foot10_frz_gain'
+    TAG = '_gain'
+OUT = os.path.join(HERE, 'results', f'loud_models_motorica_{N_SEEDS}seed{TAG}.json')
 
 
 def main():
