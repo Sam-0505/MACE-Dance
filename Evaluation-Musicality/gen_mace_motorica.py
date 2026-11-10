@@ -39,6 +39,10 @@ def main():
     ap.add_argument('--lock_foot', type=int, default=0, help='foot-contact correction steps (sample_guided foot_iters)')
     ap.add_argument('--lock_foot_mu', type=float, default=0.1)
     ap.add_argument('--lock_freeze_root', action='store_true')
+    ap.add_argument('--grad_smooth', type=float, default=0.0, help='Gaussian sigma (frames) low-pass of the guidance gradient in time (0 = off)')
+    ap.add_argument('--gain_ref', type=float, default=0.0, help='motion-proportional guidance gain: reference speed m/s (0 = off; 0.49 = real FineDance median)')
+    ap.add_argument('--critic_guide', action='store_true', help='guide with the frozen critic (critic.py)')
+    ap.add_argument('--critic_ckpt', default=None)
     args = ap.parse_args()
     name = args.out_name or ('mace' if not args.local_attn else f'mace_local{args.local_attn:g}s')
     if args.lock_guide and not args.out_name:
@@ -61,6 +65,10 @@ def main():
     print(len(slices), 'slices')
 
     sampler = MaceSampler()
+    critic = None
+    if args.critic_guide:
+        from critic import load_critic
+        critic = load_critic(path=args.critic_ckpt)
     if args.local_attn:
         from length_curve import local_cross_attention
         local_cross_attention(sampler.model.diffusion.model, round(args.local_attn * 30))
@@ -72,7 +80,8 @@ def main():
                     feats[b:b + BATCH], styles[b:b + BATCH], seed=s * 1000 + b, scale=args.lock_guide,
                     t_max=args.lock_guide_tmax, groups=[t for t, _ in slices[b:b + BATCH]],
                     foot_iters=args.lock_foot, foot_mu=args.lock_foot_mu,
-                    freeze_root_rot=args.lock_freeze_root)
+                    freeze_root_rot=args.lock_freeze_root, critic=critic, grad_smooth=args.grad_smooth, gain_ref=args.gain_ref,
+                    critic_groups=[t for t, _ in slices[b:b + BATCH]])
             else:
                 out[b:b + BATCH, s] = sampler.sample(feats[b:b + BATCH], styles[b:b + BATCH], seed=s * 1000 + b)
         print('seed', s, 'done')

@@ -11,6 +11,7 @@ Beat-input tests (2026-11-04): --zero_cols 34 removes the beat one-hot, --zero_c
 onset peaks and beats; --beta sets the GFT guidance mix at inference (released 0.75; trained on U(0, 1)).
 Same seeds as the released run, so differences are paired.
 Beat-locking guidance (2026-11-05): --lock_guide <scale> [--lock_guide_tmax 600] [--lock_guide_shift 10 (placebo)].
+Critic guidance (2026-11-07): add --critic_guide to --lock_guide <scale> (score = frozen critic.py critic, not the locking formula).
 
 Writes Evaluation-Musicality/data/mace_test/joints.npy (clips, seeds, T, 24, 3) float16 + names.json.
 """
@@ -24,6 +25,7 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from mace_sampler import MaceSampler
+from critic import load_critic
 
 
 def main():
@@ -46,6 +48,11 @@ def main():
                     help='foot-contact correction steps after each guidance step (sample_guided foot_iters; 0 = off)')
     ap.add_argument('--lock_foot_mu', type=float, default=0.1, help='fraction of the Polyak step per foot step')
     ap.add_argument('--lock_freeze_root', action='store_true', help='no guidance on the root rotation (sample_guided)')
+    ap.add_argument('--grad_smooth', type=float, default=0.0, help='Gaussian sigma (frames) low-pass of the guidance gradient in time (0 = off)')
+    ap.add_argument('--gain_ref', type=float, default=0.0, help='motion-proportional guidance gain: reference speed m/s (0 = off; 0.49 = real FineDance median)')
+    ap.add_argument('--critic_guide', action='store_true',
+                    help='guide with the frozen music-motion critic (critic.py) instead of the beat-locking score')
+    ap.add_argument('--critic_ckpt', default=None, help='critic checkpoint for --critic_guide (default data/critic/critic_v5.pt)')
     args = ap.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)
 
@@ -71,7 +78,9 @@ def main():
         sample = functools.partial(sampler.sample_guided, scale=args.lock_guide, t_max=args.lock_guide_tmax,
                                    root_relative=not args.lock_guide_world, guide_shift=args.lock_guide_shift,
                                    foot_iters=args.lock_foot, foot_mu=args.lock_foot_mu,
-                                   freeze_root_rot=args.lock_freeze_root)
+                                   freeze_root_rot=args.lock_freeze_root, grad_smooth=args.grad_smooth, gain_ref=args.gain_ref,
+                                   critic=load_critic(path=args.critic_ckpt) if args.critic_guide else None,
+                                   critic_groups=[n.split('_')[0] for n in names])
     out = np.stack([sample(feats, genres, seed=s).astype(np.float16) for s in range(args.seeds)], axis=1)
     np.save(os.path.join(args.out_dir, 'joints.npy'), out)
     with open(os.path.join(args.out_dir, 'names.json'), 'w') as f:

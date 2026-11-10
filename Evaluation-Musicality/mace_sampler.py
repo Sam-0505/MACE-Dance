@@ -49,9 +49,16 @@ class MaceSampler:
         d = self.model.diffusion
         times = list(reversed(torch.linspace(-1, d.n_timestep - 1, steps=51).int().tolist()))
         x = torch.randn((b * n, window, self.model.repr_dim), device=self.device)
-        for time, time_next in zip(times[:-1], times[1:]):
+        # original-EDGE denoiser (--arch edge): EDGE's long_ddim_sample ramps the guidance weight 0 -> 2w, capped at w
+        w_final = getattr(d.model, 'guidance_weight', None)
+        ramp = None if w_final is None else np.clip(np.linspace(0, 2 * w_final, len(times) - 1), None, w_final)
+        for step, (time, time_next) in enumerate(zip(times[:-1], times[1:])):
             tc = torch.full((b * n,), time, device=self.device, dtype=torch.long)
+            if ramp is not None:
+                d.model.guidance_weight = float(ramp[step])
             pred_noise, x_start = d.model_predictions(x, cond, genre, tc, clip_x_start=d.clip_denoised)
+            if ramp is not None:
+                d.model.guidance_weight = w_final
             if time_next < 0:
                 x = x_start
                 continue
@@ -73,7 +80,7 @@ class MaceSampler:
 
     def sample_guided(self, feats, genres, seed, scale, t_max=600, joint_sigma=2, wide=10, root_relative=True,
                       guide_shift=0, groups=None, n_null=3, foot_iters=0, foot_mu=0.1, contact_thresh=0.95,
-                      freeze_root_rot=False):
+                      freeze_root_rot=False, critic=None, critic_groups=None, grad_smooth=0.0, gain_ref=0.0):
         """DDIM sampling as diffusion.ddim_sample (same noise for the same seed; scale 0 gives identical samples),
         with beat-locking guidance (2026-11-05): at steps with t <= t_max the model's x0 prediction is moved along
         the gradient of the chance-corrected, windowed locking score (model.beatlock.windowed_locking, on joints
@@ -100,7 +107,16 @@ class MaceSampler:
         freeze_root_rot (option, 2026-11-06; False = as before): zero the locking gradient on the root's global
         rotation (6D channels 7:13) before normalising. Without it 69 % of the step's energy went to those 6 of 151
         channels: guidance made accents by twitching the whole skeleton about the pelvis (visible as a rotation
-        jitter), the cheapest way to move every joint at once. Frozen, accents must come from the joints."""
+        jitter), the cheapest way to move every joint at once. Frozen, accents must come from the joints.
+        grad_smooth (option, 2026-11-08; 0 = off, identical to before): Gaussian low-pass (sigma in frames) of the guidance
+        gradient along time, before the RMS normalisation, so the step changes the pose only slowly (accent scale) and cannot
+        add frame-to-frame twitching (critic v5 guidance gave jitter about the hip and other joints).
+        gain_ref (option, 2026-11-08; 0 = off, identical to before): motion-proportional guidance gain. The step is
+        multiplied per frame by w(t) = min(1, v(t) / gain_ref), v = the x0 prediction's own root-relative mean joint speed
+        (m/s, Gaussian-smoothed sigma 8 frames, no gradient). The critic is RMS-normalised per window and the step is
+        RMS-normalised per sample, so the push had the same size (about 0.5 cm/s) however still the model wanted the
+        body to be (quiet music + mask) and showed up as foot/ankle twitching on a still body. Real FineDance median
+        v = 0.49 m/s (use gain_ref 0.49): frames moving less than that get a proportionally smaller push."""
         from model.beatlock import BEAT_COL, windowed_locking
         from model.musicality import lowpass_joints, pose_to_joints
         cond = torch.as_tensor(np.asarray(feats), dtype=torch.float32, device=self.device)
@@ -115,6 +131,23 @@ class MaceSampler:
             rng = np.random.default_rng(0)
             idx = np.stack([rng.choice(np.flatnonzero(g != g[i]), n_null, replace=False) for i in range(len(g))])
             null_beats = [beats[torch.as_tensor(idx[:, k], device=self.device)] for k in range(n_null)]
+        c_feats = c_null = None
+        if critic is not None:
+            # critic guidance (2026-11-07, critic.py): the locking score is replaced by a frozen music-motion critic
+            # trained on real dance (no beat-locking formula in the guidance). Own music = the clip's (guide_shift: another
+            # clip's, the placebo); null = music of the 3 other-song clips with the closest beat count (tempo-matched).
+            from critic import windowed_critic
+            c_feats = cond[:, :, :]
+            if guide_shift:
+                c_feats = c_feats.roll(guide_shift, 0)
+            nbt = (c_feats[:, :, BEAT_COL] > 0.5).sum(1).float()
+            g = np.asarray(critic_groups) if critic_groups is not None else np.arange(cond.shape[0])
+            if guide_shift:
+                g = np.roll(g, guide_shift)
+            other = torch.as_tensor(g.reshape(-1, 1) != g.reshape(1, -1), device=self.device)
+            dist = (nbt.view(-1, 1) - nbt.view(1, -1)).abs() + 1e6 * (~other).float()
+            idx = dist.topk(n_null, dim=1, largest=False).indices
+            c_null = [c_feats[idx[:, k]] for k in range(n_null)]
         torch.manual_seed(seed)
         times = list(reversed(torch.linspace(-1, d.n_timestep - 1, steps=51).int().tolist()))
         b = cond.shape[0]
@@ -128,14 +161,22 @@ class MaceSampler:
                 with torch.enable_grad():
                     x0 = x_start.detach().requires_grad_(True)
                     jw = pose_to_joints(x0, self.model.normalizer, d.smpl)
-                    j = jw - jw[:, :, :1] if root_relative else jw
-                    j = lowpass_joints(j, joint_sigma)
-                    score = windowed_locking(j, beats, wide, null_beats=null_beats)
+                    if critic is not None:
+                        score = windowed_critic(critic, jw, c_feats, c_null)
+                    else:
+                        j = jw - jw[:, :, :1] if root_relative else jw
+                        j = lowpass_joints(j, joint_sigma)
+                        score = windowed_locking(j, beats, wide, null_beats=null_beats)
                     g, = torch.autograd.grad(score.sum(), x0)
                 if freeze_root_rot:
                     g[:, :, 7:13] = 0
+                if grad_smooth > 0:
+                    g = self.smooth_time(g, grad_smooth)
                 g = g / g.pow(2).mean((1, 2), keepdim=True).sqrt().clamp_min(1e-12)
-                x_start = x_start + scale * g
+                if gain_ref > 0:
+                    x_start = x_start + scale * g * self.motion_gain(jw.detach(), gain_ref)
+                else:
+                    x_start = x_start + scale * g
                 if foot_iters:
                     x_start, f0, f1, cshare = self.foot_correct(x_start, foot_iters, foot_mu, contact_thresh)
                     self.guide_log.append((time, float(score.mean()), f0, f1, cshare))
@@ -149,6 +190,24 @@ class MaceSampler:
             sigma = ((1 - a / an) * (1 - an) / (1 - a)).sqrt()
             x = x_start * an.sqrt() + (1 - an - sigma ** 2).sqrt() * pred_noise + sigma * torch.randn_like(x)
         return self.to_joints(x)
+
+    @staticmethod
+    def motion_gain(jw, ref, sigma=8):
+        """(B, T, 1) gain min(1, v / ref), v = smoothed root-relative mean joint speed (m/s) of joints jw (B, T, 24, 3)."""
+        rel = jw - jw[:, :, :1]
+        sp = (rel[:, 1:] - rel[:, :-1]).norm(dim=-1).mean(-1) * 30
+        sp = torch.cat([sp, sp[:, -1:]], 1).unsqueeze(-1)
+        v = MaceSampler.smooth_time(sp, sigma)
+        return (v / ref).clamp(max=1.0)
+
+    @staticmethod
+    def smooth_time(g, sigma):
+        """Gaussian low-pass of g (B, T, C) along T (reflect padding)."""
+        r = int(3 * sigma + 0.5)
+        k = torch.exp(-0.5 * (torch.arange(-r, r + 1, device=g.device, dtype=g.dtype) / sigma) ** 2)
+        k = (k / k.sum()).view(1, 1, -1).expand(g.shape[2], 1, -1)
+        x = torch.nn.functional.pad(g.transpose(1, 2), (r, r), mode='reflect')
+        return torch.nn.functional.conv1d(x, k, groups=g.shape[2]).transpose(1, 2)
 
     def foot_loss(self, x, contact_thresh=0.95):
         """MACE's training foot loss on a normalised sample x (B, T, 151): mean over frames of the squared displacement
