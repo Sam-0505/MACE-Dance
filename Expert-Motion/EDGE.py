@@ -14,8 +14,6 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 from dataset.dance_dataset import AISTPPDataset
-from dataset.long_clips import LongClipDataset
-from model.lora import lora_state_dict, plain_state_dict
 from dataset.preprocess import increment_path
 from model.adan import Adan
 from model.diffusion import GaussianDiffusion
@@ -43,7 +41,6 @@ class EDGE:
         EMA=True,
         learning_rate=4e-4,
         weight_decay=0.02,
-        beat_phase_input=False,
         arch="mace",
         edge_seq_len=240,
     ):
@@ -78,9 +75,6 @@ class EDGE:
         if checkpoint_path != "":
             checkpoint = torch.load(checkpoint_path, map_location=self.accelerator.device)
             self.normalizer = checkpoint["normalizer"]
-            # a checkpoint fine-tuned with the beat-phase input carries its projection: build the model with it
-            beat_phase_input = beat_phase_input or "phase_projection.weight" in checkpoint["model_state_dict"]
-        self.beat_phase_input = beat_phase_input
 
         if arch == "edge":
             model = EDGEDecoder(nfeats=repr_dim, seq_len=horizon, cond_feature_dim=feature_dim)
@@ -95,7 +89,6 @@ class EDGE:
                 dropout=0.1,
                 cond_feature_dim=feature_dim,
                 activation=F.gelu,
-                beat_phase_input=beat_phase_input,
             )
 
         smpl = SMPLSkeleton(self.accelerator.device)
@@ -117,17 +110,11 @@ class EDGE:
 
         self.model = self.accelerator.prepare(model)
         self.diffusion = diffusion.to(self.accelerator.device)
-        # the beat-phase projection is not in the released optimizer state; train.py adds it as a second group
-        optim = Adan([p for n, p in model.named_parameters() if not n.startswith("phase_projection")],
-                     lr=learning_rate, weight_decay=weight_decay)
+        optim = Adan(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
         self.optim = self.accelerator.prepare(optim)
 
         if checkpoint_path != "":
-            missing, unexpected = self.model.load_state_dict(maybe_wrap(checkpoint["model_state_dict"], num_processes,),
-                                                             strict=False)
-            assert not unexpected and all(k.startswith("phase_projection") for k in missing), (missing, unexpected)
-            if missing:
-                print("beat-phase input: new zero-initialised projection", missing)
+            self.model.load_state_dict(maybe_wrap(checkpoint["model_state_dict"], num_processes,))
 
     def eval(self):
         self.diffusion.eval()
@@ -166,56 +153,6 @@ class EDGE:
 
         # set normalizer
         self.normalizer = test_dataset.normalizer
-        if opt.long_clips:
-            train_dataset = LongClipDataset(train_dataset, opt.long_clips)
-            print(f"long clips: {len(train_dataset)} x {train_dataset.features.shape[1]} frames from {opt.long_clips}")
-
-        # musicality loss: per-slice music signal (precompute_music_signals.py), looked up by wav name
-        music_of = None
-        if opt.music_signals:
-            sig = np.load(opt.music_signals)
-            music_of = dict(zip(sig["names"], torch.from_numpy(sig[opt.dyn_music])))
-            self.diffusion.normalizer = self.normalizer
-            self.diffusion.lambda_dyn = opt.lambda_dyn
-            self.diffusion.dyn_sigma = opt.dyn_sigma
-            self.diffusion.dyn_t_max = opt.dyn_t_max
-            self.diffusion.dyn_beta_min = opt.dyn_beta_min
-            self.diffusion.dyn_energy_sigma = opt.dyn_energy_sigma
-            self.diffusion.dyn_hinge = opt.dyn_hinge
-            print(f"musicality loss: lambda {opt.lambda_dyn}, {opt.dyn_music} -> body energy, sigma {opt.dyn_sigma}, "
-                  f"t < {opt.dyn_t_max}, beta >= {opt.dyn_beta_min}, joint low-pass {opt.dyn_energy_sigma}, "
-                  f"{'max(0, r_real - r_pred)' if opt.dyn_hinge else '1 - r_pred'}")
-
-        # contrastive beat locking (model/beatlock.py): uses the beat column of the conditioning and the song of each slice
-        if opt.lambda_con > 0 or opt.con_log:
-            self.diffusion.normalizer = self.normalizer
-            self.diffusion.con_on = True
-            self.diffusion.lambda_con = opt.lambda_con
-            self.diffusion.con_n_neg = opt.con_n_neg
-            self.diffusion.con_tau = opt.con_tau
-            self.diffusion.con_t_min = opt.con_t_min
-            self.diffusion.con_t_max = opt.con_t_max
-            self.diffusion.lock_wide = opt.lock_wide
-            self.diffusion.lock_joint_sigma = opt.lock_joint_sigma
-            print(f"contrastive locking: lambda {opt.lambda_con}, {opt.con_n_neg} tempo-matched other-song negatives, "
-                  f"tau {opt.con_tau}, {opt.con_t_min} <= t < {opt.con_t_max}, wide {opt.lock_wide}, "
-                  f"joint low-pass {opt.lock_joint_sigma}")
-        # beat-locking loss (model/beatlock.py): uses the beat column of the conditioning, no extra data
-        if opt.lambda_lock > 0 or opt.lock_log:
-            self.diffusion.normalizer = self.normalizer
-            self.diffusion.lock_on = True
-            self.diffusion.lambda_lock = opt.lambda_lock
-            self.diffusion.lock_wide = opt.lock_wide
-            self.diffusion.lock_null = not opt.lock_no_null
-            self.diffusion.lock_t_max = opt.lock_t_max
-            self.diffusion.lock_batch = opt.lock_batch
-            self.diffusion.lock_t_min = opt.lock_t_min
-            self.diffusion.lock_joint_sigma = opt.lock_joint_sigma
-            print(f"beat-locking loss: lambda {opt.lambda_lock}, wide {opt.lock_wide}, "
-                  f"{'R' if opt.lock_no_null else 'R(own) - R(other)'}, {opt.lock_t_min} <= t < {opt.lock_t_max}, "
-                  f"joint low-pass {opt.lock_joint_sigma}, "
-                  f"hinge on {'batch means' if opt.lock_batch else 'each clip'}")
-
         # data loaders
         # decide number of workers based on cpu count
         import random, numpy
@@ -254,20 +191,10 @@ class EDGE:
             avg_vloss = 0
             avg_fkloss = 0
             avg_footloss = 0
-            avg_dyn = {}
             # train
             self.train()
             for step, (x, cond, filename, wavnames, genre) in enumerate(load_loop(train_data_loader)):
-                music = None
-                if music_of is not None:
-                    music = torch.stack([music_of[os.path.splitext(os.path.basename(w))[0]] for w in wavnames])
-                    music = music.to(x.device)
-                songs = None
-                if self.diffusion.con_on:  # song of each slice: ".../<song>_slice<k>.npy"
-                    ids = {}
-                    songs = [ids.setdefault(os.path.basename(f).split("_")[0], len(ids)) for f in filename]
-                total_loss, (loss, v_loss, fk_loss, foot_loss), dyn = self.diffusion(x, cond, genre, t_override=None,
-                                                                                     music=music, songs=songs)
+                total_loss, (loss, v_loss, fk_loss, foot_loss) = self.diffusion(x, cond, genre, t_override=None)
                 self.optim.zero_grad()
                 self.accelerator.backward(total_loss)
                 self.optim.step()
@@ -278,8 +205,6 @@ class EDGE:
                     avg_vloss += v_loss.detach().cpu().numpy()
                     avg_fkloss += fk_loss.detach().cpu().numpy()
                     avg_footloss += foot_loss.detach().cpu().numpy()
-                    for k, v in dyn.items():
-                        avg_dyn[k] = avg_dyn.get(k, 0) + v.cpu().numpy()
                     if step % opt.ema_interval == 0:
                         self.diffusion.ema.update_model_average(self.diffusion.master_model, self.diffusion.model)
                         
@@ -289,7 +214,6 @@ class EDGE:
                 avg_fkloss /= len(train_data_loader)
                 avg_footloss /= len(train_data_loader)
                 log_dict = {"Train Loss": avg_loss, "V Loss": avg_vloss, "FK Loss": avg_fkloss, "Foot Loss": avg_footloss, }
-                log_dict.update({k: v / len(train_data_loader) for k, v in avg_dyn.items()})
                 print(f"epoch {epoch}", log_dict, flush=True)
 
             # Save model
@@ -301,10 +225,7 @@ class EDGE:
                     self.eval()
                     wandb.log(log_dict)
                     net = self.accelerator.unwrap_model(self.model)
-                    # plain_state_dict merges LoRA adapters into the weights (model/lora.py); a no-op otherwise
-                    ckpt = {"ema_state_dict": plain_state_dict(self.diffusion.master_model), "model_state_dict": plain_state_dict(net), "optimizer_state_dict": self.optim.state_dict(), "normalizer": self.normalizer, }
-                    if opt.lora_rank:
-                        ckpt["lora_state_dict"] = lora_state_dict(net)
+                    ckpt = {"ema_state_dict": self.diffusion.master_model.state_dict(), "model_state_dict": net.state_dict(), "optimizer_state_dict": self.optim.state_dict(), "normalizer": self.normalizer, }
                     if opt.slim_ckpt:
                         del ckpt["optimizer_state_dict"]
                     torch.save(ckpt, os.path.join(wdir, f"train-{epoch}.pt"))

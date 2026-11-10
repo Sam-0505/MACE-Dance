@@ -6,7 +6,7 @@ One-shot MACE matches real dancers' music coupling up to ~17 s and falls behind 
 
 Motion: not stored again. The 8 s training slices <song>_slice<k> start every 1 s (30 frames) and are identical where
 they overlap (checked: max difference 0), so a clip that starts at slice k is assembled on the fly from slices
-k .. k+26 (dataset/long_clips.py). Only runs of consecutive slice indices are used.
+k .. k+26 (the LongClipDataset that consumed this file was removed 2026-11-10; it lives at tag pre-cleanup-2026-11-10). Only runs of consecutive slice indices are used.
 
 Music features: EDGE's 35-dim baseline features (onset envelope, 20 MFCC, 12 chroma CENS, onset peaks, beats),
 recomputed on each 34 s wav the way the test slices were made: librosa.load(sr=None) mono, slice, sf.write,

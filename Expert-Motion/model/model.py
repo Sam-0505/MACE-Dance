@@ -8,7 +8,6 @@ from einops.layers.torch import Rearrange, Reduce
 from torch import Tensor
 from torch.nn import functional as F
 from model.utils import SinusoidalPosEmb
-from model.beatlock import BEAT_COL, beat_phase
 from model.rotary_embedding_torch import RotaryEmbedding
 try:
     from mamba_ssm import Mamba
@@ -106,19 +105,9 @@ class MusicFiLMLayer(nn.Module):
         return x
 
 
-def beat_phase_features(beats):
-    """(B, T) beat one-hot -> (B, T, 2) cos/sin of 2 pi x position inside the beat interval (0 outside the beats).
-
-    Beat-phase input (2026-11-05, arm B of the beat-locking pilot): a continuous beat clock instead of the beat spike
-    of column 34, which the released model ignores (zeroing it changes the dance by ~1% of the seed variation)."""
-    ph, ok = beat_phase(beats)
-    ang = 2 * np.pi * ph
-    return torch.stack([ang.cos(), ang.sin()], -1) * ok[..., None]
-
-
 class DanceDecoder(nn.Module):
     def __init__(self, nfeats, seq_len=150, latent_dim=256, ff_size=1024, num_layers=4, num_heads=4,
-                 dropout=0.1, cond_feature_dim=4800, activation=F.gelu, use_rotary=True, beat_phase_input=False,
+                 dropout=0.1, cond_feature_dim=4800, activation=F.gelu, use_rotary=True,
                  **kwargs):
         super().__init__()
         # time embedding
@@ -139,11 +128,6 @@ class DanceDecoder(nn.Module):
         # input and condition projection
         self.input_projection = nn.Linear(nfeats, latent_dim)
         self.cond_projection = nn.Linear(cond_feature_dim, latent_dim)
-        if beat_phase_input:
-            # zero-initialised, so a fine-tune from the release starts from exactly the released model
-            self.phase_projection = nn.Linear(2, latent_dim)
-            nn.init.zeros_(self.phase_projection.weight)
-            nn.init.zeros_(self.phase_projection.bias)
         self.final_layer = nn.Linear(latent_dim, nfeats)
 
         # Dance and Music stacks
@@ -170,8 +154,6 @@ class DanceDecoder(nn.Module):
         t = self.time_mlp(times) + self.beta_mlp(beta * 1000)
 
         cond = self.cond_projection(cond_embed)
-        if hasattr(self, "phase_projection"):
-            cond = cond + self.phase_projection(beat_phase_features(cond_embed[..., BEAT_COL]))
         # Music encoder
         for i in range(self.music_num_layers):
             cond = self.musiclayerstack[i](cond, genre)

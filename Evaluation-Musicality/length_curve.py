@@ -3,7 +3,7 @@
 
 For each length L (8 to 34 s), the released model samples the first L frames of every FineDance test slice in one
 shot (MaceSampler.sample on the cropped features), 10 seeds. Score: zero-lag own-song Delta between slow treble flux
-and slow body energy (sigma 15; sweep_diagnostics.py; wrong = every window of another song at the same position).
+and slow body energy (sigma 15; sweep_diagnostics.py, removed 2026-11-10 (tag pre-cleanup-2026-11-10), results/sweep_diagnostics*.json kept; wrong = every window of another song at the same position).
   whole : the full L frames, next to the real dance cropped to the same L
   first8: frames 0-240 only - the same music and window at every L, so a drop is caused by generating longer
   pieces8: every non-overlapping 8 s piece of the L frames

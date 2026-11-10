@@ -1,8 +1,8 @@
-"""Musicality loss (musicality_experiment_plan.md, Loss V1): 1 - Pearson r between a smoothed music signal and the
-smoothed body energy of the predicted motion.
+"""Differentiable signal helpers shared by the sampler, the critic and the evaluation scripts.
 
 Definitions match Evaluation-Musicality: body energy = mean squared joint speed in world coordinates, edge-padded
-(metrics.motion_energy); smoothing = scipy gaussian_filter1d (truncate 4, mode 'reflect'); zero-lag Pearson r.
+(metrics.motion_energy); smoothing = scipy gaussian_filter1d (truncate 4, mode 'reflect').
+(The training-time musicality loss that used to live here was removed 2026-11-10; see NEGATIVE_RESULTS.md.)
 """
 import torch
 
@@ -26,17 +26,6 @@ def motion_energy(joints):
     return torch.cat([v2, v2[:, -1:]], dim=1)
 
 
-def pearson(a, b, eps=1e-12):
-    """Row-wise Pearson r of (B, T) tensors.
-
-    eps only guards against a constant row: body energy is ~1e-4 m^2 per frame, so an additive eps on the product
-    of the variances (~1e-8 here) would shrink r.
-    """
-    a = a - a.mean(1, keepdim=True)
-    b = b - b.mean(1, keepdim=True)
-    return (a * b).sum(1) / (a.norm(dim=1) * b.norm(dim=1)).clamp_min(eps)
-
-
 def pose_to_joints(x, normalizer, smpl):
     """Normalized model output (B, T, 151) -> world joints (B, T, 24, 3), differentiably.
 
@@ -51,11 +40,6 @@ def pose_to_joints(x, normalizer, smpl):
     return smpl.forward(q, x[:, :, :3])
 
 
-def silent(music_raw):
-    """(B, T) raw music signal -> (B,) bool, True where it is constant (digital silence)."""
-    return music_raw.std(1) < 1e-8
-
-
 def lowpass_joints(joints, sigma):
     """(B, T, J, 3) -> same, Gaussian-smoothed over time (sigma in frames; 0 = unchanged).
 
@@ -67,16 +51,3 @@ def lowpass_joints(joints, sigma):
     b, t, j, c = joints.shape
     x = joints.permute(0, 2, 3, 1).reshape(b * j * c, t)
     return gaussian_smooth(x, sigma).reshape(b, j, c, t).permute(0, 3, 1, 2)
-
-
-def body_energy(x, normalizer, smpl, sigma, energy_sigma=0):
-    return gaussian_smooth(motion_energy(lowpass_joints(pose_to_joints(x, normalizer, smpl), energy_sigma)), sigma)
-
-
-def musicality_terms(pred, target, music_raw, normalizer, smpl, sigma, energy_sigma=0):
-    """Per-sample r(music, energy) for the prediction and for the real motion (no gradient), both (B,)."""
-    m = gaussian_smooth(music_raw, sigma)
-    r_pred = pearson(m, body_energy(pred, normalizer, smpl, sigma, energy_sigma))
-    with torch.no_grad():
-        r_real = pearson(m, body_energy(target, normalizer, smpl, sigma, energy_sigma))
-    return r_pred, r_real
