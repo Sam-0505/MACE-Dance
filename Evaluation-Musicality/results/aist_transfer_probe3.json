@@ -1,0 +1,62 @@
+{
+ "Motorica / Breaking": {
+  "speed": 1.6915204524993896,
+  "root_rel": 1.0894290208816528
+ },
+ "AIST++ / Breaking": {
+  "speed": 1.4450610876083374,
+  "root_rel": 1.074838638305664
+ },
+ "Motorica / Popping": {
+  "speed": 0.6636286377906799,
+  "root_rel": 0.35675355792045593
+ },
+ "AIST++ / Popping": {
+  "speed": 0.6089138984680176,
+  "root_rel": 0.3395172655582428
+ },
+ "Motorica / Locking": {
+  "speed": 1.4163051843643188,
+  "root_rel": 0.897789716720581
+ },
+ "AIST++ / Locking": {
+  "speed": 1.3736540079116821,
+  "root_rel": 0.9211950302124023
+ },
+ "Motorica / Urban": {
+  "speed": 1.2446731328964233,
+  "root_rel": 0.7723307013511658
+ },
+ "AIST++ / Urban": {
+  "speed": 1.2812836170196533,
+  "root_rel": 0.8417292833328247
+ },
+ "Motorica / Hiphop": {
+  "speed": 1.5070494413375854,
+  "root_rel": 0.9506807923316956
+ },
+ "AIST++ / Hiphop": {
+  "speed": 1.290785551071167,
+  "root_rel": 0.8497244715690613
+ },
+ "Motorica / Jazz": {
+  "speed": 1.8843833208084106,
+  "root_rel": 1.0550931692123413
+ },
+ "AIST++ / Jazz": {
+  "speed": 0.7972343564033508,
+  "root_rel": 0.4134393036365509
+ },
+ "Motorica own labels": {
+  "speed": 1.675745964050293,
+  "root_rel": 1.0101864337921143
+ },
+ "AIST++ own labels": {
+  "speed": 1.1457539796829224,
+  "root_rel": 0.7537051439285278
+ },
+ "Motorica own labels, all MFCC -> AIST mean": {
+  "speed": 1.1159813404083252,
+  "root_rel": 0.7128743529319763
+ }
+}

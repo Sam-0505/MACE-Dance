@@ -184,7 +184,7 @@ class DanceDecoder(nn.Module):
     @torch.no_grad()
     def infer_pred(self, x, cond, genre, times, beta=0.75):
         batch_size, device = x.shape[0], x.device
-        beta = torch.full((batch_size, 1), beta, device=device).squeeze()
+        beta = torch.full((batch_size, 1), beta, device=device).squeeze(-1)
         pred = self.forward(x, cond, genre, times, beta, cond_drop_prob=0.0)
         return pred
  

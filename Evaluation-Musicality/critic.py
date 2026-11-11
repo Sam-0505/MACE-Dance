@@ -47,11 +47,13 @@ def neg_mask(songs, nbeats):
     return (s.view(-1, 1) != s.view(1, -1)) & ((nbeats.view(-1, 1) - nbeats.view(1, -1)).abs() <= 1)
 
 
-def load_train():
-    """Training clips: normalised pose (N, 240, 151), features (N, 240, 35), song id (N,), the normalizer."""
-    ds = pickle.load(open('data/dataset_backups/train_tensor_dataset.pkl', 'rb'))
+def load_train(data='finedance'):
+    """Training clips: normalised pose (N, 240, 151), features (N, 240, 35), song id (N,), the normalizer.
+    data='aist': AIST++ 5 s slices (N, 150, ...), song = the music piece (e.g. mBR0), not the sequence."""
+    ds = pickle.load(open('data/aist_backups/train_tensor_dataset.pkl' if data == 'aist'
+                          else 'data/dataset_backups/train_tensor_dataset.pkl', 'rb'))
     pose = torch.as_tensor(np.asarray(ds.data['pose']), dtype=torch.float32)
     feats = torch.as_tensor(np.asarray(ds.data['features']), dtype=torch.float32)
-    names = [os.path.basename(n).split('_')[0] for n in ds.data['filenames']]
+    names = [os.path.basename(n).split('_')[4 if data == 'aist' else 0] for n in ds.data['filenames']]
     ids = {s: i for i, s in enumerate(dict.fromkeys(names))}
     return pose, feats, np.array([ids[n] for n in names]), ds.normalizer

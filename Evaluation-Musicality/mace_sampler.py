@@ -78,6 +78,75 @@ class MaceSampler:
             out = torch.cat([out[:, :-ov], blend, j[:, k, ov:]], 1)
         return out.numpy()
 
+    @torch.no_grad()
+    def sample_stitched_guided(self, feats, genres, seed, bank, bank_groups, group, scale, window=150, stride=75, t_max=600,
+                               n_null=3, foot_iters=0, foot_mu=0.1, contact_thresh=0.95, freeze_root_rot=False, critic=None,
+                               grad_smooth=0.0, gain_ref=0.0):
+        """sample_stitched with the critic guidance of sample_guided applied to every window's x0 prediction at steps
+        t <= t_max (2026-11-11, AIST++). Each window is scored on its own beat grid against the grids of n_null windows from
+        `bank` (N, window, 35) features of other clips (bank_groups: their clip ids; group: this clip's id, or one id per clip of the batch), the
+        tempo-matched null. Guidance, foot term, frozen root rotation and motion gain are as in sample_guided; the overlap
+        constraint (each window's first window - stride frames = the previous window's last ones) is applied after every
+        step as in sample_stitched. feats: (1, T, 35) with (T - window) % stride == 0."""
+        from model.beatlock import BEAT_COL
+        from model.musicality import pose_to_joints
+        from critic import windowed_critic
+        cond = torch.as_tensor(np.asarray(feats), dtype=torch.float32, device=self.device)
+        b, t = cond.shape[:2]
+        assert (t - window) % stride == 0, (t, window, stride)
+        n, ov = (t - window) // stride + 1, window - stride
+        cond = torch.stack([cond[:, k * stride:k * stride + window] for k in range(n)], 1).flatten(0, 1)
+        genre = torch.tensor([style2s.index(g) for g in genres], dtype=torch.long, device=self.device).repeat_interleave(n)
+        bank = torch.as_tensor(np.asarray(bank), dtype=torch.float32, device=self.device)
+        bg = np.asarray(bank_groups)
+        nbt = (cond[:, :, BEAT_COL] > 0.5).sum(1).float()
+        nbb = (bank[:, :, BEAT_COL] > 0.5).sum(1).float()
+        grp = np.repeat(np.asarray(group if np.ndim(group) else [group] * b), n)   # clip id of every window (group: one id or one per clip)
+        dist = (nbt.view(-1, 1) - nbb.view(1, -1)).abs() + 1e6 * torch.as_tensor(grp[:, None] == bg[None, :], device=self.device).float()
+        idx = dist.topk(n_null, dim=1, largest=False).indices
+        c_null = [bank[idx[:, k]] for k in range(n_null)]
+        torch.manual_seed(seed)
+        d = self.model.diffusion
+        times = list(reversed(torch.linspace(-1, d.n_timestep - 1, steps=51).int().tolist()))
+        x = torch.randn((b * n, window, self.model.repr_dim), device=self.device)
+        self.guide_log = []
+        for time, time_next in zip(times[:-1], times[1:]):
+            tc = torch.full((b * n,), time, device=self.device, dtype=torch.long)
+            with torch.no_grad():
+                pred_noise, x_start = d.model_predictions(x, cond, genre, tc, clip_x_start=d.clip_denoised)
+            if scale > 0 and time <= t_max:
+                with torch.enable_grad():
+                    x0 = x_start.detach().requires_grad_(True)
+                    jw = pose_to_joints(x0, self.model.normalizer, d.smpl)
+                    score = windowed_critic(critic, jw, cond, c_null)
+                    g, = torch.autograd.grad(score.sum(), x0)
+                if freeze_root_rot:
+                    g[:, :, 7:13] = 0
+                if grad_smooth > 0:
+                    g = self.smooth_time(g, grad_smooth)
+                g = g / g.pow(2).mean((1, 2), keepdim=True).sqrt().clamp_min(1e-12)
+                x_start = x_start + scale * g * (self.motion_gain(jw.detach(), gain_ref) if gain_ref > 0 else 1.0)
+                if foot_iters:
+                    x_start, f0, f1, cshare = self.foot_correct(x_start, foot_iters, foot_mu, contact_thresh)
+                self.guide_log.append((time, float(score.mean())))
+                pred_noise = d.predict_noise_from_start(x, tc, x_start)
+            if time_next < 0:
+                x = x_start
+                continue
+            a, an = d.alphas_cumprod[time], d.alphas_cumprod[time_next]
+            sigma = ((1 - a / an) * (1 - an) / (1 - a)).sqrt()
+            x = x_start * an.sqrt() + (1 - an - sigma ** 2).sqrt() * pred_noise + sigma * torch.randn_like(x)
+            x = x.view(b, n, window, -1)
+            x[:, 1:, :ov] = x[:, :-1, stride:]
+            x = x.flatten(0, 1)
+        j = torch.from_numpy(self.to_joints(x)).view(b, n, window, 24, 3)
+        fade = torch.linspace(0, 1, ov + 2)[1:-1].view(1, ov, 1, 1)
+        out = j[:, 0]
+        for k in range(1, n):
+            blend = out[:, -ov:] * (1 - fade) + j[:, k, :ov] * fade
+            out = torch.cat([out[:, :-ov], blend, j[:, k, ov:]], 1)
+        return out.numpy()
+
     def sample_guided(self, feats, genres, seed, scale, t_max=600, joint_sigma=2, wide=10, root_relative=True,
                       guide_shift=0, groups=None, n_null=3, foot_iters=0, foot_mu=0.1, contact_thresh=0.95,
                       freeze_root_rot=False, critic=None, critic_groups=None, grad_smooth=0.0, gain_ref=0.0):

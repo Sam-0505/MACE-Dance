@@ -1,0 +1,26 @@
+{
+ "finedance": {},
+ "motorica": {
+  "edge": {
+   "FSR_pct": 23.93492285695539,
+   "left_pct": 23.62084200328722,
+   "right_pct": 24.249003710623548,
+   "n_clips": 867,
+   "clips_without_contact": 75
+  },
+  "bailando": {
+   "FSR_pct": 18.70231378910528,
+   "left_pct": 18.53373920875395,
+   "right_pct": 18.87088836945661,
+   "n_clips": 289,
+   "clips_without_contact": 1
+  },
+  "ours_aist": {
+   "FSR_pct": 57.79861007735367,
+   "left_pct": 58.433259999601226,
+   "right_pct": 57.16396015510619,
+   "n_clips": 289,
+   "clips_without_contact": 6
+  }
+ }
+}

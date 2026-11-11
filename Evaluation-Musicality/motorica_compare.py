@@ -114,7 +114,7 @@ def fid_scores(sets, sets24):
         if lab == 'real':
             continue
         per = []
-        for s in range(S):
+        for s in range(min(S, len(sets[lab][0]))):   # a model may have fewer seeds than the others (e.g. 1)
             x = np.stack([c[s] for c in sets[lab]])
             g, p = norm(kr, kin(x))
             r = {'FID_k_mot': float(calc_fid(p, g)), 'Div_k_mot': float(calculate_avg_distance(p))}

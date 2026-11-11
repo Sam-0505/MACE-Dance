@@ -162,6 +162,16 @@ class EDGE:
             random.seed(seed)
             torch.manual_seed(seed)
         num_cpus = multiprocessing.cpu_count()
+        val_data_loader = None
+        if opt.val_every > 0:  # hold out whole sequences (every val_seq_every-th) from training for the validation loss
+            seqs = sorted({os.path.basename(f).rsplit('_slice', 1)[0] for f in train_dataset.data["filenames"]})
+            val_seqs = set(seqs[::opt.val_seq_every])
+            is_val = [os.path.basename(f).rsplit('_slice', 1)[0] in val_seqs for f in train_dataset.data["filenames"]]
+            val_idx = [i for i, v in enumerate(is_val) if v]
+            train_idx = [i for i, v in enumerate(is_val) if not v]
+            print(f"validation: {len(val_seqs)} held-out sequences, {len(val_idx)} slices; training on {len(train_idx)} slices")
+            val_data_loader = DataLoader(torch.utils.data.Subset(train_dataset, val_idx), batch_size=opt.batch_size, shuffle=False, num_workers=2)
+            train_dataset = torch.utils.data.Subset(train_dataset, train_idx)
         train_data_loader = DataLoader(train_dataset, batch_size=opt.batch_size, shuffle=True, \
             num_workers=min(int(num_cpus * 0.75), 32), pin_memory=True, drop_last=True, worker_init_fn=worker_init_fn)
         test_data_loader = DataLoader(test_dataset, batch_size=opt.batch_size, shuffle=False, \
@@ -186,7 +196,18 @@ class EDGE:
             metric = Metric(gt_dir, device)
 
         self.accelerator.wait_for_everyone()
+        best_val, bad_evals = float("inf"), 0
+        base_lr = [g["lr"] for g in self.optim.param_groups]
         for epoch in range(opt.start_epoch, opt.epochs + 1):
+            if opt.lr_schedule == "cosine":  # linear warm-up, then cosine decay to lr_min_frac * base over the epochs
+                import math
+                if epoch <= opt.warmup_epochs:
+                    f = epoch / opt.warmup_epochs
+                else:
+                    p = (epoch - opt.warmup_epochs) / max(1, opt.epochs - opt.warmup_epochs)
+                    f = opt.lr_min_frac + (1 - opt.lr_min_frac) * 0.5 * (1 + math.cos(math.pi * min(p, 1.0)))
+                for g, b in zip(self.optim.param_groups, base_lr):
+                    g["lr"] = b * f
             avg_loss = 0
             avg_vloss = 0
             avg_fkloss = 0
@@ -197,6 +218,8 @@ class EDGE:
                 total_loss, (loss, v_loss, fk_loss, foot_loss) = self.diffusion(x, cond, genre, t_override=None)
                 self.optim.zero_grad()
                 self.accelerator.backward(total_loss)
+                if opt.grad_clip > 0:
+                    self.accelerator.clip_grad_norm_(self.model.parameters(), opt.grad_clip)
                 self.optim.step()
 
                 # ema update and train loss update only on main
@@ -215,6 +238,36 @@ class EDGE:
                 avg_footloss /= len(train_data_loader)
                 log_dict = {"Train Loss": avg_loss, "V Loss": avg_vloss, "FK Loss": avg_fkloss, "Foot Loss": avg_footloss, }
                 print(f"epoch {epoch}", log_dict, flush=True)
+
+            if self.accelerator.is_main_process and opt.last_every > 0 and epoch % opt.last_every == 0:
+                net = self.accelerator.unwrap_model(self.model)  # full state (with optimizer) so a crashed run resumes exactly
+                torch.save({"ema_state_dict": self.diffusion.master_model.state_dict(), "model_state_dict": net.state_dict(),
+                            "optimizer_state_dict": self.optim.state_dict(), "normalizer": self.normalizer, "epoch": epoch},
+                           os.path.join(wdir, "last.pt"))
+            stop = False
+            if self.accelerator.is_main_process and val_data_loader is not None and epoch % opt.val_every == 0:
+                self.eval()
+                with torch.no_grad(), torch.random.fork_rng(devices=[self.accelerator.device] if torch.cuda.is_available() else []):
+                    torch.manual_seed(1234)  # same noise and timesteps at every evaluation
+                    tot = n = 0
+                    for vx, vcond, _, _, vgenre in val_data_loader:
+                        vx, vcond, vgenre = vx.to(self.accelerator.device), vcond.to(self.accelerator.device), vgenre.to(self.accelerator.device)
+                        vt, _ = self.diffusion(vx, vcond, vgenre, t_override=None)
+                        tot += vt.item() * len(vx)
+                        n += len(vx)
+                val_loss = tot / n
+                improved = val_loss < best_val
+                if improved:
+                    best_val, bad_evals = val_loss, 0
+                    net = self.accelerator.unwrap_model(self.model)
+                    torch.save({"ema_state_dict": self.diffusion.master_model.state_dict(), "model_state_dict": net.state_dict(),
+                                "normalizer": self.normalizer, "epoch": epoch, "val_loss": val_loss}, os.path.join(wdir, "best.pt"))
+                else:
+                    bad_evals += 1
+                print(f"epoch {epoch} val_loss {val_loss:.5f} best {best_val:.5f} ({'best' if improved else f'{bad_evals} without improvement'})", flush=True)
+                wandb.log({"Val Loss": val_loss, "epoch": epoch})
+                stop = opt.patience > 0 and bad_evals >= opt.patience
+                self.train()
 
             # Save model
             if (epoch % opt.save_interval) == 0:
@@ -241,7 +294,10 @@ class EDGE:
                     self.diffusion.render_sample(x.shape, cond, genre, self.normalizer, epoch, os.path.join(opt.render_dir, "train_" + opt.exp_name), os.path.join(opt.eval_dir, "train_" + opt.exp_name), name=wavnames, sound=True,)
                     metric.calculate_metric(os.path.join(opt.eval_dir, "train_" + opt.exp_name, str(epoch)), device)
 
-                    
+            if stop:
+                print(f"early stop at epoch {epoch}: no validation improvement in {opt.patience} evaluations (best {best_val:.5f})", flush=True)
+                break
+
         if self.accelerator.is_main_process:
             wandb.run.finish()
 

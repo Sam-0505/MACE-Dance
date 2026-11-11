@@ -235,7 +235,7 @@ def train(args):
     from vis import SMPLSkeleton
     from model.musicality import pose_to_joints
     dev = 'cuda'
-    pose, feats, song, normalizer = C.load_train()
+    pose, feats, song, normalizer = C.load_train(args.data)
     smpl = SMPLSkeleton(dev)
     n_songs = song.max() + 1
     rng = np.random.default_rng(0)  # same split as critics v1-v3
@@ -313,6 +313,7 @@ def main():
     ap.add_argument('--lr', type=float, default=1e-2)  # v5 was trained with 1e-2
     ap.add_argument('--seed', type=int, default=0)
     ap.add_argument('--lite', action='store_true', help='accepted for old run scripts; v5 is always lite')
+    ap.add_argument('--data', default='finedance', choices=['finedance', 'aist'])
     ap.add_argument('--out', required=True)
     train(ap.parse_args())
 

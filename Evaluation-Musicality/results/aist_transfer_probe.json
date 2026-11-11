@@ -1,0 +1,103 @@
+{
+ "feature_stats": {
+  "env": {
+   "aist_mean": 2.033277988433838,
+   "aist_sd": 0.44434747099876404,
+   "mot_mean": 1.6028982400894165,
+   "mot_sd": 0.584324061870575,
+   "aist_within_sd": 2.6987266540527344,
+   "mot_within_sd": 2.2654106616973877,
+   "mot_outside_aist_p5_p95": 0.3958333333333333
+  },
+  "mfcc": {
+   "aist_mean": 4.6129608154296875,
+   "aist_sd": 6.800572872161865,
+   "mot_mean": -10.596329689025879,
+   "mot_sd": 12.942577362060547,
+   "aist_within_sd": 12.183131217956543,
+   "mot_within_sd": 14.781022071838379,
+   "mot_outside_aist_p5_p95": 0.3958333333333333
+  },
+  "chroma": {
+   "aist_mean": 0.25347012281417847,
+   "aist_sd": 0.02760809101164341,
+   "mot_mean": 0.24943380057811737,
+   "mot_sd": 0.025933757424354553,
+   "aist_within_sd": 0.053476277738809586,
+   "mot_within_sd": 0.07415629923343658,
+   "mot_outside_aist_p5_p95": 0.125
+  },
+  "peak": {
+   "aist_mean": 0.22625777125358582,
+   "aist_sd": 0.0508599691092968,
+   "mot_mean": 0.13472221791744232,
+   "mot_sd": 0.06567256897687912,
+   "aist_within_sd": 0.4136880338191986,
+   "mot_within_sd": 0.3234575688838959,
+   "mot_outside_aist_p5_p95": 0.4166666666666667
+  },
+  "beat": {
+   "aist_mean": 0.05649333819746971,
+   "aist_sd": 0.013270949013531208,
+   "mot_mean": 0.05180555582046509,
+   "mot_sd": 0.021048424765467644,
+   "aist_within_sd": 0.22872719168663025,
+   "mot_within_sd": 0.21428202092647552,
+   "mot_outside_aist_p5_p95": 0.22916666666666666
+  }
+ },
+ "speed": {
+  "AIST++ windows (reference)": {
+   "speed": 1.540555477142334,
+   "root_rel": 1.135480284690857
+  },
+  "Motorica as is": {
+   "speed": 1.675745964050293,
+   "root_rel": 1.0101864337921143
+  },
+  "Motorica, env -> AIST mean": {
+   "speed": 1.676224708557129,
+   "root_rel": 1.0122134685516357
+  },
+  "Motorica, mfcc -> AIST mean": {
+   "speed": 1.1159793138504028,
+   "root_rel": 0.7128713726997375
+  },
+  "Motorica, chroma -> AIST mean": {
+   "speed": 1.6740318536758423,
+   "root_rel": 1.0075905323028564
+  },
+  "Motorica, peak -> AIST mean": {
+   "speed": 1.6754118204116821,
+   "root_rel": 1.0097368955612183
+  },
+  "Motorica, beat -> AIST mean": {
+   "speed": 1.6753604412078857,
+   "root_rel": 1.0097585916519165
+  },
+  "Motorica, env -> random AIST window": {
+   "speed": 1.6767807006835938,
+   "root_rel": 1.0126447677612305
+  },
+  "Motorica, mfcc -> random AIST window": {
+   "speed": 1.164280652999878,
+   "root_rel": 0.7489093542098999
+  },
+  "Motorica, chroma -> random AIST window": {
+   "speed": 1.6736857891082764,
+   "root_rel": 1.0072449445724487
+  },
+  "Motorica, peak -> random AIST window": {
+   "speed": 1.6772260665893555,
+   "root_rel": 1.011399745941162
+  },
+  "Motorica, beat -> random AIST window": {
+   "speed": 1.675477147102356,
+   "root_rel": 1.0099037885665894
+  },
+  "Motorica, all moment-matched to AIST": {
+   "speed": 1.4757080078125,
+   "root_rel": 0.9381447434425354
+  }
+ }
+}

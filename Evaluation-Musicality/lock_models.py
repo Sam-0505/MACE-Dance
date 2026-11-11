@@ -48,7 +48,7 @@ MOT_MODELS = {'MACE released': 'mace', 'MACE mask2s': 'mace_local2s',
               'Ours critic v5 + gain': 'mace_local2s_criticv5_s0.003_foot10_frz_gain',
               'Ours mask + guidance': 'mace_local2s_guide_s0.003',
               'Ours + foot term': 'mace_local2s_guide_s0.003_foot10', 'EDGE': 'edge', 'Lodge': 'lodge',
-              'Bailando': 'bailando', 'MEGADance': 'mega'}
+              'Bailando': 'bailando', 'MEGADance': 'mega', 'Ours AIST++': 'ours_aist'}
 
 
 def interval(beats):

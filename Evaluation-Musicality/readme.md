@@ -147,7 +147,7 @@ Loudness ↔ body energy only. Each variant changes one setting from the primary
 - **Loudness does not predict movement energy across genres.** Cross-validated R² is about −1.3 for all three motion descriptors, i.e. worse than predicting the mean. Genre-mean loudness vs genre-mean energy: Spearman ρ = 0.01 (10 genres), ρ = 0.38, p = 0.31 without Ballet Jazz.
 - **Ballet Jazz goes the opposite way.** Its music is far quieter than any other genre (−25 dB vs −9 to −14 dB, true of whole pieces, not just intros), yet its dancers move with the highest energy.
 - **Loudness varies more within a genre than between genres.** Across the other nine genres, loudness differs more between the 6 pieces of one genre (e.g. Waack −17 to −7 dB) than between genres. Movement energy follows dance style (Street Jazz and Lock lowest, Ballet Jazz, Break and Middle Hip-hop highest).
-- **Caveat:** basic dances are 16-beat routines danced unchanged to several pieces, so their energy reflects the routine, not the piece. A genre-level loudness link would have to come through style.
+- **Caveat:** basic dances are 16-beat routines danced unchanged to several pieces, so their energy reflects the routine, not the piece (Li et al. 2021, AIST++ / AI Choreographer, arXiv 2101.08779, p. 4: AIST "is an instructional database and records multiple dancers dancing the same choreography for different music with varying BPM"). A genre-level loudness link would have to come through style.
 
 Figures: `results/figures/aist_genre_matrix.png`, `results/figures/aist_genre_scatter.png`.
 
@@ -165,7 +165,7 @@ This repeats the FineDance loudness evaluation, including all robustness variant
 | advanced (n = 10) | primary | +.049 (.14) | −.028 (.90) | +.077 [.006, .152] | .075 | +.077 (.006) |
 | advanced | zero lag | +.047 (.14) | −.036 (.95) | +.084 [.015, .162] | .054 | +.083 (.006) |
 
-- **Basic dances: no own-song coupling for humans either** (31/60 pieces positive), in every variant. This is expected from the design: each basic routine is danced unchanged to several pieces, so it was never fitted to one piece's loudness. Against random-tempo wrong songs, Δ real rises to +.05 (p = .08), so part of the apparent own-song effect without tempo matching is tempo, not loudness.
+- **Basic dances: no own-song coupling for humans either** (31/60 pieces positive), in every variant. This is expected from the design: each basic routine is danced unchanged to several pieces (Li et al. 2021, AIST++ / AI Choreographer, arXiv 2101.08779, p. 4: AIST "is an instructional database and records multiple dancers dancing the same choreography for different music with varying BPM"), so it was never fitted to one piece's loudness. Against random-tempo wrong songs, Δ real rises to +.05 (p = .08), so part of the apparent own-song effect without tempo matching is tempo, not loudness.
 - **Advanced dances: the FineDance pattern in direction.** Real dancers score higher with their own piece (7/10 pieces), MACE does not (Δ < 0 in every variant), and real own > MACE own (p = .006). But with 10 pieces, Δ real (p ≈ .14) and G (p ≈ .05–.3 across variants) are not significant.
 - **Short clips inflate lag-max r.** At ±1 s lag, basic r rises from .13 to .33 for own and wrong music alike. Δ is unaffected, but raw S values from 7–12 s clips shouldn't be compared with FineDance's.
 - **MACE motion scale:** mean joint speed 0.6–0.7 m/s vs 0.9–1.1 m/s for real dance; root travel std 0.10 m vs 0.22–0.42 m.
@@ -252,7 +252,7 @@ Every Δ real, G and real own − MACE own has p ≤ .0001 (permutation). Every 
 | AIST++ advanced | 10 pieces | +.049 (p = .14) | −.028 | +.077 (p = .075) |
 | AIST++ basic | 60 pieces | −.022 | −.017 | −.004 |
 
-AIST++ basic dances are reused routines that were not choreographed to their music, and AIST++ music barely changes in loudness (0.7 dB), so they are not a test of the claim.
+AIST++ basic dances are reused routines (the same choreography is danced to different music, per Li et al. 2021, AIST++ / AI Choreographer, arXiv 2101.08779, p. 4), not choreographed to their music, and AIST++ music barely changes in loudness (0.7 dB), so they are not a test of the claim.
 
 ## Percussion ↔ upper-body acceleration: beyond loudness? (2026-10-27, `perc_distinct.py`)
 

@@ -28,6 +28,14 @@ def parse_train_opt():
                         "(the output folder is reused, not incremented)")
     parser.add_argument("--skip_sample", action="store_true", help="at each save, only write the checkpoint (no sample, no render, no metric)")
     parser.add_argument("--slim_ckpt", action="store_true", help="save model, EMA and normalizer only (no optimizer)")
+    parser.add_argument("--val_every", type=int, default=0, help="validation loss every N epochs on held-out training sequences (0 = off); writes best.pt")
+    parser.add_argument("--val_seq_every", type=int, default=20, help="hold out every N-th training sequence for validation")
+    parser.add_argument("--patience", type=int, default=0, help="early stop after this many validation evaluations without improvement (0 = never)")
+    parser.add_argument("--last_every", type=int, default=0, help="overwrite weights/last.pt (full state with optimizer) every N epochs (0 = off)")
+    parser.add_argument("--grad_clip", type=float, default=0.0, help="clip the gradient norm (0 = off)")
+    parser.add_argument("--lr_schedule", type=str, default="const", choices=["const", "cosine"])
+    parser.add_argument("--warmup_epochs", type=int, default=5, help="--lr_schedule cosine: linear warm-up epochs")
+    parser.add_argument("--lr_min_frac", type=float, default=0.025, help="--lr_schedule cosine: final lr as a fraction of the base lr")
     opt = parser.parse_args()
     return opt
 

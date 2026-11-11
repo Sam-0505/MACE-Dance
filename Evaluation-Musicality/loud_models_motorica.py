@@ -44,13 +44,19 @@ MODELS = {
     'Lodge': 'lodge',
     'Bailando': 'bailando',
     'MEGADance': 'mega',
+    'Ours AIST++': 'ours_aist',   # AIST++-trained MACE + AIST++ critic + gain (gen_aist_model_motorica.py)
 }
+if '--only' in sys.argv:   # comma-separated model labels
+    _keep = sys.argv[sys.argv.index('--only') + 1].split(',')
+    MODELS = {k: v for k, v in MODELS.items() if k in _keep}
 TAG = ''
 if '--gain_only' in sys.argv:
     # 2026-11-08: other models + only Ours = critic v5 + mask + motion gain (generate with gen_mace_motorica.py --gain_ref 0.49)
     MODELS = {k: v for k, v in MODELS.items() if not k.startswith(('Ours', 'MACE mask'))}
     MODELS['Ours (critic v5 + mask + gain)'] = 'mace_local2s_criticv5_s0.003_foot10_frz_gain'
     TAG = '_gain'
+if '--only' in sys.argv:
+    TAG += '_only'
 OUT = os.path.join(HERE, 'results', f'loud_models_motorica_{N_SEEDS}seed{TAG}.json')
 
 

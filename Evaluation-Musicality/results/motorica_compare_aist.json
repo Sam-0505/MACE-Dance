@@ -1,0 +1,493 @@
+{
+ "slices": 289,
+ "pieces": [
+  "kthjazz_gCH_sFM_sngl_d01_007",
+  "kthjazz_gCH_sFM_sngl_d01_008",
+  "kthjazz_gCH_sFM_sngl_d01_009",
+  "kthjazz_gCH_sFM_sngl_d01_019",
+  "kthjazz_gCH_sFM_sngl_d02_006",
+  "kthjazz_gCH_sFM_sngl_d02_018",
+  "kthjazz_gJZ_sFM_sngl_d01_001",
+  "kthjazz_gJZ_sFM_sngl_d01_002",
+  "kthjazz_gJZ_sFM_sngl_d01_020",
+  "kthjazz_gJZ_sFM_sngl_d02_003",
+  "kthjazz_gJZ_sFM_sngl_d02_004",
+  "kthjazz_gTP_sFM_sngl_d01_010",
+  "kthjazz_gTP_sFM_sngl_d02_014",
+  "kthjazz_gTP_sFM_sngl_d02_016",
+  "kthstreet_gKR_sFM_cAll_d01_mKR1_ch01",
+  "kthstreet_gKR_sFM_cAll_d01_mKR3_ch03",
+  "kthstreet_gKR_sFM_cAll_d01_mKR5_ch05",
+  "kthstreet_gKR_sFM_cAll_d01_mKR7_ch07",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_1stafterthecaos_000",
+  "kthstreet_gKR_sFM_cAll_d01_mKR_ch01_chargedcableupyour_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH12_ch12",
+  "kthstreet_gLH_sFM_cAll_d01_mLH13_ch13",
+  "kthstreet_gLH_sFM_cAll_d01_mLH1_ch01",
+  "kthstreet_gLH_sFM_cAll_d01_mLH2_ch02",
+  "kthstreet_gLH_sFM_cAll_d01_mLH3_ch03",
+  "kthstreet_gLH_sFM_cAll_d01_mLH7_ch07",
+  "kthstreet_gLH_sFM_cAll_d01_mLH8_ch08",
+  "kthstreet_gLH_sFM_cAll_d01_mLH9_ch09",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_feelingsvstech_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_imhere20_005",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_jesusbreak_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_thisisit_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_vibeness108bpm_001",
+  "kthstreet_gLH_sFM_cAll_d01_mLH_ch01_yougonnaregretit_003",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_basketboll_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_digit_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_glitter_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_hitmewobble_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_lala_001",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_luco100bpm_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_opdirt_002",
+  "kthstreet_gLH_sFM_cAll_d02_mLH_ch01_yourhead108bpm_001",
+  "kthstreet_gLO_sFM_cAll_d01_mLO_ch01_funk_001",
+  "kthstreet_gPO_sFM_cAll_d01_mPO2_ch02",
+  "kthstreet_gPO_sFM_cAll_d01_mPO3_ch03",
+  "kthstreet_gPO_sFM_cAll_d01_mPO5_ch05",
+  "kthstreet_gPO_sFM_cAll_d01_mPO7_ch07",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bbonthespot_003",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_bombom_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_heropop_002",
+  "kthstreet_gPO_sFM_cAll_d01_mPO_ch01_justus2_001",
+  "kthstreet_gPO_sFM_cAll_d02_mPO_ch01_atombounce_001"
+ ],
+ "coupling": {
+  "real": {
+   "loud slow -> energy": {
+    "own": 0.18245705108793195,
+    "wrong": 0.03559751728558362,
+    "delta": 0.16015871950097404,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.19308487531992014,
+    "wrong": 0.02916719882615716,
+    "delta": 0.18054639610129847,
+    "p": 0.0,
+    "pos": "43/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.18702568294324068,
+    "wrong": 0.02988167422975274,
+    "delta": 0.16858042218595148,
+    "p": 0.0,
+    "pos": "40/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.2024326755836545,
+    "wrong": 0.02538278141438775,
+    "delta": 0.19456142915386243,
+    "p": 0.0,
+    "pos": "44/52"
+   }
+  },
+  "edge": {
+   "loud slow -> energy": {
+    "own": 0.06485544749945898,
+    "wrong": 0.03244096219991893,
+    "delta": 0.03603563818531216,
+    "p": 0.01005,
+    "pos": "38/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.04944193449759173,
+    "wrong": 0.03262307643436954,
+    "delta": 0.018089714846969265,
+    "p": 0.22495,
+    "pos": "31/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.07027348587083958,
+    "wrong": 0.032813798804702046,
+    "delta": 0.04159020714100077,
+    "p": 0.0017,
+    "pos": "37/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.05299461019948082,
+    "wrong": 0.03478119928536175,
+    "delta": 0.019689219826055208,
+    "p": 0.17285,
+    "pos": "29/52"
+   }
+  },
+  "bailando": {
+   "loud slow -> energy": {
+    "own": 0.03711349746359712,
+    "wrong": 0.062110758592091225,
+    "delta": -0.007572112517229188,
+    "p": 0.733,
+    "pos": "24/52"
+   },
+   "perc slow -> energy": {
+    "own": 0.08196358241618104,
+    "wrong": 0.06318048407935441,
+    "delta": 0.03595547103743186,
+    "p": 0.12315,
+    "pos": "23/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": 0.03752211722159387,
+    "wrong": 0.0665527611072953,
+    "delta": -0.013174723834707561,
+    "p": 0.53705,
+    "pos": "25/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": 0.07206966214331388,
+    "wrong": 0.06705937378156257,
+    "delta": 0.019183468083617282,
+    "p": 0.3767,
+    "pos": "20/52"
+   }
+  },
+  "ours_aist": {
+   "loud slow -> energy": {
+    "own": -0.03776214291268618,
+    "wrong": 0.04113394799307014,
+    "delta": -0.0661302699544002,
+    "p": 0.0011,
+    "pos": "13/52"
+   },
+   "perc slow -> energy": {
+    "own": -0.025540920669862358,
+    "wrong": 0.03679191152426177,
+    "delta": -0.05233830554902671,
+    "p": 0.0108,
+    "pos": "19/52"
+   },
+   "loud slow -> energy (root-rel)": {
+    "own": -0.02487084416820566,
+    "wrong": 0.04297971244225262,
+    "delta": -0.05758679929025408,
+    "p": 0.00385,
+    "pos": "13/52"
+   },
+   "perc slow -> energy (root-rel)": {
+    "own": -0.012841526322850742,
+    "wrong": 0.042191539107086916,
+    "delta": -0.04562975841499073,
+    "p": 0.0176,
+    "pos": "20/52"
+   }
+  }
+ },
+ "motion": {
+  "real": {
+   "speed": 0.6626540434264789,
+   "accel": 7.6996042804672715,
+   "hf5": 0.025024659690560717,
+   "freeze": 0.08120371818237372,
+   "travel": 11.4344893510396,
+   "skate": 0.14965451392478427,
+   "contact": 0.29533804299505967,
+   "float": 0.027363216998038512,
+   "seed_div": NaN
+  },
+  "edge": {
+   "speed": 0.7164998284922639,
+   "accel": 12.106862593535775,
+   "hf5": 0.07331874436405403,
+   "freeze": 0.013516552414982248,
+   "travel": 14.163129174912168,
+   "skate": 0.45308694530579446,
+   "contact": 0.013408791792930653,
+   "float": 0.11635292466209825,
+   "seed_div": 0.15835099734652502
+  },
+  "bailando": {
+   "speed": 0.5150004784505932,
+   "accel": 6.506793321764163,
+   "hf5": 0.025073338048483048,
+   "freeze": 0.2412335272676293,
+   "travel": 5.706359218909155,
+   "skate": 0.31570048641594206,
+   "contact": 0.0131120264875785,
+   "float": 0.3500649046286558,
+   "seed_div": 0.0
+  },
+  "ours_aist": {
+   "speed": 1.302036903972298,
+   "accel": 26.43711442526497,
+   "hf5": 0.2013283859472505,
+   "freeze": 0.02300015367360804,
+   "travel": 30.4844463248304,
+   "skate": 0.9576289098094423,
+   "contact": 0.003246156512226188,
+   "float": 0.2693001950442136,
+   "seed_div": NaN
+  }
+ },
+ "fid": {
+  "real": {
+   "Div_k_mot": {
+    "mean": 10.263076400903499,
+    "sd": 0.0
+   }
+  },
+  "edge": {
+   "FID_k_mot": {
+    "mean": 24.350824100256304,
+    "sd": 0.5525624296159181
+   },
+   "Div_k_mot": {
+    "mean": 6.703285695405614,
+    "sd": 0.23145330087662278
+   },
+   "FID_k_fd": {
+    "mean": 93.95520853706496,
+    "sd": 4.452011684689193
+   },
+   "FID_g_fd": {
+    "mean": 68.15618280793828,
+    "sd": 1.1727071272096645
+   },
+   "Div_k": {
+    "mean": 9.276782317297835,
+    "sd": 0.3267113973108256
+   },
+   "Div_g": {
+    "mean": 4.749807140482827,
+    "sd": 0.12519431999333538
+   },
+   "PFC": {
+    "mean": 0.5185476682275612,
+    "sd": 0.007050441768171157
+   }
+  },
+  "bailando": {
+   "FID_k_mot": {
+    "mean": 36.128389484043595,
+    "sd": 0.0
+   },
+   "Div_k_mot": {
+    "mean": 10.222132863562091,
+    "sd": 0.0
+   },
+   "FID_k_fd": {
+    "mean": 48.742998634142225,
+    "sd": 0.0
+   },
+   "FID_g_fd": {
+    "mean": 1552.8072531320379,
+    "sd": 0.0
+   },
+   "Div_k": {
+    "mean": 12.729468533737025,
+    "sd": 0.0
+   },
+   "Div_g": {
+    "mean": 33.1428176662822,
+    "sd": 0.0
+   },
+   "PFC": {
+    "mean": 0.8808410938665684,
+    "sd": 1.1102230246251565e-16
+   }
+  },
+  "ours_aist": {
+   "FID_k_mot": {
+    "mean": 1875.2334179459604,
+    "sd": 0.0
+   },
+   "Div_k_mot": {
+    "mean": 38.621539792387544,
+    "sd": 0.0
+   },
+   "FID_k_fd": {
+    "mean": 5610.315148929801,
+    "sd": 0.0
+   },
+   "FID_g_fd": {
+    "mean": 5362.4212986476505,
+    "sd": 0.0
+   },
+   "Div_k": {
+    "mean": 60.62948144944252,
+    "sd": 0.0
+   },
+   "Div_g": {
+    "mean": 58.75620554594387,
+    "sd": 0.0
+   },
+   "PFC": {
+    "mean": 3.712508112764155,
+    "sd": 0.0
+   }
+  }
+ },
+ "tests": {
+  "edge - real loud slow -> energy": {
+   "diff": -0.12412308131566188,
+   "p": 5e-05
+  },
+  "edge - real perc slow -> energy": {
+   "diff": -0.16245668125432916,
+   "p": 0.0
+  },
+  "edge - real loud slow -> energy (root-rel)": {
+   "diff": -0.1269902150449507,
+   "p": 0.00015
+  },
+  "edge - real perc slow -> energy (root-rel)": {
+   "diff": -0.17487220932780723,
+   "p": 0.0
+  },
+  "edge - real speed": {
+   "diff": 0.05384578506578482,
+   "p": 0.0393
+  },
+  "edge - real accel": {
+   "diff": 4.4072583130685,
+   "p": 0.0
+  },
+  "edge - real hf5": {
+   "diff": 0.04829408467349331,
+   "p": 0.0
+  },
+  "edge - real freeze": {
+   "diff": -0.06768716576739146,
+   "p": 0.0
+  },
+  "edge - real travel": {
+   "diff": 2.728639823872564,
+   "p": 0.0
+  },
+  "edge - real skate": {
+   "diff": 0.3034324313810102,
+   "p": 0.0
+  },
+  "edge - real contact": {
+   "diff": -0.28192925120212897,
+   "p": 0.0
+  },
+  "edge - real float": {
+   "diff": 0.08898970766405973,
+   "p": 0.0
+  },
+  "bailando - real loud slow -> energy": {
+   "diff": -0.1677308320182032,
+   "p": 0.0
+  },
+  "bailando - real perc slow -> energy": {
+   "diff": -0.1445909250638666,
+   "p": 0.0
+  },
+  "bailando - real loud slow -> energy (root-rel)": {
+   "diff": -0.18175514602065904,
+   "p": 0.0
+  },
+  "bailando - real perc slow -> energy (root-rel)": {
+   "diff": -0.17537796107024517,
+   "p": 0.0
+  },
+  "bailando - real speed": {
+   "diff": -0.14765356497588578,
+   "p": 0.0
+  },
+  "bailando - real accel": {
+   "diff": -1.1928109587031104,
+   "p": 0.00435
+  },
+  "bailando - real hf5": {
+   "diff": 4.867835792232938e-05,
+   "p": 0.9767
+  },
+  "bailando - real freeze": {
+   "diff": 0.1600298090852556,
+   "p": 0.0
+  },
+  "bailando - real travel": {
+   "diff": -5.728130132130449,
+   "p": 0.0
+  },
+  "bailando - real skate": {
+   "diff": 0.16604597249115777,
+   "p": 0.0
+  },
+  "bailando - real contact": {
+   "diff": -0.2822260165074812,
+   "p": 0.0
+  },
+  "bailando - real float": {
+   "diff": 0.3227016876306173,
+   "p": 0.0
+  },
+  "ours_aist - real loud slow -> energy": {
+   "diff": -0.22628898945537423,
+   "p": 0.0
+  },
+  "ours_aist - real perc slow -> energy": {
+   "diff": -0.23288470165032513,
+   "p": 0.0
+  },
+  "ours_aist - real loud slow -> energy (root-rel)": {
+   "diff": -0.22616722147620558,
+   "p": 0.0
+  },
+  "ours_aist - real perc slow -> energy (root-rel)": {
+   "diff": -0.24019118756885316,
+   "p": 0.0
+  },
+  "ours_aist - real speed": {
+   "diff": 0.639382860545819,
+   "p": 0.0
+  },
+  "ours_aist - real accel": {
+   "diff": 18.73751014479769,
+   "p": 0.0
+  },
+  "ours_aist - real hf5": {
+   "diff": 0.1763037262566898,
+   "p": 0.0
+  },
+  "ours_aist - real freeze": {
+   "diff": -0.058203564508765696,
+   "p": 0.0
+  },
+  "ours_aist - real travel": {
+   "diff": 19.0499569737908,
+   "p": 0.0
+  },
+  "ours_aist - real skate": {
+   "diff": 0.807974395884658,
+   "p": 0.0
+  },
+  "ours_aist - real contact": {
+   "diff": -0.2920918864828335,
+   "p": 0.0
+  },
+  "ours_aist - real float": {
+   "diff": 0.24193697804617503,
+   "p": 0.0
+  }
+ },
+ "smpl_to_body": [
+  0,
+  3,
+  6,
+  12,
+  15,
+  13,
+  16,
+  18,
+  20,
+  14,
+  17,
+  19,
+  21,
+  1,
+  4,
+  7,
+  10,
+  2,
+  5,
+  8,
+  11
+ ],
+ "samples_per_slice": 3
+}
