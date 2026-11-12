@@ -1,0 +1,33 @@
+{
+ "n_clips": 84,
+ "n_songs": 19,
+ "models": {
+  "released": {
+   "n_clips": 84,
+   "mean": 3.083,
+   "dist": {
+    "1": 22,
+    "2": 11,
+    "3": 15,
+    "4": 10,
+    "5": 26
+   },
+   "song_level_mean": 3.301
+  },
+  "ours": {
+   "n_clips": 84,
+   "mean": 3.31,
+   "dist": {
+    "1": 13,
+    "2": 21,
+    "3": 11,
+    "4": 5,
+    "5": 34
+   },
+   "song_level_mean": 3.172
+  }
+ },
+ "judge": "protected.gemini-2.5-pro",
+ "requested_fps": 24,
+ "prompt": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The video displays a moderate and somewhat intermittent alignment between the visual motion and the audio rhythm. The dancer's movements are slow, fluid, and lyrical, which matches the overall mood of the slow C-pop song. However, the connection to the beat is not consistently tight. The motion tends to align with broader musical phrases and vocal cues rather than the steady underlying drum beat. For example, the extension of an arm or the completion of a turn often coincides with the start of a new vocal line or a gentle swell in the music. There are several segments (e.g., around 4-5s, 8-10s) where the motion becomes nearly static, despite the music's continuous rhythm. Conversely, there are moments, particularly in the chorus (e.g., 22-25s), where the larger arm gestures feel more connected to the prominent musical accents. The motion completely fails to capture faster rhythmic details in the vocals (e.g., around 18s). Overall, the dance is clearly choreographed to the music, but its focus on lyrical flow over percussive hits results in a partial and mixed alignment with the audio beats.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1509,
+   "prompt_tokens": 211792,
+   "total_tokens": 213301,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1244,
+    "text_tokens": 265
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 16,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.00306439399719,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

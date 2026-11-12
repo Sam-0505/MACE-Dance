@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is generally strong, but not perfect. The character's slow, fluid movements are consistently timed to the slow tempo of the R&B track. Many of the arm gestures, body sways, and pose transitions land on or very close to the main beats and follow the lyrical phrasing of the song. For example, the movements from 00:29-00:32 align well with the underlying beat. However, the synchronization is not flawless. There is a noticeable period from approximately 00:11 to 00:14 where the motion nearly freezes, creating a clear disconnect with the ongoing music. Additionally, some of the movements are slightly soft or 'floaty' and don't hit the beats with percussive sharpness, which can be perceived as slight jitter or soft timing. Despite these occasional imperfections, the overall performance is clearly beat-aware and sustains a good level of synchronization throughout most of the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1537,
+   "prompt_tokens": 211792,
+   "total_tokens": 213329,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1309,
+    "text_tokens": 228
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 63.02854514122009,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

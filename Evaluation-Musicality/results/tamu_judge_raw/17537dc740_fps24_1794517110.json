@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The generated motion is clearly choreographed to the music, with the overall speed and energy of the dance matching the tempo and feel of the audio track. The dancer's movements and pose transitions align with the musical phrases, typically occurring over 2 or 4 bars of music. However, the alignment with individual, percussive audio beats is mixed. The movements are very smooth and flowing, often gliding through the beats rather than creating sharp, distinct motion accents that land precisely on them. While some key poses are initiated or held in time with major downbeats, many of the smaller, faster beats in the music are not explicitly addressed by the motion. This results in a dance that feels musically appropriate but lacks the tight, percussive synchronization that would warrant a higher score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1842,
+   "prompt_tokens": 211792,
+   "total_tokens": 213634,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1662,
+    "text_tokens": 180
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 77.48981976509094,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

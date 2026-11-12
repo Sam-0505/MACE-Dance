@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the avatar is extremely slow, smooth, and floaty, completely disconnected from the hip-hop track's clear and much faster beat. There are no discernible motion beats that align with the audio's percussive elements (kick and snare). The avatar's gestures and body sways seem to follow their own internal, slow rhythm, showing no awareness of or correspondence to the musical tempo or accents. The alignment is non-existent throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 855,
+   "prompt_tokens": 211792,
+   "total_tokens": 212647,
+   "completion_tokens_details": {
+    "reasoning_tokens": 734,
+    "text_tokens": 121
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 39.02874517440796,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

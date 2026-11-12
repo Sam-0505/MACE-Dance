@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The audio track has a very clear, funky, and consistent beat. However, the visual motion of the figure does not align well with this rhythm. The figure performs slow, flowing, and continuous movements, primarily with the upper body and arms. These movements lack the sharp, percussive accents that would be needed to synchronize with the prominent kick and snare beats in the music. The tempo of the dance seems significantly slower than the tempo of the audio, causing a major disconnect. While the figure is clearly performing some kind of dance, the motion beats are sparse and rarely coincide with the audio beats. The alignment is therefore unreliable and unstable throughout the clip, showing only a vague awareness of the music's presence rather than a response to its rhythmic structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2311,
+   "prompt_tokens": 211792,
+   "total_tokens": 214103,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2135,
+    "text_tokens": 176
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.42556858062744,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

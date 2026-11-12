@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion of the figure is very slow, smooth, and continuous throughout the video, which generally matches the calm, melodic nature of the song. However, it almost completely lacks distinct motion beats or accents that could align with the prominent audio beats in the music. While the overall tempo seems to be vaguely followed, there are no sharp hits, steps, or pose changes that synchronize with the percussion or strong vocal cues. The movement floats over the beat structure rather than responding to it. This results in a weak and unreliable correspondence between the visual and audio rhythms.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1152,
+   "prompt_tokens": 211792,
+   "total_tokens": 212944,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1016,
+    "text_tokens": 136
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 69.64670372009277,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The music is slow and ambient, with sparse percussive hits serving as the main rhythmic guide. The dancer's movements are also extremely slow and fluid. However, the alignment between the motion and the audio is weak and unreliable. While the initial rise from a crouch to a stand (0s-1s) lands acceptably on the first major beat, the subsequent motion often fails to connect with the rhythmic pulses. For long stretches (e.g., 3s-8s, 10s-12s), the figure holds a static pose while multiple audio beats pass without any corresponding visual accent. When motion does occur, it's typically a very slow, continuous transition that doesn't emphasize the beats. There is a general correspondence in mood (slow music, slow dance), but the specific rhythmic alignment is largely absent.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1403,
+   "prompt_tokens": 211792,
+   "total_tokens": 213195,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1205,
+    "text_tokens": 198
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.11104655265808,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

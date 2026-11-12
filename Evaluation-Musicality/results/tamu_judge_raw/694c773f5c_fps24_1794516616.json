@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion exhibits a moderate and intermittent alignment with the audio. The dance style is slow and graceful, and the movements tend to align with the slower, melodic phrases of the sitar rather than the faster, more prominent percussive beats from the tabla. There are moments where hand gestures and pose transitions correspond nicely to melodic cues (e.g., around 1s, 11.2s, and 22.5s). However, for significant portions of the video, the motion seems to float over the underlying rhythmic structure, with many clear audio beats not receiving a corresponding visual accent. The alignment is therefore unstable and partial, fitting the description of a mixed/moderate score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1277,
+   "prompt_tokens": 211792,
+   "total_tokens": 213069,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1112,
+    "text_tokens": 165
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.66740322113037,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

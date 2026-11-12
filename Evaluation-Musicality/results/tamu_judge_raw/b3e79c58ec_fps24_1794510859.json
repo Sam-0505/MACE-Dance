@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion is very slow and flowing, which matches the overall slow and atmospheric tempo of the music. However, there is a distinct lack of synchronization between specific motion accents and the musical beats or phrases. The dance consists of continuous, smooth transitions without clear 'hits' or accents that align with the onsets of new musical phrases in the audio. While the overall mood is consistent, the motion appears rhythmically disconnected from the music's underlying structure, showing only a vague awareness of the tempo rather than a response to its beats. This results in a weak alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1709,
+   "prompt_tokens": 211792,
+   "total_tokens": 213501,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1571,
+    "text_tokens": 138
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 43.84947228431702,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

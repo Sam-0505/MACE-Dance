@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The dancer's motion generally follows the tempo and overall feel of the music, but the alignment with the specific audio beats is inconsistent and often weak. The movements are very slow, smooth, and flowing, which makes it difficult to land sharp motion accents on the distinct, percussive beats of the soundtrack. While some major pose transitions align with the start of musical phrases (e.g., around 2.5s, 9.0s), most of the individual beats are not answered by a clear motion beat. The performance feels more like a general, lyrical interpretation of the music rather than a beat-synchronized dance. This results in a moderate or mixed level of alignment, where the motion is rhythmically related to the audio but lacks consistent precision and coverage of the beats.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1463,
+   "prompt_tokens": 211792,
+   "total_tokens": 213255,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1280,
+    "text_tokens": 183
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 44.99996376037598,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

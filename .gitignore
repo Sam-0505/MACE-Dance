@@ -27,3 +27,6 @@ Motion-Projector/logs/
 
 # Reference papers
 papers/
+
+# local secrets (TAMU AI API key for the MLLM judge)
+.env

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion is consistently and intentionally aligned with the audio, but the style of both the music and the dance is fluid and flowing rather than percussive and beat-driven. The dancer's movements, such as arm gestures, turns, and pose transitions, correspond well with the melodic and rhythmic phrases of the traditional Indian vocal music. For example, the slow turn around 4 seconds, the dips and rises of the arms between 5-8 seconds, and the final pose transition all align with shifts in the musical phrases. While not every single micro-rhythm is hit with percussive precision, the overall temporal coherence is very strong and sustained throughout the video. The alignment is clearly deliberate and well-executed for this expressive dance style.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1156,
+   "prompt_tokens": 211792,
+   "total_tokens": 212948,
+   "completion_tokens_details": {
+    "reasoning_tokens": 981,
+    "text_tokens": 175
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 59.05214190483093,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

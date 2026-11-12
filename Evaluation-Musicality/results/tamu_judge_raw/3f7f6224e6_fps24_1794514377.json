@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The visual motion shows a strong and consistent alignment with the audio rhythm. The music has a clear and steady funk beat, and the animated figure consistently performs motion accents (such as hand gestures, head turns, and body sways) that land on or very near the main beats. For example, the hand movements from 0-2s, the arm-crossing gestures around 2-3s, and the side-to-side sways from 4-5s are all well-timed. The alignment is sustained throughout the clip, even as the figure turns. While not every single micro-beat is hit with perfect precision, the overall impression is that the motion is clearly aware of and responsive to the music's core rhythm, with minimal drift or significant timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1280,
+   "prompt_tokens": 211792,
+   "total_tokens": 213072,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1097,
+    "text_tokens": 183
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.87160062789917,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

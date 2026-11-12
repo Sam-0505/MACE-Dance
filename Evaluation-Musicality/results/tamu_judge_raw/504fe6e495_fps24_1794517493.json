@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits a weak and unreliable connection to the audio's rhythm. The dancer's movements are generally very slow, fluid, and floaty, lacking the sharpness and percussive quality needed to align with the distinct beats in the pop/rock track. While the motion does slow down significantly during the quieter musical passages (e.g., 0:04-0:16), which shows a vague awareness of the song's structure, it fails to connect with the beat structure during the more rhythmic sections. The motion accents, when they occur, are consistently offset, often landing between the audio beats, resulting in a feeling of being constantly behind the music. There is no sustained period of clear synchronization, making the overall alignment weak.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1379,
+   "prompt_tokens": 211792,
+   "total_tokens": 213171,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1202,
+    "text_tokens": 177
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 60.33140850067139,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits a significant and sustained mismatch with the audio's rhythm. The audio track has distinct sections: a slow, atmospheric intro, a fast-paced, high-energy middle section with clear percussive beats, and a slow outro. The dancer's movements are extremely slow and flowing throughout the entire video. While this slow pace matches the mood of the intro and outro, it completely ignores the fast, driving beat of the music from approximately 0:09 to 0:27. During this core rhythmic section, there is no attempt to hit the audio beats; the motion is consistently off-tempo and appears disconnected from the primary rhythm. This results in a weak and unreliable alignment, as the motion only vaguely corresponds to the general structure of the music (slow-fast-slow) but fails to synchronize with the actual beats.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1239,
+   "prompt_tokens": 211792,
+   "total_tokens": 213031,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1042,
+    "text_tokens": 197
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 60.824524879455566,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

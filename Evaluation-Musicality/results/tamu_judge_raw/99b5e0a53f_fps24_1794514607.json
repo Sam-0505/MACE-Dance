@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion is almost entirely disconnected from the audio. The music has a clear, upbeat funk tempo with prominent beats and percussive accents. However, the dancer's movements are consistently slow, smooth, and languid, as if they are dancing to a much slower ballad. There are no motion accents (sharp movements, hits, or pose changes) that align with the audible beats of the soundtrack. The fundamental tempo and energy of the visual and audio are completely mismatched throughout the entire video, resulting in a total lack of synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1226,
+   "prompt_tokens": 211792,
+   "total_tokens": 213018,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1094,
+    "text_tokens": 132
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.57360029220581,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

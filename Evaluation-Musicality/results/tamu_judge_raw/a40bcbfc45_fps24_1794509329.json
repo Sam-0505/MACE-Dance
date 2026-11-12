@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The video begins with the figure remaining completely static for the first 9 seconds, despite the presence of complex, fast-paced music. When the music transitions to a much more rhythmic and funky track at around the 10-second mark, the figure begins to move. However, the motion is extremely slow, continuous, and completely disconnected from the strong, clear beat of the audio. There are no motion accents that align with the drum hits or vocal cues. The overall rhythm of the dance is entirely different from the rhythm of the music, resulting in a total lack of synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1384,
+   "prompt_tokens": 211792,
+   "total_tokens": 213176,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1242,
+    "text_tokens": 142
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.684160470962524,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

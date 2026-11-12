@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is excellent. The dance is slow and lyrical, perfectly matching the tempo and mood of the song. The motion accents, such as the completion of arm movements, head turns, and pose transitions, consistently land on the prominent beats of the music and align beautifully with the vocal phrases. For example, the arm cross at ~0.8s, the leg cross at ~5s, and the pose holds all correspond to clear rhythmic or melodic points in the audio. The alignment is sustained throughout the entire video with no noticeable drift or timing errors. The motion feels extremely intentional and highly responsive to the nuances of the soundtrack.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1654,
+   "prompt_tokens": 211792,
+   "total_tokens": 213446,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1495,
+    "text_tokens": 159
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 66.22202801704407,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

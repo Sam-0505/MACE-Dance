@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance is slow, fluid, and graceful, perfectly matching the tempo and style of the traditional Chinese flute music. Major motion accents, such as the beginning and end of turns, the peaks of arm gestures, and the striking of poses, are consistently synchronized with the primary melodic notes and phrasing of the audio. For example, the upward arm lift around 4-5 seconds perfectly coincides with a rising melodic phrase, and the final pose from 31 seconds onward aligns beautifully with the concluding musical passage. The synchronization is sustained and precise throughout the entire video, demonstrating an extremely tight and intentional relationship between the dance and the music.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1565,
+   "prompt_tokens": 211792,
+   "total_tokens": 213357,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1402,
+    "text_tokens": 163
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.90586471557617,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

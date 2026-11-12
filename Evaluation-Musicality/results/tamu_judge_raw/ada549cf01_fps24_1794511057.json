@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion demonstrates a strong alignment with the music, primarily through phrasing, tempo, and overall mood rather than strict beat-matching. The dance style is slow, continuous, and flowing, which complements the ambient and melodic nature of the soundtrack. There are no sharp, percussive movements in the dance, and similarly, the music has a very sparse and subtle beat structure. However, the changes in motion phrases (e.g., beginning a turn, starting to crouch, rising and extending an arm) frequently coincide with the start of new musical phrases or significant melodic changes. For example, the dancer begins to rise around the 8-second mark as a new, swelling musical phrase begins. This indicates a high level of musical awareness. While it doesn't feature the tight, beat-by-beat synchronization that would warrant a score of 5, the sustained and cohesive correspondence between the character of the movement and the music is strong and intentional, clearly deserving of a high score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2792,
+   "prompt_tokens": 211792,
+   "total_tokens": 214584,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2568,
+    "text_tokens": 224
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 16,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 69.25800609588623,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

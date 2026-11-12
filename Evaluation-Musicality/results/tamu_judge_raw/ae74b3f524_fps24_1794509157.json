@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The visual motion shows very little correspondence to the audio rhythm. The audio track is a mid-tempo funk song with a clear, consistent beat defined by the drums and bass. However, the avatar's movements are extremely slow, smooth, and flowing, lacking any sharp or accented motions that could align with the music's percussive elements. The motion seems to follow its own independent, languid tempo. For example, during the vocal count-in \\\"one, two, three, four,\\\" the visual motion is a slow, unrelated transition. While there is continuous movement, it rarely responds to the audible beats, resulting in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1555,
+   "prompt_tokens": 211792,
+   "total_tokens": 213347,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1397,
+    "text_tokens": 158
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.048285484313965,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

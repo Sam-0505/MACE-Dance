@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion is consistently slow, fluid, and expressive, which matches the overall mood and slow tempo of the ballad. The large, sweeping gestures often start and end in general alignment with the musical phrases. However, the dance lacks distinct motion accents that synchronize with the clearer, percussive audio beats that emerge throughout the track (e.g., around 23s, 26s, 30s). While the dance follows the flow of the music, it does not reliably hit the rhythmic pulses. This results in a moderate or mixed alignment, where the emotional tone is matched but the beat-level synchronization is intermittent and weak.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2272,
+   "prompt_tokens": 211792,
+   "total_tokens": 214064,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2117,
+    "text_tokens": 155
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 62.10125255584717,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

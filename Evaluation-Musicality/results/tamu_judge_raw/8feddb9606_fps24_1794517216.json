@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The evaluation of this video reveals a significant and consistent misalignment between the audio and visual elements. The audio track begins with a spoken-word introduction and transitions into a clear, steady hip-hop beat at approximately the 17-second mark. However, the avatar's movements remain slow, fluid, and continuous throughout the entire duration of the clip. When the beat kicks in, there is no corresponding change in the motion's rhythm, tempo, or character. The avatar's slow body rolls, arm gestures, and pose transitions do not feature any sharp accents or motion beats that align with the prominent kicks and snares in the music. The visual rhythm is entirely disconnected from the audio rhythm, resulting in a poor or non-existent alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1498,
+   "prompt_tokens": 211792,
+   "total_tokens": 213290,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1322,
+    "text_tokens": 176
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.094024419784546,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

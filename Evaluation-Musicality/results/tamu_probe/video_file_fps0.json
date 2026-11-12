@@ -1,0 +1,33 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "The music has a moderate, relaxed tempo. It features electronic instruments, including a drum machine, synthesized keyboards, and bass. There are lyrics sung in Mandarin, first by a female vocalist and later by a male rapper.\n\nThe first loud clap/drum sound occurs at 00:04.\n\nThe animated person is performing a choreographed dance routine."
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 706,
+   "prompt_tokens": 9664,
+   "total_tokens": 10370,
+   "completion_tokens_details": {
+    "reasoning_tokens": 634,
+    "text_tokens": 72
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 42,
+    "video_tokens": 8772
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 11.589521169662476,
+ "shape": "file",
+ "fps": 0
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The dancer's movements are slow, flowing, and lyrical, which matches the overall mood and tempo of the music. However, the alignment with the specific rhythmic beats of the audio is inconsistent. The motion tends to follow the melodic and lyrical phrases rather than landing on the downbeats. There are some moments where gestures or pose transitions coincide with beats (e.g., around 2s, 6s, 8s), but these instances are intermittent. Much of the choreography consists of slow, continuous transitions that flow through the beats without accenting them. This results in a moderate alignment where the dance is clearly rhythmically aware and connected to the music's feel, but it lacks consistent, sharp synchronization with the beat structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2026,
+   "prompt_tokens": 211792,
+   "total_tokens": 213818,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1854,
+    "text_tokens": 172
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 68.40595650672913,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

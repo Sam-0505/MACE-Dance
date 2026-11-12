@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The dancer's movements are consistently slow, smooth, and flowing throughout the video. While the motion has a certain languid quality that could be seen as an interpretation of the song's mood, it almost entirely ignores the prominent and steady beat of the audio track. There are very few, if any, clear motion accents that align with the audio beats. The movements feel disconnected from the rhythmic structure of the music, more like a slow, continuous improvisation happening alongside the track rather than a dance synchronized to it. The lack of beat awareness is consistent, making the overall alignment weak.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1100,
+   "prompt_tokens": 211792,
+   "total_tokens": 212892,
+   "completion_tokens_details": {
+    "reasoning_tokens": 958,
+    "text_tokens": 142
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 39.81621503829956,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

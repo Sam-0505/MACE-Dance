@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is weak. The audio is a high-energy dance track with a fast, prominent, and consistent beat. In contrast, the character's motion is predominantly slow, smooth, and flowing, creating a significant mismatch in both tempo and energy. For the majority of the video, the motion accents (slow arm waves, body sways) do not correspond to the strong percussive beats in the music. There are a few isolated moments where a footfall or a step lands near a beat (e.g., around 6s and 14s), and the rhythm becomes slightly more congruent in the last few seconds. However, these instances are sparse and not reliably timed. The overall impression is one of a vague rhythmic awareness, but the motion rarely responds directly or accurately to the audible beats, making the alignment unstable and weak.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2283,
+   "prompt_tokens": 211792,
+   "total_tokens": 214075,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2079,
+    "text_tokens": 204
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.620240449905396,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

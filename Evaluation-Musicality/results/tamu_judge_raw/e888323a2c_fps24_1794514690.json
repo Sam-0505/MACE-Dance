@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The audio is a fast-paced, high-energy disco track with a very clear and driving beat. In stark contrast, the visual motion of the avatar is extremely slow, languid, and lacks any distinct rhythmic accents or motion beats. The slow weight shifts, arm gestures, and body turns are completely disconnected from the tempo and rhythmic structure of the music. There is no correlation between the audio beats and any visual movement, resulting in a total misalignment throughout the entire video.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 989,
+   "prompt_tokens": 211792,
+   "total_tokens": 212781,
+   "completion_tokens_details": {
+    "reasoning_tokens": 869,
+    "text_tokens": 120
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 42.67281460762024,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

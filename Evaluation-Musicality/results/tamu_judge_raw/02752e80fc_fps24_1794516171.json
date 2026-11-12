@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The audio consists of a very slow, atmospheric track with sparse, distinct percussive hits that serve as the primary audio beats. The visual motion is correspondingly very slow, fluid, and continuous, in the style of contemporary dance. While the overall slow tempo and mood of the dance match the general feeling of the music, there is a clear lack of synchronization between the specific motion accents and the audio beats. The dancer's movements flow smoothly through the percussive hits without any attempt to accent them. The alignment is therefore weak, showing only a vague awareness of the music's overall pacing rather than a direct rhythmic response.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1514,
+   "prompt_tokens": 211792,
+   "total_tokens": 213306,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1363,
+    "text_tokens": 151
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.52751541137695,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

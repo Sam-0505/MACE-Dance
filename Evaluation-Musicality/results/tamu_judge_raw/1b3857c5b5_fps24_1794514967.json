@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion is almost completely disconnected from the audio's rhythm. The music has a clear, upbeat disco tempo with distinct beats. In contrast, the avatar's movements are extremely slow, languid, and floaty, lacking any of the sharp accents or percussive hits that would be necessary to align with the music. The dancer appears to be moving at a much slower, independent tempo, gliding over the beats without acknowledging them. There are no instances of clear, intentional synchronization; the overall effect is one of a severe mismatch between the energy and rhythm of the audio and the visual motion.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1856,
+   "prompt_tokens": 211792,
+   "total_tokens": 213648,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1711,
+    "text_tokens": 145
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 67.1502845287323,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

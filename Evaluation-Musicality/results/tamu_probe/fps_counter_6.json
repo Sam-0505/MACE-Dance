@@ -1,0 +1,29 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "0002,0007,0012,0017,0022,0027,0032,0037,0042,0047,0052,0057,0062,0067,0072,0077,0082,0087"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 831,
+   "prompt_tokens": 4689,
+   "total_tokens": 5520,
+   "completion_tokens_details": {
+    "reasoning_tokens": 742,
+    "text_tokens": 89
+   },
+   "prompt_tokens_details": {
+    "text_tokens": 45,
+    "video_tokens": 4644
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "seconds": 7.415442228317261
+}

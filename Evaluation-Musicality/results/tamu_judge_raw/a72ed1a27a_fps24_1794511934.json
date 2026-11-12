@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the dancer's movements and the music is excellent. The motion is not just rhythmically accurate, with motion accents consistently landing on or very near the subtle percussive beats, but it is also highly musical. The slow, fluid, and graceful gestures perfectly match the tempo, mood, and phrasing of the ambient Indian classical music. Key moments, such as the turns, arm extensions, and held poses, are all beautifully synchronized with corresponding musical phrases and accents throughout the entire video. There are no noticeable drift or timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2020,
+   "prompt_tokens": 211792,
+   "total_tokens": 213812,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1886,
+    "text_tokens": 134
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 64.88071346282959,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

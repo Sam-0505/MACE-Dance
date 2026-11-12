@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion shows no correlation with the audio rhythm. The audio is an upbeat funk track with a very clear, driving beat. In contrast, the visual character performs extremely slow, continuous, and non-percussive movements that seem entirely disconnected from the music. The motion has its own meandering, slow pace and completely ignores the salient audio beats. There are no motion accents that align with the musical pulses, resulting in a total mismatch between the audio and visual rhythms throughout the entire video.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1031,
+   "prompt_tokens": 211792,
+   "total_tokens": 212823,
+   "completion_tokens_details": {
+    "reasoning_tokens": 908,
+    "text_tokens": 123
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.89450931549072,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

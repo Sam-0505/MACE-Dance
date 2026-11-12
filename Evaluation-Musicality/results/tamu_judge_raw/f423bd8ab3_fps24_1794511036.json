@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the dance motion and the audio is excellent. The dance is slow, lyrical, and balletic, which perfectly matches the classical piano music. The major motion accents, such as arm extensions, turns, and body leans, consistently and precisely align with the prominent musical beats and the start of new musical phrases. The flow and pacing of the movement are sustained throughout the entire clip, showing a deep and continuous correspondence with the musical rhythm and emotional quality. There are no noticeable timing errors or drift.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1403,
+   "prompt_tokens": 211792,
+   "total_tokens": 213195,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1277,
+    "text_tokens": 126
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.122910499572754,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

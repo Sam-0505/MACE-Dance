@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates a general awareness of the music's tempo and phrasing, but it lacks consistent and precise alignment with the primary audio beats. The movements are slow and flowing, often landing between beats or aligning more with the lyrical phrases than the percussive elements. For example, some arm gestures and pose changes coincide with the start of a new vocal line or a melodic shift, but many of the underlying kick and snare beats are not met with a clear motion accent. The alignment is therefore intermittent and unstable, making it a classic example of moderate synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1123,
+   "prompt_tokens": 211792,
+   "total_tokens": 212915,
+   "completion_tokens_details": {
+    "reasoning_tokens": 987,
+    "text_tokens": 136
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 59.89370560646057,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

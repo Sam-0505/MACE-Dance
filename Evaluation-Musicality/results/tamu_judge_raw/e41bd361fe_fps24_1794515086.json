@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The dancer's movements are consistently slow and flowing throughout the video, which vaguely matches the tempo and mood of the music. However, there is a clear lack of synchronization between specific motion accents and the prominent audio beats (like the kick drum and claps). The motion accents are either non-existent, with the dancer favoring continuous, smooth transitions, or they are unreliable and do not land on the beat. The overall performance demonstrates a general rhythmic awareness but fails to establish a consistent or intentional alignment with the core beat structure of the audio.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1414,
+   "prompt_tokens": 211792,
+   "total_tokens": 213206,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1281,
+    "text_tokens": 133
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.08165645599365,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

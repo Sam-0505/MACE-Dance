@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The visual motion is clearly intended to follow the audio, and the overall tempo is generally respected. However, the alignment between specific motion accents and audio beats is mixed and often lacks precision. The movements are frequently fluid and continuous, gliding through the rhythmic structure rather than landing sharply on the beats. For example, while some arm movements and body sways are loosely timed to the rhythm, many key poses and transitions (like the squat at 4s or the slow walk at 11s) do not have a clear, corresponding accent in the music. The alignment is present but unstable, with some moments of better sync and others that are quite loose, which is characteristic of a moderate alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1647,
+   "prompt_tokens": 211792,
+   "total_tokens": 213439,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1483,
+    "text_tokens": 164
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.27001738548279,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

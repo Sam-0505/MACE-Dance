@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The alignment between the visual motion and the audio is generally strong and consistent. The avatar's movements are clearly responsive to the music's rhythm, energy, and phrasing. For example, the dance becomes more energetic and complex as the music builds from the verse into the chorus around the 8-second mark. Many prominent motion accents, such as arm gestures, turns, and pose changes, land close to the salient beats of the music. However, the synchronization is not perfect. There are instances where the movements feel slightly soft or floaty, landing just off the sharp percussive hits, which prevents it from achieving an 'excellent' score. Despite these minor timing imperfections, the overall performance is very coherent and clearly beat-aware from start to finish.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1594,
+   "prompt_tokens": 211792,
+   "total_tokens": 213386,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1416,
+    "text_tokens": 178
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 67.03641557693481,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance is slow, lyrical, and fluid, which perfectly matches the ambient, orchestral nature of the music. The motion accents, such as the peak of an arm extension, a slow turn, or a held pose, are consistently synchronized with the musical phrasing, swells, and prominent melodic notes. The dancer does not just move to a beat but interprets the entire flow and emotional arc of the music. The timing is sustained and coherent throughout the entire clip, with no noticeable drift or mismatches.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1939,
+   "prompt_tokens": 211792,
+   "total_tokens": 213731,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1803,
+    "text_tokens": 136
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 66.12145519256592,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

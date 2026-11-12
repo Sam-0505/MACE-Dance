@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion generally follows the slow, lyrical feel of the music, with movements that are fluid and flowing rather than sharp and percussive. There is a sense of rhythmic awareness, as the avatar's speed and posing match the overall mood and tempo of the song. For instance, the character holds poses during slower instrumental parts and performs more defined gestures that align with lyrical phrases (e.g., hands near the head for \\\"little deer bumping\\\" at 11s). However, the alignment with the specific, underlying audio beats is inconsistent. Many downbeats are not marked by a clear motion accent; instead, the movement flows through them. While some key moments, like the beat change at 27s, are met with a corresponding visual accent (arms spreading wide), much of the choreography feels like a generic, mood-based interpretation rather than a precise rhythmic one. This results in a moderate level of alignment, where the general feeling is in sync but the beat-level details are often missed.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2045,
+   "prompt_tokens": 211792,
+   "total_tokens": 213837,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1817,
+    "text_tokens": 228
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.57969331741333,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

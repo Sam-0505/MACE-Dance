@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The audio track has a very clear, consistent, and strong pop beat that is easy to follow. However, the visual motion of the figure is predominantly slow, smooth, and seems to drift without a strong connection to this beat. While there are a few isolated moments where a pose change or gesture lands somewhat near a beat (e.g., the arm cross around 4.5s), these instances are sparse and not sustained. For large portions of the video, the figure is nearly static or moves at a tempo far slower than the music, creating a significant disconnect. The motion lacks the rhythmic accents and energy to match the audio, resulting in a weak and unreliable alignment overall.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1767,
+   "prompt_tokens": 211792,
+   "total_tokens": 213559,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1605,
+    "text_tokens": 162
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.82974648475647,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

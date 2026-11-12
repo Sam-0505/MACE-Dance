@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The style of dance, which appears to be a form of classical Indian dance, is highly responsive to the nuances of the music. The audio features a complex rhythm with prominent vocal phrases. The avatar's movements, particularly the arm and hand gestures (mudras), are not just synced to a primary beat but are intricately timed with the melodic and rhythmic patterns of the vocal line. Every turn of the wrist, tilt of the head, and extension of the arms feels intentional and lands precisely on corresponding musical cues. The overall pacing and character of the dance are a perfect match for the expressive and flowing nature of the soundtrack. The synchronization is sustained and stable throughout the entire video clip with no noticeable drift or errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1267,
+   "prompt_tokens": 211792,
+   "total_tokens": 213059,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1088,
+    "text_tokens": 179
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.206868410110474,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

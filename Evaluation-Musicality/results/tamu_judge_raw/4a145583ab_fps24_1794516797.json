@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance style is a form of Indian classical dance, which is characterized by graceful, flowing movements, specific hand gestures (mudras), and held poses that align with the complex rhythmic cycles (talas) and melodic phrases of the music. The generated motion captures this perfectly. Key motion accents, such as the start of a gesture, a change in pose, or a head turn, consistently land on the prominent beats and melodic accents of the sitar and percussion. The overall tempo and expressive quality of the dance are extremely well-matched to the music, resulting in a performance that feels authentic and musically coherent throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1570,
+   "prompt_tokens": 211792,
+   "total_tokens": 213362,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1407,
+    "text_tokens": 163
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.35055947303772,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

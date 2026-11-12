@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates a general awareness of the music's tempo, with the overall speed of the dance being appropriate for the track. However, the alignment between specific motion accents and the prominent audio beats is inconsistent and often weak. The dancer's movements, particularly the arm gestures, are generally smooth and flowing, which contrasts with the sharp, percussive nature of the funk music. While some larger movements initiate near the main beats, the peaks of these motions rarely land precisely on the kick or snare hits. This creates a perception of the dance 'floating' on top of the music rather than being driven by it. The alignment is partial and unstable, with some moments feeling more connected than others, but it lacks the sustained, tight synchronization required for a higher score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1453,
+   "prompt_tokens": 211792,
+   "total_tokens": 213245,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1274,
+    "text_tokens": 179
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.99442791938782,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and the visual motion is excellent. The soundtrack has a clear, consistent hip-hop beat. The character's movements, though generally slow and smooth, are precisely timed to land on the salient beats of the music. Key motion accents, such as head turns, hand gestures reaching their apex, shifts in body weight, and pose changes, consistently and accurately coincide with the primary drum beats (kick and snare). The alignment is stable and sustained throughout the entire duration of the video, with no noticeable drift or timing errors. Even the subtler sways and gestures feel rhythmically connected to the underlying musical structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1166,
+   "prompt_tokens": 211792,
+   "total_tokens": 212958,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1014,
+    "text_tokens": 152
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.65301036834717,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

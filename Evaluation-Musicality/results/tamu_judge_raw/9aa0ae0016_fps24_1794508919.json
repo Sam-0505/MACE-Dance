@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates a general awareness of the music's tempo, and the overall flow is consistent with the vibe of the song. However, the alignment with the specific audio beats is only partial and intermittent. The dance consists of very slow, smooth, and continuous movements that often glide over the strong, percussive beats of the music rather than hitting them. While some larger pose transitions seem to be initiated on major musical phrases, there is a distinct lack of sharp, accented motion beats that would create a sense of tight synchronization. For long stretches, the avatar performs a slow sway that feels disconnected from the more detailed rhythmic structure of the audio, making the alignment moderate at best.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2047,
+   "prompt_tokens": 211792,
+   "total_tokens": 213839,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1886,
+    "text_tokens": 161
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 64.17911505699158,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

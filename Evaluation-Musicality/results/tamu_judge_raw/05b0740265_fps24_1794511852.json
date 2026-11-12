@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance choreography is clearly tailored to the music, with motion accents consistently and precisely hitting the main percussive beats and key lyrical phrases of the song. For instance, the arm movements and head poses during the \\\"Taste that pink venom\\\" chorus are extremely tight and synchronized. The alignment is stable throughout the entire video, with no noticeable drift or timing errors. Even the slower, more gestural movements are rhythmically coherent with the underlying musical structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1809,
+   "prompt_tokens": 211792,
+   "total_tokens": 213601,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1682,
+    "text_tokens": 127
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.45351481437683,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

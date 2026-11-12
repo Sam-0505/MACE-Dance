@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The visual motion is exceptionally well-aligned with the audio rhythm throughout the entire video. The dancer consistently hits the prominent beats in the music with clear, accented movements, such as hand gestures, body pops, and pose changes. The timing is extremely precise, with motion accents landing directly on the audio beats with minimal to no perceptible offset. The coverage is excellent, as the dancer's body responds to nearly every beat in the soundtrack, creating a continuous and stable sense of synchronization. The movements also reflect the musical dynamics, becoming sharper on percussive hits and smoother during lyrical phrases, which further enhances the feeling of alignment. There are no noticeable drifts or timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1296,
+   "prompt_tokens": 211792,
+   "total_tokens": 213088,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1137,
+    "text_tokens": 159
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 59.521159410476685,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

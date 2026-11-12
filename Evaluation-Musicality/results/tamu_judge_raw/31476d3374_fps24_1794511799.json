@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The audio is the spoken-word part of Michael Jackson's \\\"Thriller,\\\" which lacks a consistent musical beat but has a strong, dramatic, and rhythmic cadence. The animated figure's movements are perfectly synchronized to this spoken rhythm. Each major phrase and sound effect in the audio is met with a corresponding, deliberate, and well-timed motion accent or pose change. For example, the gestures for looking around align perfectly with the words \\\"look under there\\\" and \\\"look over there.\\\" The slow, creeping, zombie-like movements match the spooky and theatrical tone of the narration. The synchronization is sustained and extremely tight throughout the entire clip, with no noticeable drift or timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1479,
+   "prompt_tokens": 211792,
+   "total_tokens": 213271,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1305,
+    "text_tokens": 174
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 42.88091516494751,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The video displays a moderate level of alignment. The overall tempo of the dance is appropriate for the music, and the movements are stylistically coherent with the song's feel. There are several instances where motion accents, like hand gestures or pose changes, align with the main vocal phrases or the start of a musical measure (e.g., around 0:03-0:04, 0:12-0:13, 0:27-0:28). However, the synchronization is not consistently tight with the underlying percussive beats. Many of the movements are flowing and transition smoothly between the beats rather than landing precisely on them. This creates a feeling of partial or intermittent alignment, where the dance is clearly related to the music but lacks the sharp, consistent precision required for a higher score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1406,
+   "prompt_tokens": 211792,
+   "total_tokens": 213198,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1212,
+    "text_tokens": 194
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.366636991500854,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the slow, fluid, continuous motion and the legato, operatic soundtrack is excellent. The video does not rely on hitting sharp beats, which are absent in the music. Instead, the dancer's movements are perfectly phrased with the long, flowing vocal and string lines. For example, the extension and opening of the arms from 0:02 to 0:05 mirror the swell of the music. The peaks of the physical gestures, such as the highest point of an arm raise or the deepest point of a bend, consistently coincide with the peaks of the musical phrases. The overall tempo and dynamic quality of the movement are sustained and remarkably congruent with the audio throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1207,
+   "prompt_tokens": 211792,
+   "total_tokens": 212999,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1039,
+    "text_tokens": 168
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.01080012321472,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

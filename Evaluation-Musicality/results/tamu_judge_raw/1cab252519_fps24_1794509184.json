@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The music is a slow, atmospheric piece without a strong percussive beat, and the dance consists of very slow, flowing, continuous movements that perfectly match the tempo and mood of the audio. The motion accents, such as the start of an arm extension, a slow turn, or a deep backbend, are extremely well-synchronized with the melodic phrases and sustained notes of the flute and underlying strings. For instance, a long, reaching pose is held precisely during a sustained, poignant musical note. The entire performance feels cohesive and emotionally resonant with the soundtrack, demonstrating a sophisticated and stable alignment throughout the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1647,
+   "prompt_tokens": 211792,
+   "total_tokens": 213439,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1488,
+    "text_tokens": 159
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 45.356820821762085,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

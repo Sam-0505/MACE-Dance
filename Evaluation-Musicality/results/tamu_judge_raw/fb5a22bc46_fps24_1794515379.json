@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion is extremely slow, smooth, and fluid, lacking any distinct accents or \\\"hits\\\" that could align with the clear, moderately-paced percussive beats in the audio. There is a fundamental mismatch in tempo; the dancer seems to be moving at a completely different, much slower tempo than the music's underlying beat structure. The transitions between poses are very gradual and do not coincide with the rhythmic pulses of the tabla or the vocal melody. The motion does not appear to correspond to the beat structure of the audio in any meaningful way.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1694,
+   "prompt_tokens": 211792,
+   "total_tokens": 213486,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1559,
+    "text_tokens": 135
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.31630492210388,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

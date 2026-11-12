@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The alignment is weak. While the slow, lyrical style of the dance is appropriate for the ballad-like music, the synchronization is poor for several reasons. Most critically, the dancer is completely out of the frame for significant portions of the video (e.g., from approximately 4s to 10s and again from 26s to the end), making alignment impossible during these long stretches. When the dancer is visible, the movements are extremely slow and flowing, with very few distinct motion accents that land on the audio beats. The motion has a general correspondence to the music's slow tempo but lacks any consistent or precise beat-to-motion synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1549,
+   "prompt_tokens": 211792,
+   "total_tokens": 213341,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1389,
+    "text_tokens": 160
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 44.062875747680664,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the figure is extremely slow, floaty, and completely disconnected from the audio's rhythm. The music has a clear, moderate-tempo pop beat, but the visual movements are languid and continuous, lacking any sharp accents or beats. There are no instances where motion beats align with the audio beats. The overall impression is that the motion is arbitrary and not responding to the music at all.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1073,
+   "prompt_tokens": 211792,
+   "total_tokens": 212865,
+   "completion_tokens_details": {
+    "reasoning_tokens": 966,
+    "text_tokens": 107
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 44.197237968444824,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

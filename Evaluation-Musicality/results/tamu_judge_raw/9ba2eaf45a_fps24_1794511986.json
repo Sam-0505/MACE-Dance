@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The video demonstrates extremely tight and sustained synchronization with the audio. The music is a slow, groovy R&B track with a clear, albeit relaxed, beat structure. The avatar's motion perfectly captures this feeling. The sways, weight shifts, arm gestures, and leg lifts are consistently aligned with the primary audio beats. The motion accents are not always sharp and percussive, but they are intentionally fluid and land precisely on the rhythmic pulses in a way that is highly musical and appropriate for the song's style. There are no noticeable timing errors or drift throughout the entire clip. The alignment is stable, covers the main beats effectively, and shows a sophisticated understanding of the musical rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1650,
+   "prompt_tokens": 211792,
+   "total_tokens": 213442,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1486,
+    "text_tokens": 164
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.13866853713989,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

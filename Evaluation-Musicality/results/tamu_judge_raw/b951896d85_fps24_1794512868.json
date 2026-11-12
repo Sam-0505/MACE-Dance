@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is extremely poor. The video consists of slow, continuous, and flowing movements from start to finish. However, the audio track has significant rhythmic variation. It starts with a slow, lyrical section, transitions to a much faster, percussive rap section around the 10-second mark, and then returns to a slow tempo. The dance motion completely fails to adapt to these changes. During the fast rap section, the figure continues its slow, languid movements, creating a severe and jarring disconnect with the high-energy beat. Even in the slower parts of the song, the motion accents do not align with the audio beats; the movement seems to follow its own tempo, independent of the music's rhythmic structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2088,
+   "prompt_tokens": 211792,
+   "total_tokens": 213880,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1908,
+    "text_tokens": 180
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 117.16038775444031,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

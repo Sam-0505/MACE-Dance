@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The video displays extremely tight and consistent synchronization between the visual motion and the audio's primary rhythm. The dancer performs a simple, repetitive arm gesture that functions as a clear motion beat. This motion beat, specifically the downward accent of the arm, lands precisely on the main rhythmic pulse of the music, which occurs roughly every second. This alignment is sustained perfectly throughout the entire duration of the clip with no noticeable drift, jitter, or timing errors. While the choreography itself is not complex, its execution is perfectly aligned with the music's core beat structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1585,
+   "prompt_tokens": 211792,
+   "total_tokens": 213377,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1449,
+    "text_tokens": 136
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.791606426239014,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The motion is exceptionally well-aligned with the audio. The music is a slow, flowing orchestral piece without strong percussive beats. The dance motion mirrors this perfectly with slow, graceful, and continuous movements. The peaks of the motion phrases, such as the extension of an arm or the holding of a pose, consistently coincide with the musical swells and the beginning of new melodic phrases. For example, the arm gestures and body turns are initiated in perfect harmony with the changes in the string and piano sections. The alignment is sustained and remarkably stable throughout the entire video, demonstrating a deep understanding of the music's rhythmic and emotional structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1132,
+   "prompt_tokens": 211792,
+   "total_tokens": 212924,
+   "completion_tokens_details": {
+    "reasoning_tokens": 980,
+    "text_tokens": 152
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.04096007347107,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

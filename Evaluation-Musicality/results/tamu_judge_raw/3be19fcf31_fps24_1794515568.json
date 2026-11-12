@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The generated motion consists of slow, flowing, and continuous movements. While the motion itself is dance-like, it shows no discernible alignment with the clear, percussive audio beats of the song. The motion accents, which are minimal and soft, do not land on or near the rhythmic pulses in the music. The overall tempo of the dance feels much slower than the song's tempo, resulting in a consistent and significant mismatch throughout the entire video. There is no meaningful rhythmic correspondence detected.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2427,
+   "prompt_tokens": 211792,
+   "total_tokens": 214219,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2304,
+    "text_tokens": 123
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 59.961840867996216,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

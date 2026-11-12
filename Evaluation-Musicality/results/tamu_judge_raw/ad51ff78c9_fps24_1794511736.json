@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The video-audio alignment is mixed and unstable. In the first 8 seconds, the dancer's slow, graceful arm movements align well with the flowing, melodic phrases of the music. The gestures start and end in time with the musical phrasing, showing good initial awareness. However, at around the 9-second mark, the music dramatically increases in tempo and rhythmic complexity. The dancer's motion completely fails to respond to this change, holding a static pose for several seconds while the music is energetic. For the remainder of the video, the dancer continues with very slow, unrelated movements that are entirely out of sync with the faster, beat-driven audio. This creates a significant and sustained mismatch for the majority of the clip. Because there is a clear section of alignment at the beginning but a total loss of it later, the overall score is mixed/moderate.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1245,
+   "prompt_tokens": 211792,
+   "total_tokens": 213037,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1046,
+    "text_tokens": 199
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.13810968399048,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

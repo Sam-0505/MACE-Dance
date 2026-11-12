@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The audio is a non-musical, spoken-word piece with a horror theme, which lacks a consistent, clear beat structure. The motion consists of very slow, continuous, and fluid movements, primarily with the upper body. While the slow, creeping nature of the motion generally matches the spooky mood and slow pace of the audio, there is no discernible alignment between specific motion accents and the rhythmic cadences of the speech or the punctuating sound effects. The movement appears to be a generic, slow-motion routine that has a vague thematic correspondence but lacks any reliable temporal synchronization with the audio events. This results in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1670,
+   "prompt_tokens": 211792,
+   "total_tokens": 213462,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1517,
+    "text_tokens": 153
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 70.24517917633057,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

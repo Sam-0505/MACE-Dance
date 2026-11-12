@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The motion demonstrates an excellent and sustained alignment with the audio throughout the clip. The dancer's movements, which are fluid and characteristic of popping and waving styles, are consistently synchronized with the main beats and rhythmic patterns of the hip-hop track. Key motion accents, such as placing hands on hips (e.g., at 1s, 2s), initiating arm waves (e.g., at 2s, 12s), changes in stance (e.g., bending knees at 10.5s), and posing gestures (e.g., hand to face at 17s), reliably land on or very near the strong percussive beats. Even the more continuous, flowing motions maintain a clear temporal relationship with the music's groove. There are no noticeable timing errors, drift, or moments of misalignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1530,
+   "prompt_tokens": 211792,
+   "total_tokens": 213322,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1334,
+    "text_tokens": 196
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.60178065299988,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

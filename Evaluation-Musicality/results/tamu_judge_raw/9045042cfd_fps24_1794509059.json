@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion and audio are almost completely unaligned. The audio track is a funk song with a very clear, strong, and consistent percussive beat. In contrast, the visual motion is extremely slow, fluid, and continuous, resembling a slow-motion voguing or tai-chi-like performance. There are almost no discernible motion beats (sharp accents, hits, or footfalls) that correspond to the prominent audio beats of the kick and snare drums. For example, when the music explicitly counts \\\"one, two, three, four,\\\" the dancer's movements are slow, flowing sweeps that completely ignore the rhythmic count. The tempo and energy of the visual performance are fundamentally mismatched with the audio, resulting in a total lack of rhythmic coherence.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1210,
+   "prompt_tokens": 211792,
+   "total_tokens": 213002,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1035,
+    "text_tokens": 175
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 44.471423625946045,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

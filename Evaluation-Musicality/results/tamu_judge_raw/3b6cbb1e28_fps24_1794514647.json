@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion shows a significant and consistent mismatch with the audio's rhythm. The music, Michael Jackson's \\\"Black or White,\\\" has a very distinct, energetic, and percussive beat structure. However, the dancer's movements are predominantly slow, fluid, and continuous. There are very few discernible \\\"motion beats\\\" or sharp accents in the choreography. When they do occur, they are rarely synchronized with the strong kick and snare drums in the audio. The dancer seems to be moving to a much slower tempo than the song, resulting in a constant feeling of disconnect. While the motion has a dance-like quality, it fails to respond to the clear rhythmic pulses of the soundtrack, making the overall alignment weak and unreliable.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1816,
+   "prompt_tokens": 211792,
+   "total_tokens": 213608,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1644,
+    "text_tokens": 172
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.846569776535034,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

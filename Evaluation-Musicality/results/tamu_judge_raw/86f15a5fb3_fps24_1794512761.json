@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The alignment between the audio and the visual motion is strong. The dance is a slow, lyrical style that matches the expressive, non-percussive nature of the classical Chinese music. The dancer's movements, such as arm extensions, turns, and transitions between poses, are consistently synchronized with the musical phrasing and key melodic accents. For example, the initial rise from a crouch aligns with the opening musical phrase, and subsequent arm movements and turns follow the flow and contour of the melody. While the dance does not hit every single note (which would be inappropriate for this style), the overall speed, energy, and timing of the motion are clearly and intentionally driven by the audio. There are a few moments where the musical energy isn't perfectly matched by the motion's intensity, but these are minor. The alignment is stable and sustained throughout the clip, demonstrating a clear and strong connection between the audio and visual rhythms.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2009,
+   "prompt_tokens": 211792,
+   "total_tokens": 213801,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1798,
+    "text_tokens": 211
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 81.11855340003967,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

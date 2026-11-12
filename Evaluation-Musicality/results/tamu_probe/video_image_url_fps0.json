@@ -1,0 +1,33 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "Here is a description of the video.\n\nThe music is a moderately slow-tempo R&B pop song featuring a female vocalist singing in Mandarin Chinese. The instrumentation includes electronic drums (a beat machine), synthesizers, and a soft bass line.\n\nThe first loud drum clap is heard at 00:04.\n\nThe animated person is performing a fluid, choreographed dance routine to the music."
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 796,
+   "prompt_tokens": 9664,
+   "total_tokens": 10460,
+   "completion_tokens_details": {
+    "reasoning_tokens": 714,
+    "text_tokens": 82
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 42,
+    "video_tokens": 8772
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 11.600780963897705,
+ "shape": "image_url",
+ "fps": 0
+}

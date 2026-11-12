@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The visual motion shows a strong and consistent alignment with the audio's rhythm. The dance style is slow, fluid, and expressive, focusing on matching the musical phrasing rather than hitting every single percussive beat. The motion accents, such as the completion of an arm movement or settling into a pose, reliably land on or very near the main beats of the music. For instance, the hands are brought to the hips and the arms are opened in time with the underlying 2-beat and 4-beat structure. The alignment is stable throughout the entire video, with no noticeable drift or significant timing errors. While not perfectly percussive, the overall temporal coherence is very good and clearly beat-aware.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1502,
+   "prompt_tokens": 211792,
+   "total_tokens": 213294,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1335,
+    "text_tokens": 167
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 60.559704542160034,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

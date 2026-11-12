@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance is slow, fluid, and lyrical, perfectly matching the character of the classical Indian music track. The motion accents, such as the hitting of poses, hand gestures, and head turns, are consistently and precisely synchronized with the key melodic and percussive events in the music. For instance, transitions between major poses often align with the beginning of new musical phrases. The speed and energy of the movements also accurately reflect the dynamics of the audio, such as the faster arm movements corresponding to quick melodic runs. There are no noticeable timing errors or drift; the performance feels intentionally choreographed and sustained throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1631,
+   "prompt_tokens": 211792,
+   "total_tokens": 213423,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1471,
+    "text_tokens": 160
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 72.6419186592102,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

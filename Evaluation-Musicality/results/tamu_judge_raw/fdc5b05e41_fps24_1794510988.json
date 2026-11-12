@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The video is almost entirely unaligned with the audio. For the first 10 seconds, the figure is completely static while the music plays. When the movement begins, it is extremely slow and does not match the energetic, rhythmic nature of the funk track. There are no clear motion accents (like footfalls, body hits, or sharp pose changes) that correspond to the prominent audio beats. The visual rhythm seems to be operating at a completely different, much slower tempo, resulting in a total disconnect between the audio and the visual motion.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1116,
+   "prompt_tokens": 211792,
+   "total_tokens": 212908,
+   "completion_tokens_details": {
+    "reasoning_tokens": 983,
+    "text_tokens": 133
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 42.77313709259033,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

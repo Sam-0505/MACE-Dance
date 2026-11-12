@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The visual motion shows a strong and consistent alignment with the audio rhythm. The dancer's movements, though very smooth and somewhat slow, are clearly choreographed to the primary beats and musical phrases of the song. Major pose transitions and gestural accents reliably land on or very close to the main downbeats. For example, the arm movements reaching their peak, or hands touching the head or chest, are timed to coincide with significant beats in the music. The alignment is stable throughout the entire clip. However, it does not achieve an 'Excellent' score because the motion is overly smooth and lacks the sharp, percussive quality that would make the synchronization feel tighter and more impactful. It successfully follows the beat, but it doesn't fully capture the dynamic energy or the more subtle syncopated rhythms in the audio.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1486,
+   "prompt_tokens": 211792,
+   "total_tokens": 213278,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1298,
+    "text_tokens": 188
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.17205095291138,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

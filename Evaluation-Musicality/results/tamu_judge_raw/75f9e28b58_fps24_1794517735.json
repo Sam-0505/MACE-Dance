@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The alignment between the audio and the visual motion is mixed and inconsistent. During the slower, more lyrical sections of the song (e.g., 0:03-0:17), the slow, flowing, and gestural movements of the character match the overall tempo and mood of the music reasonably well. Some pose transitions seem to align with musical phrases. However, when the music shifts to a more energetic tempo with a distinct beat, particularly during the chorus sections (e.g., starting around 0:17), the character's motion does not increase in energy or speed to match. The movements remain slow and disconnected from the underlying rhythmic pulses. This creates a noticeable desynchronization where many clear audio beats are not reflected in the motion. Because there are periods of reasonable mood/tempo alignment mixed with periods of clear beat misalignment, the overall evaluation is moderate.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1488,
+   "prompt_tokens": 211792,
+   "total_tokens": 213280,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1285,
+    "text_tokens": 203
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.03097939491272,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

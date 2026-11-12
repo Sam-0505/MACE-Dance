@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The alignment between the audio and the visual motion is weak. The audio track has a clear, energetic, and often fast, percussive rhythm. In contrast, the dancer's movements are consistently slow, flowing, and lack distinct accents that could align with the audio beats. While some pose transitions seem to vaguely coincide with the start of major musical phrases, the motion completely disregards the tempo and detailed rhythmic structure of the music, especially during the fast vocal sections (e.g., 13s-26s). The motion accents are sparse and do not reliably hit the audio beats, creating a significant disconnect between the visual and auditory experience. The overall impression is that the dance has a general, but very loose, awareness of the music, rather than being synchronized to it.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2493,
+   "prompt_tokens": 211792,
+   "total_tokens": 214285,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2309,
+    "text_tokens": 184
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 65.19943952560425,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

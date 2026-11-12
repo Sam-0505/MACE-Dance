@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The character's motion is extremely slow, smooth, and repetitive throughout the entire video. In the first half, the slow motion has a general mood that could be interpreted as matching the spoken-word audio, but there is no direct synchronization between motion accents and the cadence of the speech. When the beat drops around 0:17, the motion continues in the exact same slow, flowing style, completely ignoring the prominent kick and snare drums. The visual rhythm is disconnected from the audio rhythm, resulting in only rare and coincidental moments of perceived alignment. The motion is not beat-aware.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1251,
+   "prompt_tokens": 211792,
+   "total_tokens": 213043,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1106,
+    "text_tokens": 145
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.30882668495178,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion displays a general rhythmic quality and a tempo that is loosely related to the music, but the alignment between specific motion accents and the audio beats is sparse and unreliable. The character performs slow, flowing movements and holds poses, often gliding through the prominent beats in the soundtrack rather than hitting them. There are a few fleeting moments where a hand gesture or a turn partially coincides with a beat, but these instances feel more coincidental than intentional and are not sustained. The majority of the audio beats have no corresponding motion accent, resulting in a weak overall connection between the visual and audio rhythms.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1719,
+   "prompt_tokens": 211792,
+   "total_tokens": 213511,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1577,
+    "text_tokens": 142
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.650208473205566,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

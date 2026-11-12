@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays continuous, slow, and fluid motion that shows very little correspondence to the distinct, upbeat rhythm of the audio track. The audio has a clear and consistent funk beat, but the avatar's movements are languid and lack any sharp, percussive accents that would align with the audio beats. For instance, the slow squat, arm waves, and turns are performed at a tempo that is independent of the music. While there is motion, it is not rhythmically synchronized with the audio, resulting in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 833,
+   "prompt_tokens": 211792,
+   "total_tokens": 212625,
+   "completion_tokens_details": {
+    "reasoning_tokens": 699,
+    "text_tokens": 134
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 98.27413535118103,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

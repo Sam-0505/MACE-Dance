@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The video demonstrates a strong and consistent awareness of the audio's rhythm. The music has a very clear and prominent 4/4 beat, and the animated figure's larger movements, such as the periodic leg lifts and body sways, frequently land on or very near these primary beats. For example, the leg lifts at approximately 1.5s, 5.5s, 8.5s, and 11.2s are well-timed with the underlying kick drum. However, the alignment is not perfect. Many of the upper body and arm gestures are more fluid and tend to occur between the beats rather than accenting them directly. This creates a sense of being generally 'in time' with the music, but it lacks the consistent, sharp precision required for an 'Excellent' rating. There are no major drifts or prolonged periods of misalignment, but the frequent lack of tight synchronization on secondary movements prevents it from being a perfect 5.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2005,
+   "prompt_tokens": 211792,
+   "total_tokens": 213797,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1784,
+    "text_tokens": 221
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 16,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.09977984428406,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion shows a severe lack of alignment with the audio rhythm. The music track is an up-tempo synth-pop song with a very clear and driving beat. However, the character's movements are consistently slow, flowing, and gestural, with almost no accents that correspond to the prominent audio beats. For long stretches, the figure is nearly static or performs very slow transitions while the music's beat continues unabated. The few larger movements that occur are not timed to land on the beat, but rather float through them. There is a fundamental mismatch between the high energy of the audio and the low energy of the dance. No sustained or even intermittent synchronization is detected.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1729,
+   "prompt_tokens": 211792,
+   "total_tokens": 213521,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1567,
+    "text_tokens": 162
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 63.028160095214844,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

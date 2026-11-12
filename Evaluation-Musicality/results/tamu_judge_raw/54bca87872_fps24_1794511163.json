@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The audio track has a clear, strong hip-hop beat with prominent kicks and snares, especially after the 10-second mark. The visual motion, however, is consistently very slow, smooth, and flowing throughout the entire clip. The character performs continuous, almost tai-chi-like movements with their arms and body, lacking any sharp accents or motion beats that could align with the percussive audio. There is a fundamental mismatch between the tempo and rhythmic character of the audio and the visual motion. The motion shows no response to the beat structure of the music. Therefore, no meaningful rhythmic correspondence is detected.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1679,
+   "prompt_tokens": 211792,
+   "total_tokens": 213471,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1529,
+    "text_tokens": 150
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.21746325492859,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

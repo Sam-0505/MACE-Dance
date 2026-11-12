@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance movements are extremely tight and consistently synchronized with the music's rhythm. Every major audio beat, especially the prominent drum hits and vocal accents, is matched by a clear and sharp motion accent from the avatar. For instance, the hand gestures, body turns, and pose transitions throughout the choreography land precisely on the beat. The alignment is stable and maintained without any noticeable drift or timing errors for the entire duration of the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1306,
+   "prompt_tokens": 211792,
+   "total_tokens": 213098,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1183,
+    "text_tokens": 123
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.05453157424927,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

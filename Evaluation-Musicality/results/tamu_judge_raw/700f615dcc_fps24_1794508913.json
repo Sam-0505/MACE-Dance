@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The alignment between the audio and the visual motion is strong. The music is a slow, expressive classical piece, and the dancer's movements match this style well. The motion is fluid and continuous, rather than percussive. Key motion accents, such as the peak of an arm extension or a change in posture, generally coincide with the main musical phrases and melodic accents. For instance, the arm extensions and holds from 0:02 to 0:08 align well with the musical phrasing. Similarly, the expansive arm gestures around 0:21-0:23 match the swelling feel of the music. While not every single beat is hit with a sharp motion (which would be inappropriate for this style), the overall rhythmic flow and emotional character of the music are well-represented in the dance. The synchronization is not always perfectly precise, but it is consistently coherent and demonstrates a clear awareness of the music's structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2260,
+   "prompt_tokens": 211792,
+   "total_tokens": 214052,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2045,
+    "text_tokens": 215
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.683345317840576,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

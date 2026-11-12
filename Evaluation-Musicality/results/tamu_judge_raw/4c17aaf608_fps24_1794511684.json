@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The video demonstrates excellent and sustained synchronization between the visual motion and the audio rhythm. The character performs a detailed choreography where the motion accents\u2014such as sharp hand gestures, body isolations, pose transitions, and head movements\u2014consistently and accurately land on the prominent beats of the music. The alignment is not just with the main drum beats but also with specific lyrical and melodic phrases, showing a high level of musicality (e.g., the hand gestures for the count at 10-11s, and the camera-like motion with hands at 8s and 27s). There are no noticeable timing errors, drift, or moments of misalignment. The rhythmic correspondence is stable and clear throughout the entire video clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1610,
+   "prompt_tokens": 211792,
+   "total_tokens": 213402,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1437,
+    "text_tokens": 173
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.90441417694092,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

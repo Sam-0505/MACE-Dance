@@ -1,0 +1,29 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "ok"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 172,
+   "prompt_tokens": 7,
+   "total_tokens": 179,
+   "completion_tokens_details": {
+    "reasoning_tokens": 171,
+    "text_tokens": 1
+   },
+   "prompt_tokens_details": {
+    "text_tokens": 7
+   }
+  },
+  "_chunks": 8,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 2.600870370864868
+}

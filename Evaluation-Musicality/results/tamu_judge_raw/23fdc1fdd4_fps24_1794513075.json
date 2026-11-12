@@ -1,0 +1,11 @@
+{
+ "status": 429,
+ "response": {
+  "detail": "\ud83d\udeab **Budget Exceeded**\n\nYou have used the full daily budget for AI resources:\n- Current spend: $20.31\n- Budget: $20.00\n\nThis budget resets daily. Long conversations use this up quickly, especially ones with attached documents or knowledge collections, because the entire conversation is re-sent to the model on every turn. Starting a new chat, or using a lower-cost model, will stretch your budget further.\n\n*Error Code: 429*"
+ },
+ "headers": {},
+ "seconds": 0.7741117477416992,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

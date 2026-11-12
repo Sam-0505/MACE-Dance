@@ -1,0 +1,33 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "Based on the video, here is the information you requested:\n\n**Music Description:**\nThe music is a mid-tempo pop or R&B song featuring a smooth female vocal performance in Mandarin Chinese. The instrumentation includes a piano or keyboard melody, electronic drums, a bassline, and synthesized atmospheric pads.\n\nThe first loud drum beat or clap occurs at **00:03**.\n\n**Action Description:**\nThe animated figure performs a short, looping sequence of fluid dance moves."
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 482,
+   "prompt_tokens": 9664,
+   "total_tokens": 10146,
+   "completion_tokens_details": {
+    "reasoning_tokens": 383,
+    "text_tokens": 99
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 42,
+    "video_tokens": 8772
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 8.485814094543457,
+ "shape": "file",
+ "fps": 2.0
+}

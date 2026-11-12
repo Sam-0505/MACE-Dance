@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The music is a slow, expressive piece without a strong, consistent percussive beat. The dance motion reflects this perfectly with slow, fluid, and continuous gestures that align with the musical phrasing and melodic contours. Motion accents, such as the beginning or end of a turn or the peak of an arm extension, consistently coincide with the start of new musical phrases or significant melodic moments. For example, the slow arm extensions from 2-4 seconds and 20-22 seconds beautifully match the sustained notes in the audio. The entire performance feels deeply connected to the music, demonstrating a high degree of musicality and sustained, stable alignment throughout the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1825,
+   "prompt_tokens": 211792,
+   "total_tokens": 213617,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1656,
+    "text_tokens": 169
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.8176543712616,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The motion is extremely well-synchronized with the audio throughout the entire video. The dance movements, including sharp arm gestures, body isolations, and pose transitions, consistently land precisely on the prominent beats of the music. The choreography not only matches the tempo but also effectively reflects the musical phrasing and lyrical accents, especially during the chorus sections. The alignment is stable, sustained, and shows no noticeable drift or timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1150,
+   "prompt_tokens": 211792,
+   "total_tokens": 212942,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1042,
+    "text_tokens": 108
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.05682063102722,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

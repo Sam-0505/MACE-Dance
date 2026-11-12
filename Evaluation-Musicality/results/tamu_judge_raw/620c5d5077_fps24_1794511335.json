@@ -1,0 +1,36 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion is very slow and lyrical, which is an excellent match for the slow, emotional ballad in the audio. The character of the movement consistently reflects the character of the music. While not every single beat is hit with a sharp, percussive accent, the major motion phrases, turns, and arm extensions are well-timed with the musical phrases and the underlying slow tempo. The overall flow and energy of the dance are strongly synchronized with the audio, creating a coherent and expressive performance. There is a clear and sustained awareness of the music's rhythm and structure, even if the style is more fluid than percussive.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1270,
+   "prompt_tokens": 211792,
+   "total_tokens": 213062,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1119,
+    "text_tokens": 151
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 10,
+    "cached_tokens": 209432,
+    "text_tokens": 5,
+    "video_tokens": 2345
+   },
+   "cache_read_input_tokens": 209432
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 43.28937363624573,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

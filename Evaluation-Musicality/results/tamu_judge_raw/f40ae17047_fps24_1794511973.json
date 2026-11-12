@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The alignment between the audio and video is extremely poor. For the first 10 seconds of the video, the character is almost completely static, showing no response to the audible rhythmic beats. After this initial period of stillness, the character begins to move, but the movements are exceptionally slow, languid, and floaty. These movements lack any sharp accents or clear motion beats that would align with the distinct pulses in the music. The motion appears to drift on its own timeline, completely disconnected from the rhythm and tempo of the audio track. There is a consistent and pervasive lack of correspondence throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1255,
+   "prompt_tokens": 211792,
+   "total_tokens": 213047,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1108,
+    "text_tokens": 147
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 60.91614770889282,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

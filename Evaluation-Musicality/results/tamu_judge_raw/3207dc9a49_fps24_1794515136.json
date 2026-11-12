@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The visual motion shows a weak and unreliable connection to the audio rhythm. The music has a clear and consistent beat structure, but the dancer's movements are predominantly slow, flowing, and disconnected from these beats. While the movements are not entirely random and possess a dance-like quality, they seem to follow a much slower tempo than the song. Key motion accents, such as pose transitions or limb extensions, rarely land on the prominent audio beats. There are no sustained periods of synchronization; instead, there is a persistent mismatch between the energetic beat of the audio and the languid motion of the figure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1491,
+   "prompt_tokens": 211792,
+   "total_tokens": 213283,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1346,
+    "text_tokens": 145
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.11183476448059,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}
