@@ -47,6 +47,7 @@ MODELS = {   # label -> data dir (FineDance test generations, 84 slices)
     'Ours critic v5 + gain': 'mace_test_mask2s_criticv5_s0.003_foot10_frz_gain10',
     'Ours mask + guidance': 'mace_test_mask2s_guide10_s0.003',
     'Ours + foot term': 'mace_test_mask2s_guide10_s0.003_foot10_10seeds',
+    'FlowerDance': 'mace_test_flower',
     'Abl - mask': 'mace_test_abl_nomask', 'Abl - critic': 'mace_test_abl_nocritic', 'Abl - foot': 'mace_test_abl_nofoot', 'Abl - frozen root': 'mace_test_abl_nofrz',
     'EDGE': 'mace_test_edge',
     'Lodge': 'mace_test_lodge',

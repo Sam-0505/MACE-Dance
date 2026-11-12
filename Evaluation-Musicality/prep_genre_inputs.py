@@ -59,6 +59,11 @@ def main():
         z = np.load(os.path.join(d, f'{v}_seed{a.seed}.npz'))
         qs, ps = zip(*[zup_to_yup(z['poses'][i], z['trans'][i]) for i in range(len(names))])
         out[f'{v}_q'], out[f'{v}_pos'] = np.stack(qs), np.stack(ps)
+    fz = os.path.join(d, f'flower_seed{a.seed}.npz')         # FlowerDance: Z-up like MACE (EDGE-based)
+    if os.path.exists(fz):
+        z = np.load(fz)
+        qs, ps = zip(*[zup_to_yup(z['poses'][i], z['trans'][i]) for i in range(len(names))])
+        out['flower_q'], out['flower_pos'] = np.stack(qs), np.stack(ps)
     lz = os.path.join(d, f'lodge_seed{a.seed}.npz')          # Lodge: already FineDance Y-up axis-angle
     if os.path.exists(lz):
         z = np.load(lz)

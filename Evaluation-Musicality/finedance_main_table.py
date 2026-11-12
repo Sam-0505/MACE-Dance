@@ -1,7 +1,7 @@
 """FineDance main comparison table: MACE Table 2 columns + Lock + Loud, in-domain rows only (2026-11-10).
 
 Rows: Real dance (reference), Lodge, MEGA, MACE (released = the paper's "Motion Expert (Full)"), Ours (critic v5 + gain).
-Columns: FID_k, FID_g, FSR, DIV_k, DIV_g, BAS (MACE Table 2) + Lock, Loud (ours) + FID_s, DIV_s (MEGADance's style metrics,
+Columns: FID_k, FID_g, DIV_k, DIV_g, BAS (MACE Table 2) + FSR, Lock, Loud (ours) + FID_s, DIV_s (MEGADance's style metrics,
 ours; seed 1 only).
 
 Rule: 1) every cell the MACE paper reports for a row is copied from Table 2 (PAPER below);
@@ -25,13 +25,17 @@ BASE_COLS = ['FID_k', 'FID_g', 'FSR', 'DIV_k', 'DIV_g', 'BAS', 'Lock', 'Loud']  
 COLS = ['FID_k', 'FID_g', 'FID_s', 'FSR', 'DIV_k', 'DIV_g', 'DIV_s', 'BAS', 'Lock', 'Loud']
 UP = {'FID_s': False, 'DIV_s': True, 'FID_k': False, 'FID_g': False, 'FSR': False, 'DIV_k': True, 'DIV_g': True, 'BAS': True, 'Lock': True, 'Loud': True}
 
-# MACE paper Table 2 (FSR as printed, a fraction; shown here x100 like Lodge's %).
+# MACE paper Table 2 / FlowerDance Table 1. FSR is NOT taken from the papers: their FSR columns mix two measures (see the
+# footnote); FSR is our own foot-skating ratio for every row.
 PAPER = {
-    'Real dance': dict(FSR=0.216, DIV_k=9.94, DIV_g=7.54, BAS=0.201),
-    'Lodge': dict(FID_k=50.00, FID_g=35.52, FSR=0.028, DIV_k=5.67, DIV_g=4.96, BAS=0.226),
-    'MEGA': dict(FID_k=50.00, FID_g=13.02, FSR=0.243, DIV_k=6.23, DIV_g=6.27, BAS=0.226),
-    'MACE': dict(FID_k=17.83, FID_g=25.09, FSR=0.210, DIV_k=10.30, DIV_g=8.09, BAS=0.229),
+    'Real dance': dict(DIV_k=9.94, DIV_g=7.54, BAS=0.201),
+    'Lodge': dict(FID_k=50.00, FID_g=35.52, DIV_k=5.67, DIV_g=4.96, BAS=0.226),
+    'MEGA': dict(FID_k=50.00, FID_g=13.02, DIV_k=6.23, DIV_g=6.27, BAS=0.226),
+    'MACE': dict(FID_k=17.83, FID_g=25.09, DIV_k=10.30, DIV_g=8.09, BAS=0.229),
+    # FlowerDance (ECCV'26) Table 1, FineDance; same baseline rows as MACE's table. (DiscoForcing was dropped: no checkpoint.)
+    'FlowerDance': dict(FID_k=29.73, FID_g=19.59, DIV_k=8.42, DIV_g=7.18, BAS=0.232),
 }
+ORDER = ['Real dance', 'Lodge', 'MEGA', 'MACE', 'FlowerDance', 'Ours (critic v5 + gain)']
 # result keys per row in each of our 10-seed files
 KEYS = {
     'Real dance': dict(am='real', lock='Real dance', loud='Real dance', fsr='real'),
@@ -53,9 +57,11 @@ GENRE_KEY = {'Real dance': 'real', 'Lodge': 'lodge', 'MEGA': 'mega', 'MACE': 'on
 def build():
     am = {**load('authors_metrics_baselines.json'), **load('authors_metrics_gain10.json')}
     if SEED1:
-        lock = load('lock_models_finedance_1seed_rescaled_seed1.json')['results']
+        lock = {**load('lock_models_finedance_1seed_rescaled_seed1.json')['results'],
+                **load('lock_models_finedance_1seed_rescaled_seed1_flower.json')['results']}
         loud = load('loud_models_finedance_seed1_main.json')['results']
-        fsr = {**load('fsr_table.json')['finedance'], **load('fsr_table_seed1.json')['finedance']}
+        fsr = {**load('fsr_table.json')['finedance'], **load('fsr_table_seed1.json')['finedance'],
+               **load('fsr_table_seed1_flower.json')['finedance']}
         genre = load('genre_metric_seed0.json')['euler']
         src = 'seed 1'
     else:
@@ -79,7 +85,23 @@ def build():
         paper = {c: (v * 100 if c == 'FSR' else v) for c, v in PAPER.get(row, {}).items()}
         rows[row] = {c: ({'v': paper[c], 'src': 'paper'} if c in paper else {'v': ours[c], 'src': src}) for c in COLS}
         rows[row]['_our_FSR_pct'] = ours['FSR']
-    return rows
+    # FlowerDance: paper values for the six Table-1 columns; Lock, Loud, FID_s, DIV_s are ours (seed 1) from its released
+    # FineDance checkpoint (dance_baselines/FlowerDance/ckpt/train-3700.pt).
+    extra = {'FlowerDance': {'FID_s': genre['flower']['FID_s'], 'DIV_s': genre['flower']['DIV_s'],
+                             'Lock': lock['FlowerDance']['r_own'], 'Loud': loud['FlowerDance']['r_own'],
+                             'FSR': fsr['flower']['FSR_pct']}} if SEED1 else {}
+    for row in PAPER:                                   # paper-only rows: dashes where missing
+        if row not in rows:
+            rows[row] = {}
+            for c in COLS:
+                if c in PAPER[row]:
+                    rows[row][c] = {'v': PAPER[row][c] * (100 if c == 'FSR' else 1), 'src': 'paper'}
+                elif c in extra.get(row, {}):
+                    rows[row][c] = {'v': extra[row][c], 'src': src}
+                else:
+                    rows[row][c] = {'v': None, 'src': 'none'}
+            rows[row]['_our_FSR_pct'] = fsr['flower']['FSR_pct'] if row == 'FlowerDance' and SEED1 else None
+    return {r: rows[r] for r in ORDER}
 
 
 def fmt(c, v):
@@ -123,19 +145,26 @@ def markdown(rows):
     out = table_lines(rows, cols=cols)
     out.append('')
     if SEED1:
-        out.append('Bold = best, underline = second best among the four models (Real dance excluded). FSR in %. '
-                   '† = our value for seed 1 (first sample per slice; MEGA is deterministic, one dance per slice); unmarked = '
-                   'MACE Table 2. Lock, Loud, FID_s and DIV_s are ours for every row (the MACE paper has no value for '
-                   'them). FID_s / DIV_s: MEGADance\'s genre-classifier style metrics on our 84 slices (see '
-                   'results/genre_metric_seed0.json); Lodge\'s FID_s differs a lot from MEGADance\'s own report (5.22), '
-                   'so treat it with caution.\n\n')
+        out.append('Bold = best, underline = second best among the model rows (Real dance excluded). † = our value for seed 1 '
+                   '(first sample per slice; MEGA is deterministic, one dance per slice); unmarked = copied from the MACE paper '
+                   '(Lodge, MEGA, MACE, Real dance) or the FlowerDance paper (FlowerDance). FSR, Lock, Loud, FID_s and DIV_s are '
+                   'ours for every row (see below). FID_s / DIV_s: MEGADance\'s genre-classifier style metrics on our 84 slices '
+                   '(results/genre_metric_seed0.json); Lodge\'s FID_s differs a lot from MEGADance\'s own report (5.22), so treat '
+                   'it with caution.\n\n')
     else:
-        out.append('Bold = best, underline = second best among the four models (Real dance excluded). FSR in %. '
-                   '† = our 10-seed mean; unmarked = MACE Table 2. Lock/Loud are ours for every row.\n\n')
-    out.append('FSR note: MACE Table 2 copies the foot-skating numbers for the baselines, but its Real dance (0.216) '
-               'and MACE (0.210) cells equal our PFC values, so the column mixes two measures. The Ours cell is our '
-               'foot-skating ratio (Lodge formula). Measured the same way for all rows (pooled over the 10 seeds): '
-               'Real 6.4, Lodge 3.2, MEGA 10.1, MACE 16.5, Ours 13.4 (%).')
+        out.append('Bold = best, underline = second best among the model rows (Real dance excluded). † = our 10-seed mean '
+                   '(FSR: pooled over the 10 seeds); unmarked = MACE Table 2. FSR, Lock, Loud are ours for every row.\n\n')
+    if SEED1:
+        out.append('FlowerDance: FID_k, FID_g, DIV_k, DIV_g, BAS copied from its paper; FSR, FID_s, DIV_s, Lock, Loud are ours from '
+                   'its released FineDance checkpoint (train-3700.pt, 21 Euler steps, shipped test features, seed 1). Re-scoring that '
+                   'checkpoint on our 84 slices gives FID_k 40.3, FID_g 17.9, DIV_k 7.87, DIV_g 7.29, BAS 0.230 (paper: 29.73 / '
+                   '19.59 / 8.42 / 7.18 / 0.232).\n\n')
+    out.append('FSR (%) is our foot-skating ratio: a port of Lodge\'s official foot-skating code (fsr_table.py), computed on the '
+               'generated joints of every row (84 slices; real test dance for Real dance), so all rows share one definition. The '
+               'papers\' FSR columns were not used because they mix two measures: the MACE paper\'s Real dance (0.216) and MACE '
+               '(0.210) cells equal our PFC values, while its Lodge, EDGE and Bailando cells are Lodge\'s own foot-skating numbers (MEGA\'s cell is from the '
+               'MEGADance paper; FlowerDance\'s Table 1 repeats the same column). As a cross-check, our real dance gives 6.4 % and Lodge 3.2 % '
+               '(10 seeds), next to the 6.22 % and 2.76 % that the Lodge paper reports.')
     return '\n'.join(out)
 
 
@@ -147,4 +176,4 @@ if __name__ == '__main__':
     open(os.path.join(R, f'finedance_main_table{tag}.md'), 'w').write(md + '\n')
     print(md)
     print('\nFSR measured by us (Lodge formula, %), same rows and seeds as above:',
-          {r: round(v['_our_FSR_pct'], 1) for r, v in rows.items()})
+          {r: round(v['_our_FSR_pct'], 1) for r, v in rows.items() if v['_our_FSR_pct'] is not None})

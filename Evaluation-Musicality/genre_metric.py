@@ -33,7 +33,7 @@ from utils.utils import matrix_to_rotation_6d, rotation_matrix_to_rotation_6d  #
 
 STYLE2S = ['Dai', 'ShenYun', 'Wei', 'Korean', 'Urban', 'Hiphop', 'Popping', 'Miao', 'HanTang', 'Breaking', 'Kun',
            'Locking', 'Jazz', 'Choreography', 'Chinese', 'DunHuang']      # MEGADance's label order (models/CLS/dataloader.py)
-SETS = {'real': 'Real dance', 'lodge': 'Lodge', 'mega': 'MEGA', 'oneshot': 'MACE released',
+SETS = {'real': 'Real dance', 'lodge': 'Lodge', 'mega': 'MEGA', 'flower': 'FlowerDance', 'oneshot': 'MACE released',
         'gain': 'Ours (critic v5 + gain)'}
 L = 1024
 
