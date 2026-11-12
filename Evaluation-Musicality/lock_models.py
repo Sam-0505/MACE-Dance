@@ -40,7 +40,7 @@ FD_MODELS = {'MACE released': 'mace_test', 'MACE mask2s': 'mace_test_local2s',
              'Ours critic v5': 'mace_test_mask2s_criticv5_s0.003_foot10_frz',
              'Ours critic v5 + gain': 'mace_test_mask2s_criticv5_s0.003_foot10_frz_gain10',
              'Ours mask + guidance': 'mace_test_mask2s_guide10_s0.003',
-             'Ours + foot term': 'mace_test_mask2s_guide10_s0.003_foot10_10seeds', 'EDGE': 'mace_test_edge',
+             'Abl - mask': 'mace_test_abl_nomask', 'Abl - critic': 'mace_test_abl_nocritic', 'Abl - foot': 'mace_test_abl_nofoot', 'Abl - frozen root': 'mace_test_abl_nofrz', 'Ours + foot term': 'mace_test_mask2s_guide10_s0.003_foot10_10seeds', 'EDGE': 'mace_test_edge',
              'Lodge': 'mace_test_lodge', 'Bailando': 'mace_test_bailando', 'MEGADance': 'mace_test_mega'}
 MOT_MODELS = {'MACE released': 'mace', 'MACE mask2s': 'mace_local2s',
               'Ours final': 'mace_local2s_guide_s0.003_foot10_frz',

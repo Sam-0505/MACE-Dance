@@ -1,0 +1,61 @@
+{
+ "finedance": {
+  "released": {
+   "FSR_pct": 16.10996792121282,
+   "left_pct": 16.53623447185014,
+   "right_pct": 15.68370137057549,
+   "n_clips": 84,
+   "clips_without_contact": 2
+  },
+  "mask": {
+   "FSR_pct": 17.49849691541789,
+   "left_pct": 18.016387453203016,
+   "right_pct": 16.98060637763275,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "nogain": {
+   "FSR_pct": 15.496577678911894,
+   "left_pct": 16.147401065507154,
+   "right_pct": 14.845754292316643,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "full": {
+   "FSR_pct": 13.844557186657985,
+   "left_pct": 14.602804523748759,
+   "right_pct": 13.086309849567218,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "nomask": {
+   "FSR_pct": 12.127949508453787,
+   "left_pct": 13.359606451729178,
+   "right_pct": 10.896292565178396,
+   "n_clips": 84,
+   "clips_without_contact": 2
+  },
+  "nocritic": {
+   "FSR_pct": 12.388352042613004,
+   "left_pct": 13.238648397994336,
+   "right_pct": 11.53805568723167,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "nofoot": {
+   "FSR_pct": 21.919585860410447,
+   "left_pct": 21.971010182212193,
+   "right_pct": 21.86816153860868,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "nofrz": {
+   "FSR_pct": 15.95040909861619,
+   "left_pct": 16.38563440483599,
+   "right_pct": 15.515183792396387,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  }
+ },
+ "motorica": {}
+}

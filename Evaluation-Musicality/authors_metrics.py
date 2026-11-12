@@ -61,6 +61,7 @@ def main():
     ap.add_argument('--rot_z', type=float, default=0., help='deg about z applied to the stored joints first')
     ap.add_argument('--real', action='store_true', help='score the real test dance (one deterministic run)')
     ap.add_argument('--out', default=OUT)
+    ap.add_argument('--seeds', type=int, default=None, help='score only the first n seeds of the directory')
     args = ap.parse_args()
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     metric = Metric('./data/test', device)
@@ -73,7 +74,7 @@ def main():
     if args.real:
         per_seed, key = [eval_frame_scores(metric, metric.keypoint_gt)], 'real'
     else:
-        per_seed, key = run_dir(metric, args.mace_dir, args.rot_z), os.path.basename(args.mace_dir.rstrip('/'))
+        per_seed, key = run_dir(metric, args.mace_dir, args.rot_z, args.seeds), os.path.basename(args.mace_dir.rstrip('/'))
     res = {m: {'mean': float(np.mean([p[m] for p in per_seed])), 'sd': float(np.std([p[m] for p in per_seed])),
                'runs': [p[m] for p in per_seed]} for m in per_seed[0]}
     if args.rot_z:
@@ -85,11 +86,11 @@ def main():
         json.dump(results, f, indent=1)
 
 
-def run_dir(metric, mace_dir, rot_z):
+def run_dir(metric, mace_dir, rot_z, n_seeds=None):
     names = json.load(open(os.path.join(mace_dir, 'names.json')))['names']
     assert names == sorted(f[:-4] for f in os.listdir('./data/test/baseline_feats'))
     gen = np.load(os.path.join(mace_dir, 'joints.npy'))
-    return [scores(metric, gen[:, s].astype(np.float32), rot_z) for s in range(gen.shape[1])]
+    return [scores(metric, gen[:, s].astype(np.float32), rot_z) for s in range(n_seeds or gen.shape[1])]
 
 
 if __name__ == '__main__':

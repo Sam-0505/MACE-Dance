@@ -1,0 +1,33 @@
+{
+ "finedance": {
+  "lodge": {
+   "FSR_pct": 2.898566790959179,
+   "left_pct": 2.831894115879134,
+   "right_pct": 2.9652394660392245,
+   "n_clips": 84,
+   "clips_without_contact": 4
+  },
+  "mega": {
+   "FSR_pct": 10.137683905753576,
+   "left_pct": 10.727355011620295,
+   "right_pct": 9.548012799886854,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  },
+  "released": {
+   "FSR_pct": 16.10996792121282,
+   "left_pct": 16.53623447185014,
+   "right_pct": 15.68370137057549,
+   "n_clips": 84,
+   "clips_without_contact": 2
+  },
+  "gain": {
+   "FSR_pct": 13.844557186657985,
+   "left_pct": 14.602804523748759,
+   "right_pct": 13.086309849567218,
+   "n_clips": 84,
+   "clips_without_contact": 0
+  }
+ },
+ "motorica": {}
+}

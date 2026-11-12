@@ -1,0 +1,217 @@
+{
+ "Real dance": {
+  "FID_k": {
+   "v": 3.630589162639808e-10,
+   "src": "10-seed"
+  },
+  "FID_g": {
+   "v": 0.0,
+   "src": "10-seed"
+  },
+  "FID_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "FSR": {
+   "v": 21.6,
+   "src": "paper"
+  },
+  "DIV_k": {
+   "v": 9.94,
+   "src": "paper"
+  },
+  "DIV_g": {
+   "v": 7.54,
+   "src": "paper"
+  },
+  "DIV_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "BAS": {
+   "v": 0.201,
+   "src": "paper"
+  },
+  "Lock": {
+   "v": 0.45868545279097256,
+   "src": "10-seed"
+  },
+  "Loud": {
+   "v": 0.21875484922466767,
+   "src": "10-seed"
+  },
+  "_our_FSR_pct": 6.396410110027248
+ },
+ "Lodge": {
+  "FID_k": {
+   "v": 50.0,
+   "src": "paper"
+  },
+  "FID_g": {
+   "v": 35.52,
+   "src": "paper"
+  },
+  "FID_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "FSR": {
+   "v": 2.8000000000000003,
+   "src": "paper"
+  },
+  "DIV_k": {
+   "v": 5.67,
+   "src": "paper"
+  },
+  "DIV_g": {
+   "v": 4.96,
+   "src": "paper"
+  },
+  "DIV_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "BAS": {
+   "v": 0.226,
+   "src": "paper"
+  },
+  "Lock": {
+   "v": 0.2983566007403626,
+   "src": "10-seed"
+  },
+  "Loud": {
+   "v": 0.20550385561797735,
+   "src": "10-seed"
+  },
+  "_our_FSR_pct": 3.1630603743793215
+ },
+ "MEGA": {
+  "FID_k": {
+   "v": 50.0,
+   "src": "paper"
+  },
+  "FID_g": {
+   "v": 13.02,
+   "src": "paper"
+  },
+  "FID_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "FSR": {
+   "v": 24.3,
+   "src": "paper"
+  },
+  "DIV_k": {
+   "v": 6.23,
+   "src": "paper"
+  },
+  "DIV_g": {
+   "v": 6.27,
+   "src": "paper"
+  },
+  "DIV_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "BAS": {
+   "v": 0.226,
+   "src": "paper"
+  },
+  "Lock": {
+   "v": 0.2788124686995646,
+   "src": "10-seed"
+  },
+  "Loud": {
+   "v": 0.0454965092837619,
+   "src": "10-seed"
+  },
+  "_our_FSR_pct": 10.137683905753576
+ },
+ "MACE": {
+  "FID_k": {
+   "v": 17.83,
+   "src": "paper"
+  },
+  "FID_g": {
+   "v": 25.09,
+   "src": "paper"
+  },
+  "FID_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "FSR": {
+   "v": 21.0,
+   "src": "paper"
+  },
+  "DIV_k": {
+   "v": 10.3,
+   "src": "paper"
+  },
+  "DIV_g": {
+   "v": 8.09,
+   "src": "paper"
+  },
+  "DIV_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "BAS": {
+   "v": 0.229,
+   "src": "paper"
+  },
+  "Lock": {
+   "v": 0.3038905201542283,
+   "src": "10-seed"
+  },
+  "Loud": {
+   "v": 0.05527572446220593,
+   "src": "10-seed"
+  },
+  "_our_FSR_pct": 16.46472477967525
+ },
+ "Ours (critic v5 + gain)": {
+  "FID_k": {
+   "v": 17.33839385912541,
+   "src": "10-seed"
+  },
+  "FID_g": {
+   "v": 19.840181659598166,
+   "src": "10-seed"
+  },
+  "FID_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "FSR": {
+   "v": 13.36880527342332,
+   "src": "10-seed"
+  },
+  "DIV_k": {
+   "v": 9.021361730403758,
+   "src": "10-seed"
+  },
+  "DIV_g": {
+   "v": 6.741529735011474,
+   "src": "10-seed"
+  },
+  "DIV_s": {
+   "v": null,
+   "src": "10-seed"
+  },
+  "BAS": {
+   "v": 0.2216047175900291,
+   "src": "10-seed"
+  },
+  "Lock": {
+   "v": 0.39216852217756376,
+   "src": "10-seed"
+  },
+  "Loud": {
+   "v": 0.22254130469083008,
+   "src": "10-seed"
+  },
+  "_our_FSR_pct": 13.36880527342332
+ }
+}
