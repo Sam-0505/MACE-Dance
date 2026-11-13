@@ -1,7 +1,7 @@
 """Metric validity table on real dance: Delta = r(own music) - r(wrong music), per dataset and metric.
 
 Reads the real-dance rows of loud_models_10seed.json (FineDance), loud_models_motorica_3seed.json,
-lock_models_{finedance_10seed,motorica_3seed}_{rescaled,raw}.json and validity_real_{aist,popdance_*}.json.
+lock_models_{finedance_10seed,motorica_3seed}_{rescaled,raw}.json and validity_real_aist.json.
 q = Benjamini-Hochberg over the PRIMARY tests of the table (Loud and Lock with the rescaled null, every dataset row);
 the raw-null Lock rows (the raw null credits following the tempo) are a diagnostic: kept in validity_table.json, not in the .md.
 
@@ -32,10 +32,9 @@ def row(r):
 # older beat metrics (beat_suite.py), tempo-matched null; sign-flip two-sided in the files -> one-sided below
 BS = {'FineDance': ('beat_suite_finedance_tempo_null.json', 'real', 'tempo'),
       'Motorica': ('beat_suite_motorica_3seed.json', 'real', 'tempo'),
-      'AIST++ (basic + advanced, same BPM)': ('beat_suite_aist.json', 'real', 'same_bpm'),
-      'PopDanceSet (clips >= 16 s)': ('beat_suite_popdance.json', 'real', 'tempo')}
-aist, pop = R('validity_real_aist.json')['results'], R('validity_real_popdance_min16_trim4.json')['results']
-pop_rr = R('validity_real_popdance_min16_trim4_rootrel.json')['results']
+      'AIST++ (basic + advanced, same BPM)': ('beat_suite_aist.json', 'real', 'same_bpm')}
+# PopDanceSet is not in the table: its 3D is monocular HybrIK estimation, not mocap / multi-view (results kept in the json files)
+aist = R('validity_real_aist.json')['results']
 fd_l, mo_l = R('loud_models_10seed.json')['results']['Real dance'], R('loud_models_motorica_3seed.json')['results']['Real dance']
 fd_k = {k: R(f'lock_models_finedance_10seed_{k}.json')['results']['Real dance'] for k in ('rescaled', 'raw')}
 mo_k = {k: R(f'lock_models_motorica_3seed_{k}.json')['results']['Real dance'] for k in ('rescaled', 'raw')}
@@ -44,7 +43,6 @@ DATASETS = [  # label, unit, trim, Loud, Lock rescaled, Lock raw
     ('FineDance', '19 songs', '4 s', fd_l, fd_k['rescaled'], fd_k['raw']),
     ('Motorica', '52 pieces', '4 s', mo_l, mo_k['rescaled'], mo_k['raw']),
     ('AIST++', '70 pieces', '1/4 s', aist['pooled']['Loud'], aist['pooled']['Lock rescaled'], aist['pooled']['Lock raw']),
-    ('PopDanceSet (clips >= 16 s)', f"{pop['Loud']['n']} videos", '4 s', pop['Loud'], pop['Lock rescaled'], pop['Lock raw']),
 ]
 rows = []
 for name, unit, trim, loud, lock, raw in DATASETS:
@@ -61,7 +59,6 @@ for ds, (f, lab, nl) in BS.items():
         d, p2 = t[f'{m}_delta_{nl}'], t[f'{m}_delta_{nl}_p']
         ref.append({'dataset': ds, 'metric': mname, 'r_own': t[m], 'delta': d, 'pos': t[f'{m}_delta_{nl}_pos'],
                     'p_perm': p2 / 2 if d > 0 else 1 - p2 / 2, 'n_groups': j['n_groups']})
-sens = {'PopDance, root-relative QoM': {m: row(pop_rr[m]) for m in ('Loud', 'Lock rescaled', 'Lock raw')}}
 
 
 def fmt_p(p):
@@ -84,9 +81,8 @@ md = '\n'.join(lines)
 with open(os.path.join(HERE, 'results', 'validity_table.md'), 'w') as f:
     f.write(md + '\n')
 with open(os.path.join(HERE, 'results', 'validity_table.json'), 'w') as f:
-    json.dump({'rows': rows, 'reference_beat_metrics': ref, 'sensitivity': sens, 'q': 'BH over the primary tests (Loud, Lock rescaled) of all dataset rows'}, f, indent=1)
+    json.dump({'rows': rows, 'reference_beat_metrics': ref, 'q': 'BH over the primary tests (Loud, Lock rescaled) of all dataset rows'}, f, indent=1)
 print(md)
-print('\nPopDance root-relative:', {m: (round(v['delta'], 3), round(v['p_perm'], 4)) for m, v in sens['PopDance, root-relative QoM'].items()})
 
 
 # ---------------------------------------------------------------- paper layout: sections BPL (Lock) and IMC (Loud)
@@ -131,9 +127,9 @@ for sec, ds, src, r in paper:
 tex += [r'\bottomrule', r'\end{tabular}']
 note = ('Original = own music, Mismatched = mean over 3 tempo-matched wrong songs, Δ = Original − Mismatched, p = one-sided '
         'sign-flip permutation test of Δ > 0 (10,000), Advantage detected = p < 0.05. Units: songs (FineDance 19), pieces '
-        '(Motorica 52, AIST++ 70 = 60 basic + 10 advanced), videos (PopDanceSet 132, clips ≥ 16 s). BPL trim: 4 s each end; '
+        '(Motorica 52, AIST++ 70 = 60 basic + 10 advanced). BPL trim: 4 s each end; '
         'AIST++ pools the 60 basic dances (7–12 s, too short for 4 s: trimmed 1 s) and the 10 advanced ones (4 s). MACE-Dance rows: FineDance only (10 seeds), the dataset MACE was trained on; '
-        'Motorica, AIST++ and PopDanceSet are out of its domain.')
+        'Motorica and AIST++ are out of its domain.')
 open(os.path.join(HERE, 'results', 'validity_table_paper.md'), 'w').write('\n'.join(md_l) + '\n\n' + note + '\n')
 open(os.path.join(HERE, 'results', 'validity_table_paper.tex'), 'w').write('\n'.join(tex) + '\n')
 print('\n'.join(md_l))
