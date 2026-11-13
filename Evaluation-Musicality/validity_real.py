@@ -193,10 +193,11 @@ def main():
     ap.add_argument('--trim', type=float, default=4.0, help='popdance: seconds cut at both ends')
     ap.add_argument('--min_s', type=float, default=16.0, help='popdance: keep clips at least this long (seconds)')
     ap.add_argument('--rootrel', action='store_true', help='popdance: QoM from root-relative joints (drop root translation)')
+    ap.add_argument('--tag', default='', help='aist: suffix of the results file')
     a = ap.parse_args()
     if a.dataset == 'popdance':
         return run_popdance(a)
-    res, per = {}, {}
+    res, per, pool = {}, {}, {k: [] for k in ('loud_own', 'loud_wrong', 'lock_own', 'lock_wrong_rescaled', 'lock_wrong_raw')}
     for kind, trim_s in (('basic', a.trim_basic), ('adv', a.trim_adv)):
         trim = int(round(trim_s * FPS))
         units = load_aist(kind)
@@ -209,12 +210,23 @@ def main():
                      'Lock rescaled': stats(col('lock_own'), col('lock_wrong_rescaled'), rng),
                      'Lock raw': stats(col('lock_own'), col('lock_wrong_raw'), rng)}
         per[kind] = sc
+        for k in pool:
+            pool[k] += list(col(k))
         for m, v in res[kind].items():
             if isinstance(v, dict):
                 print(f"{kind:5s} {m:14s} own {v['r_own']:.3f} wrong {v['r_wrong']:.3f} Delta {v['delta']:+.3f} "
                       f"[{v['delta_ci'][0]:+.3f},{v['delta_ci'][1]:+.3f}] pos {v['n_pos']}/{v['n']} "
                       f"p {v['p_perm']:.4f} p_w {v['p_wilcoxon']:.4f}", flush=True)
-    fn = os.path.join(HERE, 'results', 'validity_real_aist.json')
+    rng = np.random.default_rng(SEED)   # basic and advanced pooled: 70 (piece, kind) units, each kind with its own trim
+    res['pooled'] = {'trim_s': [a.trim_basic, a.trim_adv], 'n_units': len(pool['loud_own']),
+                     'Loud': stats(pool['loud_own'], pool['loud_wrong'], rng),
+                     'Lock rescaled': stats(pool['lock_own'], pool['lock_wrong_rescaled'], rng),
+                     'Lock raw': stats(pool['lock_own'], pool['lock_wrong_raw'], rng)}
+    for m, v in res['pooled'].items():
+        if isinstance(v, dict):
+            print(f"pooled {m:14s} own {v['r_own']:.3f} wrong {v['r_wrong']:.3f} Delta {v['delta']:+.3f} "
+                  f"[{v['delta_ci'][0]:+.3f},{v['delta_ci'][1]:+.3f}] pos {v['n_pos']}/{v['n']} p {v['p_perm']:.4f}", flush=True)
+    fn = os.path.join(HERE, 'results', f'validity_real_aist{a.tag}.json')
     with open(fn, 'w') as f:
         json.dump({'settings': {'sigma': SIGMA, 'match': 'other genre, closest tempo, ties seeded', 'n_wrong': N_MATCH,
                                 'n_perm': 10000, 'rng_seed': SEED}, 'results': res, 'per_unit': per}, f, indent=1)

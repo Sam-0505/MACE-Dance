@@ -3,7 +3,7 @@
 Reads the real-dance rows of loud_models_10seed.json (FineDance), loud_models_motorica_3seed.json,
 lock_models_{finedance_10seed,motorica_3seed}_{rescaled,raw}.json and validity_real_{aist,popdance_*}.json.
 q = Benjamini-Hochberg over the PRIMARY tests of the table (Loud and Lock with the rescaled null, every dataset row);
-the raw-null Lock rows are supplementary (the raw null credits following the tempo) and carry no q.
+the raw-null Lock rows (the raw null credits following the tempo) are a diagnostic: kept in validity_table.json, not in the .md.
 
     python3 Evaluation-Musicality/validity_table.py   # writes results/validity_table.md and .json
 """
@@ -43,7 +43,7 @@ mo_k = {k: R(f'lock_models_motorica_3seed_{k}.json')['results']['Real dance'] fo
 DATASETS = [  # label, unit, trim, Loud, Lock rescaled, Lock raw
     ('FineDance', '19 songs', '4 s', fd_l, fd_k['rescaled'], fd_k['raw']),
     ('Motorica', '52 pieces', '4 s', mo_l, mo_k['rescaled'], mo_k['raw']),
-    ('AIST++ (advanced)', '10 pieces', '4 s', aist['adv']['Loud'], aist['adv']['Lock rescaled'], aist['adv']['Lock raw']),
+    ('AIST++', '70 pieces', '1/4 s', aist['pooled']['Loud'], aist['pooled']['Lock rescaled'], aist['pooled']['Lock raw']),
     ('PopDanceSet (clips >= 16 s)', f"{pop['Loud']['n']} videos", '4 s', pop['Loud'], pop['Lock rescaled'], pop['Lock raw']),
 ]
 rows = []
@@ -68,8 +68,9 @@ def fmt_p(p):
     return '<0.001' if p < 0.001 else f'{p:.3f}'
 
 
+MD_ROWS = [r for r in rows if r['primary']]   # raw-null Lock rows stay in the json only (diagnostic)
 lines = ['| Dataset (unit) | Metric | r own | r wrong | Δ [95% CI] | Δ>0 | p | q |', '|---|---|---:|---:|---:|---:|---:|---:|']
-for r in rows:
+for r in MD_ROWS:
     q = fmt_p(r['q']) if 'q' in r else '–'
     lines.append(f"| {r['dataset']} ({r['unit']}{', trim ' + r['trim'] if r['metric'] != 'Loud' else ''}) | {r['metric']} | "
                  f"{r['r_own']:.3f} | {r['r_wrong']:.3f} | {r['delta']:+.3f} [{r['delta_ci'][0]:+.3f}, {r['delta_ci'][1]:+.3f}] | "
@@ -130,8 +131,8 @@ for sec, ds, src, r in paper:
 tex += [r'\bottomrule', r'\end{tabular}']
 note = ('Original = own music, Mismatched = mean over 3 tempo-matched wrong songs, Δ = Original − Mismatched, p = one-sided '
         'sign-flip permutation test of Δ > 0 (10,000), Advantage detected = p < 0.05. Units: songs (FineDance 19), pieces '
-        '(Motorica 52, AIST++ advanced 10), videos (PopDanceSet 132, clips ≥ 16 s). BPL trim: 4 s each end. '
-        'AIST++ basic dances (7–12 s) are not included: too short for the 4 s trim. MACE-Dance rows: FineDance only (10 seeds), the dataset MACE was trained on; '
+        '(Motorica 52, AIST++ 70 = 60 basic + 10 advanced), videos (PopDanceSet 132, clips ≥ 16 s). BPL trim: 4 s each end; '
+        'AIST++ pools the 60 basic dances (7–12 s, too short for 4 s: trimmed 1 s) and the 10 advanced ones (4 s). MACE-Dance rows: FineDance only (10 seeds), the dataset MACE was trained on; '
         'Motorica, AIST++ and PopDanceSet are out of its domain.')
 open(os.path.join(HERE, 'results', 'validity_table_paper.md'), 'w').write('\n'.join(md_l) + '\n\n' + note + '\n')
 open(os.path.join(HERE, 'results', 'validity_table_paper.tex'), 'w').write('\n'.join(tex) + '\n')
