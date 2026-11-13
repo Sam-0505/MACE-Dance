@@ -17,7 +17,7 @@
    "n": 19,
    "p_perm": 0.019198080191980802,
    "p_wilcoxon": 0.012910842895507812,
-   "q": 0.0354964503549645
+   "q": 0.0283971602839716
   },
   {
    "dataset": "FineDance",
@@ -36,7 +36,7 @@
    "n": 19,
    "p_perm": 0.006299370062993701,
    "p_wilcoxon": 0.00167083740234375,
-   "q": 0.020997900209979003
+   "q": 0.016798320167983202
   },
   {
    "dataset": "FineDance",
@@ -73,7 +73,7 @@
    "n": 52,
    "p_perm": 9.999000099990002e-05,
    "p_wilcoxon": 4.9774210455963024e-08,
-   "q": 0.000999900009999
+   "q": 0.0007999200079992001
   },
   {
    "dataset": "Motorica",
@@ -92,7 +92,7 @@
    "n": 52,
    "p_perm": 0.00019998000199980003,
    "p_wilcoxon": 0.0004436418443045702,
-   "q": 0.000999900009999
+   "q": 0.0007999200079992001
   },
   {
    "dataset": "Motorica",
@@ -113,7 +113,7 @@
    "p_wilcoxon": 6.22596487932781e-10
   },
   {
-   "dataset": "AIST++ advanced",
+   "dataset": "AIST++ (advanced)",
    "unit": "10 pieces",
    "trim": "4 s",
    "metric": "Loud",
@@ -129,10 +129,10 @@
    "n": 10,
    "p_perm": 0.12668733126687332,
    "p_wilcoxon": 0.1376953125,
-   "q": 0.15835916408359163
+   "q": 0.14478552144785523
   },
   {
-   "dataset": "AIST++ advanced",
+   "dataset": "AIST++ (advanced)",
    "unit": "10 pieces",
    "trim": "4 s",
    "metric": "Lock",
@@ -148,10 +148,10 @@
    "n": 10,
    "p_perm": 0.010698930106989302,
    "p_wilcoxon": 0.009765625,
-   "q": 0.026747325267473254
+   "q": 0.021397860213978603
   },
   {
-   "dataset": "AIST++ advanced",
+   "dataset": "AIST++ (advanced)",
    "unit": "10 pieces",
    "trim": "4 s",
    "metric": "Lock, raw null",
@@ -167,62 +167,6 @@
    "n": 10,
    "p_perm": 0.0013998600139986002,
    "p_wilcoxon": 0.0009765625
-  },
-  {
-   "dataset": "AIST++ basic",
-   "unit": "60 pieces",
-   "trim": "1 s",
-   "metric": "Loud",
-   "primary": true,
-   "r_own": 0.024330721893271075,
-   "r_wrong": 0.08401621059907582,
-   "delta": -0.05968548870580472,
-   "delta_ci": [
-    -0.1359226924685602,
-    0.019441981722634956
-   ],
-   "n_pos": 25,
-   "n": 60,
-   "p_perm": 0.9257074292570743,
-   "p_wilcoxon": 0.9168179194762727,
-   "q": 0.9257074292570742
-  },
-  {
-   "dataset": "AIST++ basic",
-   "unit": "60 pieces",
-   "trim": "1 s",
-   "metric": "Lock",
-   "primary": true,
-   "r_own": 0.806946632198851,
-   "r_wrong": 0.8012416329837421,
-   "delta": 0.005704999215108875,
-   "delta_ci": [
-    0.00032418492925878725,
-    0.011480435874043762
-   ],
-   "n_pos": 41,
-   "n": 60,
-   "p_perm": 0.027897210278972105,
-   "p_wilcoxon": 0.01730979850071278,
-   "q": 0.039853157541388726
-  },
-  {
-   "dataset": "AIST++ basic",
-   "unit": "60 pieces",
-   "trim": "1 s",
-   "metric": "Lock, raw null",
-   "primary": false,
-   "r_own": 0.806946632198851,
-   "r_wrong": 0.7070965672250775,
-   "delta": 0.0998500649737734,
-   "delta_ci": [
-    0.05808118489604302,
-    0.146706142172795
-   ],
-   "n_pos": 43,
-   "n": 60,
-   "p_perm": 9.999000099990002e-05,
-   "p_wilcoxon": 0.0003012272155803951
   },
   {
    "dataset": "PopDanceSet (clips >= 16 s)",
@@ -241,7 +185,7 @@
    "n": 132,
    "p_perm": 0.0212978702129787,
    "p_wilcoxon": 0.017625086991389486,
-   "q": 0.0354964503549645
+   "q": 0.0283971602839716
   },
   {
    "dataset": "PopDanceSet (clips >= 16 s)",
@@ -260,7 +204,7 @@
    "n": 132,
    "p_perm": 0.18088191180881913,
    "p_wilcoxon": 0.0567016931407596,
-   "q": 0.20097990200979904
+   "q": 0.18088191180881913
   },
   {
    "dataset": "PopDanceSet (clips >= 16 s)",
@@ -279,6 +223,80 @@
    "n": 132,
    "p_perm": 0.00019998000199980003,
    "p_wilcoxon": 9.87371862605668e-06
+  }
+ ],
+ "reference_beat_metrics": [
+  {
+   "dataset": "FineDance",
+   "metric": "BAS",
+   "r_own": 0.21114307578751026,
+   "delta": -0.00983692412453941,
+   "pos": "7/19",
+   "p_perm": 0.78955,
+   "n_groups": 19
+  },
+  {
+   "dataset": "FineDance",
+   "metric": "Event PLV",
+   "r_own": 0.2891671590092747,
+   "delta": 0.11015043252100162,
+   "pos": "16/19",
+   "p_perm": 0.000275,
+   "n_groups": 19
+  },
+  {
+   "dataset": "Motorica",
+   "metric": "BAS",
+   "r_own": 0.2419311797758909,
+   "delta": 0.00025709378236852393,
+   "pos": "38/62",
+   "p_perm": 0.47605,
+   "n_groups": 62
+  },
+  {
+   "dataset": "Motorica",
+   "metric": "Event PLV",
+   "r_own": 0.26201418689533373,
+   "delta": 0.032379879206868786,
+   "pos": "46/62",
+   "p_perm": 2.5e-05,
+   "n_groups": 62
+  },
+  {
+   "dataset": "AIST++ (basic + advanced, same BPM)",
+   "metric": "BAS",
+   "r_own": 0.2824290104072444,
+   "delta": 0.006922048620810074,
+   "pos": "38/63",
+   "p_perm": 0.134375,
+   "n_groups": 70
+  },
+  {
+   "dataset": "AIST++ (basic + advanced, same BPM)",
+   "metric": "Event PLV",
+   "r_own": 0.5480881984789256,
+   "delta": -0.016421824074142288,
+   "pos": "42/63",
+   "p_perm": 0.798825,
+   "n_groups": 70
+  },
+  {
+   "dataset": "PopDanceSet (clips >= 16 s)",
+   "metric": "BAS",
+   "r_own": 0.26423212447114147,
+   "delta": 0.021603476442492595,
+   "pos": "91/132",
+   "p_perm": 2.5e-05,
+   "n_groups": 132
+  },
+  {
+   "dataset": "PopDanceSet (clips >= 16 s)",
+   "metric": "Event PLV",
+   "r_own": 0.2279770045182764,
+   "delta": 0.0033036971519243875,
+   "pos": "62/132",
+   "p_perm": 0.2996,
+   "n_groups": 132
   }
  ],
  "sensitivity": {

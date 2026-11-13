@@ -1,0 +1,29 @@
+{
+ "n_groups": 132,
+ "table": {
+  "real": {
+   "BAS": 0.26423212447114147,
+   "BAS_delta_other": 0.025866425255134544,
+   "BAS_delta_other_p": 0.0,
+   "BAS_delta_other_pos": "97/132",
+   "BAS_delta_tempo": 0.021603476442492595,
+   "BAS_delta_tempo_p": 5e-05,
+   "BAS_delta_tempo_pos": "91/132",
+   "PLV": 0.2279770045182764,
+   "PLV_delta_other": 0.006968642413302627,
+   "PLV_delta_other_p": 0.44785,
+   "PLV_delta_other_pos": "61/132",
+   "PLV_delta_tempo": 0.0033036971519243875,
+   "PLV_delta_tempo_p": 0.5992,
+   "PLV_delta_tempo_pos": "62/132",
+   "BPS": 0.7084883650206465,
+   "BPS_delta_other": 0.051676680359413134,
+   "BPS_delta_other_p": 0.0073,
+   "BPS_delta_other_pos": "78/132",
+   "BPS_delta_tempo": 0.0006780248563236291,
+   "BPS_delta_tempo_p": 0.841,
+   "BPS_delta_tempo_pos": "61/132"
+  }
+ },
+ "tests": {}
+}
