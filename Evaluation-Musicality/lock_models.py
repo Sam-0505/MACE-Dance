@@ -57,16 +57,17 @@ def interval(beats):
     return float(np.polyfit(np.arange(len(beats)), np.asarray(beats, float), 1)[0])
 
 
-def beat_phase(beats, own_interval, level, rescale=True):
-    """unwrapped beat phase (radians) of frames 0..T-1; beats rescaled so their mean interval = own_interval; the
-    phase is extrapolated at one beat per own_interval before the first and after the last beat."""
+def beat_phase(beats, own_interval, level, rescale=True, n=T):
+    """unwrapped beat phase (radians) of frames 0..n-1 (n = T = 1020 unless the clip is shorter); beats rescaled so
+    their mean interval = own_interval; the phase is extrapolated at one beat per own_interval before the first and
+    after the last beat."""
     b = np.asarray(beats, float)
     k = np.arange(len(b))
     if rescale:
         b = b[0] + (b - b[0]) * (own_interval / interval(b))
     else:
         own_interval = interval(b)   # raw wrong beats at their own tempo
-    t = np.arange(T)
+    t = np.arange(n)
     th = np.interp(t, b, 2 * np.pi * k)
     th = np.where(t < b[0], 2 * np.pi * (t - b[0]) / own_interval, th)
     th = np.where(t > b[-1], 2 * np.pi * (len(b) - 1) + 2 * np.pi * (t - b[-1]) / own_interval, th)
@@ -81,12 +82,14 @@ def analytic_at(x, fc):
 
 
 def lock_r(q, own_interval, beats, level, trim, rescale=True):
-    """r of one QoM signal q against one beat list (already rescaled to the own tempo inside beat_phase)."""
+    """r of one QoM signal q against one beat list (already rescaled to the own tempo inside beat_phase).
+    The clip length is len(q) (1020 frames for FineDance/Motorica, shorter for AIST++ and PopDanceSet)."""
     if len(beats) < 3:
         return np.nan
+    n = len(q)
     a = analytic_at(q, level / own_interval)
-    d = np.angle(a) - beat_phase(beats, own_interval, level, rescale)
-    return float(np.abs(np.exp(1j * d)[trim:T - trim].mean()))
+    d = np.angle(a) - beat_phase(beats, own_interval, level, rescale, n)
+    return float(np.abs(np.exp(1j * d)[trim:n - trim].mean()))
 
 
 def load_finedance(n_seeds, model_labels):
