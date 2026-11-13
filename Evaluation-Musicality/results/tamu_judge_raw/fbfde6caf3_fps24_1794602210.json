@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and the visual motion is excellent. The audio consists of a very slow, ambient track with sparse, deliberate percussive hits. The dancer's movements are equally slow, fluid, and continuous, perfectly matching the meditative and atmospheric quality of the music. The key motion accents, such as the peaks of arm extensions, changes in direction, and holds in poses, consistently and reliably align with the salient percussive sounds in the audio track. This synchronization is maintained throughout the entire video, demonstrating a deep and stable connection between the visual rhythm and the audio rhythm. There are no noticeable timing errors or drift.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1541,
+   "prompt_tokens": 211792,
+   "total_tokens": 213333,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1389,
+    "text_tokens": 152
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.81558871269226,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

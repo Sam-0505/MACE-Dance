@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The generated video demonstrates a strong and consistent awareness of the audio's beat. The character's core motion, a rhythmic bouncing/groove, is well-timed with the main tempo of the music throughout the entire clip. Salient motion accents, such as small kicks and leg lifts (e.g., at 2.5s, 3.2s, 13.3s, 16.0s), and some arm gestures (e.g., at 18.0s) reliably land on or very near the primary audio beats. However, the alignment is not perfect. Many of the movements, particularly in the upper body, are very smooth and lack the sharpness to create a tight, percussive hit, making them feel slightly soft or mushy against the crisp beats. While the overall rhythm is well-captured, the finer details and accents of the music are not always reflected with high precision. This results in a performance that is clearly beat-aware and well-synced in tempo, but falls short of the extremely tight synchronization required for a top score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1932,
+   "prompt_tokens": 211792,
+   "total_tokens": 213724,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1682,
+    "text_tokens": 250
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 16,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 60.437251329422,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

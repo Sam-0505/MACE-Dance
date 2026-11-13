@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates a clear awareness of the music's overall rhythm and phrasing, with movements that are consistently slow and fluid to match the character of the song. However, the alignment of specific motion accents to the underlying audio beats is mixed and often lacks precision. While some gestural sequences align well with the vocal rhythm (e.g., around 00:18), many of the larger body movements and pose transitions are soft and land near, but not precisely on, the main beats. The dance prioritizes a continuous, lyrical flow over sharp, percussive synchronization, resulting in a moderate or partial alignment that feels generally musical but not tightly locked to the beat structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1993,
+   "prompt_tokens": 211792,
+   "total_tokens": 213785,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1831,
+    "text_tokens": 162
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.16597366333008,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

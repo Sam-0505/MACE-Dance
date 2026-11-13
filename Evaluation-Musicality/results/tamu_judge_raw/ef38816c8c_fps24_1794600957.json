@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion shows a character performing very slow, smooth, and continuous movements, almost like a slow-motion tai chi sequence. In stark contrast, the audio track is an upbeat hip-hop song with a clear, percussive, and moderately fast beat. There is a complete disconnect between the slow, languid pace of the visual motion and the energetic rhythm of the audio. The movements do not contain any accents, hits, or changes in speed that align with the prominent audio beats. The alignment is non-existent throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 949,
+   "prompt_tokens": 211792,
+   "total_tokens": 212741,
+   "completion_tokens_details": {
+    "reasoning_tokens": 814,
+    "text_tokens": 135
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 43.253222703933716,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

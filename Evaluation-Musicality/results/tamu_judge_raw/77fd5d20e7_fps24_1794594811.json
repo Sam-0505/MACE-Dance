@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion is very slow and flowing, which matches the general mood and tempo of the song. However, the movements are largely disconnected from the specific rhythmic structure of the audio. The dancer's gestures and sways are smooth and continuous, lacking the sharp, percussive accents that would align with the clear audio beats provided by the drum track. The motion seems to follow the melodic phrases rather than the rhythmic pulse, resulting in motion accents that consistently land between beats or are entirely unrelated to them. While there is a general sense of the motion being 'to the music', the actual temporal alignment between motion beats and audio beats is sparse and unreliable.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1600,
+   "prompt_tokens": 211792,
+   "total_tokens": 213392,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1445,
+    "text_tokens": 155
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.41585564613342,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

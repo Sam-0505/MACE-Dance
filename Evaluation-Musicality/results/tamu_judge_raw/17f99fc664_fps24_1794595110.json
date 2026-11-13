@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The alignment is mixed and unstable. In the first half of the video, there is a clear attempt to match the motion to the music's rhythm. The avatar's hip sways and body rolls loosely correspond to the main piano beats, although the timing is often slightly off and lacks sharpness. However, as the video progresses, the motion becomes increasingly sparse and less rhythmic. After the 15-second mark, the avatar's movement nearly ceases altogether, showing no correspondence to the ongoing beat of the music before sliding out of the frame. This inconsistency, starting with moderate alignment and degrading to none, makes the overall performance mixed.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1190,
+   "prompt_tokens": 211792,
+   "total_tokens": 212982,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1036,
+    "text_tokens": 154
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 45.73629689216614,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

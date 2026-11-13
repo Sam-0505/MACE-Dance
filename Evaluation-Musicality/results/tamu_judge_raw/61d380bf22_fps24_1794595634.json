@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The video demonstrates excellent and sustained synchronization between the audio and visual rhythms. The avatar's movements, including body bounces, foot steps, and arm gestures, are consistently and precisely aligned with the prominent beats of the disco-funk soundtrack. The motion accents reliably land on the downbeats, creating a very tight and coherent feel. The alignment is stable throughout the entire duration of the clip, with no noticeable drift or timing errors. The dance choreography clearly follows the musical structure, making the connection between audio and motion exceptionally strong.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1001,
+   "prompt_tokens": 211792,
+   "total_tokens": 212793,
+   "completion_tokens_details": {
+    "reasoning_tokens": 872,
+    "text_tokens": 129
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.17056155204773,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

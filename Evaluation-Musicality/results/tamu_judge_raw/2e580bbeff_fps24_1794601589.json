@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion of the figure is consistently slow and smooth, which vaguely matches the slow tempo of the hip-hop track. However, the movement itself is composed of continuous, flowing gestures that lack any sharp accents or clear hits. The audio, on the other hand, has a distinct and percussive beat structure (kick and snare). The visual motion completely ignores these audio beats, showing no attempt to synchronize with them. While the overall speed is not jarringly mismatched, the lack of correspondence between motion accents and audio beats makes the alignment weak and unreliable.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 966,
+   "prompt_tokens": 211792,
+   "total_tokens": 212758,
+   "completion_tokens_details": {
+    "reasoning_tokens": 830,
+    "text_tokens": 136
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.985684394836426,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

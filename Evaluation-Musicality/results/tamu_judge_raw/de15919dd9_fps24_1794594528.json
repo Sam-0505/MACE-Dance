@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion and the audio rhythm are almost completely unaligned. The audio track has a clear and consistent beat, characteristic of a pop/R&B song. In contrast, the figure in the video performs extremely slow, continuous, and drifting movements with no discernible accents or hits that correspond to the audio beats. The tempo of the motion is significantly slower than the tempo of the music, and there is no attempt to synchronize any part of the movement (e.g., arm gestures, body shifts) with the rhythmic pulses of the soundtrack. The overall impression is that the motion is happening independently of the music, rather than in response to it.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1424,
+   "prompt_tokens": 211792,
+   "total_tokens": 213216,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1269,
+    "text_tokens": 155
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.27937150001526,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The audio track is a theatrical, spooky spoken-word piece with numerous sharp, rhythmic sound effects and vocal accents. The visual motion, however, consists of very slow, continuous, and repetitive turning and posing. There are almost no discernible \\\"motion beats\\\" or accents that align with the prominent rhythmic events in the audio. The movements seem entirely unrelated to the sound, as if the wrong audio track was paired with the video. The few instances where a movement vaguely coincides with a sound feel purely coincidental. There is no sustained or even intermittent attempt to synchronize the motion to the audio's rhythm, resulting in a complete lack of meaningful correspondence.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2241,
+   "prompt_tokens": 211792,
+   "total_tokens": 214033,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2087,
+    "text_tokens": 154
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.442509174346924,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

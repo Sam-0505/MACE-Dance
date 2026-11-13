@@ -30,7 +30,11 @@ import smpl_render as SR  # noqa: E402
 import pyrender  # noqa: E402
 import trimesh  # noqa: E402
 
-METHODS = {'released': 'oneshot_seed0.npz', 'ours': 'gain_seed0.npz'}
+METHODS = {'released': 'oneshot_seed0.npz', 'ours': 'gain_seed0.npz', 'mega': 'mega_seed0.npz',
+           'lodge': 'lodge_zup_seed0.npz'}
+LODGE_DZ = -1.26  # Lodge's FineDance world puts the pelvis ~1.26 m higher than MACE's (median over the 84 clips of floor_pair - floor_lodge,
+# std 0.04 m); a constant vertical shift plus the start-position shift below is pure placement, the motion is untouched (2026-11-13)
+CAMERA_METHODS = ('released', 'ours')  # the shared camera is ALWAYS fitted to this pair, so adding a method never changes it
 SMPL = os.path.join(ROOT, 'Motion-Projector', 'models', 'smpl', 'SMPL_NEUTRAL_chumpyfree.pkl')
 WAV_DIR = os.path.join(ROOT, 'Expert-Motion', 'data', 'test', 'wavs_sliced')
 FF = os.path.join(ROOT, 'Expert-Appearance', '.venv', 'lib', 'python3.10', 'site-packages', 'imageio_ffmpeg',
@@ -99,26 +103,34 @@ def main():
     ap.add_argument('--height', type=int, default=720)
     ap.add_argument('--crf', type=int, default=23)
     ap.add_argument('--device', default='cuda')
+    ap.add_argument('--methods', nargs='+', default=['released', 'ours'], choices=list(METHODS),
+                    help='methods to write; the camera still comes from released+ours (e.g. --methods mega adds MEGADance to existing pairs)')
     a = ap.parse_args()
     os.makedirs(a.out_dir, exist_ok=True)
     data = {m: np.load(os.path.join(HERE, 'data', 'rot_export', f), allow_pickle=True) for m, f in METHODS.items()}
     names = list(data['released']['names'])
     assert names == list(data['ours']['names'])
+    assert all(m in a.methods or m in CAMERA_METHODS for m in a.methods) and set(CAMERA_METHODS) <= set(data)
     for n in a.slices:
         i = names.index(n)
         wav = os.path.join(WAV_DIR, n + '.wav')
         verts, faces = {}, None
         for m, z in data.items():
-            verts[m], faces = SR.smpl_vertices(z['poses'][i].astype(np.float32), z['trans'][i].astype(np.float32), SMPL, a.device)
+            tr = z['trans'][i].astype(np.float32).copy()
+            if m == 'lodge':  # rigid placement into MACE's world: constant floor shift, start on the released clip's start position
+                r0 = data['released']['trans'][i][0, :2]
+                tr[:, 2] += LODGE_DZ
+                tr[:, :2] += (r0 - z['trans'][i][0, :2]).astype(np.float32)
+            verts[m], faces = SR.smpl_vertices(z['poses'][i].astype(np.float32), tr, SMPL, a.device)
         forward = SR.facing_direction(data['released']['poses'][i][0].astype(np.float32))
-        cam = shared_camera(list(verts.values()), forward, a.width / a.height)
-        oof = {m: out_of_frame(v, cam, a.width / a.height) for m, v in verts.items()}
+        cam = shared_camera([verts[m] for m in CAMERA_METHODS], forward, a.width / a.height)
+        oof = {m: out_of_frame(verts[m], cam, a.width / a.height) for m in a.methods}
         print(f'{n} frames with any vertex out of frame: ' + ', '.join(f'{m} {x:.1%}' for m, x in oof.items()), flush=True)
         if max(oof.values()) >= 0.01:  # skip this clip (reported at the end) instead of aborting the whole run
             print(f'SKIPPED {n}: dancer leaves the frame in >=1% of frames', flush=True)
             continue
         rows = []
-        for m in METHODS:
+        for m in a.methods:
             vid = vid_id(n, m)
             out = os.path.join(a.out_dir, f'{vid}.mp4')
             t0 = time.time()

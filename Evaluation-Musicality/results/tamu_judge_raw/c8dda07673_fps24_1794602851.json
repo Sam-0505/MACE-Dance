@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays weak alignment between the audio and visual rhythms. The audio has a clear, consistent, and easy-to-follow beat. However, the visual motion consists of very slow, fluid, and continuous movements that rarely create distinct 'motion beats' to align with the audio. While a few movements occasionally start or end near an audio beat (e.g., a leg lift around 4s, a hand gesture around 7s), these instances are sparse and feel more coincidental than intentional. For the majority of the video, the motion flows smoothly through the beats without accenting them. The alignment is neither stable nor reliable, resulting in a weak overall correspondence between the visual motion and the audio rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1545,
+   "prompt_tokens": 211792,
+   "total_tokens": 213337,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1376,
+    "text_tokens": 169
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.297306537628174,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

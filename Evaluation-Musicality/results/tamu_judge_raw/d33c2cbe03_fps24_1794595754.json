@@ -1,0 +1,36 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits only a very weak and unreliable connection to the audio rhythm. The music has a clear, consistent pop beat, but the figure's movements are generally very slow, smooth, and floaty, lacking the sharp accents needed to synchronize with the percussive elements. For long stretches of the video (e.g., from 00:15 to 00:22), the figure is almost completely static while the beat continues. While there are a few isolated moments where a turn or a step loosely corresponds to a beat, these instances are rare and feel more coincidental than intentional. The vast majority of the audio beats are not matched by any discernible motion accents, resulting in a sparse and unstable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1485,
+   "prompt_tokens": 211792,
+   "total_tokens": 213277,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1312,
+    "text_tokens": 173
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 10,
+    "cached_tokens": 209432,
+    "text_tokens": 5,
+    "video_tokens": 2345
+   },
+   "cache_read_input_tokens": 209432
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 62.94698715209961,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

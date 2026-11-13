@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The character in the video is almost completely static for the majority of the clip, holding a single pose with only very slow, non-rhythmic drifting and turning. The audio, in contrast, has a clear and continuous percussive beat and a complex rhythmic vocal line. There is no attempt by the visual motion to align with any of the audio beats. The movement does not correspond to the music's rhythmic structure in any meaningful way.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1371,
+   "prompt_tokens": 211792,
+   "total_tokens": 213163,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1257,
+    "text_tokens": 114
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 44.001105308532715,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

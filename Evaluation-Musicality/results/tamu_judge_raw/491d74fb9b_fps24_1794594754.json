@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The motion exhibits extremely tight and sustained synchronization with the audio. The avatar's footfalls, knee lifts, and body bounces consistently land directly on the prominent kick drum beats throughout the entire clip. The timing is precise, with no noticeable drift or systematic offset. The movements are clearly and accurately driven by the rhythm of the music, resulting in excellent video-audio alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1308,
+   "prompt_tokens": 211792,
+   "total_tokens": 213100,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1209,
+    "text_tokens": 99
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 40.85387849807739,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays a slow, graceful dance that matches the overall mood and style of the Indian classical music. However, the evaluation is for strict rhythmic alignment. The audio contains complex and often fast percussive rhythms (tabla beats), which serve as the primary audio beats. The visual motion, while thematically appropriate, is consistently very slow, smooth, and flowing. The motion accents (pose changes, arm extensions) are rare and do not align with the sharp, percussive audio beats. The dancer's movements seem to float over the rhythm rather than punctuating it. There is a general awareness of the music's phrasing but almost no correspondence at the beat level. This results in a weak and unreliable alignment between motion and audio rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1835,
+   "prompt_tokens": 211792,
+   "total_tokens": 213627,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1660,
+    "text_tokens": 175
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.731531620025635,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

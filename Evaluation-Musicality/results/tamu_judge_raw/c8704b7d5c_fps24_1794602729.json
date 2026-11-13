@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion appears to be a single, slow, and repetitive animation loop that plays continuously throughout the video, regardless of the audio. The audio track has a clear and consistent beat structure, along with distinct lyrical phrasing. However, there are no discernible motion beats (like steps, hits, or sharp pose changes) that correspond to these audio beats. The movement is smooth and non-rhythmic, showing no awareness of the music's tempo, accents, or structure. The alignment is therefore non-existent.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 972,
+   "prompt_tokens": 211792,
+   "total_tokens": 212764,
+   "completion_tokens_details": {
+    "reasoning_tokens": 845,
+    "text_tokens": 127
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 39.60009980201721,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits a very weak correlation with the audio's rhythm. The avatar performs a series of slow, repetitive, and fluid gestures that rarely align with the prominent beats in the music. There are many instances where the character is almost static for several seconds while the beat continues, indicating a clear lack of responsiveness (e.g., 10-14s, 20-22s). While some movements occasionally land near a beat, it appears coincidental rather than intentional. The overall motion feels like a generic, pre-canned animation that has been placed over the audio track without any significant attempt at synchronization. The motion lacks the sharpness, timing, and energy to match the percussive nature of the soundtrack.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1648,
+   "prompt_tokens": 211792,
+   "total_tokens": 213440,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1474,
+    "text_tokens": 174
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.81587290763855,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

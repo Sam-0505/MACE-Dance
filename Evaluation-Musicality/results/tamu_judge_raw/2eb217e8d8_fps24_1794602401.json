@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The visual motion rhythm demonstrates an extremely tight and consistent alignment with the audio rhythm throughout the entire video. The dance movements, particularly the arm gestures, head turns, and body sways, reliably land on the prominent audio beats and even follow the more complex syncopated vocal patterns. For instance, the quick, percussive hand movements accurately match the \\\"ra-ta-ta-ta\\\" vocalizations in the soundtrack. The alignment is stable, with no noticeable drift or timing errors. Almost every audio beat is accounted for with a corresponding motion accent, resulting in a highly cohesive and rhythmically precise performance.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1045,
+   "prompt_tokens": 211792,
+   "total_tokens": 212837,
+   "completion_tokens_details": {
+    "reasoning_tokens": 898,
+    "text_tokens": 147
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 65.563711643219,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

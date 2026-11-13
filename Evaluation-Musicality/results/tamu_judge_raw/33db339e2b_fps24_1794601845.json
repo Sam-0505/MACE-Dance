@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The generated motion captures the overall style and tempo of the Indian classical music, featuring fluid arm movements and hand gestures characteristic of the genre. The movements follow the general phrasing and flow of the music. However, the alignment with the specific, percussive audio beats (from the tabla) is inconsistent and lacks precision. While some motion accents occasionally land near a beat, many are slightly off, either anticipating or lagging behind the audio cue. The dance feels rhythmically related to the music but does not achieve tight, consistent synchronization. This results in a moderate or mixed level of alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1387,
+   "prompt_tokens": 211792,
+   "total_tokens": 213179,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1246,
+    "text_tokens": 141
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.73054242134094,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

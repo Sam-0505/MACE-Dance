@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion of the character shows a general rhythmic awareness, with movements that are fluid and have a tempo that is loosely related to the music. However, the specific motion accents do not consistently align with the salient audio beats. The character's movements, such as arm swings, torso twists, and leg lifts, often occur on off-beats or float between beats, rather than landing squarely on the prominent drum hits. There are very few moments of clear synchronization. The overall impression is that the dance is performed *to* the music but is not strictly *on beat*, resulting in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1552,
+   "prompt_tokens": 211792,
+   "total_tokens": 213344,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1405,
+    "text_tokens": 147
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.70852732658386,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

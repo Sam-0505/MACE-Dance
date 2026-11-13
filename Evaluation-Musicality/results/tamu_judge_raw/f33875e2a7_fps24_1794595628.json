@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The alignment between the audio and visual motion is extremely poor, bordering on non-existent. The audio track is a mid-tempo pop song with a very clear and consistent beat structure. In contrast, the figure's motion is extremely slow, languid, and lacks any discernible rhythmic accents or pulses. The movements, such as slowly bending over, rising, or raising arms, are performed over many seconds and completely disregard the underlying beat of the music. There are no instances of motion beats (footfalls, gestures, etc.) landing on or near the audio beats. The tempo and energy of the visuals and the audio are fundamentally mismatched throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1556,
+   "prompt_tokens": 211792,
+   "total_tokens": 213348,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1399,
+    "text_tokens": 157
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.65702247619629,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

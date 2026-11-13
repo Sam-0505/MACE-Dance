@@ -1,0 +1,36 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion has its own rhythmic quality, but it shows very little correspondence to the actual audio beats. The dance consists of a repetitive sequence of slow, flowing arm and leg movements. However, these movements rarely land on the prominent, steady drum beats of the electronic music track. For example, the hand gestures that touch the head or chest, or the small leg kicks, consistently fall on off-beats or are completely untethered from the audio's rhythmic structure. While the dance is not random, its rhythm is clearly different from the music's rhythm, resulting in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 868,
+   "prompt_tokens": 211792,
+   "total_tokens": 212660,
+   "completion_tokens_details": {
+    "reasoning_tokens": 722,
+    "text_tokens": 146
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 10,
+    "cached_tokens": 209432,
+    "text_tokens": 5,
+    "video_tokens": 2345
+   },
+   "cache_read_input_tokens": 209432
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 59.55330419540405,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The audio is a slow, lyrical ballad with a focus on vocal phrasing rather than strong percussive beats. The generated dance motion perfectly captures this character. The movements are fluid, sustained, and expressive, mirroring the legato style of the singing. Key motion accents, such as the extension of the arms, a turn of the head, or the holding of a pose, consistently align with the beginnings and ends of musical phrases and significant melodic shifts. For example, the T-pose at 0:06 aligns perfectly with a sustained vocal note. The energy and tempo of the dance are perfectly matched to the audio throughout the entire clip, creating a highly coherent and artistically compelling performance. There are no noticeable timing errors or drift.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1290,
+   "prompt_tokens": 211792,
+   "total_tokens": 213082,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1106,
+    "text_tokens": 184
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.13369822502136,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

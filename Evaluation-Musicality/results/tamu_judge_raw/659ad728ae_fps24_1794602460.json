@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The avatar's motion exhibits a slow, repetitive rhythmic sway that is largely disconnected from the audio track. While the music has a clear and consistent mid-tempo beat, the avatar's movements are significantly slower and do not align with the prominent audio beats. Key percussive hits and rhythmic phrases in the music are consistently missed. The motion has a generic, low-energy feel that creates a strong perceptual mismatch with the more dynamic and structured audio, resulting in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1248,
+   "prompt_tokens": 211792,
+   "total_tokens": 213040,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1124,
+    "text_tokens": 124
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 59.223639249801636,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

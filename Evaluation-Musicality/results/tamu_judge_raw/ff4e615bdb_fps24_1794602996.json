@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and visual motion is excellent and sustained throughout the entire clip. The motion accents, primarily consisting of arm gestures, pose transitions, and turns, are consistently and precisely timed to land on the prominent beats of the music. For instance, the hand gestures hitting their apex, the arms crossing the chest, and the hands landing on the hips all align perfectly with the percussive and vocal beats. There are no noticeable timing errors, drift, or periods of misalignment. The choreography is clearly beat-aware and executed with extreme precision, resulting in a very tight and satisfying synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1475,
+   "prompt_tokens": 211792,
+   "total_tokens": 213267,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1331,
+    "text_tokens": 144
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 45.32048559188843,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

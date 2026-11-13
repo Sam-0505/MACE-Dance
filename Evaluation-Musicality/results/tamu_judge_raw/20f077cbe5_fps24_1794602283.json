@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The dancer's movements show a general awareness of the music's rhythm but lack consistent, tight synchronization. The dance often feels like it's moving at half the tempo of the very prominent and steady drum beat. While some major motion accents, like the completion of a turn or a leg lift, occasionally land near a beat, many are missed or fall in between beats. The movement is often smooth, slow, and floaty, which contrasts with the sharp, funky pulse of the audio. This results in an unstable and intermittent alignment, where some moments feel connected to the music while others are clearly out of sync. Overall, the correspondence is moderate but not strong or excellent.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1437,
+   "prompt_tokens": 211792,
+   "total_tokens": 213229,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1275,
+    "text_tokens": 162
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 72.7107310295105,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

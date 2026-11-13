@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance is slow and expressive, perfectly matching the tempo and character of the classical Chinese flute music. The motion accents, which are fluid changes in pose and gesture, are beautifully synchronized with the musical phrases of the flute. For example, when the music swells, the dancer's arms open in a broad gesture. When the music becomes still or transitions, the dancer holds a pose or executes a slow, deliberate movement. The timing of the major postural changes, such as crouching down around 19 seconds, aligns perfectly with the dramatic shifts in the music. The entire performance feels like a direct and sensitive interpretation of the audio, demonstrating extremely tight and sustained synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1613,
+   "prompt_tokens": 211792,
+   "total_tokens": 213405,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1443,
+    "text_tokens": 170
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.39592671394348,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

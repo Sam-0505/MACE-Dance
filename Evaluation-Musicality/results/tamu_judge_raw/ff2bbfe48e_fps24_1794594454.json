@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the figure is extremely slow, smooth, and disconnected from the audio's rhythm. The audio has a clear, consistent beat, but the figure's movements (slow arm gestures, squats, and walking) do not align with these beats in any meaningful way. The timing of motion accents is completely independent of the audio beats, resulting in a total lack of synchronization throughout the entire video.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1042,
+   "prompt_tokens": 211792,
+   "total_tokens": 212834,
+   "completion_tokens_details": {
+    "reasoning_tokens": 936,
+    "text_tokens": 106
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 10,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 42.008896350860596,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

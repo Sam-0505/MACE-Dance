@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The video demonstrates a significant and consistent lack of alignment between the visual motion and the audio rhythm. The audio track has a clear and consistent beat structure, especially in the percussion and bass. However, the figure's movements are extremely slow, fluid, and gestural, appearing to drift through a series of poses without any regard for the underlying musical pulse. There are no discernible motion accents (like footfalls, sharp turns, or limb hits) that land on or near the audio beats. The entire performance feels disconnected, as if the animation was generated for a much slower, ambient piece of music and then paired with this pop track. The tempo of the motion is fundamentally mismatched with the tempo of the audio, resulting in no perceivable rhythmic correspondence.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1491,
+   "prompt_tokens": 211792,
+   "total_tokens": 213283,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1316,
+    "text_tokens": 175
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.33983063697815,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

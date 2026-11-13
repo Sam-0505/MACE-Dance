@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The visual motion shows a strong and consistent alignment with the audio's rhythm. The music, a slow and meditative classical piece, has clear percussive beats that occur roughly every second. The figure's slow, flowing arm movements and pose transitions are timed to land on or very near these primary beats. For example, the peaks of arm extensions, the start/end of a turn, or the holding of a pose frequently coincide with the main rhythmic pulses. While not every single beat is hit with machine-like precision, the overall correspondence is very clear and sustained throughout the video. There are a few brief moments where the figure is more static, but these don't break the overall sense of synchronization. The motion is clearly beat-aware and choreographed to the music, making the alignment strong.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1777,
+   "prompt_tokens": 211792,
+   "total_tokens": 213569,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1591,
+    "text_tokens": 186
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.0131094455719,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

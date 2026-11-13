@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the avatar is extremely slow, fluid, and lacks any sharp, accented movements that could be defined as motion beats. The audio track, in contrast, has a complex and dynamic rhythmic structure with clear percussive hits and vocal accents. There is a complete disconnect between the slow, continuous, non-rhythmic visual motion and the rhythmic pulse of the audio. The avatar's movements do not land on or near any of the audio beats, and there is no evidence of any attempt to synchronize with the music. The alignment is therefore non-existent.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 853,
+   "prompt_tokens": 211792,
+   "total_tokens": 212645,
+   "completion_tokens_details": {
+    "reasoning_tokens": 714,
+    "text_tokens": 139
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 66.0343337059021,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The visual motion rhythm demonstrates extremely tight synchronization with the audio rhythm. The dance movements, including arm gestures, torso isolations, and subtle bounces, consistently land on the prominent kick and snare beats of the music. The alignment is stable and sustained throughout the entire video clip, with no noticeable drift or timing errors. The character's movements appear highly responsive and precisely timed to the musical pulse.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1078,
+   "prompt_tokens": 211792,
+   "total_tokens": 212870,
+   "completion_tokens_details": {
+    "reasoning_tokens": 975,
+    "text_tokens": 103
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 38.26713418960571,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

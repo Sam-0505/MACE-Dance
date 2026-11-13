@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion appears to be a single, short animation loop that repeats throughout the entire video, regardless of the significant changes in the audio. The initial saxophone melody has a different rhythmic feel from the main groove that starts around the 11-second mark, yet the visual motion remains exactly the same. The footfalls, turns, and arm gestures of the character do not align with the prominent beats of the drums and bass guitar. There is a complete and sustained disconnect between the visual rhythm of the dance and the audio rhythm of the music, indicating no meaningful correspondence.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1238,
+   "prompt_tokens": 211792,
+   "total_tokens": 213030,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1100,
+    "text_tokens": 138
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.15808033943176,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

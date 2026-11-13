@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion of the character matches the overall slow tempo and emotional quality of the music. However, the alignment with the specific audio beats is inconsistent. The dance consists of slow, flowing, and continuous movements that often float through the beats rather than accentuating them. There are a few moments where a gesture or pose change lands near a beat (e.g., around 1s, 10.5s, 18.5s, 25.5s), but these are intermittent. For much of the video, the motion seems to follow its own rhythmic logic or interprets the melodic phrases, largely ignoring the clear percussive beats in the audio. This results in a mixed or moderate level of alignment, where the general mood is coherent but the beat-to-motion synchronization is unstable and not a primary feature of the performance.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1286,
+   "prompt_tokens": 211792,
+   "total_tokens": 213078,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1089,
+    "text_tokens": 197
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.95037078857422,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

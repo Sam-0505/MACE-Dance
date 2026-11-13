@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The generated motion follows the general tempo and energy of the funk music track, but the alignment of specific motion beats to audio beats is inconsistent. The dance consists of repeating choreography loops. While some movements, like body pulses and arm gestures, land near the prominent bass and drum beats, many are slightly offset, either a fraction early or late. There are no moments of tight, sustained synchronization. For example, during the vocal count-in from 00:21 to 00:22, the dancer's movements do not sharply align with the numbers being called out. The overall impression is one of general rhythmic awareness without precise beat-for-beat accuracy, which is characteristic of a moderate or mixed alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1341,
+   "prompt_tokens": 211792,
+   "total_tokens": 213133,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1170,
+    "text_tokens": 171
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.168473958969116,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

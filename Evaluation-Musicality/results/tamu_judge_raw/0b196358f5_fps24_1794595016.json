@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The character's motion is consistently aligned with the music's strong, driving beat. The primary motion, a step-touch groove, reliably lands on the quarter-note pulses of the disco track. Many of the upper body and arm gestures also land on these beats, creating a clear sense of synchronization (e.g., the hand-to-face gesture at ~6s, the turn at ~9s, the point at ~29s). While not every single micro-movement is perfectly locked to a specific musical nuance, the overall rhythmic pulse is stable and well-represented throughout the entire video. There are no significant drifts or major timing errors, leading to a strong perception of video-audio alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1496,
+   "prompt_tokens": 211792,
+   "total_tokens": 213288,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1326,
+    "text_tokens": 170
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.929282426834106,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

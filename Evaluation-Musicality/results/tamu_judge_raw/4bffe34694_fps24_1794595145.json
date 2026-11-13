@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The alignment in this video is mixed and unstable. In the first few seconds, the figure's body sways and arm movements are synchronized reasonably well with the main beat of the hip-hop track. However, this alignment is not sustained. The motion frequently becomes minimal or stops altogether for several seconds at a time (e.g., around 5-8s and again from 12s to the end), even as the music continues with a clear rhythmic pulse. There are brief moments where the alignment returns, but overall, the performance is intermittent. Because some segments are clearly synced while large portions are not, it fits the description of mixed/moderate alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1103,
+   "prompt_tokens": 211792,
+   "total_tokens": 212895,
+   "completion_tokens_details": {
+    "reasoning_tokens": 943,
+    "text_tokens": 160
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 43.558449506759644,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

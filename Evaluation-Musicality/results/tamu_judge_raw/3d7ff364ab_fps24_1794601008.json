@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The video-audio alignment is mixed and unstable throughout the clip. In the first half of the video, the motion is very slow and floaty, with very few movements that land on the clear audio beats. The actions seem to generally follow the phrasing of the music but lack precise rhythmic connection. Around the 27-second mark, the character's movement becomes more energetic and begins to align more closely with the beat. There are several clear motion accents, like hops and arm gestures, that successfully hit the beat in this latter section. However, because the alignment is weak for a significant portion of the video and only becomes stronger intermittently, the overall performance is best described as mixed/moderate.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1357,
+   "prompt_tokens": 211792,
+   "total_tokens": 213149,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1192,
+    "text_tokens": 165
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.15837621688843,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

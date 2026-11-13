@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance is slow, flowing, and expressive, perfectly matching the character of the traditional Chinese music. The motion accents, such as the peaks of arm gestures, subtle weight shifts, and held poses, are consistently synchronized with the musical phrases and primary accents in the melody. For instance, the graceful turns and extensions of the arms align beautifully with the swells and melodic lines of the string and wind instruments. The timing is not just reactive to a beat but is deeply musical, interpreting the rubato (expressive tempo changes) and dynamics of the piece with remarkable precision. The alignment is sustained flawlessly throughout the entire video.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1050,
+   "prompt_tokens": 211792,
+   "total_tokens": 212842,
+   "completion_tokens_details": {
+    "reasoning_tokens": 890,
+    "text_tokens": 160
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.801111936569214,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

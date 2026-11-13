@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion exhibits a severe lack of correspondence with the audio's rhythmic structure. Throughout the video, the character's movements are slow, floating, and disconnected from the clear, often energetic, beats in the music. For instance, during the build-up and the energetic chorus sections (e.g., 17-22s and 27-32s), where the audio is rhythmically dense and driving, the visual motion is either completely static or consists of slow, gestural movements that do not align with any of the audible beats. There are no clear motion accents that land on or near the audio beats. The overall impression is that the motion is completely independent of the music's rhythm and tempo.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1097,
+   "prompt_tokens": 211792,
+   "total_tokens": 212889,
+   "completion_tokens_details": {
+    "reasoning_tokens": 924,
+    "text_tokens": 173
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 45.58560395240784,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

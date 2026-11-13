@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The visual motion demonstrates a strong and consistent alignment with the audio's musical phrasing and tempo. The avatar's movements, which are reminiscent of classical ballet, are generally well-timed with the main melodic and rhythmic cues of the classical piece. For example, the initial opening of the arms, the subsequent pli\u00e9, and the rising motions align well with the start of musical measures. The overall flow and speed of the dance match the character of the music. However, it doesn't achieve a perfect score because the motion, while rhythmically aware, is very smooth and legato, often flowing through some of the sharper, more subtle accents in the music without creating a distinct visual hit. The alignment is strong on the phrase level but lacks the percussive sharpness to be considered 'excellent'.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1662,
+   "prompt_tokens": 211792,
+   "total_tokens": 213454,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1478,
+    "text_tokens": 184
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.71439528465271,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

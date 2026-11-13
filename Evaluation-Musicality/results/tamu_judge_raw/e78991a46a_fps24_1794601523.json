@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video exhibits weak alignment between the audio and visual rhythms. The audio provides a clear, consistent pop beat throughout the clip. However, the avatar's motion is characterized by slow, fluid, and continuous transitions that do not create sharp accents corresponding to the audio beats. Most movements, such as arm raises, body sways, and pose changes, unfold over multiple beats rather than landing precisely on them. While the dance is thematically appropriate for the music, the specific timing of motion accents rarely matches the salient rhythmic pulses in the soundtrack, resulting in an unstable and largely unaligned performance.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2116,
+   "prompt_tokens": 211792,
+   "total_tokens": 213908,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1973,
+    "text_tokens": 143
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.253217935562134,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

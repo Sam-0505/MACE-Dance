@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and visual elements is excellent. The music is slow, atmospheric, and percussive, and the generated motion matches this character perfectly with a slow, deliberate, and flowing dance style reminiscent of Tai Chi. While there are few sharp, percussive motion beats, the key motion accents\u2014such as the peak of an arm extension, a change in direction, or holding a pose\u2014consistently and precisely land on the salient audio beats. The phrasing of the movement is beautifully synchronized with the musical phrases, creating a very strong sense of coherence. The alignment is stable and sustained throughout the entire video with no noticeable drift or errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1183,
+   "prompt_tokens": 211792,
+   "total_tokens": 212975,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1027,
+    "text_tokens": 156
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 66.00648593902588,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

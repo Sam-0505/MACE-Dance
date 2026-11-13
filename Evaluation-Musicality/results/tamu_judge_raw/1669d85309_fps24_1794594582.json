@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion demonstrates a strong and consistent awareness of the audio's rhythmic structure. The character's steps, body sways, and arm gestures are consistently timed to land on or very near the main beats of the funk track. The alignment is sustained throughout the entire video without any significant drift or loss of synchronization. However, it falls just short of an 'Excellent' rating because the motion accents, while rhythmically correct, often lack the sharp, precise impact that would create a perfectly tight lock with the beat. There is some minor jitter and softness in the timing of the hits, but the overall performance is clearly and strongly beat-aware.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1758,
+   "prompt_tokens": 211792,
+   "total_tokens": 213550,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1604,
+    "text_tokens": 154
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.54086995124817,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays a very weak connection between the visual motion and the audio rhythm. The music has a slow, ambient tempo with clear chord changes and vocal phrases that establish a rhythmic structure. The character's movements are extremely slow, fluid, and gestural, almost like slow-motion tai chi or voguing. While the slowness of the motion generally matches the slow tempo of the song, there are very few instances where a distinct motion beat (a pose change, arm movement, or weight shift) lands on or near a clear audio beat. The dancer seems to float through the music rather than hitting its rhythmic accents. The alignment is sparse, unreliable, and gives only a vague sense of rhythmic awareness.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1825,
+   "prompt_tokens": 211792,
+   "total_tokens": 213617,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1658,
+    "text_tokens": 167
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.59578561782837,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

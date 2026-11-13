@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion is well-matched to the overall style and phrasing of the Indian classical music. The dancer's movements, including hand gestures (mudras) and postures, effectively capture the tempo and energy of the audio track. The alignment is particularly strong during the slower, more fluid sections, where the flow of the body corresponds well with the melodic lines. However, the synchronization is not perfect. In the more rhythmically complex and percussive sections (e.g., after 26 seconds), there is a noticeable and consistent slight delay; the motion accents often land a fraction of a second after the audio beats. While the dance is clearly beat-aware and maintains a strong connection to the music throughout, these minor timing errors prevent it from achieving an 'Excellent' rating.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1276,
+   "prompt_tokens": 211792,
+   "total_tokens": 213068,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1094,
+    "text_tokens": 182
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.404693841934204,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

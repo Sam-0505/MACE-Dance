@@ -1,0 +1,11 @@
+{
+ "status": 500,
+ "response": {
+  "detail": "Open WebUI: Server Connection Error"
+ },
+ "headers": {},
+ "seconds": 59.830952405929565,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

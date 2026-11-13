@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The generated motion exhibits strong alignment with the audio, particularly with the vocal phrasing and key lyrical cues of the K-pop track. Many of the prominent hand gestures, poses, and body isolations land accurately on significant musical or vocal accents (e.g., the points, arm raises, and chest pops). The overall tempo and energy of the dance match the song's progression well. However, the alignment is not consistently excellent; there are several moments where the motion becomes smoother and less defined, gliding over the main percussive beats rather than hitting them with sharp accents. While the choreography is clearly beat-aware and sustained throughout the clip, the lack of consistent, tight synchronization on every beat prevents it from reaching a perfect score.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1749,
+   "prompt_tokens": 211792,
+   "total_tokens": 213541,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1576,
+    "text_tokens": 173
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.575501680374146,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The character's motion is consistently aligned with the audio's rhythm throughout the video. The core movement is a body bounce and sway that reliably lands on the primary beats of the hip-hop track. There are also specific arm and leg movements that successfully accent the stronger snare hits and musical phrases. For instance, the leg lifts around 29-31 seconds and the arm pulls around 7-8 seconds are well-timed. The alignment is stable and covers the entire duration of the clip. While the synchronization is strong and clearly beat-aware, it lacks the razor-sharp precision for a top score; some movements are slightly soft or continuous rather than landing as distinct, hard accents. However, there are no significant timing errors or drift, making it a strong example of video-audio alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2010,
+   "prompt_tokens": 211792,
+   "total_tokens": 213802,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1822,
+    "text_tokens": 188
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.21951079368591,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

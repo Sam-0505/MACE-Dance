@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The visual motion and the audio rhythm have a mixed or moderate level of alignment. The dance style is slow and flowing, with continuous arm and body movements, which is stylistically appropriate for the Indian classical music. However, the audio contains a rich and frequent percussive beat structure (from the tabla drums). There are only a few, intermittent moments where a clear motion accent (like a leg lift, a turn completion, or a pose hold) coincides with a strong audio beat. For the most part, the dancer's movements flow through the beats rather than hitting them, leading to a feeling of general musicality but a lack of tight, consistent synchronization. The alignment is unstable, with some moments of connection but long periods where the motion and beats are independent.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2020,
+   "prompt_tokens": 211792,
+   "total_tokens": 213812,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1841,
+    "text_tokens": 179
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.4864022731781,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

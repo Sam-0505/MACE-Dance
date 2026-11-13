@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays very slow, fluid, and continuous motion that generally matches the slow tempo and mood of the Indian classical music. However, the motion lacks any distinct accents or 'motion beats' that could align with the rhythmic pulses provided by the vocals and percussion in the audio. While the overall flow is thematically appropriate, there is no discernible attempt to synchronize specific movements with the underlying beat structure. The alignment is therefore sparse and unreliable, showing only a vague rhythmic awareness based on the overall tempo rather than specific audio beats.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1287,
+   "prompt_tokens": 211792,
+   "total_tokens": 213079,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1158,
+    "text_tokens": 129
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.30584144592285,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

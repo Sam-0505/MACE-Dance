@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The alignment in this video is mixed and unstable. In the first section (approximately 0-16 seconds), the motion aligns moderately well with the rhythm and cadence of the spoken-word narration. Gestures and turns correspond to the phrases, creating a sense of a character acting out the story. However, when the main musical beat starts around 17 seconds, the alignment completely breaks down. The character's movements become slow and swaying, failing to match the prominent, driving beat of the music. The motion accents are either absent or do not land on the audio beats. This creates a significant disconnect in the second half of the video. Because one segment is partially synced and the other is mostly off, the overall rating is Mixed/Moderate.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1329,
+   "prompt_tokens": 211792,
+   "total_tokens": 213121,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1153,
+    "text_tokens": 176
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.766761302948,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion consists of extremely slow, continuous, and flowing movements, similar to Tai Chi. The audio is likewise slow and atmospheric, with sparse percussive elements and long melodic phrases. While the overall tempo and mood of the dance match the music, there is a distinct lack of alignment between specific motion accents and the audio beats. The dancer's movements are not designed to hit the rhythmic pulses in the soundtrack but rather to flow through the musical phrases. Consequently, based on the strict definition of aligning salient motion beats to audio beats, the correspondence is weak and unreliable.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1611,
+   "prompt_tokens": 211792,
+   "total_tokens": 213403,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1472,
+    "text_tokens": 139
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 45.65570950508118,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

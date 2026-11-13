@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The audio is a slow, expressive classical piece without a strong, percussive beat. The visual motion consists of slow, fluid, balletic movements. The alignment is not based on hitting discrete beats, but rather on matching the phrasing, tempo, and emotional contour of the music. The dancer's movements are perfectly paced with the music's tempo. For instance, the long, sustained notes in the violin melody are matched by slow, graceful extensions of the arms and torso. Motion accents, such as reaching a peak pose or changing direction, consistently align with the start and end of musical phrases. The overall performance feels like a thoughtful choreography that is highly responsive to the nuances of the music, maintaining tight and stable synchronization throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1649,
+   "prompt_tokens": 211792,
+   "total_tokens": 213441,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1462,
+    "text_tokens": 187
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.38446021080017,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion is almost entirely disconnected from the audio rhythm. The audio track features a moderately fast tempo with clear, sharp beats and complex, syncopated vocal rhythms. In contrast, the visual motion consists of a slow, continuous, and repetitive swaying and waving that rarely aligns with any of the audible beats. This discrepancy is particularly jarring during the fast-paced vocal sections (e.g., around 14-16 seconds and 27-29 seconds), where the audio is energetic and staccato, but the visual motion remains slow and languid. There is no clear correspondence between motion accents and audio beats, resulting in a complete lack of rhythmic coherence.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1258,
+   "prompt_tokens": 211792,
+   "total_tokens": 213050,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1097,
+    "text_tokens": 161
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 88.57682299613953,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

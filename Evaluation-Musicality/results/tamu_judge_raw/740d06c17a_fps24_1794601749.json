@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion follows the general tempo of the music, but there is a consistent lack of precise alignment between motion accents and the audio beats. The movements, which are mostly slow and flowing arm gestures, rarely land on the strong, percussive beats of this high-energy track. Key lyrical and rhythmic cues in the audio are frequently missed or are responded to with movements that are slightly early, late, or lack the sharpness to create a perception of synchrony. While there is a vague rhythmic awareness, the alignment is sparse and unreliable throughout the clip, making it a weak correspondence.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1662,
+   "prompt_tokens": 211792,
+   "total_tokens": 213454,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1521,
+    "text_tokens": 141
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.251254081726074,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

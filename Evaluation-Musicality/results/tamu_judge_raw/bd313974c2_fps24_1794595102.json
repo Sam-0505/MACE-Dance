@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The dancer's motion generally follows the tempo of the music, maintaining a consistent rhythmic groove throughout the video. There is a clear awareness of the beat, as seen in the stepping and body-rocking motions. However, the alignment is not precise. The motion accents, such as footfalls and hand gestures, often land slightly off the main percussive beats of the audio track. While the overall movement feels connected to the music's rhythm, it lacks the sharp, consistent synchronization that would place it in a higher category. The alignment is present but feels loose and intermittent in its precision, making it a moderate match.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1092,
+   "prompt_tokens": 211792,
+   "total_tokens": 212884,
+   "completion_tokens_details": {
+    "reasoning_tokens": 941,
+    "text_tokens": 151
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.575398683547974,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion demonstrates a strong and consistent awareness of the musical rhythm and phrasing. The dance style is fluid and lyrical, so not every single motion is meant to be a sharp, percussive hit on a beat. Instead, the motion accents\u2014such as the completion of a turn, the striking of a hand gesture (mudra), or a shift in body weight\u2014reliably coincide with the main beats and the start of new musical phrases. For example, the initial slow arm extensions match the introductory melody, and as the percussion enters, the movements become more defined and rhythmically punctuated. While not every micro-beat is hit, the overall musicality is very high, and the alignment with the core rhythmic structure is stable and effective throughout the clip. There are no significant timing errors or drift.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1765,
+   "prompt_tokens": 211792,
+   "total_tokens": 213557,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1580,
+    "text_tokens": 185
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.55498719215393,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

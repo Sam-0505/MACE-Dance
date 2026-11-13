@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is extremely poor, bordering on non-existent. For the first 11 seconds, the figure is almost completely static, performing only a very slow turn that shows no correspondence to the distinct musical phrases and beats in the audio. When the music changes to a much faster, rhythmically driven funk track at 11 seconds, the character's motion remains incredibly slow, floaty, and disconnected from the audio's tempo and beat structure. The movements, such as slow crouching and arm waves, are continuous and lack any sharp accents that would align with the prominent drum beats. There is a complete mismatch in energy and timing throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1787,
+   "prompt_tokens": 211792,
+   "total_tokens": 213579,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1621,
+    "text_tokens": 166
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 62.22454762458801,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

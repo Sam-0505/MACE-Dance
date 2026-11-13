@@ -1,0 +1,11 @@
+{
+ "status": 500,
+ "response": {
+  "detail": "\ud83d\udeab **Error**\n\nlitellm.InternalServerError: Vertex_ai_betaException InternalServerError - b'{\\n  \"error\": {\\n    \"code\": 500,\\n    \"message\": \"Internal error encountered.\",\\n    \"status\": \"INTERNAL\"\\n  }\\n}\\n'\n\n*Error Code: 500*"
+ },
+ "headers": {},
+ "seconds": 70.45621681213379,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

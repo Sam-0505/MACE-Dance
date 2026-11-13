@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion exhibits a complete lack of correspondence with the audio's rhythmic structure. The music features a distinct change in tempo, starting slow, transitioning to a fast-paced rap section around the 10-second mark, and then returning to a slower pace. The dancer's movements, however, remain at a consistently slow and flowing pace throughout the entire video. There is no attempt to accelerate or create accents that align with the much faster and more percussive beats of the rap section. This results in a severe and sustained mismatch, indicating the motion is not responsive to the audio's rhythm at all.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1160,
+   "prompt_tokens": 211792,
+   "total_tokens": 212952,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1011,
+    "text_tokens": 149
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 62.07369589805603,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

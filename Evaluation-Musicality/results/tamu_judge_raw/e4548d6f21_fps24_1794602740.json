@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The generated motion demonstrates a strong and consistent awareness of the audio's rhythmic structure. The main audio beats, which are very clear in this disco track, are consistently matched by motion accents in the dance. These accents include hand gestures hitting a pose, changes in the direction of a body wave, and foot taps. While the motion is not always perfectly sharp or percussively locked to every single beat, the overall timing is very good. The alignment is stable throughout the entire video, without any significant drift or prolonged periods of mismatch. There are occasional moments where the motion feels slightly soft or floats over a beat rather than hitting it precisely, but this is minor and doesn't break the overall perception of synchronization. The dance is clearly beat-aware and well-aligned.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1309,
+   "prompt_tokens": 211792,
+   "total_tokens": 213101,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1129,
+    "text_tokens": 180
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 44.42064666748047,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion is extremely slow, fluid, and continuous, resembling a slow-motion tai-chi or contemporary dance movement. The audio, however, alternates between a slow melodic section and faster-paced rap verses with a distinct and prominent beat. There is a complete disconnect between the slow, unchanging visual rhythm and the dynamic, beat-driven audio rhythm. The motion accents, which are minimal and very slow, do not correspond to any of the audible beats in the music, particularly during the rap sections where the rhythmic disparity is most obvious. The alignment is consistently non-existent throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 885,
+   "prompt_tokens": 211792,
+   "total_tokens": 212677,
+   "completion_tokens_details": {
+    "reasoning_tokens": 740,
+    "text_tokens": 145
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.457374811172485,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

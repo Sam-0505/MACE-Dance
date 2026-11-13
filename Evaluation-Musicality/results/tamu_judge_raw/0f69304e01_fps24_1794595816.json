@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates an awareness of the major structural and tempo changes in the audio but lacks consistent beat-level synchronization. When the music is fast-paced in the first few seconds, the dancer performs small, quick movements, and when the music transitions to a slow ballad style around the 3-second mark, the movements become correspondingly slow and gestural. This indicates a good response to the overall musical mood and tempo. However, within these sections, the specific motion accents (like sharp hand movements or pose changes) are often not precisely aligned with the audio beats or key lyrical phrases. The alignment is intermittent; some gestures seem to loosely correspond to the start of a musical phrase, while many others appear disconnected or drift in timing. The overall impression is one of partial or moderate alignment, where the general feel is captured but the rhythmic details are not tightly synchronized.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1692,
+   "prompt_tokens": 211792,
+   "total_tokens": 213484,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1495,
+    "text_tokens": 197
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 63.7886106967926,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,45 @@
+{
+ "clips_with_all_four_scores": 63,
+ "per_clip_mean": {
+  "released": 2.83,
+  "ours": 3.08,
+  "mega": 2.86,
+  "lodge": 2.94
+ },
+ "clips_rendered": {
+  "released": 84,
+  "ours": 84,
+  "mega": 68,
+  "lodge": 83
+ },
+ "clips_scored": {
+  "released": 84,
+  "ours": 84,
+  "mega": 68,
+  "lodge": 76
+ },
+ "released_ours_all_clips": {
+  "released": 3.08,
+  "ours": 3.31
+ },
+ "requests": {
+  "released": {
+   "ok": 84,
+   "http_500": 1
+  },
+  "ours": {
+   "http_500": 1,
+   "ok": 84
+  },
+  "mega": {
+   "ok": 68
+  },
+  "lodge": {
+   "ok": 76,
+   "http_500": 3
+  }
+ },
+ "effective_fps": {
+  "24.0": 312
+ }
+}

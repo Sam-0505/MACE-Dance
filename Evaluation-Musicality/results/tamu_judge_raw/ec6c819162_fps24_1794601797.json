@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion demonstrates a strong and consistent awareness of the music's rhythm and phrasing. The dance style is fluid and flowing, which matches the character of the audio track. Large-scale movements, such as turns, level changes, and broad arm gestures, are generally well-timed with major musical phrases and accents. For instance, the turn and arm movements around the 2-second mark, the squat at 4 seconds, and the large arm raise at 18 seconds all align well with the audio. While the synchronization isn't always perfectly sharp on every single beat, especially in the more subtle torso and hip isolations, the overall temporal coherence is very good. There is no significant drift or major mismatch, resulting in a performance that feels rhythmically connected throughout the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1367,
+   "prompt_tokens": 211792,
+   "total_tokens": 213159,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1184,
+    "text_tokens": 183
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.49986433982849,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

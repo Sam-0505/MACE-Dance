@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The video shows a moderate level of alignment between the audio and visual rhythms. The dancer is clearly aware of the music and performs choreography that is stylistically appropriate. There are several instances where major motion accents, such as arm extensions or pose changes, land on or very near the main beats of the song (e.g., at 0:09, 0:18, and 0:20). However, the synchronization is not consistently maintained. In many sections, the movements are floaty and lack the sharpness to lock onto the strong, percussive beats of the track. The motion often glides between beats rather than hitting them directly, and some of the faster or more subtle rhythmic elements in the audio are not reflected in the movement. This results in an intermittent and unstable alignment, where some parts feel synced while others feel slightly off or rhythmically vague.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1624,
+   "prompt_tokens": 211792,
+   "total_tokens": 213416,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1421,
+    "text_tokens": 203
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.30929517745972,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

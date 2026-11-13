@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The audio track has a very clear, consistent, and funky beat driven by the drums and bass. The visual motion consists of a series of slow, flowing dance moves. The alignment between the two is mixed and unstable. There are occasional moments where a motion accent, such as a footfall or a small kick, lands near an audio beat. However, these instances are intermittent and not sustained. For large portions of the video, the dancer's movements are smooth and continuous, flowing across the beats rather than accenting them. The overall rhythmic energy of the slow, languid dance does not match the energetic, percussive feel of the music. While the motion isn't completely random and does show some rhythmic intention, its failure to consistently lock onto the prominent audio beats results in a moderate, and often weak, sense of synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2040,
+   "prompt_tokens": 211792,
+   "total_tokens": 213832,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1846,
+    "text_tokens": 194
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 62.143540382385254,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

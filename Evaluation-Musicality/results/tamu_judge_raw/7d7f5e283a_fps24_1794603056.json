@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion demonstrates a strong awareness of the musical structure, though not always with percussive, beat-perfect hits. The dance style is fluid and lyrical, with the arm gestures and body turns aligning well with the melodic and vocal phrases of the song rather than the underlying drum beat. For example, major pose changes and the initiation/conclusion of sweeping arm movements consistently correspond to the start or end of vocal lines and significant instrumental shifts. While many of the smaller, faster percussive beats are not explicitly marked by motion, the overall timing and energy of the dance are well-matched to the audio, creating a strong sense of cohesion. There is no significant drift, and the alignment is stable throughout the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1355,
+   "prompt_tokens": 211792,
+   "total_tokens": 213147,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1187,
+    "text_tokens": 168
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.532365798950195,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

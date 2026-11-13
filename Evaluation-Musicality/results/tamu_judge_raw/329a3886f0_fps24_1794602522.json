@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion displays a consistent rhythmic pulse that is thematically related to the tempo of the music, but the alignment with the actual audio beats is poor and unstable. The figure performs a repetitive sequence of arm movements and weight shifts. While the overall speed of these movements is similar to the music's tempo, the motion accents (like the peak of an arm raise, a leg lift, or a change in direction) do not reliably land on the prominent, percussive audio beats. Instead, the movements often fall in between beats or drift in and out of phase with the music. This creates a perception of the dancer being consistently off-beat. There are very few moments of clear synchronization, making the overall alignment weak and unreliable.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1395,
+   "prompt_tokens": 211792,
+   "total_tokens": 213187,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1223,
+    "text_tokens": 172
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.80674338340759,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}
