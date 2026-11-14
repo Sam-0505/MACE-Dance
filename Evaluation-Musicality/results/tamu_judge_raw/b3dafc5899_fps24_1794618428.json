@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion shows a consistent and severe lack of alignment with the audio's rhythm. The music has a clear, moderately-paced beat, but the figure's movements are extremely slow, floating, and disconnected from these rhythmic pulses. The motion consists of very slow turns, sways, and arm gestures that unfold at a tempo completely different from the soundtrack. There are no instances where a motion accent (like a hit, stop, or sharp change in direction) coincides with an audio beat. The entire performance seems to ignore the rhythmic structure of the music, resulting in a complete temporal mismatch.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1383,
+   "prompt_tokens": 211792,
+   "total_tokens": 213175,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1238,
+    "text_tokens": 145
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 66.08058285713196,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

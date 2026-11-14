@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the figure is extremely slow, fluid, and continuous, lacking any distinct motion accents or beats. In contrast, the audio track has a clear, consistent, and moderately-paced percussive beat. There is a fundamental mismatch between the visual and audio rhythms. The movements do not land on or near the audio beats, and there is no attempt to synchronize with the music's rhythmic structure. The dancer appears to be moving in slow motion, completely detached from the beat of the song.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1211,
+   "prompt_tokens": 211792,
+   "total_tokens": 213003,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1085,
+    "text_tokens": 126
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.596956968307495,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

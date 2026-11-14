@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits a vague awareness of the music's overall tempo, characterized by consistently slow and flowing movements that match the song's relaxed mood. However, there is a distinct lack of alignment between specific motion accents and the audio beats. The dancer's movements are continuous and smooth, without the sharp hits, poses, or direction changes that would correspond to the rhythmic pulses in the soundtrack. While the general speed is appropriate, the motion rarely responds to the individual beats, resulting in a weak and unreliable synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1448,
+   "prompt_tokens": 211792,
+   "total_tokens": 213240,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1320,
+    "text_tokens": 128
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.97919797897339,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

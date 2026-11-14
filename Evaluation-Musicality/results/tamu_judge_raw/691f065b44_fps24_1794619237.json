@@ -1,0 +1,36 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits only a very weak and sporadic connection to the audio's rhythm. The music has a strong, fast, and consistent synth-pop beat, but the character's movements are predominantly slow, floaty, and gestural. While some broad movements vaguely correspond to the musical phrasing (e.g., a slow arm extension during a vocal line), they consistently fail to align with the prominent kick and snare beats that drive the track. The motion's tempo is significantly slower than the audio's tempo, resulting in a persistent mismatch. There are no sustained periods of synchronization, and the few attempts at hitting accents are imprecise and feel disconnected from the music's energy.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1168,
+   "prompt_tokens": 211792,
+   "total_tokens": 212960,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1005,
+    "text_tokens": 163
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 10,
+    "cached_tokens": 209432,
+    "text_tokens": 5,
+    "video_tokens": 2345
+   },
+   "cache_read_input_tokens": 209432
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 63.46252942085266,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

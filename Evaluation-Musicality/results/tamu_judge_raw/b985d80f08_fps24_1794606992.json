@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is excellent. The dance, which appears to be a form of Indian classical dance, is perfectly synchronized with the complex percussive rhythms of the soundtrack. Every significant audio beat, from the slow, deliberate pulses at the beginning to the rapid, intricate percussive phrases later on, is met with a precise and corresponding motion accent. These accents include sharp head movements, specific hand gestures (mudras) locking into place, and changes in body posture (like bending the knees or transitioning between poses). The synchronization is not just general; it's highly detailed, capturing the nuances and syncopations of the music consistently throughout the entire video. There are no noticeable drifts or timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1066,
+   "prompt_tokens": 211792,
+   "total_tokens": 212858,
+   "completion_tokens_details": {
+    "reasoning_tokens": 893,
+    "text_tokens": 173
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.061349391937256,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

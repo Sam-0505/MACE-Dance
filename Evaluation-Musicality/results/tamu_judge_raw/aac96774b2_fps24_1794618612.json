@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays a continuous, low-energy swaying motion from side to side. This motion has its own internal rhythm, but it operates at a much slower tempo (roughly half-time) than the prominent beat of the funk soundtrack. Key motion accents, such as the shifting of weight, do not consistently align with the primary audio beats (e.g., the kick and snare drums). The dance lacks dynamic variation and fails to capture the sharp, percussive, and syncopated nature of the music. Salient audio hits are almost entirely ignored. While the motion is not random, its connection to the specific rhythmic structure of the audio is sparse and unreliable, demonstrating only a weak rhythmic awareness.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1864,
+   "prompt_tokens": 211792,
+   "total_tokens": 213656,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1698,
+    "text_tokens": 166
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.754146099090576,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

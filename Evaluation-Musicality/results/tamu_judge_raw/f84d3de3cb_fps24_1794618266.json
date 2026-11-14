@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The music is a slow, expressive ballad without strong percussive beats, and the dance is a slow, lyrical, contemporary piece that perfectly matches the mood and phrasing of the song. The major motion accents, such as arm extensions, turns, and pose holds, are consistently and precisely timed to align with the start and end of lyrical phrases, as well as significant chord changes in the piano. The overall dynamic flow of the movement mirrors the emotional arc of the vocals. For instance, the arm raise at 0:02 aligns with the vocal entry, the wide arm sweep around 0:06 matches the end of a vocal line, and the more dynamic turn and expansion starting around 0:25 corresponds perfectly with the start of the chorus. The alignment is sustained, stable, and highly expressive throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1324,
+   "prompt_tokens": 211792,
+   "total_tokens": 213116,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1119,
+    "text_tokens": 205
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.7166805267334,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The video demonstrates mixed or moderate alignment. The dancer's movements, which are slow and flowing in the style of Indian classical dance, align reasonably well with the larger musical phrases and slower sections of the music. For instance, initial pose changes and arm extensions correspond to the start of musical ideas. However, there is a significant disconnect during the faster, more rhythmically complex percussive sections (e.g., from 0:14 to 0:28). In these parts, the music contains many rapid, salient audio beats that are completely ignored by the slow, sustained motion of the dancer. The motion follows the overall mood but fails to match the tempo and beat structure during these key moments, making the alignment unstable and partial.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1414,
+   "prompt_tokens": 211792,
+   "total_tokens": 213206,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1239,
+    "text_tokens": 175
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 73.64458918571472,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

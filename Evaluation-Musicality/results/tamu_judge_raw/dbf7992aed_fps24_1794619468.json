@@ -1,0 +1,36 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion of the dancer shows a general awareness of the music's tempo and rhythm, with movements that flow along with the music. However, the alignment is not precise or strong. The motion is characterized by smooth, continuous gestures rather than sharp, accented movements that land directly on the audio beats. While the overall pacing is correct, there is a lack of clear motion beats hitting the prominent percussive elements in the soundtrack. This creates a sense of partial or moderate alignment, where the motion corresponds to the music's feel but lacks the tight synchronization of a higher-rated performance. It's rhythmically aware but not beat-perfect.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1133,
+   "prompt_tokens": 211792,
+   "total_tokens": 212925,
+   "completion_tokens_details": {
+    "reasoning_tokens": 978,
+    "text_tokens": 155
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 10,
+    "cached_tokens": 209432,
+    "text_tokens": 5,
+    "video_tokens": 2345
+   },
+   "cache_read_input_tokens": 209432
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 64.08543825149536,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

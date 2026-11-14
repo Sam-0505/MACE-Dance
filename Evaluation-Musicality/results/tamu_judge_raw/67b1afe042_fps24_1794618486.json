@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion shows a clear awareness of the music's tempo and general rhythmic structure. The dancer sways and moves in time with the overall feel of the song. However, the alignment of specific motion accents (like sharp hand gestures, body hits, or footfalls) with the prominent audio beats is inconsistent. There are moments where a step or a leg lift lands close to a beat, but many other movements feel soft, floaty, and land between the beats rather than on them. The synchronization is partial and unstable; some phrases appear synced while others are more of a general rhythmic response. This lack of consistent, crisp beat-hitting places the performance in the 'Mixed/Moderate' category.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1882,
+   "prompt_tokens": 211792,
+   "total_tokens": 213674,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1717,
+    "text_tokens": 165
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 58.666332960128784,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

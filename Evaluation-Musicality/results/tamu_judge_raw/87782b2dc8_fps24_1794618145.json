@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates a clear awareness of the music's tempo and overall mood, with movements that are fluid and lyrical, matching the slow, expressive nature of the song. However, the alignment is primarily phrasal and melodic rather than rhythmic in the strict sense of hitting beats. The dancer's movements, such as slow arm extensions and turns, tend to follow the vocal line and lyrical cues rather than landing on the distinct percussive beats of the audio track. While there are a few moments where a gesture coincides with a musical accent, these instances are sparse and not sustained. The overall effect is one of partial or intermittent alignment with the beat structure, as the choreography prioritizes expressive flow over percussive synchrony. This fits the description of a moderate or mixed alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2462,
+   "prompt_tokens": 211792,
+   "total_tokens": 214254,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2280,
+    "text_tokens": 182
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 68.4839084148407,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The character's motion is very low-energy and consists of a few repetitive, slow upper-body gestures. While the overall tempo of the movement is vaguely related to the music's tempo, there are very few instances of clear motion accents landing on the audio beats. The movements are smooth and continuous, lacking the sharpness needed to create a strong sense of synchronization with the percussive hip-hop track. The alignment is therefore sparse and unreliable, showing only a weak awareness of the beat structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1159,
+   "prompt_tokens": 211792,
+   "total_tokens": 212951,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1033,
+    "text_tokens": 126
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 43.746737003326416,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

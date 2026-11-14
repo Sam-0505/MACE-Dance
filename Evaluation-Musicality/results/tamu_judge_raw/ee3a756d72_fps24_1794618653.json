@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The audio is a slow, expressive classical piece with clear, though not heavily percussive, piano chords and melodic phrases that establish a rhythmic structure. The visual motion consists of a very slow, continuous, and fluid dance. While the overall slow tempo of the movement matches the slow tempo of the music, there is a significant lack of specific alignment. The motion lacks clear accents or beats that correspond to the musical phrases or chord changes. For example, when a new chord or melodic accent occurs in the audio, the figure is often in the middle of a slow, drifting movement with no corresponding visual punctuation. The alignment is therefore sparse and unreliable, showing only a vague awareness of the music's tempo rather than its beat structure.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1286,
+   "prompt_tokens": 211792,
+   "total_tokens": 213078,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1115,
+    "text_tokens": 171
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 40.91428518295288,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

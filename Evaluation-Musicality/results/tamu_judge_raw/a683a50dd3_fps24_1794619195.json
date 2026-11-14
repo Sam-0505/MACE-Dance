@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion shows a complete disregard for the audio's rhythmic structure. The audio track has a clear, mid-tempo beat. In contrast, the figure moves in a continuous, extremely slow, and smooth manner, almost like it's on a slow-rotating turntable. There are no discernible motion accents, hits, or pauses that align with the prominent audio beats. The tempo and energy of the dance are completely mismatched with the music. The lack of alignment is consistent throughout the entire video, making the correspondence between audio and video feel entirely random and uncoordinated.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1427,
+   "prompt_tokens": 211792,
+   "total_tokens": 213219,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1288,
+    "text_tokens": 139
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.82637310028076,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

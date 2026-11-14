@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion of the avatar shows a weak and unreliable alignment with the audio. The music has a clear and consistent pop beat, but the avatar's movements are generally too slow and smooth to match the rhythm effectively. While some gestures and pose changes occur around major musical transitions (e.g., the start of a vocal line), they rarely land precisely on the salient percussive beats. The motion often feels like it's floating or drifting, missing many opportunities to accent the rhythm. This results in a vague sense of rhythmic awareness rather than a clear, intentional synchronization. The energy level of the dance is also a significant mismatch with the more upbeat track.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1536,
+   "prompt_tokens": 211792,
+   "total_tokens": 213328,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1379,
+    "text_tokens": 157
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 54.950175046920776,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

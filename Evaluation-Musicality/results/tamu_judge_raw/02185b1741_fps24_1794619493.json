@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The character's movements are extremely slow, floaty, and continuous, lacking any clear rhythmic accents or hits that could align with the music. The audio track, particularly from 0:17 onwards, has a clear and steady drum beat that establishes a distinct tempo. The motion, however, completely ignores this primary rhythmic structure. The visual rhythm is entirely disconnected from the audio's beat, resulting in a total lack of synchronization. The movements seem arbitrary in relation to the music's pulse.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1685,
+   "prompt_tokens": 211792,
+   "total_tokens": 213477,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1559,
+    "text_tokens": 126
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.36121964454651,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion is almost entirely disconnected from the audio's rhythm. The music features a slow, expressive intro followed by a section with a strong, clear, and increasingly energetic beat starting around 17 seconds. However, the character's movement is consistently very slow, consisting of minor, drifting gestures and slight sways. There is no attempt to match the prominent audio beats, especially when the music becomes more dynamic. The complete lack of response from the motion to the audio's rhythmic structure results in a total misalignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1292,
+   "prompt_tokens": 211792,
+   "total_tokens": 213084,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1162,
+    "text_tokens": 130
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.11863470077515,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

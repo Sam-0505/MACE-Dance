@@ -31,7 +31,7 @@ import pyrender  # noqa: E402
 import trimesh  # noqa: E402
 
 METHODS = {'released': 'oneshot_seed0.npz', 'ours': 'gain_seed0.npz', 'mega': 'mega_seed0.npz',
-           'lodge': 'lodge_zup_seed0.npz'}
+           'lodge': 'lodge_zup_seed0.npz', 'flower': 'flower_seed0.npz'}
 LODGE_DZ = -1.26  # Lodge's FineDance world puts the pelvis ~1.26 m higher than MACE's (median over the 84 clips of floor_pair - floor_lodge,
 # std 0.04 m); a constant vertical shift plus the start-position shift below is pure placement, the motion is untouched (2026-11-13)
 CAMERA_METHODS = ('released', 'ours')  # the shared camera is ALWAYS fitted to this pair, so adding a method never changes it

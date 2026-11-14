@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The evaluation of this video is mixed. For the first 11 seconds, the figure is completely static while the music is playing, showing a total lack of alignment. When the main beat drops around the 11-second mark, the figure begins to move. The subsequent motion generally follows the tempo of the music, with large body movements like weight shifts and steps occurring in time with the beat. However, the movements are very smooth and lack the sharpness or percussive quality needed to feel tightly synchronized with the funky, drum-heavy track. While the dancer is clearly aware of the beat, the motion accents are not precise and often feel slightly disconnected from the sharper rhythmic elements in the audio. This combination of a long static period and subsequent moderate, but not tight, synchronization results in a mixed/moderate rating.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2253,
+   "prompt_tokens": 211792,
+   "total_tokens": 214045,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2063,
+    "text_tokens": 190
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.803876876831055,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

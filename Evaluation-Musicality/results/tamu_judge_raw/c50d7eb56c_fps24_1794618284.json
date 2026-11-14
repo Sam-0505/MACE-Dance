@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits a significant disconnect from the audio's rhythmic structure, particularly after a change in the music. For the first 10 seconds, the audio is slow and melodic, and the dancer's slow, flowing arm gestures match the general phrasing and mood appropriately. However, at the 10-second mark, a clear and steady hip-hop beat is introduced. The dancer's motion fails to adapt to this change. It continues with the same slow, continuous, and swaying movements, with very few distinct motion accents. The prominent kick and snare drums in the audio are almost entirely ignored. While the dancer is in motion, the accents of that motion rarely coincide with the audio beats, resulting in a weak and unreliable sense of synchronization for the majority of the video.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1976,
+   "prompt_tokens": 211792,
+   "total_tokens": 213768,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1793,
+    "text_tokens": 183
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 65.56474709510803,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion in the video is very slow, fluid, and continuous, lacking the sharp accents or \\\"motion beats\\\" that could align with the distinct percussive beats in the audio. While the overall slow tempo of the dance matches the slow tempo of the music, showing a vague awareness of the musical character, the specific movements flow through the beats rather than landing on them. There are very few instances where a clear pose or movement accent coincides with an audio beat. The alignment is therefore sparse and unreliable throughout the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2205,
+   "prompt_tokens": 211792,
+   "total_tokens": 213997,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2076,
+    "text_tokens": 129
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 55.352843284606934,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

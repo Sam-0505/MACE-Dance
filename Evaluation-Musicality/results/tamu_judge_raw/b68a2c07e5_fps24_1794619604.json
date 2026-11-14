@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The visual motion shows almost no correlation with the audio's rhythm. The music has a slow, distinct beat structure provided by melodic notes and vocal phrases. However, the character's movements are extremely slow, continuous, and meandering, lacking any clear accents or 'hits' that would align with the audio beats. The slow raising of the arms, the slight body sways, and the hand gestures seem to happen on their own timing, completely disconnected from the prominent rhythmic events in the soundtrack. There is no meaningful rhythmic correspondence detected throughout the video.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1600,
+   "prompt_tokens": 211792,
+   "total_tokens": 213392,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1465,
+    "text_tokens": 135
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.448814868927,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

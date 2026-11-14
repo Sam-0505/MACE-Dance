@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The motion demonstrates a partial and intermittent alignment with the audio. The character's movements, which are primarily slow and smooth upper-body gestures, occasionally correspond to the vocal phrasing and melodic lines rather than the main percussive beats of the pop track. For instance, hand gestures around 3.2s, 5.8s, and 13.0s align with lyrical cues. However, the overall connection to the underlying rhythm is unstable. Many of the clear, salient audio beats are not matched by any distinct motion accents. The lower body remains almost static, which further limits the expression of rhythm. The alignment is present in brief moments but is not sustained, leading to a mixed and moderate overall evaluation.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1497,
+   "prompt_tokens": 211792,
+   "total_tokens": 213289,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1326,
+    "text_tokens": 171
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.03888273239136,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion is almost entirely disconnected from the audio rhythm. The music has a clear and consistent beat, but the figure's movements are extremely slow, smooth, and flowing, lacking any sharp accents or motion beats that align with the prominent audio beats. The character holds static poses or performs very gradual transitions while multiple beats in the music pass by without any corresponding movement. There is a general mismatch between the rhythmic energy of the music and the slow, languid quality of the motion. No meaningful rhythmic correspondence is detected.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1533,
+   "prompt_tokens": 211792,
+   "total_tokens": 213325,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1405,
+    "text_tokens": 128
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.05753493309021,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

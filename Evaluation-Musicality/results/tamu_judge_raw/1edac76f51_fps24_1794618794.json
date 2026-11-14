@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The generated motion shows a clear awareness of the music's overall tempo, mood, and phrasing. The slow, flowing, and cyclical movements are appropriate for the classical Indian soundtrack. However, the alignment between specific motion accents and the audio beats (percussive hits and prominent vocal inflections) is inconsistent and often loose. While the dancer's movements follow the general structure of the music, the peaks of the gestures, turns, and poses rarely land precisely on the corresponding audio accents. Instead, they are often slightly ahead, behind, or simply float through the beat without a clear hit. This results in a moderate or partial alignment, where the general feel is correct, but the rhythmic precision is lacking.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1684,
+   "prompt_tokens": 211792,
+   "total_tokens": 213476,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1517,
+    "text_tokens": 167
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.01102328300476,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

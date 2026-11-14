@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the figure is extremely slow, smooth, and subtle, consisting of minor weight shifts and slow arm gestures. In contrast, the audio is a hip-hop track with a clear, consistent, and relatively fast percussive beat. There is a complete disconnect between the slow, drifting visual motion and the rhythmic structure of the audio. The motion beats are nonexistent, and there is no attempt to synchronize any movement with the audible audio beats. The alignment is poor to non-existent throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 877,
+   "prompt_tokens": 211792,
+   "total_tokens": 212669,
+   "completion_tokens_details": {
+    "reasoning_tokens": 749,
+    "text_tokens": 128
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 42.06485676765442,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

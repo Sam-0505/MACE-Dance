@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion exhibits a very basic and repetitive rhythmic swaying that is only vaguely related to the tempo of the music. For long stretches of the video (e.g., 00:10-00:20), the figure is almost completely static while the music continues with a strong, clear beat, resulting in a total lack of alignment. In other sections where the figure does move, the simple sways are not consistently landing on the prominent audio beats (kick and snare drums). The motion is sparse, unreliable, and fails to respond to the dynamic changes and accents in the music, demonstrating only a weak awareness of the overall rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1776,
+   "prompt_tokens": 211792,
+   "total_tokens": 213568,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1621,
+    "text_tokens": 155
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 57.083924770355225,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

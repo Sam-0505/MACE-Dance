@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is strong and consistent throughout the video. The dance style, which appears to be a form of Indian classical dance, is characterized by precise hand gestures (mudras) and arm movements that are clearly choreographed to the percussive beats of the tabla in the soundtrack. For the majority of the clip, these motion accents land on or very close to the primary audio beats. For example, the hand and arm movements between 0:05 and 0:11, and again from 0:15 to 0:22, are very well-synchronized with the musical rhythm. While there are a few moments where the motion is more fluid and flows between beats rather than accenting them, or where an accent is slightly soft, the overall impression is one of strong, intentional synchronization. The motion is undeniably beat-aware and the alignment is sustained, with only occasional, minor imperfections.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2513,
+   "prompt_tokens": 211792,
+   "total_tokens": 214305,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2297,
+    "text_tokens": 216
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 16,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 67.79488396644592,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

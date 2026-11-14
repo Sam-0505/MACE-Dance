@@ -1,22 +1,25 @@
 {
- "clips_with_all_four_scores": 63,
+ "clips_with_all_scores": 60,
  "per_clip_mean": {
-  "released": 2.83,
-  "ours": 3.08,
-  "mega": 2.86,
-  "lodge": 2.94
+  "released": 2.98,
+  "ours": 3.07,
+  "mega": 2.88,
+  "lodge": 2.97,
+  "flower": 2.5
  },
  "clips_rendered": {
   "released": 84,
   "ours": 84,
   "mega": 68,
-  "lodge": 83
+  "lodge": 83,
+  "flower": 75
  },
  "clips_scored": {
   "released": 84,
   "ours": 84,
   "mega": 68,
-  "lodge": 76
+  "lodge": 82,
+  "flower": 75
  },
  "released_ours_all_clips": {
   "released": 3.08,
@@ -35,11 +38,14 @@
    "ok": 68
   },
   "lodge": {
-   "ok": 76,
+   "ok": 82,
    "http_500": 3
+  },
+  "flower": {
+   "ok": 75
   }
  },
  "effective_fps": {
-  "24.0": 312
+  "24.0": 393
  }
 }

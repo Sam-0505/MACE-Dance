@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance style is slow, fluid, and graceful, which perfectly matches the traditional, melodic, and slow-paced music. The motion accents, such as the peaks of arm gestures, slow turns, and holds in poses, are consistently synchronized with the key notes and melodic phrases of the music. For instance, the slow, upward arm extension from 4s to 6s perfectly follows the rising melody of the flute. The transitions between movements are smooth and align with the musical transitions. There are no noticeable timing errors or drift; the performance maintains a high degree of cohesiveness and musicality throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1363,
+   "prompt_tokens": 211792,
+   "total_tokens": 213155,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1203,
+    "text_tokens": 160
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 61.247519969940186,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

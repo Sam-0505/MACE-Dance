@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The video demonstrates an excellent and sustained alignment between the audio and visual rhythms. The audio track is ambient and flowing, characterized by long vocal phrases and swells rather than a strong, percussive beat. The dancer's movements perfectly reflect this musical quality, with slow, fluid, and continuous motions. The motion accents, such as the extension of an arm or a turn of the torso, consistently coincide with the beginning or peak of a musical phrase or vocal swell. This creates a strong sense of temporal coherence that is maintained throughout the entire video. There are no noticeable timing errors, drift, or mismatches; the dance feels intentionally choreographed to the music's structure and emotional tone.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1060,
+   "prompt_tokens": 211792,
+   "total_tokens": 212852,
+   "completion_tokens_details": {
+    "reasoning_tokens": 898,
+    "text_tokens": 162
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 42.809205770492554,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

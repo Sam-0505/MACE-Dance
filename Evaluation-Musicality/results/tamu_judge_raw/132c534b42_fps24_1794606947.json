@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The visual motion rhythm demonstrates a masterful alignment with the audio's emotional and melodic phrasing. The dance is slow and lyrical, perfectly matching the orchestral soundtrack. Key motion accents, such as the peak of an arm extension or the initiation of a turn, consistently coincide with musical swells, crescendos, and the start of new phrases. For example, the wide opening of the arms around the 20-second mark is perfectly timed with the most significant crescendo in the music. The alignment is sustained and stable throughout the entire clip, with no perceptible drift or errors. The motion isn't just rhythmically aware; it's deeply expressive of the music's character.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1742,
+   "prompt_tokens": 211792,
+   "total_tokens": 213534,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1581,
+    "text_tokens": 161
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 52.58400535583496,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

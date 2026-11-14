@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The motion of the figure is extremely slow, languid, and consists of minimal, barely perceptible shifts in pose. In stark contrast, the audio is a mid-tempo pop song with a clear and consistent beat. The visual movements are completely disconnected from the audio's rhythmic structure. For entire musical phrases, the figure remains nearly static, and when movement does occur, it's a very slow transition that doesn't align with any of the prominent audio beats. There is a fundamental mismatch in tempo and energy between the visual and audio components, resulting in no detectable rhythmic alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 917,
+   "prompt_tokens": 211792,
+   "total_tokens": 212709,
+   "completion_tokens_details": {
+    "reasoning_tokens": 775,
+    "text_tokens": 142
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 62.3875834941864,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

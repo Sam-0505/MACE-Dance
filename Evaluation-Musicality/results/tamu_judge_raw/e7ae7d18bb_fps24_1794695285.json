@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 3,\n  \"reasoning\": \"The dance motion is stylistically related to the music, with slow, fluid movements that generally follow the song's phrasing and emotional tone. However, the alignment between sharp motion accents and the primary audio beats is inconsistent and sparse. The dancer often holds poses or performs slow, continuous gestures that span multiple beats, rather than hitting the beats with percussive movements. While there is a general rhythmic awareness, the direct correspondence between motion beats and audio beats is weak and intermittent. For example, the arm movements between 17-19s and 21-22s are expressive but don't have clear hits on the beat. This results in a moderate level of alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1271,
+   "prompt_tokens": 211792,
+   "total_tokens": 213063,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1107,
+    "text_tokens": 164
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.662657499313354,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

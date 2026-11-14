@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The audio consists of a slow, melodic, traditional Chinese piece of music, which lacks a strong, percussive beat. The motion of the figure is correspondingly slow, fluid, and graceful, resembling Tai Chi or traditional Chinese dance. The motion accents, which are the initiations and conclusions of long, flowing arm gestures, are timed precisely with the starts and ends of the musical phrases. The overall speed and character of the movement are perfectly matched to the tempo and mood of the music throughout the entire clip, resulting in a very tight and expressive synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1128,
+   "prompt_tokens": 211792,
+   "total_tokens": 212920,
+   "completion_tokens_details": {
+    "reasoning_tokens": 980,
+    "text_tokens": 148
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 47.6951003074646,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

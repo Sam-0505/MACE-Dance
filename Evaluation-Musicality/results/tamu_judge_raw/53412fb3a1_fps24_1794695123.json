@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The video displays a slow, flowing, and continuous motion that generally matches the slow, atmospheric tempo of the music. The avatar performs large, sweeping arm gestures and slow body turns. However, the connection between specific motion accents and the audible rhythmic elements (like vocal phrases or subtle percussion) is very loose and unreliable. The movements seem to follow the overall mood and speed of the music rather than hitting distinct beats. While the motion isn't completely random, it rarely lands on or responds directly to the rhythmic pulses in the audio, resulting in a weak and vague sense of alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1371,
+   "prompt_tokens": 211792,
+   "total_tokens": 213163,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1230,
+    "text_tokens": 141
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.542067527770996,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

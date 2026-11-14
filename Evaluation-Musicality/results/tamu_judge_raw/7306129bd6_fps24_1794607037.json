@@ -1,0 +1,11 @@
+{
+ "status": 429,
+ "response": {
+  "detail": "\ud83d\udeab **Rate Limit Reached**\n\nYou are sending requests faster than your account allows. Please wait a moment and try again.\n\n*Error Code: 429*"
+ },
+ "headers": {},
+ "seconds": 45.063392162323,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

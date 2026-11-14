@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion in the video is consistently slow, smooth, and flowing, consisting of gradual pose changes and arm gestures. In contrast, the audio track is a mid-tempo pop song with clear, distinct percussive beats. There is a significant mismatch between the slow, continuous visual rhythm and the faster, more punctuated audio rhythm. The motion accents, if any, are very subtle and do not align with the prominent audio beats. While the dance seems to be performed *to* the music in a general sense, it lacks any precise temporal synchronization with the beat structure, making the alignment weak and unreliable throughout the clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1152,
+   "prompt_tokens": 211792,
+   "total_tokens": 212944,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1003,
+    "text_tokens": 149
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.368958950042725,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

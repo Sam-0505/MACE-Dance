@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion demonstrates a weak and unreliable alignment with the audio. The dance style, which appears to be a form of classical or traditional dance, is stylistically appropriate for the music. However, the dancer's movements are consistently much slower than the tempo and rhythmic structure of the audio. While some broad poses and transitions seem to coincide with major musical phrases (e.g., at the beginning), the motion fails to capture almost all of the faster, more intricate melodic and percussive beats in the soundtrack. This creates a significant disconnect, where the dancer appears to be moving to a much slower, internal rhythm, resulting in only a vague and sparse correspondence with the actual audio rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1695,
+   "prompt_tokens": 211792,
+   "total_tokens": 213487,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1533,
+    "text_tokens": 162
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 56.02708721160889,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}
