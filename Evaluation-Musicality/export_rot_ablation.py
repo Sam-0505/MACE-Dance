@@ -7,8 +7,9 @@ data/rot_export/ablation_seed0_yup.npz with <variant>_q (84, 1020, 72 axis-angle
 MACE released and the full model are already in genre_inputs_seed0.npz (export_rot_all.py), so they are not repeated.
 
     cd Expert-Motion
-    .venv/bin/python ../Evaluation-Musicality/export_rot_ablation.py
+    .venv/bin/python ../Evaluation-Musicality/export_rot_ablation.py [--seed k]   # k = seed index (0 = seed 1)
 """
+import argparse
 import json
 import os
 import sys
@@ -38,6 +39,9 @@ VARIANTS = {   # name: (local attention 2 s, guided?, overrides of FULL, stored 
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--seed', type=int, default=0)
+    seed = ap.parse_args().seed
     meta = json.load(open(os.path.join(D, 'mace_test', 'names.json')))
     genres, names = meta['genres'], meta['names']
     feats = np.stack([np.load(f'data/test/baseline_feats/{n}.npy') for n in names])
@@ -45,11 +49,11 @@ def main():
     for v, (local, guided, over, stored) in VARIANTS.items():
         sampler, keep = make_sampler(local)
         if guided:
-            J = sampler.sample_guided(feats, genres, seed=0, critic=load_critic(),
+            J = sampler.sample_guided(feats, genres, seed=seed, critic=load_critic(),
                                       critic_groups=[n.split('_')[0] for n in names], **(FULL | over))
         else:
-            J = sampler.sample(feats, genres, seed=0)
-        ref = np.asarray(np.load(os.path.join(D, stored, 'joints.npy'), mmap_mode='r')[:, 0], dtype=np.float32)
+            J = sampler.sample(feats, genres, seed=seed)
+        ref = np.asarray(np.load(os.path.join(D, stored, 'joints.npy'), mmap_mode='r')[:, seed], dtype=np.float32)
         err = float(np.abs(J - ref).max())
         print(f'{v}: max |joints - stored {stored}| {err:.4f} m', flush=True)
         assert err < 0.02, f'{v}: regenerated samples differ from the stored run'
@@ -58,8 +62,8 @@ def main():
         out[f'{v}_q'], out[f'{v}_pos'] = np.stack(qs), np.stack(ps)
         del sampler
         torch.cuda.empty_cache()
-    np.savez(os.path.join(D, 'rot_export', 'ablation_seed0_yup.npz'), names=np.array(names), **out)
-    print('wrote data/rot_export/ablation_seed0_yup.npz', {k: v.shape for k, v in out.items() if k.endswith('_q')})
+    np.savez(os.path.join(D, 'rot_export', f'ablation_seed{seed}_yup.npz'), names=np.array(names), **out)
+    print(f'wrote data/rot_export/ablation_seed{seed}_yup.npz', {k: v.shape for k, v in out.items() if k.endswith('_q')})
 
 
 if __name__ == '__main__':

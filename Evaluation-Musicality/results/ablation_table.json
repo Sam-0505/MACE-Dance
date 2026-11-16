@@ -2,16 +2,18 @@
  "rows": {
   "MACE released": {
    "FID_k": {
-    "value": 15.474455571407717,
-    "diff": -2.025397465384046,
-    "flag": true,
-    "ci": null
+    "value": 17.83,
+    "diff": 0.3301469632082359,
+    "flag": null,
+    "ci": null,
+    "src": "MACE paper"
    },
    "FID_g": {
-    "value": 25.764106394266634,
-    "diff": 6.565578726145787,
-    "flag": true,
-    "ci": null
+    "value": 25.09,
+    "diff": 5.891472331879154,
+    "flag": null,
+    "ci": null,
+    "src": "MACE paper"
    },
    "FID_s": {
     "value": 1.5228351783618734,
@@ -29,16 +31,18 @@
     "ci": null
    },
    "DIV_k": {
-    "value": 9.75472985692771,
-    "diff": 0.7978980654761898,
-    "flag": true,
-    "ci": null
+    "value": 10.3,
+    "diff": 1.3431682085484802,
+    "flag": null,
+    "ci": null,
+    "src": "MACE paper"
    },
    "DIV_g": {
-    "value": 8.099385824548193,
-    "diff": 1.210418123386403,
-    "flag": true,
-    "ci": null
+    "value": 8.09,
+    "diff": 1.2010322988382098,
+    "flag": null,
+    "ci": null,
+    "src": "MACE paper"
    },
    "DIV_s": {
     "value": 6.242131472317843,
@@ -50,10 +54,11 @@
     ]
    },
    "BAS": {
-    "value": 0.23433220387950224,
-    "diff": 0.011869710378238557,
-    "flag": true,
-    "ci": null
+    "value": 0.229,
+    "diff": 0.0065375064987363285,
+    "flag": null,
+    "ci": null,
+    "src": "MACE paper"
    },
    "Lock": {
     "value": 0.30236313921137176,
@@ -593,5 +598,6 @@
   "DIV_k": 0.1755317007904447,
   "DIV_g": 0.08468795134518214,
   "BAS": 0.002843004305798169
- }
+ },
+ "n_seeds": 1
 }

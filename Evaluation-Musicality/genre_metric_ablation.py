@@ -8,8 +8,9 @@ normalised by the real dance's, FID_s = Frechet distance to real, DIV_s = mean p
 of the 84 slices, paired across rows) gives a 95% interval of each row minus Full.
 
     cd /home/sam0505/Documents/Code/dance_baselines/MEGADance
-    .venv/bin/python /home/sam0505/Documents/Code/MACE-Dance/Evaluation-Musicality/genre_metric_ablation.py
+    .venv/bin/python /home/sam0505/Documents/Code/MACE-Dance/Evaluation-Musicality/genre_metric_ablation.py [--seed k]
 """
+import argparse
 import json
 import os
 import sys
@@ -35,7 +36,11 @@ ROWS = {  # key: (label, file, array prefix)
 
 
 def main():
-    files = {f: np.load(os.path.join(HERE, 'data', 'rot_export', f)) for f in {v[1] for v in ROWS.values()}}
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--seed', type=int, default=0)
+    seed = ap.parse_args().seed
+    fname = lambda f: f.replace('seed0', f'seed{seed}')  # noqa: E731  same rows, seed k's files
+    files = {f: np.load(os.path.join(HERE, 'data', 'rot_export', fname(f))) for f in {v[1] for v in ROWS.values()}}
     base = files['genre_inputs_seed0.npz']
     for f in files.values():
         assert list(f['names']) == list(base['names'])
@@ -68,7 +73,7 @@ def main():
         for m in ('FID_s', 'DIV_s'):
             d = np.array(boot[k][m]) - np.array(boot['full'][m])
             res[k][f'{m}_minus_full_ci95'] = [float(np.percentile(d, 2.5)), float(np.percentile(d, 97.5))]
-    json.dump(res, open(os.path.join(HERE, 'results', 'genre_metric_ablation_seed0.json'), 'w'), indent=1)
+    json.dump(res, open(os.path.join(HERE, 'results', f'genre_metric_ablation_seed{seed}.json'), 'w'), indent=1)
     for k, r in res.items():
         print(f"{r['label']:22s} acc {r['acc']:.3f}  FID_s {r.get('FID_s', float('nan')):7.3f}  DIV_s {r['DIV_s']:.3f}  "
               f"FID_s-full CI {r.get('FID_s_minus_full_ci95')}  DIV_s-full CI {r.get('DIV_s_minus_full_ci95')}")
