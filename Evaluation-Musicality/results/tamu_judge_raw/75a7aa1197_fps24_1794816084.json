@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The video exhibits a severe and consistent misalignment between the audio and visual rhythms. The audio track is an upbeat, funky piece with a clear and strong percussive beat. In stark contrast, the visual motion of the figure is extremely slow, smooth, and flowing, with almost no sharp accents or dynamic changes that could correspond to the audio beats. The character of the movement is completely disconnected from the energy and rhythm of the music. For instance, while the drums and bass provide a steady, danceable pulse, the figure performs slow, languid arm gestures and weight shifts that appear to be at a completely different, much slower tempo. There are no instances where motion beats land on or near the audio beats, resulting in a total lack of perceptual synchronization throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1345,
+   "prompt_tokens": 211792,
+   "total_tokens": 213137,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1165,
+    "text_tokens": 180
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.15425086021423,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

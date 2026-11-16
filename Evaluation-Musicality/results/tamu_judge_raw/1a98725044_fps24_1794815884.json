@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and the visual motion is excellent. The dance style is slow, fluid, and graceful, which perfectly matches the character of the traditional, melodic soundtrack. The key motion accents, such as a hand arriving at the hip, a hand moving to the head, a turn, or a shift in pose, consistently land on or very near the prominent percussive and melodic beats in the audio. The movement is not percussive in a way that hits every single minor beat, but it interprets the overall musical phrasing and rhythm with high fidelity. The alignment is sustained throughout the entire clip, with no noticeable drift or timing errors. This represents an extremely tight and sophisticated form of synchronization appropriate for this style of music and dance.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 2300,
+   "prompt_tokens": 211792,
+   "total_tokens": 214092,
+   "completion_tokens_details": {
+    "reasoning_tokens": 2126,
+    "text_tokens": 174
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.29106950759888,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

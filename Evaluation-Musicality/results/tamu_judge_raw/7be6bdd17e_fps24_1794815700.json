@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and visual motion is excellent. The dance, which is in a style reminiscent of traditional Korean dance, is perfectly suited to the traditional Korean music track. The motion accents, such as held poses and peaks of arm movements, are consistently and precisely synchronized with the primary audio beats, which are marked by strong drum hits and vocal accents. For example, the strong poses at approximately 4s, 8s, 12s, and 14s land perfectly on the corresponding percussive hits in the audio. The slower, more flowing transitional movements between these poses effectively interpret the sustained vocal phrases of the music. The alignment is stable and maintained throughout the entire clip with no discernible drift or timing errors.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1814,
+   "prompt_tokens": 211792,
+   "total_tokens": 213606,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1641,
+    "text_tokens": 173
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 45.83139228820801,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The visual motion is consistently very slow and fluid, which generally matches the slow tempo and calm mood of the audio track. However, the movements themselves are continuous and flowing, lacking distinct motion accents or hits that align with the specific audio beats. While the overall speed of the dance is appropriate for the music, there is a clear lack of synchronization between motion peaks and the rhythmic pulses of the song. The dancer's movements glide through the beats rather than landing on them, resulting in a weak and unreliable alignment.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1360,
+   "prompt_tokens": 211792,
+   "total_tokens": 213152,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1233,
+    "text_tokens": 127
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 48.02225399017334,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

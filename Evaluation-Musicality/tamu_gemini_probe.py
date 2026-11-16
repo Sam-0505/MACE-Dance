@@ -34,10 +34,18 @@ def load_env():
             if line and not line.startswith('#') and '=' in line:
                 k, v = line.split('=', 1)
                 os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
-    key, base, model = (os.environ.get(k, '') for k in ('TAMUS_API_KEY', 'TAMUS_API_BASE', 'TAMUS_MODEL_ID'))
-    if not key or not base:
-        sys.exit('TAMUS_API_KEY and TAMUS_API_BASE must be set in .env')
-    return key, base.rstrip('/'), model
+    keys = load_keys()
+    base, model = (os.environ.get(k, '') for k in ('TAMUS_API_BASE', 'TAMUS_MODEL_ID'))
+    if not keys or not base:
+        sys.exit('TAMUS_API_KEY (or TAMUS_API_KEY_0, _1, ...) and TAMUS_API_BASE must be set in .env')
+    return keys[0], base.rstrip('/'), model
+
+
+def load_keys():
+    """All API keys in order: TAMUS_API_KEY (if set), then TAMUS_API_KEY_0, _1, _2, ... (values are never printed)."""
+    import re
+    numbered = sorted((int(m.group(1)), v) for k, v in os.environ.items() if v and (m := re.fullmatch(r'TAMUS_API_KEY_(\d+)', k)))
+    return ([os.environ['TAMUS_API_KEY']] if os.environ.get('TAMUS_API_KEY') else []) + [v for _, v in numbered]
 
 
 def call(method, url, key, body=None, timeout=600):

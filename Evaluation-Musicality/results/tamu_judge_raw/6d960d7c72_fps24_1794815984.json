@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The character performs extremely slow, continuous, and floaty movements that are completely disconnected from the rhythm and tempo of the audio track. The music has a clear, steady beat, but the motion lacks any corresponding accents, hits, or rhythmic patterns. It appears as if a very slow motion clip has been arbitrarily placed over a much faster music track, resulting in a total lack of synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1164,
+   "prompt_tokens": 211792,
+   "total_tokens": 212956,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1062,
+    "text_tokens": 102
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 38.16615700721741,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

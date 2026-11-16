@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion of the figure is largely disconnected from the audio's rhythm. The music has a clear and consistent pop beat, but the character's movements are slow, looping, and lack sharp accents that would align with these beats. While a pose change occasionally lands near a beat (e.g., around 1.7s, 10.3s), this appears more coincidental than intentional. The vast majority of audio beats are ignored. The energetic and percussive vocal sections (e.g., around 14s) are met with the same slow, generic arm movements, showing a complete lack of response to the audio's dynamics. The alignment is sparse and unreliable, demonstrating only a very weak awareness of the musical rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1237,
+   "prompt_tokens": 211792,
+   "total_tokens": 213029,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1059,
+    "text_tokens": 178
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.82788348197937,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

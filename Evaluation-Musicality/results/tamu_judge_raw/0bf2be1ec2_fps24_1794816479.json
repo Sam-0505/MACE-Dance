@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The motion of the figure is consistently slow, fluid, and flowing throughout the video. The audio track, while having a flowing quality, also contains a clear and consistent rhythmic structure provided by percussion instruments. The primary issue is that the visual motion almost completely ignores these salient audio beats. The dancer's movements, which consist of slow turns and arm gestures, are not timed to land on the musical pulses. For instance, clear drum hits around the 3s, 5s, 8s, and 10s marks are not matched by any distinct motion accent. While the general tempo and mood of the dance are not entirely out of place with the music, the lack of specific synchronization between motion beats and audio beats is persistent. The alignment is therefore sparse and unreliable, fitting the description of weak rhythmic awareness.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1789,
+   "prompt_tokens": 211792,
+   "total_tokens": 213581,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1599,
+    "text_tokens": 190
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.66137194633484,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

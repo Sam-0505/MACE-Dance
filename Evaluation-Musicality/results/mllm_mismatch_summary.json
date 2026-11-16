@@ -1,0 +1,91 @@
+{
+ "n_clips": 19,
+ "mismatched_per_clip": 1,
+ "clips": [
+  "012_slice3",
+  "036_slice2",
+  "037_slice2",
+  "063_slice1",
+  "065_slice1",
+  "092_slice0",
+  "098_slice0",
+  "109_slice0",
+  "130_slice1",
+  "132_slice1",
+  "137_slice3",
+  "143_slice9",
+  "144_slice2",
+  "161_slice4",
+  "179_slice1",
+  "193_slice2",
+  "198_slice0",
+  "204_slice0",
+  "211_slice3"
+ ],
+ "A": {
+  "released": {
+   "matched": 3.21,
+   "mismatched": 3.32,
+   "mean": -0.105,
+   "ci95": [
+    -0.789,
+    0.526
+   ],
+   "p_perm": 0.6762,
+   "p_wilcoxon": 0.6004,
+   "n_pos_tie_neg": [
+    6,
+    6,
+    7
+   ]
+  },
+  "ours": {
+   "matched": 3.11,
+   "mismatched": 2.74,
+   "mean": 0.368,
+   "ci95": [
+    -0.579,
+    1.263
+   ],
+   "p_perm": 0.2682,
+   "p_wilcoxon": 0.2031,
+   "n_pos_tie_neg": [
+    9,
+    4,
+    6
+   ]
+  }
+ },
+ "B_ours_minus_released_matched": {
+  "released": 3.21,
+  "ours": 3.11,
+  "mean": -0.105,
+  "ci95": [
+   -0.842,
+   0.632
+  ],
+  "p_perm": 0.9001,
+  "p_wilcoxon": 0.8734,
+  "n_pos_tie_neg": [
+   6,
+   7,
+   6
+  ]
+ },
+ "C_ours_minus_released_delta": {
+  "released_delta": -0.105,
+  "ours_delta": 0.368,
+  "mean": 0.474,
+  "ci95": [
+   -0.579,
+   1.474
+  ],
+  "p_perm": 0.4625,
+  "p_wilcoxon": 0.3401,
+  "n_pos_tie_neg": [
+   10,
+   2,
+   7
+  ]
+ }
+}

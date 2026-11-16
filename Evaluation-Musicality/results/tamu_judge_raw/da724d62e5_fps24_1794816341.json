@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the visual motion and the audio is excellent. The dance movements, which appear to be in a classical Indian style (like Kathak), are intricately synchronized with the complex rhythmic and melodic structure of the music. Not only do the larger movements like turns and pose transitions land on significant musical cues, but the subtle hand gestures (mudras) and shifts in posture also precisely match the nuances of the melody and percussion. The timing is consistently tight throughout the entire video, with no noticeable drift or errors. The motion is clearly aware of and responsive to the music's phrasing, creating a highly coherent and expressive performance.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 995,
+   "prompt_tokens": 211792,
+   "total_tokens": 212787,
+   "completion_tokens_details": {
+    "reasoning_tokens": 845,
+    "text_tokens": 150
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 53.81513857841492,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

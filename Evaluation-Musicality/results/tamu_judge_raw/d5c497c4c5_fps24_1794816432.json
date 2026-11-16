@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The video demonstrates strong alignment between the audio and visual motion. The dance style is slow and flowing, matching the tempo and mood of the pop/R&B track. Instead of hitting every single percussive beat, the motion accents\u2014such as arm extensions, turns, and held poses\u2014are consistently timed to land on significant musical and lyrical cues. For example, key poses align with prominent words like \\\"touch\\\" (~5s), \\\"true love\\\" (~7s), and the start of new vocal phrases. While not every beat is marked with a sharp movement, the overall rhythmic phrasing is well-represented in the choreography, and the alignment remains stable throughout the entire clip. There are no noticeable drift or major timing errors, resulting in a performance that feels very connected to the music.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1727,
+   "prompt_tokens": 211792,
+   "total_tokens": 213519,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1543,
+    "text_tokens": 184
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 51.61154365539551,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the slow, fluid dance movements and the atmospheric classical music is excellent. The dancer does not move to a percussive beat, but rather interprets the musical phrasing with remarkable accuracy. Major motion accents, such as the extension of the arms, changes in posture, and holds, consistently align with significant musical events like chord changes, swells in the strings, and the beginning of new melodic lines. The overall tempo and emotional character of the motion are perfectly matched to the audio throughout the entire duration of the clip, demonstrating a deep and sustained connection between the visual and auditory rhythms.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1870,
+   "prompt_tokens": 211792,
+   "total_tokens": 213662,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1729,
+    "text_tokens": 141
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 50.18219256401062,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

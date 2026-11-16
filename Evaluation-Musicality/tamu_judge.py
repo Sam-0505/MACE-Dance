@@ -104,6 +104,9 @@ def main():
     ap.add_argument('--shuffle_seed', type=int, default=0)
     a = ap.parse_args()
     key, base, model = P.load_env()
+    keys = P.load_keys()  # TAMUS_API_KEY_0..N from .env: the next key is used as soon as one is exhausted (HTTP 429)
+    cur = [0]
+    print(f'{len(keys)} API key(s) available', flush=True)
     model = model or 'protected.gemini-2.5-pro'
     mapping = {}
     mp = os.path.join(os.path.dirname(a.videos[0]), 'mapping.csv')
@@ -126,11 +129,19 @@ def main():
         m = mapping.get(vid, {})
         meta = {'dataset': a.dataset, 'song_id': m.get('slice', '').split('_')[0], 'clip_id': m.get('slice', ''),
                 'method': m.get('method', ''), 'duration_s': 34.0, 'source_fps': m.get('fps', 30)}
-        row = judge(v, a.fps, key, base, model, meta)
-        if row['status'].startswith('http_429'):
-            budget_hit.set()
-            print('BUDGET EXCEEDED (HTTP 429): stopping, remaining videos are not sent', flush=True)
-            return  # not a scoring failure: nothing is logged in the results CSV
+        while True:
+            idx = cur[0]
+            if idx >= len(keys):
+                budget_hit.set()
+                print('BUDGET EXCEEDED (HTTP 429): all keys exhausted, stopping, remaining videos are not sent', flush=True)
+                return  # not a scoring failure: nothing is logged in the results CSV
+            row = judge(v, a.fps, keys[idx], base, model, meta)
+            if not row['status'].startswith('http_429'):
+                break
+            with lock:  # a rejected request is not billed: retry the same video on the next key
+                if cur[0] == idx:
+                    cur[0] = idx + 1
+                    print(f'key #{idx} exhausted (HTTP 429), switching to key #{idx + 1} of {len(keys)}', flush=True)
         with lock:
             new = not os.path.exists(CSV)
             with open(CSV, 'a', newline='') as f:

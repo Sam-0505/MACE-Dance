@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 5,\n  \"reasoning\": \"The alignment between the audio and visual motion is excellent. The character's slow, deliberate, and flowing movements are extremely well-synchronized with the gentle, rhythmic pulses of the music. Major motion accents, such as the completion of arm gestures, leg lifts, and transitions into new poses, consistently and accurately land on the primary audio beats throughout the entire clip. There are no noticeable timing errors or drift, resulting in a very cohesive and musically responsive performance.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1186,
+   "prompt_tokens": 211792,
+   "total_tokens": 212978,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1070,
+    "text_tokens": 116
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 41.107460498809814,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

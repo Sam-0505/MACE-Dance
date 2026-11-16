@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 4,\n  \"reasoning\": \"The motion demonstrates a strong and consistent awareness of the musical rhythm and phrasing throughout the entire clip. Many of the key motion accents, such as pose changes, head movements, and arm gestures, land accurately on or very near the primary audio beats (e.g., the pose shifts around 1.3s, 3.2s, 6.3s, 8.1s, and 21.3s). The dance is more lyrical than percussive, meaning it often follows the flow and melody of the instrumental and vocal lines rather than hitting every single drum beat. This results in fluid, sustained movements between the more accented poses. While this means not every beat has a sharp corresponding motion hit, the overall performance feels highly connected and choreographed to the music. There are no significant drifts or timing errors; the alignment is stable and intentional, making it a strong, though not perfectly percussive, synchronization.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1643,
+   "prompt_tokens": 211792,
+   "total_tokens": 213435,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1429,
+    "text_tokens": 214
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 14,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 49.97926187515259,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

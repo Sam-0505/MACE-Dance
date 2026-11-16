@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 1,\n  \"reasoning\": \"The alignment between the audio and visual motion is poor. The audio is a fast-paced, high-energy funk track with a very prominent and driving drum beat. In stark contrast, the visual motion of the character is extremely slow, lethargic, and fluid. There is a fundamental mismatch in tempo and energy. The character's movements, such as slow arm waves and gradual pose shifts, show no correspondence to the sharp, percussive audio beats. The motion appears entirely disconnected from the music's rhythm throughout the entire clip.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1646,
+   "prompt_tokens": 211792,
+   "total_tokens": 213438,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1512,
+    "text_tokens": 134
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 43.580129861831665,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}

@@ -1,0 +1,34 @@
+{
+ "status": 200,
+ "response": {
+  "choices": [
+   {
+    "message": {
+     "content": "```json\n{\n  \"va_alignment\": 2,\n  \"reasoning\": \"The alignment between the visual motion and the audio rhythm is weak. The audio has a clear, strong, and consistent beat structure, typical of a dance-pop track. However, the avatar's movements are generally slow, flowing, and disconnected from this primary beat. Most motion accents, such as arm gestures, torso movements, and pose changes, do not land on the audible percussion hits. Instead, the motion seems to float over the music with a timing that is often off-beat or at a different tempo entirely. While the dance is continuous and not random, it lacks the rhythmic precision and coverage expected for a higher rating, resulting in an unreliable and sparse alignment with the music's core rhythm.\"\n}\n```"
+    },
+    "finish_reason": "stop"
+   }
+  ],
+  "usage": {
+   "completion_tokens": 1714,
+   "prompt_tokens": 211792,
+   "total_tokens": 213506,
+   "completion_tokens_details": {
+    "reasoning_tokens": 1547,
+    "text_tokens": 167
+   },
+   "prompt_tokens_details": {
+    "audio_tokens": 850,
+    "text_tokens": 414,
+    "video_tokens": 210528
+   }
+  },
+  "_chunks": 12,
+  "_sse": true
+ },
+ "headers": {},
+ "seconds": 46.8833281993866,
+ "requested_fps": 24.0,
+ "model": "protected.gemini-2.5-pro",
+ "prompt_file": "tmd_va_original_prompt.txt"
+}
