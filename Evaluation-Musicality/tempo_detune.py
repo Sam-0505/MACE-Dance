@@ -75,7 +75,7 @@ def main():
         d, d0 = uo - ud[k], ud[k0] - ud[k]
         rows.append({'detune_pct': e, 'bpl': float(ud[k].mean()), 'bpl_ci': boot_ci(ud[k], rng),
                      'delta_vs_original': float(d.mean()), 'delta_ci': boot_ci(d, rng), 'p_original_gt': signflip_p(d, rng, 'greater'),
-                     'n_pos': int((d > 0).sum()), 'delta_vs_grid0': float(d0.mean()),
+                     'n_pos': int((d > 0).sum()), 'delta_vs_grid0': float(d0.mean()), 'delta0_ci': boot_ci(d0, rng) if e != 0 else None,
                      'p_grid0_gt': signflip_p(d0, rng, 'greater') if e != 0 else None,
                      'drift_beats_median': float(np.nanmedian(drift[:, k]))})
         print(f"{a.dataset:9s} detune {e:+5.1f}%  BPL {rows[-1]['bpl']:.3f}  original-grid {d.mean():+.3f} "

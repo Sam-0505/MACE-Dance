@@ -15,19 +15,22 @@ R = os.path.join(HERE, 'results')
 DS = [('FineDance', 'finedance', '#1f77b4'), ('Motorica', 'motorica', '#d62728')]
 data = {k: json.load(open(os.path.join(R, f'tempo_detune_{k}.json'))) for _, k, _ in DS}
 
-lines = ['| Detuning | ' + ' | '.join(f'{n} BPL | {n} Original − grid [95% CI] | p | drift (beats)' for n, _, _ in DS) + ' |',
-         '|---:|' + '---:|---:|---:|---:|' * len(DS)]
-lines.append('| Original beats | ' + ' | '.join(f"{data[k]['original']['bpl']:.3f} | – | – | –" for _, k, _ in DS) + ' |')
-for idx, row in enumerate(data['finedance']['rows']):
-    cells = []
-    for _, k, _ in DS:
-        r = data[k]['rows'][idx]
-        cells.append(f"{r['bpl']:.3f} | {r['delta_vs_original']:+.3f} [{r['delta_ci'][0]:+.3f}, {r['delta_ci'][1]:+.3f}] | "
-                     f"{max(r['p_original_gt'], 1e-4):.4f} | {r['drift_beats_median']:.2f}")
-    lines.append(f"| {row['detune_pct']:+.1f}% | " + ' | '.join(cells) + ' |')
+lines = []
+for name, k, _ in DS:
+    o = data[k]['original']
+    lines += [f'**{name}** (Original, own beats: BPL {o["bpl"]:.3f} [{o["ci"][0]:.3f}, {o["ci"][1]:.3f}])', '',
+              '| Detuning | BPL [95% CI] | Original − grid [95% CI] | p | Right tempo − grid [95% CI] | p | Drift (beats) |',
+              '|---:|---:|---:|---:|---:|---:|---:|']
+    for r in data[k]['rows']:
+        g0 = ('–', '–') if r['detune_pct'] == 0 else (
+            f"{r['delta_vs_grid0']:+.3f} [{r['delta0_ci'][0]:+.3f}, {r['delta0_ci'][1]:+.3f}]", f"{max(r['p_grid0_gt'], 1e-4):.4f}")
+        lines.append(f"| {r['detune_pct']:+.1f}% | {r['bpl']:.3f} [{r['bpl_ci'][0]:.3f}, {r['bpl_ci'][1]:.3f}] | "
+                     f"{r['delta_vs_original']:+.3f} [{r['delta_ci'][0]:+.3f}, {r['delta_ci'][1]:+.3f}] | "
+                     f"{max(r['p_original_gt'], 1e-4):.4f} | {g0[0]} | {g0[1]} | {r['drift_beats_median']:.2f} |")
+    lines.append('')
 note = ('Real dance scored with BPL against a perfectly regular beat grid whose interval is the own mean beat interval × (1 + e); '
         'e = 0 is the metronome control. The band-pass follows the grid tempo, as BPL would for a song e % faster or slower. '
-        'Drift = median accumulated phase error over the scored 26 s window, in beats. p = one-sided sign-flip permutation of '
+        'Right tempo − grid = paired difference between the 0 % grid and the detuned grid (one-sided test of the 0 % grid scoring higher). Drift = median accumulated phase error over the scored 26 s window, in beats. p = one-sided sign-flip permutation of '
         'Original − grid > 0 over units (FineDance 19 songs, Motorica 52 pieces; 10,000). Beyond ±7.5 % the true beat rate '
         'leaves the 15 % band.')
 open(os.path.join(R, 'tempo_detune_table.md'), 'w').write('\n'.join(lines) + '\n\n' + note + '\n')
