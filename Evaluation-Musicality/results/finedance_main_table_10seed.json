@@ -25,7 +25,7 @@
    "src": "paper"
   },
   "DIV_s": {
-   "v": null,
+   "v": 6.107529448149742,
    "src": "10-seed"
   },
   "BAS": {
@@ -52,7 +52,7 @@
    "src": "paper"
   },
   "FID_s": {
-   "v": null,
+   "v": 10.7045580464797,
    "src": "10-seed"
   },
   "FSR": {
@@ -68,7 +68,7 @@
    "src": "paper"
   },
   "DIV_s": {
-   "v": null,
+   "v": 4.638831469852624,
    "src": "10-seed"
   },
   "BAS": {
@@ -95,7 +95,7 @@
    "src": "paper"
   },
   "FID_s": {
-   "v": null,
+   "v": 2.4980153003520655,
    "src": "10-seed"
   },
   "FSR": {
@@ -111,7 +111,7 @@
    "src": "paper"
   },
   "DIV_s": {
-   "v": null,
+   "v": 5.89816688629518,
    "src": "10-seed"
   },
   "BAS": {
@@ -138,7 +138,7 @@
    "src": "paper"
   },
   "FID_s": {
-   "v": null,
+   "v": 1.5455486869907922,
    "src": "10-seed"
   },
   "FSR": {
@@ -154,7 +154,7 @@
    "src": "paper"
   },
   "DIV_s": {
-   "v": null,
+   "v": 6.235387420216581,
    "src": "10-seed"
   },
   "BAS": {
@@ -181,12 +181,12 @@
    "src": "paper"
   },
   "FID_s": {
-   "v": null,
-   "src": "none"
+   "v": 1.9869791973719166,
+   "src": "10-seed"
   },
   "FSR": {
-   "v": null,
-   "src": "none"
+   "v": 8.906193766738607,
+   "src": "10-seed"
   },
   "DIV_k": {
    "v": 8.42,
@@ -197,22 +197,22 @@
    "src": "paper"
   },
   "DIV_s": {
-   "v": null,
-   "src": "none"
+   "v": 5.989764975078886,
+   "src": "10-seed"
   },
   "BAS": {
    "v": 0.232,
    "src": "paper"
   },
   "Lock": {
-   "v": null,
-   "src": "none"
+   "v": 0.37130049801928716,
+   "src": "10-seed"
   },
   "Loud": {
-   "v": null,
-   "src": "none"
+   "v": 0.21942365511584028,
+   "src": "10-seed"
   },
-  "_our_FSR_pct": null
+  "_our_FSR_pct": 8.906193766738607
  },
  "Ours (critic v5 + gain)": {
   "FID_k": {
@@ -224,7 +224,7 @@
    "src": "10-seed"
   },
   "FID_s": {
-   "v": null,
+   "v": 1.4435473564666779,
    "src": "10-seed"
   },
   "FSR": {
@@ -240,7 +240,7 @@
    "src": "10-seed"
   },
   "DIV_s": {
-   "v": null,
+   "v": 6.102163901140276,
    "src": "10-seed"
   },
   "BAS": {

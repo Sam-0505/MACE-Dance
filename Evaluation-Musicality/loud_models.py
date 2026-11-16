@@ -54,7 +54,12 @@ MODELS = {   # label -> data dir (FineDance test generations, 84 slices)
     'Bailando': 'mace_test_bailando',
     'MEGADance': 'mace_test_mega',
 }
-OUT = os.path.join(HERE, 'results', f'loud_models_{N_SEEDS}seed.json')
+# --models 'A,B,...' keeps only those labels (e.g. the main-table rows at 10 seeds, since the ablation dirs hold one seed);
+# --tag X appends X to the output name so the full-model files are not overwritten.
+if '--models' in sys.argv:
+    MODELS = {k: MODELS[k] for k in sys.argv[sys.argv.index('--models') + 1].split(',')}
+TAG = sys.argv[sys.argv.index('--tag') + 1] if '--tag' in sys.argv else ''
+OUT = os.path.join(HERE, 'results', f'loud_models_{N_SEEDS}seed{TAG}.json')
 
 
 def main():
