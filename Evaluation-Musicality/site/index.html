@@ -120,15 +120,13 @@
   var statusEl = document.getElementById('status');
   var speedSel = document.getElementById('speed');
   var videos = {};          // model id -> <video>
-  var shown = { flower: true, mace: true, ours: true, real: true };
+  var shown = { flower: false, mace: true, ours: true, real: false };   // every load starts as MACE-Dance vs Ours
   var clip = null;
   var wantPlay = false;     // user pressed play (we may be paused while a video buffers)
   var seeking = false;
 
   function store(k, v) { try { localStorage.setItem('cmp.' + k, JSON.stringify(v)); } catch (e) {} }
   function load(k) { try { return JSON.parse(localStorage.getItem('cmp.' + k)); } catch (e) { return null; } }
-  var saved = load('shown');
-  if (saved) MODELS.forEach(function (m) { if (!m.locked && typeof saved[m.id] === 'boolean') shown[m.id] = saved[m.id]; });
 
   // ---------- UI ----------
   var clipBox = document.getElementById('clips');
@@ -155,7 +153,6 @@
     cb.onchange = function () {
       shown[m.id] = cb.checked;
       lab.classList.toggle('off', !cb.checked);
-      store('shown', shown);
       layout();
     };
     lab.classList.toggle('off', !shown[m.id]);
