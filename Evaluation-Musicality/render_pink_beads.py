@@ -87,7 +87,7 @@ def lock_signals(poses, trans, Bt):
     acc = argrelextrema(band, np.greater)[0]
     inr = acc[(acc >= Bt[0]) & (acc < Bt[-1])]
     k = np.searchsorted(Bt, inr, side='right') - 1
-    return {'curve': z, 'acc': acc, 'acc_in': inr, 'ph': (inr - Bt[k]) / (Bt[k + 1] - Bt[k])}
+    return {'q': q, 'band': band, 'curve': z, 'acc': acc, 'acc_in': inr, 'ph': (inr - Bt[k]) / (Bt[k + 1] - Bt[k])}
 
 
 def render_colored(verts, faces, forward, level, width=720, height=1280, body_fraction=0.56):
