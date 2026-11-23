@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Dance Comparisons</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1d1d1f; --muted: #6b6b70; --line: #e3e3e6; --chip: #f4f4f6;
+    --accent: #1d1d1f;
+    --flower: rgb(148, 103, 189); --mace: rgb(230, 92, 0); --ours: rgb(23, 150, 60); --real: rgb(31, 119, 180);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 1840px; margin: 0 auto; padding: 20px 16px 48px; }
+  h1 { font-size: 22px; margin: 0 0 4px; font-weight: 650; }
+  .sub { color: var(--muted); margin: 0 0 18px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; margin-bottom: 12px; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+  .group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  button, .chip { font: inherit; border: 1px solid var(--line); background: var(--chip); color: var(--fg);
+                  border-radius: 999px; padding: 5px 13px; cursor: pointer; }
+  button:hover, .chip:hover { border-color: #c8c8cc; }
+  .clip[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .chip { display: inline-flex; align-items: center; gap: 7px; user-select: none; }
+  .chip input { margin: 0; accent-color: var(--c); }
+  .chip .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .chip.off { opacity: .55; }
+  .chip.locked { cursor: default; }
+  .stage { display: flex; justify-content: center; gap: 6px; min-height: 200px; }
+  .stage video { display: block; height: auto; width: auto; max-height: calc(100vh - 275px); min-height: 0;
+                 max-width: calc((100% - (var(--n) - 1) * 6px) / var(--n)); aspect-ratio: 450 / 1056; background: #fff;
+                 border-radius: 4px; }
+  .stage video[hidden] { display: none; }
+  .controls { display: flex; align-items: center; gap: 12px; margin: 4px auto 0; max-width: 1000px; }
+  #play { width: 44px; height: 44px; padding: 0; border-radius: 50%; background: var(--accent); color: #fff; border: 0;
+          font-size: 17px; flex: none; }
+  #seek { flex: 1; accent-color: var(--accent); min-width: 80px; }
+  #time { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 92px; text-align: right; }
+  select { font: inherit; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+  #status { text-align: center; color: var(--muted); font-size: 13px; min-height: 20px; margin: 2px 0 4px; }
+  .tablewrap { overflow-x: auto; }
+  table { border-collapse: collapse; margin: 18px auto 0; font-variant-numeric: tabular-nums; }
+  th, td { padding: 6px 16px; text-align: center; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { text-align: left; color: var(--muted); font-weight: 500; }
+  thead th { font-weight: 650; }
+  td.best { font-weight: 700; }
+  .notes { max-width: 900px; margin: 28px auto 0; color: #3a3a3d; }
+  .notes h2 { font-size: 16px; margin: 0 0 6px; }
+  .notes ul { margin: 0; padding-left: 20px; }
+  .notes li { margin: 4px 0; }
+  kbd { font: 12px ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; }
+  @media (max-width: 700px) {
+    .stage { flex-wrap: wrap; }
+    .stage video { max-width: calc(50% - 3px); max-height: none; }
+    .controls { gap: 8px; }
+    #time { min-width: 0; font-size: 13px; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Generated dance vs. music: side-by-side comparisons</h1>
+  <p class="sub">FineDance test songs, 34 s each. All generated models use the same random seed. Choose a clip and the models to compare; the videos play in sync with the song.</p>
+
+  <div class="bar">
+    <div class="group" id="clips"><span class="label">Clip</span></div>
+  </div>
+  <div class="bar">
+    <div class="group" id="models"><span class="label">Models</span></div>
+  </div>
+
+  <div class="controls">
+    <button id="play" aria-label="Play">&#9654;</button>
+    <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
+    <span id="time">0.0 / 0.0 s</span>
+    <select id="speed" aria-label="Playback speed">
+      <option value="1">1&times;</option><option value="0.75">0.75&times;</option><option value="0.5">0.5&times;</option>
+    </select>
+  </div>
+  <div id="status"></div>
+
+  <div class="stage" id="stage"></div>
+
+
+  <div class="tablewrap"><table id="metrics" aria-label="Whole-clip scores"></table></div>
+
+  <section class="notes">
+    <h2>What the videos show</h2>
+    <ul>
+      <li><b>Beat clock</b> (top right of each dancer): each dot is a movement accent, placed by where it falls inside the musical beat (top = on the beat). The arrow is their average; a longer arrow means the dancer hits the beat at a steadier point.</li>
+      <li><b>BPL</b> (beat phase locking, under the clock): how consistently the beat-rate part of the motion keeps one phase relative to the music beat over the whole clip (0 to 1, higher = more locked). It does not require hitting exactly on the beat, only a steady relation.</li>
+      <li><b>Motion intensity (QoM)</b> and <b>Audio intensity (RMS)</b> (graphs under each dancer): the smoothed motion energy of the dancer and the loudness of the song, over the whole clip; the red line is the current moment.</li>
+      <li><b>IMC</b> (next to the motion graph): correlation between the two curves (&minus;1 to 1, higher = the dance gets stronger when the music gets louder).</li>
+    </ul>
+    <p>Keys: <kbd>Space</kbd> play / pause, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward. Real Dance is the motion-capture dance recorded for the song.</p>
+  </section>
+</main>
+
+<script src="clips.js"></script>
+<script>
+(function () {
+  'use strict';
+  var MODELS = [
+    { id: 'flower', name: 'FlowerDance', color: 'var(--flower)' },
+    { id: 'mace', name: 'MACE-Dance', color: 'var(--mace)' },
+    { id: 'ours', name: 'MMC-Dance (Ours)', color: 'var(--ours)', locked: true },
+    { id: 'real', name: 'Real Dance', color: 'var(--real)' }
+  ];
+  var CLIPS = window.CLIPS || [];
+  var audio = new Audio();
+  audio.preload = 'auto';
+  var stage = document.getElementById('stage');
+  var playBtn = document.getElementById('play');
+  var seek = document.getElementById('seek');
+  var timeEl = document.getElementById('time');
+  var statusEl = document.getElementById('status');
+  var speedSel = document.getElementById('speed');
+  var videos = {};          // model id -> <video>
+  var shown = { flower: true, mace: true, ours: true, real: true };
+  var clip = null;
+  var wantPlay = false;     // user pressed play (we may be paused while a video buffers)
+  var seeking = false;
+
+  function store(k, v) { try { localStorage.setItem('cmp.' + k, JSON.stringify(v)); } catch (e) {} }
+  function load(k) { try { return JSON.parse(localStorage.getItem('cmp.' + k)); } catch (e) { return null; } }
+  var saved = load('shown');
+  if (saved) MODELS.forEach(function (m) { if (!m.locked && typeof saved[m.id] === 'boolean') shown[m.id] = saved[m.id]; });
+
+  // ---------- UI ----------
+  var clipBox = document.getElementById('clips');
+  CLIPS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.className = 'clip';
+    b.textContent = c.name + ' · ' + c.bpm + ' BPM';
+    b.title = c.song;
+    b.setAttribute('aria-pressed', 'false');
+    b.onclick = function () { selectClip(c); };
+    c.btn = b;
+    clipBox.appendChild(b);
+  });
+
+  var modelBox = document.getElementById('models');
+  MODELS.forEach(function (m) {
+    var lab = document.createElement('label');
+    lab.className = 'chip' + (m.locked ? ' locked' : '');
+    lab.style.setProperty('--c', m.color);
+    var cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = shown[m.id];
+    cb.disabled = !!m.locked;
+    cb.onchange = function () {
+      shown[m.id] = cb.checked;
+      lab.classList.toggle('off', !cb.checked);
+      store('shown', shown);
+      layout();
+    };
+    lab.classList.toggle('off', !shown[m.id]);
+    var dot = document.createElement('span'); dot.className = 'dot';
+    lab.appendChild(cb); lab.appendChild(dot); lab.appendChild(document.createTextNode(m.name));
+    m.chip = lab; m.cb = cb;
+    modelBox.appendChild(lab);
+
+    var v = document.createElement('video');
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+    v.disablePictureInPicture = true;
+    v.setAttribute('aria-label', m.name);
+    videos[m.id] = v;
+    stage.appendChild(v);
+  });
+
+  function active() {
+    return MODELS.filter(function (m) { return shown[m.id] && clip && clip.models.indexOf(m.id) >= 0; })
+                 .map(function (m) { return videos[m.id]; });
+  }
+
+  function layout() {
+    var n = 0;
+    MODELS.forEach(function (m) {
+      var avail = clip && clip.models.indexOf(m.id) >= 0;
+      var on = shown[m.id] && avail;
+      videos[m.id].hidden = !on;
+      m.chip.style.display = avail ? '' : 'none';
+      if (on) {
+        n++;
+        var v = videos[m.id];
+        v.currentTime = audio.currentTime;
+        v.playbackRate = audio.playbackRate;
+        if (!audio.paused) v.play().catch(function () {});
+      } else {
+        videos[m.id].pause();
+      }
+    });
+    stage.style.setProperty('--n', Math.max(n, 1));
+    renderMetrics();
+  }
+
+  function renderMetrics() {
+    var t = document.getElementById('metrics');
+    if (!clip || !clip.metrics) { t.innerHTML = ''; return; }
+    var cols = MODELS.filter(function (m) { return shown[m.id] && clip.models.indexOf(m.id) >= 0; });
+    var gen = cols.filter(function (m) { return m.id !== 'real'; });
+    var html = '<caption style="caption-side:bottom;color:var(--muted);font-size:13px;padding-top:6px">' +
+      'Bold = best generated model shown. Real Dance is a reference, not ranked.</caption>' +
+      '<thead><tr><th>Whole clip</th>' + cols.map(function (m) {
+      return '<th style="color:' + m.color + '">' + m.name + '</th>';
+    }).join('') + '</tr></thead><tbody>';
+    [['bpl', 'BPL ↑'], ['imc', 'IMC ↑']].forEach(function (r) {
+      var best = Math.max.apply(null, gen.map(function (m) { return clip.metrics[m.id][r[0]]; }));
+      html += '<tr><td>' + r[1] + '</td>' + cols.map(function (m) {
+        var v = clip.metrics[m.id][r[0]];
+        var isBest = m.id !== 'real' && gen.length > 1 && v === best;
+        return '<td' + (isBest ? ' class="best"' : '') + '>' + v.toFixed(2) + '</td>';
+      }).join('') + '</tr>';
+    });
+    t.innerHTML = html + '</tbody>';
+  }
+
+  function selectClip(c) {
+    wantPlay = false;
+    audio.pause();
+    clip = c;
+    CLIPS.forEach(function (x) { x.btn.setAttribute('aria-pressed', String(x === c)); });
+    var base = 'videos/' + c.id + '/';
+    audio.src = base + 'audio.m4a';
+    audio.playbackRate = Number(speedSel.value);
+    MODELS.forEach(function (m) {
+      var v = videos[m.id];
+      v.pause();
+      if (c.models.indexOf(m.id) >= 0) { v.src = base + m.id + '.mp4'; v.load(); }
+      else v.removeAttribute('src');
+    });
+    store('clip', c.id);
+    try { history.replaceState(null, '', '#' + c.id); } catch (e) {}
+    layout();
+    updateUI();
+  }
+
+  // ---------- playback: the song is the clock, videos follow ----------
+  var holding = false;      // audio.play() pending
+  function play() {
+    wantPlay = true;
+    if (audio.ended || audio.currentTime >= (audio.duration || 1e9) - 0.05) audio.currentTime = 0;
+    resync(true);
+    updateUI();             // tick() starts the song and the videos once every shown video can play
+  }
+  function startPlayback() {
+    holding = true;
+    audio.play().then(function () {
+      holding = false;
+      active().forEach(function (v) { v.play().catch(function () {}); });
+    }).catch(function () { holding = false; wantPlay = false; updateUI(); });
+  }
+  function ready() {        // the song buffers by itself while playing (the videos follow its clock); videos must be ready
+    return audio.readyState >= 1 && active().every(function (v) { return v.readyState >= 3 && !v.seeking; });
+  }
+  function pause() {
+    wantPlay = false;
+    audio.pause();
+    active().forEach(function (v) { v.pause(); });
+    resync(true);
+    updateUI();
+  }
+
+  function align() {         // paused: put every shown video on the song's time; true if one had to seek
+    var t = audio.currentTime, moved = false;
+    active().forEach(function (v) {
+      v.playbackRate = audio.playbackRate;
+      if (Math.abs(v.currentTime - t) > 0.02) { v.currentTime = t; moved = true; }
+    });
+    return moved;
+  }
+
+  function resync(hard) {
+    var t = audio.currentTime, rate = audio.playbackRate;
+    active().forEach(function (v) {
+      if (v.readyState < 1) return;
+      var d = v.currentTime - t;
+      if (hard || Math.abs(d) > 0.25) { v.currentTime = t; v.playbackRate = rate; }
+      else if (Math.abs(d) > 0.03) { v.playbackRate = rate * (d > 0 ? 0.95 : 1.05); }   // drift: nudge the rate
+      else if (v.playbackRate !== rate) { v.playbackRate = rate; }
+    });
+  }
+
+  audio.addEventListener('ended', function () { wantPlay = false; active().forEach(function (v) { v.pause(); }); updateUI(); });
+  audio.addEventListener('loadedmetadata', updateUI);
+  audio.addEventListener('timeupdate', function () { if (!seeking) updateUI(); });
+
+  function tick() {          // every frame: keep the videos on the song; hold everything while a shown video is loading
+    if (wantPlay && !holding) {
+      var ok = ready();
+      if (!audio.paused && !ok) {
+        audio.pause();
+        active().forEach(function (v) { v.pause(); });
+        statusEl.textContent = 'Loading…';
+      } else if (audio.paused && ok) {
+        if (!align()) { statusEl.textContent = ''; startPlayback(); }   // start only once no video needed a seek
+      } else if (!audio.paused) {
+        resync(false);
+      }
+    } else if (!wantPlay) {
+      statusEl.textContent = '';
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
+  function updateUI() {
+    var dur = audio.duration || 0;
+    playBtn.innerHTML = wantPlay ? '&#10074;&#10074;' : '&#9654;';
+    playBtn.setAttribute('aria-label', wantPlay ? 'Pause' : 'Play');
+    if (!seeking && dur) seek.value = Math.round(1000 * audio.currentTime / dur);
+    timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(dur) + ' s';
+  }
+
+  function seekTo(t) {
+    var dur = audio.duration || 0;
+    audio.currentTime = Math.min(Math.max(t, 0), Math.max(dur - 0.05, 0));
+    resync(true);
+    updateUI();
+  }
+
+  playBtn.onclick = function () { wantPlay ? pause() : play(); };
+  seek.addEventListener('input', function () {
+    seeking = true;
+    var dur = audio.duration || 0;
+    timeEl.textContent = fmt(seek.value / 1000 * dur) + ' / ' + fmt(dur) + ' s';
+    seekTo(seek.value / 1000 * dur);
+  });
+  seek.addEventListener('change', function () { seeking = false; updateUI(); });
+  speedSel.onchange = function () { audio.playbackRate = Number(speedSel.value); resync(true); };
+  document.addEventListener('keydown', function (e) {
+    if (e.target && (e.target.tagName === 'INPUT' && e.target.type !== 'checkbox' && e.target.type !== 'range' || e.target.tagName === 'SELECT')) return;
+    if (e.code === 'Space') { e.preventDefault(); wantPlay ? pause() : play(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); seekTo(audio.currentTime + 2); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); seekTo(audio.currentTime - 2); }
+  });
+
+  if (!CLIPS.length) { statusEl.textContent = 'No clips found (clips.js missing or empty).'; return; }
+  var start = location.hash.slice(1) || load('clip');
+  selectClip(CLIPS.filter(function (c) { return c.id === start; })[0] || CLIPS[0]);
+})();
+</script>
+</body>
+</html>

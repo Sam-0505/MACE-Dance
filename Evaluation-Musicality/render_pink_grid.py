@@ -25,7 +25,10 @@ their average (length = steadiness, i.e. the running lock r). Writes data/videos
 (audio RMS, robustness_loud.music_signals, saved first as data/appearance_examples/rms_<slice>.npy with the Expert-Motion venv) below,
 both Gaussian-smoothed sigma 15 frames and scaled to their own min..max over the clip, i.e. exactly the two curves IMC correlates
 (Pearson, zero lag); the whole rendered span is shown, already played part solid, red line = now. No beat lines. The beat clock (BPL) stays.
-Writes data/videos/showcase_windows/row_imc_<slice>_seed<s>[_<start>s].mp4.
+Writes data/videos/showcase_windows/row_imc_<slice>_seed<s>[_<start>s].mp4. Prints the reported whole-clip values
+(results/fullclip_bpl_imc_seeds.json): IMC at the right end of the motion strip's title line, BPL under the beat clock (2026-11-23).
+--split: the same panels as one silent video per model + the song, for the review site (make_site.py, site/videos/).
+--still_only: only the middle-frame png (layout check).
 """
 import argparse
 import json
@@ -118,8 +121,12 @@ def main():
     ap.add_argument('--wild_seeds', nargs='+', default=[], help='per-model seeds for --wild, e.g. flower=3 oneshot=5 gain=2')
     ap.add_argument('--row', action='store_true', help='1 x 4 row Flower | MACE | MMC-Dance (Ours) | Real, energy graph + beat clock, no header')
     ap.add_argument('--imc', action='store_true', help='with --row: motion energy vs music energy graph (IMC) instead of the beat graph')
+    ap.add_argument('--split', action='store_true', help='with --imc: one silent video per model + the song (audio.m4a) in '
+                    'site/videos/<slice>_seed<s>/ for the review site (make_site.py), instead of the row video')
+    ap.add_argument('--still_only', action='store_true', help='only save the middle-frame png (layout preview), no video')
     ap.add_argument('--ffmpeg', default='ffmpeg')
     a = ap.parse_args()
+    a.still = a.still or a.still_only
     a.row = a.row or a.imc
     from PIL import Image, ImageDraw, ImageFont
 
@@ -189,6 +196,15 @@ def main():
             musn = mm(mus[span])
             for k in sig:
                 sig[k]['qin'] = mm(sig[k]['qi'][span])
+            # printed values = the reported whole-clip metrics (results/fullclip_bpl_imc_seeds.json, same seed for all models)
+            met = {}
+            for r_ in json.load(open(os.path.join(HERE, 'results', 'fullclip_bpl_imc_seeds.json'))):
+                if r_['clip'] == a.slice and r_['seed'] == a.seed:
+                    met = {k: dict(bpl=r_['bpl'][i], imc=r_['imc'][i]) for i, k in enumerate(['gain', 'oneshot', 'flower'])}
+                    met['real'] = dict(bpl=r_['real'][0], imc=r_['real'][1])
+            assert met, f'{a.slice} seed {a.seed} not in fullclip_bpl_imc_seeds.json'
+            print('printed metrics', met, flush=True)
+            f_v = ImageFont.truetype(FONT, 17)
 
         def imc_graph(d, x0, col, k, m):
             gx0, gx1 = x0 + 16, x0 + PW - 16
@@ -205,6 +221,8 @@ def main():
                     d.polygon([(past[0][0], y1)] + past + [(past[-1][0], y1)], fill=tuple(int(255 - 0.22 * (255 - u)) for u in c_))
                     d.line(past, fill=c_, width=3)
                 d.text((gx0 + 4, y0 - 15), name, fill=c_, font=f_c)
+            vt = f"IMC {met[k]['imc']:.2f}"  # whole-clip IMC, right end of the motion box's title line (never over the curve)
+            d.text((gx1 - d.textlength(vt, font=f_v), strips[0][0] - 19), vt, fill=col, font=f_v)
             d.line([(xp(m), TITLE + PH + 22), (xp(m), TITLE + PH + 182)], fill=(220, 30, 30), width=2)
             for sec in range(int(np.ceil(f0 / FPS)), int(t_end) + 1, 5):
                 tl = f'{sec}'
@@ -233,6 +251,8 @@ def main():
                     d.line([(cx, cy), (cx + R * zc.imag, cy - R * zc.real)], fill=col, width=5)
                 d.text((cx - d.textlength('beat clock', font=f_c) / 2, cy + R + 6), 'beat clock', fill=(110, 110, 110), font=f_c)
                 if a.imc:
+                    vt = f"BPL {met[k]['bpl']:.2f}"  # whole-clip BPL under the clock
+                    d.text((cx - d.textlength(vt, font=f_v) / 2, cy + R + 22), vt, fill=col, font=f_v)
                     imc_graph(d, x0, col, k, m)
                     continue
                 # energy graph
@@ -296,7 +316,29 @@ def main():
         out = os.path.join(HERE, 'data', 'videos', f'grid_pink_{a.slice}_seed{a.seed}{sfx}.mp4')
     if a.still:
         Image.fromarray(frame(nf // 2)).save(out.replace('.mp4', '_still.png'))
+        print(out.replace('.mp4', '_still.png'))
+        if a.still_only:
+            return
     import imageio
+    if a.split:
+        assert a.imc and not a.wild, '--split is for the --imc row'
+        import make_site as MS
+        sdir = os.path.join(MS.VIDS, f'{a.slice}_seed{a.seed}')
+        os.makedirs(sdir, exist_ok=True)
+        name = dict(zip(['flower', 'oneshot', 'gain', 'real'], MS.MODELS))
+        tmp = {k: os.path.join(sdir, f'{name[k]}_tmp.mp4') for k in grid[0]}
+        wrs = {k: imageio.get_writer(tmp[k], fps=FPS, quality=9, macro_block_size=1) for k in grid[0]}
+        for m in range(nf):
+            F = frame(m)
+            for c, k in enumerate(grid[0]):
+                wrs[k].append_data(F[:, c * PW:(c + 1) * PW])
+        for k in grid[0]:
+            wrs[k].close()
+            MS.encode_video(a.ffmpeg, tmp[k], os.path.join(sdir, name[k] + '.mp4'))
+            os.remove(tmp[k])
+        MS.encode_audio(a.ffmpeg, wav, os.path.join(sdir, 'audio.m4a'), a.start, nf / FPS)
+        print(sdir, '(now run make_site.py to update clips.js)')
+        return
     silent = out.replace('.mp4', '_noaudio.mp4')
     wr = imageio.get_writer(silent, fps=FPS, quality=8, macro_block_size=1)
     for m in range(nf):
