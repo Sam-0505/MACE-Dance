@@ -32,9 +32,10 @@
   h1 { font-size: 17px; line-height: 1.3; margin: 0; font-weight: 650; }
 
   /* one card per clip: the video (FlowerDance | MACE-Dance | Ours, 1350 x 1056), its player bar right under it */
-  .clipcard { width: min(100%, calc((100vh - var(--barh) - var(--navh) - 22px) * 1350 / 1056)); margin: 0 auto 28px; background: var(--card);
+  .clipcard { width: min(100%, calc((100vh - var(--barh) - var(--navh) - 22px) * var(--ar))); margin: 0 auto 28px; background: var(--card);
               border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: calc(var(--navh) + 6px); }
-  .clipcard video { display: block; width: 100%; height: auto; aspect-ratio: 1350 / 1056; background: #fff; cursor: pointer; }
+  .clipcard { --ar: 1.2784; }            /* width / height: 1350 x 1056 clips; the intro video sets its own */
+  .clipcard video { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); background: #fff; cursor: pointer; }
 
   .bar { display: flex; align-items: center; gap: 10px; min-height: var(--barh); padding: 6px 10px; border-top: 1px solid var(--line); }
   .name { flex: none; font-size: 13px; font-weight: 650; min-width: 46px; }
@@ -44,6 +45,15 @@
   .icon:active { transform: scale(.94); }
   .icon svg { width: 15px; height: 15px; }
   .play { background: var(--ink); color: #fff; }
+  .cc { width: auto; padding: 0 8px; border-radius: 7px; font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+  .cc[aria-pressed="true"] { background: var(--soft); color: var(--fg); }
+  .clipcard.intro { --barh: 82px; }                             /* narrow portrait card: two-row bar, seek bar on its own row */
+  .clipcard.intro .bar { flex-wrap: wrap; row-gap: 2px; }
+  .clipcard.intro .name { display: none; }                      /* the tab already says 'How to read' */
+  .clipcard.intro .bar { column-gap: 6px; }
+  .clipcard.intro .time { min-width: 0; }
+  .clipcard.intro .seek { order: 5; flex-basis: 100%; }
+  .clipcard video::cue { font-size: 16px; line-height: 1.35; background: rgba(0, 0, 0, .72); }
   .play:hover { background: #3a3a3c; }
   .time { flex: none; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12.5px; min-width: 76px; }
   .seek { --p: 0%; flex: 1; min-width: 60px; height: 20px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
@@ -69,12 +79,12 @@
   /* full screen: the card fills the screen, the video as large as fits above its bar */
   .clipcard:fullscreen { width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; display: flex; flex-direction: column;
                          justify-content: center; align-items: center; background: var(--bg); }
-  .clipcard:fullscreen video { width: min(100%, calc((100vh - var(--barh) - 8px) * 1350 / 1056)); }
-  .clipcard:fullscreen .bar { width: min(100%, calc((100vh - var(--barh) - 8px) * 1350 / 1056)); background: var(--card); }
+  .clipcard:fullscreen video { width: min(100%, calc((100vh - var(--barh) - 8px) * var(--ar))); }
+  .clipcard:fullscreen .bar { width: min(100%, calc((100vh - var(--barh) - 8px) * var(--ar))); background: var(--card); }
   .clipcard:-webkit-full-screen { width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; display: flex; flex-direction: column;
                                   justify-content: center; align-items: center; background: var(--bg); }
   .clipcard:-webkit-full-screen video,
-  .clipcard:-webkit-full-screen .bar { width: min(100%, calc((100vh - var(--barh) - 8px) * 1350 / 1056)); }
+  .clipcard:-webkit-full-screen .bar { width: min(100%, calc((100vh - var(--barh) - 8px) * var(--ar))); }
 
   /* below the videos: plain and small */
   section.block { margin-top: 36px; }
@@ -89,7 +99,7 @@
 
   @media (max-width: 760px) {
     main { padding: 0 10px 36px; }
-    .clipcard { width: 100%; }
+    .clipcard:not(.intro) { width: 100%; }
     .bar { flex-wrap: wrap; gap: 8px; }
     .seek { order: 5; flex-basis: 100%; }
     .name { min-width: 0; }
@@ -118,7 +128,7 @@
   </section>
 
   <footer>
-    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; All models use the same random seed.
+    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; <kbd>C</kbd> captions (first video) &nbsp;&middot;&nbsp; All models use the same random seed.
   </footer>
 </main>
 
@@ -134,6 +144,11 @@
   };
   var RATES = [1, 0.75, 0.5];
   var CLIPS = window.CLIPS || [];
+  // the instructions video (real dancer, narrated, captions) comes first; demo/make_demo_video.py writes it
+  var INTRO = { id: 'how-to-read', name: 'How to read', intro: true, ar: 900 / 2112,
+                label: 'How to read the videos: a real dancer with the beat clock and the intensity graphs, narrated',
+                video: 'videos/instructions.mp4', vtt: 'videos/instructions.vtt' };
+  var ITEMS = [INTRO].concat(CLIPS);
   var fsOK = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
   function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
   function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
@@ -156,11 +171,13 @@
     var p = this;
     p.clip = c;
     var card = document.createElement('section');
-    card.className = 'clipcard';
+    card.className = 'clipcard' + (c.intro ? ' intro' : '');
     card.id = c.id;
+    if (c.ar) card.style.setProperty('--ar', c.ar.toFixed(4));
     card.setAttribute('aria-label', c.name);
     card.innerHTML =
-      '<video playsinline preload="auto" disablepictureinpicture aria-label="' + c.name + ': FlowerDance, MACE-Dance and MMC-Dance (Ours)"></video>' +
+      '<video playsinline preload="auto" disablepictureinpicture aria-label="' + (c.label || c.name + ': FlowerDance, MACE-Dance and MMC-Dance (Ours)') + '">' +
+        (c.vtt ? '<track kind="captions" src="' + c.vtt + '" srclang="en" label="English" default>' : '') + '</video>' +
       '<div class="bar">' +
         '<span class="name">' + c.name + '</span>' +
         '<button class="icon play" aria-label="Play">' + ICON.play + '</button>' +
@@ -170,6 +187,7 @@
         '<div class="segmented" role="group" aria-label="Playback speed">' +
           RATES.map(function (r) { return '<button data-rate="' + r + '" aria-pressed="' + (r === 1) + '">' + r + '&times;</button>'; }).join('') +
         '</div>' +
+        (c.vtt ? '<button class="icon cc" aria-pressed="true" aria-label="Captions" title="Captions (C)">CC</button>' : '') +
         '<button class="icon fs" aria-label="Full screen" title="Full screen (F)">' + ICON.full + '</button>' +
       '</div>';
     p.card = card;
@@ -258,6 +276,14 @@
         v.playbackRate = rate;
       };
     });
+    var ccBtn = card.querySelector('.cc');
+    p.toggleCC = function () {
+      if (!ccBtn || !v.textTracks.length) return;
+      var on = ccBtn.getAttribute('aria-pressed') !== 'true';
+      v.textTracks[0].mode = on ? 'showing' : 'hidden';
+      ccBtn.setAttribute('aria-pressed', String(on));
+    };
+    if (ccBtn) ccBtn.onclick = p.toggleCC;
     if (fsOK) fsBtn.onclick = p.toggleFull;
     else fsBtn.hidden = true;   // e.g. iPhone Safari
   }
@@ -270,7 +296,7 @@
   syncNav();
   window.addEventListener('resize', syncNav);
   var tabs = document.getElementById('tabs');
-  CLIPS.forEach(function (c) {
+  ITEMS.forEach(function (c) {
     var b = document.createElement('button');
     b.textContent = c.name;
     b.setAttribute('aria-pressed', 'false');
@@ -288,7 +314,7 @@
   function setActive(p) {
     if (!p || p === active) return;
     active = p;
-    CLIPS.forEach(function (c) { c.tab.setAttribute('aria-pressed', String(c === p.clip)); });
+    ITEMS.forEach(function (c) { c.tab.setAttribute('aria-pressed', String(c === p.clip)); });
     var t = p.clip.tab;   // keep the active tab visible when the tab row scrolls (phones)
     if (t.offsetLeft < tabs.scrollLeft || t.offsetLeft + t.offsetWidth > tabs.scrollLeft + tabs.clientWidth)
       tabs.scrollLeft = t.offsetLeft - 8;
@@ -301,7 +327,7 @@
   }, { passive: true });
 
   var box = document.getElementById('clips');
-  CLIPS.forEach(function (c) { var p = new Player(c); players.push(p); box.appendChild(p.card); });
+  ITEMS.forEach(function (c) { var p = new Player(c); players.push(p); box.appendChild(p.card); });
   if (!CLIPS.length) box.textContent = 'No clips found (clips.js missing or empty).';
 
   // load from the top, one clip after the other (a clip whose play button is pressed jumps the queue)
@@ -341,6 +367,7 @@
     else if (e.key === 'ArrowRight') { e.preventDefault(); p.seekBy(2); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); p.seekBy(-2); }
     else if ((e.key === 'f' || e.key === 'F') && fsOK) { e.preventDefault(); p.toggleFull(); }
+    else if (e.key === 'c' || e.key === 'C') { if (p.toggleCC) { e.preventDefault(); p.toggleCC(); } }
   });
 })();
 </script>

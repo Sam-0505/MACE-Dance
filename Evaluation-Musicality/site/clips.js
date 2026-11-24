@@ -1,32 +1,8 @@
 // clip list
 window.CLIPS = [
  {
-  "id": "211_slice2_seed6",
-  "name": "Clip 1",
-  "video": "videos/211_slice2_seed6.mp4",
-  "models": [
-   "flower",
-   "mace",
-   "ours"
-  ],
-  "metrics": {
-   "ours": {
-    "bpl": 0.63,
-    "imc": 0.67
-   },
-   "mace": {
-    "bpl": 0.04,
-    "imc": -0.15
-   },
-   "flower": {
-    "bpl": 0.23,
-    "imc": 0.49
-   }
-  }
- },
- {
   "id": "092_slice0_seed8",
-  "name": "Clip 2",
+  "name": "Clip 1",
   "video": "videos/092_slice0_seed8.mp4",
   "models": [
    "flower",
@@ -45,6 +21,30 @@ window.CLIPS = [
    "flower": {
     "bpl": 0.24,
     "imc": 0.64
+   }
+  }
+ },
+ {
+  "id": "211_slice2_seed6",
+  "name": "Clip 2",
+  "video": "videos/211_slice2_seed6.mp4",
+  "models": [
+   "flower",
+   "mace",
+   "ours"
+  ],
+  "metrics": {
+   "ours": {
+    "bpl": 0.63,
+    "imc": 0.67
+   },
+   "mace": {
+    "bpl": 0.04,
+    "imc": -0.15
+   },
+   "flower": {
+    "bpl": 0.23,
+    "imc": 0.49
    }
   }
  },
