@@ -1,10 +1,12 @@
 # Instructions video: narration script (site Clip 1 = FineDance test song 092, Real Dance)
 
-Video: the site's Real Dance panel for Clip 1 (song 092) (`site/videos/092_slice0_seed8/real.mp4` + `audio.m4a`), played
-once (34 s), scaled 2x to 900 x 2112, made by `demo/make_demo_video.py`. The song plays throughout; it is turned down while
-the voice speaks. Placed at the top of the review site, with switchable captions. The BPL and IMC labels of the panel stay.
+Video (`demo/make_demo_video.py`): 1350 x 1056 like the comparison clips. Left: the site's Real Dance panel for Clip 1
+(song 092) (`site/videos/092_slice0_seed8/real.mp4` + `audio.m4a`), 34 s, BPL and IMC labels kept. Right: the narration as
+large text (the phrase being spoken dark, the rest grey) with arrows to the marker it explains; no separate captions.
+The song plays throughout and is turned down while the voice speaks. First card ("How to read") of the review site.
 
-Hint drawn on the video: from 10 s on, a shaded band over 10-13.5 s on both intensity graphs, labelled "both rise".
+Hint drawn on the video: from 11 s on, a shaded band over 11-15 s on both intensity graphs, labelled "both rise"
+(chosen 2026-11-24; the steepest joint climb is 10-13.5 s, after which both curves level off slightly up to 15 s).
 
 What the data shows for this dancer (checked 2026-11-24, as drawn = each curve scaled to its own min..max over the clip):
 - Intensity: both curves bottom out at about 10 s (motion 0.01-0.02, audio 0.00-0.04) and climb together to 13.5 s (motion

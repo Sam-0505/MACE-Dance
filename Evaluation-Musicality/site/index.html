@@ -34,7 +34,7 @@
   /* one card per clip: the video (FlowerDance | MACE-Dance | Ours, 1350 x 1056), its player bar right under it */
   .clipcard { width: min(100%, calc((100vh - var(--barh) - var(--navh) - 22px) * var(--ar))); margin: 0 auto 28px; background: var(--card);
               border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: calc(var(--navh) + 6px); }
-  .clipcard { --ar: 1.2784; }            /* width / height: 1350 x 1056 clips; the intro video sets its own */
+  .clipcard { --ar: 1.2784; }            /* width / height of the videos (1350 x 1056) */
   .clipcard video { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); background: #fff; cursor: pointer; }
 
   .bar { display: flex; align-items: center; gap: 10px; min-height: var(--barh); padding: 6px 10px; border-top: 1px solid var(--line); }
@@ -45,15 +45,6 @@
   .icon:active { transform: scale(.94); }
   .icon svg { width: 15px; height: 15px; }
   .play { background: var(--ink); color: #fff; }
-  .cc { width: auto; padding: 0 8px; border-radius: 7px; font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
-  .cc[aria-pressed="true"] { background: var(--soft); color: var(--fg); }
-  .clipcard.intro { --barh: 82px; }                             /* narrow portrait card: two-row bar, seek bar on its own row */
-  .clipcard.intro .bar { flex-wrap: wrap; row-gap: 2px; }
-  .clipcard.intro .name { display: none; }                      /* the tab already says 'How to read' */
-  .clipcard.intro .bar { column-gap: 6px; }
-  .clipcard.intro .time { min-width: 0; }
-  .clipcard.intro .seek { order: 5; flex-basis: 100%; }
-  .clipcard video::cue { font-size: 16px; line-height: 1.35; background: rgba(0, 0, 0, .72); }
   .play:hover { background: #3a3a3c; }
   .time { flex: none; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12.5px; min-width: 76px; }
   .seek { --p: 0%; flex: 1; min-width: 60px; height: 20px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
@@ -99,7 +90,7 @@
 
   @media (max-width: 760px) {
     main { padding: 0 10px 36px; }
-    .clipcard:not(.intro) { width: 100%; }
+    .clipcard { width: 100%; }
     .bar { flex-wrap: wrap; gap: 8px; }
     .seek { order: 5; flex-basis: 100%; }
     .name { min-width: 0; }
@@ -128,7 +119,7 @@
   </section>
 
   <footer>
-    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; <kbd>C</kbd> captions (first video) &nbsp;&middot;&nbsp; All models use the same random seed.
+    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; All models use the same random seed.
   </footer>
 </main>
 
@@ -144,10 +135,10 @@
   };
   var RATES = [1, 0.75, 0.5];
   var CLIPS = window.CLIPS || [];
-  // the instructions video (real dancer, narrated, captions) comes first; demo/make_demo_video.py writes it
-  var INTRO = { id: 'how-to-read', name: 'How to read', intro: true, ar: 900 / 2112,
+  // the instructions video comes first (real dancer left, narration text and arrows right); demo/make_demo_video.py writes it
+  var INTRO = { id: 'how-to-read', name: 'How to read', intro: true,
                 label: 'How to read the videos: a real dancer with the beat clock and the intensity graphs, narrated',
-                video: 'videos/instructions.mp4', vtt: 'videos/instructions.vtt' };
+                video: 'videos/instructions.mp4' };
   var ITEMS = [INTRO].concat(CLIPS);
   var fsOK = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
   function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
@@ -173,11 +164,9 @@
     var card = document.createElement('section');
     card.className = 'clipcard' + (c.intro ? ' intro' : '');
     card.id = c.id;
-    if (c.ar) card.style.setProperty('--ar', c.ar.toFixed(4));
     card.setAttribute('aria-label', c.name);
     card.innerHTML =
-      '<video playsinline preload="auto" disablepictureinpicture aria-label="' + (c.label || c.name + ': FlowerDance, MACE-Dance and MMC-Dance (Ours)') + '">' +
-        (c.vtt ? '<track kind="captions" src="' + c.vtt + '" srclang="en" label="English" default>' : '') + '</video>' +
+      '<video playsinline preload="auto" disablepictureinpicture aria-label="' + (c.label || c.name + ': FlowerDance, MACE-Dance and MMC-Dance (Ours)') + '"></video>' +
       '<div class="bar">' +
         '<span class="name">' + c.name + '</span>' +
         '<button class="icon play" aria-label="Play">' + ICON.play + '</button>' +
@@ -187,7 +176,6 @@
         '<div class="segmented" role="group" aria-label="Playback speed">' +
           RATES.map(function (r) { return '<button data-rate="' + r + '" aria-pressed="' + (r === 1) + '">' + r + '&times;</button>'; }).join('') +
         '</div>' +
-        (c.vtt ? '<button class="icon cc" aria-pressed="true" aria-label="Captions" title="Captions (C)">CC</button>' : '') +
         '<button class="icon fs" aria-label="Full screen" title="Full screen (F)">' + ICON.full + '</button>' +
       '</div>';
     p.card = card;
@@ -276,14 +264,6 @@
         v.playbackRate = rate;
       };
     });
-    var ccBtn = card.querySelector('.cc');
-    p.toggleCC = function () {
-      if (!ccBtn || !v.textTracks.length) return;
-      var on = ccBtn.getAttribute('aria-pressed') !== 'true';
-      v.textTracks[0].mode = on ? 'showing' : 'hidden';
-      ccBtn.setAttribute('aria-pressed', String(on));
-    };
-    if (ccBtn) ccBtn.onclick = p.toggleCC;
     if (fsOK) fsBtn.onclick = p.toggleFull;
     else fsBtn.hidden = true;   // e.g. iPhone Safari
   }
@@ -367,7 +347,6 @@
     else if (e.key === 'ArrowRight') { e.preventDefault(); p.seekBy(2); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); p.seekBy(-2); }
     else if ((e.key === 'f' || e.key === 'F') && fsOK) { e.preventDefault(); p.toggleFull(); }
-    else if (e.key === 'c' || e.key === 'C') { if (p.toggleCC) { e.preventDefault(); p.toggleCC(); } }
   });
 })();
 </script>
