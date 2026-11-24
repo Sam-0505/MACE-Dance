@@ -1,8 +1,36 @@
 // clip list
 window.CLIPS = [
  {
-  "id": "092_slice0_seed8",
+  "id": "211_slice2_seed6",
   "name": "Clip 1",
+  "models": [
+   "flower",
+   "mace",
+   "ours",
+   "real"
+  ],
+  "metrics": {
+   "ours": {
+    "bpl": 0.63,
+    "imc": 0.67
+   },
+   "mace": {
+    "bpl": 0.04,
+    "imc": -0.15
+   },
+   "flower": {
+    "bpl": 0.23,
+    "imc": 0.49
+   },
+   "real": {
+    "bpl": 0.12,
+    "imc": 0.28
+   }
+  }
+ },
+ {
+  "id": "092_slice0_seed8",
+  "name": "Clip 2",
   "models": [
    "flower",
    "mace",
@@ -30,7 +58,7 @@ window.CLIPS = [
  },
  {
   "id": "012_slice0_seed8",
-  "name": "Clip 2",
+  "name": "Clip 3",
   "models": [
    "flower",
    "mace",
@@ -53,34 +81,6 @@ window.CLIPS = [
    "real": {
     "bpl": 0.51,
     "imc": 0.47
-   }
-  }
- },
- {
-  "id": "211_slice2_seed6",
-  "name": "Clip 3",
-  "models": [
-   "flower",
-   "mace",
-   "ours",
-   "real"
-  ],
-  "metrics": {
-   "ours": {
-    "bpl": 0.63,
-    "imc": 0.67
-   },
-   "mace": {
-    "bpl": 0.04,
-    "imc": -0.15
-   },
-   "flower": {
-    "bpl": 0.23,
-    "imc": 0.49
-   },
-   "real": {
-    "bpl": 0.12,
-    "imc": 0.28
    }
   }
  },
