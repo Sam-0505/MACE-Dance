@@ -348,24 +348,55 @@
       }).join('') + '</tbody>';
   }
 
+  // Files are downloaded whole and played from memory (blob URLs): seeking then works on any host, also ones without
+  // HTTP range requests (e.g. anonymous.4open.science). Falls back to the plain URL if fetch fails (file://).
+  var blobs = {};
+  function fetchUrl(u) {
+    if (!blobs[u]) {
+      blobs[u] = fetch(u).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
+        .then(function (b) { return URL.createObjectURL(b); })
+        .catch(function () { return u; });
+    }
+    return blobs[u];
+  }
+  function clipFiles(c) {
+    var base = 'videos/' + c.id + '/';
+    return [base + 'audio.m4a'].concat(c.models.map(function (m) { return base + m + '.mp4'; }));
+  }
+  var loadToken = 0;
+  var LOADING_CLIP = 'Loading clip…';
   function selectClip(c) {
     wantPlay = false;
     audio.pause();
     clip = c;
+    var token = ++loadToken;
     CLIPS.forEach(function (x) { x.btn.setAttribute('aria-pressed', String(x === c)); });
-    var base = 'videos/' + c.id + '/';
-    audio.src = base + 'audio.m4a';
-    audio.playbackRate = rate;
-    MODELS.forEach(function (m) {
-      var v = videos[m.id];
-      v.pause();
-      if (c.models.indexOf(m.id) >= 0) { v.src = base + m.id + '.mp4'; v.load(); }
-      else v.removeAttribute('src');
-    });
+    audio.removeAttribute('src');
+    audio.load();
+    MODELS.forEach(function (m) { var v = videos[m.id]; v.pause(); v.removeAttribute('src'); v.load(); });
+    statusEl.textContent = LOADING_CLIP;
     store('clip', c.id);
     try { history.replaceState(null, '', '#' + c.id); } catch (e) {}
     layout();
     updateUI();
+    Promise.all(clipFiles(c).map(fetchUrl)).then(function (urls) {
+      if (token !== loadToken) return;            // another clip was chosen meanwhile
+      audio.src = urls[0];
+      audio.playbackRate = rate;
+      c.models.forEach(function (m, i) { videos[m].src = urls[i + 1]; videos[m].load(); });
+      statusEl.textContent = '';
+      layout();
+      updateUI();
+      prefetchRest();
+    });
+  }
+  var prefetched = false;
+  function prefetchRest() {        // after the first clip: fetch the others one by one so switching is instant
+    if (prefetched) return;
+    prefetched = true;
+    CLIPS.reduce(function (p, c) {
+      return p.then(function () { return Promise.all(clipFiles(c).map(fetchUrl)); });
+    }, Promise.resolve());
   }
 
   // ---------- playback: the song is the clock, videos follow ----------
@@ -430,7 +461,7 @@
       } else if (!audio.paused) {
         resync(false);
       }
-    } else if (!wantPlay) {
+    } else if (!wantPlay && statusEl.textContent === 'Loading') {
       statusEl.textContent = '';
     }
     if (!seeking && audio.duration) setProgress(audio.currentTime / audio.duration);
