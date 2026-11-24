@@ -3,7 +3,7 @@
 Working files: site/videos/<slice>_seed<s>/{flower,mace,ours,real}.mp4 + audio.m4a, one silent video per model (a 450 x 1056
 column of the --imc row: title, dancer with beat clock + BPL, IMC graph) and the song. Published (2026-11-24): --stitch puts
 FlowerDance | MACE-Dance | Ours side by side with the song as one video per clip, site/videos/<slice>_seed<s>.mp4 (1350 x 1056);
-the page plays that one file (clip picker, speed, full screen). Plain HTML/JS, no external requests (anonymous review link).
+the page shows the clips one below the other, each with its own player (play, seek, speed, full screen). Plain HTML/JS, no external requests (anonymous review link).
 Copy index.html, clips.js and the stitched videos into the anonymous repo; file:// also works (clips.js, not fetch).
 
 Final videos: render_pink_grid.py --imc --split --slice X --seed S writes site/videos/X_seedS/ directly.

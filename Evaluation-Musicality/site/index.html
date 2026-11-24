@@ -11,6 +11,7 @@
     --bg: #f5f5f7; --card: #ffffff; --fg: #1c1c1e; --muted: #6e6e73; --faint: #a1a1a6;
     --line: #e5e5ea; --soft: #f0f0f3; --ink: #1c1c1e;
     --flower: rgb(148, 103, 189); --mace: rgb(230, 92, 0); --ours: rgb(23, 150, 60);
+    --barh: 48px;            /* height of a player bar */
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -21,74 +22,67 @@
   button { font: inherit; color: inherit; }
   :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-  header { margin-bottom: 10px; }
+  header { margin-bottom: 12px; }
   h1 { font-size: 17px; line-height: 1.3; margin: 0; font-weight: 650; }
 
-  /* toolbar: clip, player, speed, full screen */
-  #view { background: var(--bg); }
-  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 8px 10px; background: var(--card);
-         border: 1px solid var(--line); border-radius: 12px; }
-  .group { display: flex; align-items: center; gap: 8px; min-width: 0; }
-  .label { flex: none; font-size: 11px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+  /* one card per clip: the video (FlowerDance | MACE-Dance | Ours, 1350 x 1056), its player bar right under it */
+  .clipcard { width: min(100%, calc((100vh - var(--barh) - 50px) * 1350 / 1056)); margin: 0 auto 28px; background: var(--card);
+              border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: 12px; }
+  .clipcard video { display: block; width: 100%; height: auto; aspect-ratio: 1350 / 1056; background: #fff; cursor: pointer; }
 
-  .segmented { display: inline-flex; gap: 2px; padding: 2px; background: var(--soft); border-radius: 9px; overflow-x: auto; max-width: 100%;
-               scrollbar-width: none; }
-  .segmented::-webkit-scrollbar { display: none; }
-  .segmented button { flex: none; border: 0; background: transparent; border-radius: 7px; padding: 3px 10px; cursor: pointer;
-                      font-size: 13.5px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums;
-                      transition: background .15s, color .15s, box-shadow .15s; }
-  .segmented button:hover { color: var(--fg); }
-  .segmented button[aria-pressed="true"] { background: var(--card); color: var(--fg); box-shadow: 0 1px 2px rgba(0, 0, 0, .14); }
-
-  .player { flex: 1 1 360px; display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .bar { display: flex; align-items: center; gap: 10px; min-height: var(--barh); padding: 6px 10px; border-top: 1px solid var(--line); }
+  .name { flex: none; font-size: 13px; font-weight: 650; min-width: 46px; }
   .icon { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center;
           background: transparent; color: var(--fg); transition: background .15s, transform .1s; }
   .icon:hover { background: var(--soft); }
   .icon:active { transform: scale(.94); }
   .icon svg { width: 15px; height: 15px; }
-  #play { background: var(--ink); color: #fff; }
-  #play:hover { background: #3a3a3c; }
-  #time { flex: none; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12.5px; min-width: 76px; }
-  #seek { --p: 0%; flex: 1; min-width: 60px; height: 20px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
-  #seek::-webkit-slider-runnable-track { height: 4px; border-radius: 2px;
+  .play { background: var(--ink); color: #fff; }
+  .play:hover { background: #3a3a3c; }
+  .time { flex: none; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 12.5px; min-width: 76px; }
+  .seek { --p: 0%; flex: 1; min-width: 60px; height: 20px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer; }
+  .seek::-webkit-slider-runnable-track { height: 4px; border-radius: 2px;
     background: linear-gradient(to right, var(--ink) var(--p), var(--line) var(--p)); }
-  #seek::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%;
+  .seek::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%;
     background: #fff; border: 2px solid var(--ink); }
-  #seek::-moz-range-track { height: 4px; border-radius: 2px; background: var(--line); }
-  #seek::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--ink); }
-  #seek::-moz-range-thumb { width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid var(--ink); }
-  .speed button { padding: 3px 8px; font-size: 12.5px; }
-  #status { flex: none; font-size: 12px; color: var(--muted); min-width: 0; white-space: nowrap; }
-  #status:empty { display: none; }
-  #status::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 5px; vertical-align: -1px;
+  .seek::-moz-range-track { height: 4px; border-radius: 2px; background: var(--line); }
+  .seek::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--ink); }
+  .seek::-moz-range-thumb { width: 11px; height: 11px; border-radius: 50%; background: #fff; border: 2px solid var(--ink); }
+  .status { flex: none; font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .status:empty { display: none; }
+  .status::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 5px; vertical-align: -1px;
                     border: 2px solid var(--line); border-top-color: var(--muted); border-radius: 50%; animation: spin .8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
+  .segmented { flex: none; display: inline-flex; gap: 2px; padding: 2px; background: var(--soft); border-radius: 9px; }
+  .segmented button { border: 0; background: transparent; border-radius: 7px; padding: 3px 8px; cursor: pointer;
+                      font-size: 12.5px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums;
+                      transition: background .15s, color .15s, box-shadow .15s; }
+  .segmented button:hover { color: var(--fg); }
+  .segmented button[aria-pressed="true"] { background: var(--card); color: var(--fg); box-shadow: 0 1px 2px rgba(0, 0, 0, .14); }
 
-  /* the video (FlowerDance | MACE-Dance | Ours, 1350 x 1056): as tall as the window allows (--h is set by fit()) */
-  .stage { --h: 600px; display: flex; justify-content: center; margin-top: 10px; }
-  #vid { display: block; width: min(100%, calc(var(--h) * 1350 / 1056)); height: auto; aspect-ratio: 1350 / 1056;
-         background: #fff; border-radius: 10px; cursor: pointer; }
+  /* full screen: the card fills the screen, the video as large as fits above its bar */
+  .clipcard:fullscreen { width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; display: flex; flex-direction: column;
+                         justify-content: center; align-items: center; background: var(--bg); }
+  .clipcard:fullscreen video { width: min(100%, calc((100vh - var(--barh) - 8px) * 1350 / 1056)); }
+  .clipcard:fullscreen .bar { width: min(100%, calc((100vh - var(--barh) - 8px) * 1350 / 1056)); background: var(--card); }
+  .clipcard:-webkit-full-screen { width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; display: flex; flex-direction: column;
+                                  justify-content: center; align-items: center; background: var(--bg); }
+  .clipcard:-webkit-full-screen video,
+  .clipcard:-webkit-full-screen .bar { width: min(100%, calc((100vh - var(--barh) - 8px) * 1350 / 1056)); }
 
-  /* full screen: only the toolbar and the video */
-  #view:fullscreen { padding: 10px 14px; overflow: auto; }
-  #view:-webkit-full-screen { padding: 10px 14px; overflow: auto; width: 100%; height: 100%; }
-
-  /* below the video: plain and small */
-  section.block { margin-top: 28px; }
+  /* below the videos: plain and small */
+  section.block { margin-top: 36px; }
   h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
   .scores { overflow-x: auto; max-width: 100%; }
   table { border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 14px; }
-  th, td { padding: 6px 18px 6px 0; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th, td { padding: 6px 16px 6px 0; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
   tbody tr:last-child td { border-bottom: 0; }
-  thead th { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
-  td.model { font-weight: 550; }
-  td.model .sw { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-right: 8px; }
-  .val { display: flex; align-items: center; gap: 8px; }
-  .val span { width: 38px; text-align: right; }
-  .val.best span { font-weight: 700; }
-  .meter { position: relative; width: 120px; height: 5px; border-radius: 3px; background: var(--soft); }
-  .meter i { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: var(--c); opacity: .8; }
-  .meter.div::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--faint); }
+  thead th { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; color: var(--faint); }
+  thead tr:first-child th { text-transform: uppercase; }
+  th.sep, td.sep { padding-left: 16px; border-left: 1px solid var(--line); }
+  td.num { text-align: right; }
+  td.best { font-weight: 700; }
+  .sw { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-right: 6px; }
   .note { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
 
   .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 6px 28px; margin: 0; }
@@ -100,12 +94,13 @@
         border-radius: 4px; padding: 0 5px; }
 
   @media (max-width: 760px) {
-    main { padding: 12px 12px 36px; }
-    .bar { gap: 8px 12px; }
-    .player { flex-basis: 100%; flex-wrap: wrap; }
-    #seek { order: 5; flex-basis: 100%; }
-    .meter { width: 64px; }
-    th, td { padding-right: 12px; }
+    main { padding: 12px 10px 36px; }
+    .clipcard { width: 100%; }
+    .bar { flex-wrap: wrap; gap: 8px; }
+    .seek { order: 5; flex-basis: 100%; }
+    .name { min-width: 0; }
+    .time { min-width: 0; font-size: 12px; }
+    .segmented button { padding: 3px 6px; }
   }
 </style>
 </head>
@@ -115,31 +110,12 @@
     <h1>Music-to-dance comparisons</h1>
   </header>
 
-  <div id="view">
-    <div class="bar" role="toolbar" aria-label="Player">
-      <div class="group"><span class="label">Clip</span><div class="segmented" id="clips" role="group" aria-label="Clip"></div></div>
-      <div class="player">
-        <button id="play" class="icon" aria-label="Play"></button>
-        <span id="time">0.0 / 0.0 s</span>
-        <input id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
-        <span id="status" role="status"></span>
-        <div class="segmented speed" id="speed" role="group" aria-label="Playback speed">
-          <button data-rate="1" aria-pressed="true">1&times;</button>
-          <button data-rate="0.75" aria-pressed="false">0.75&times;</button>
-          <button data-rate="0.5" aria-pressed="false">0.5&times;</button>
-        </div>
-        <button id="fs" class="icon" aria-label="Full screen" title="Full screen (F)"></button>
-      </div>
-    </div>
-    <div class="stage" id="stage">
-      <video id="vid" playsinline preload="auto" disablepictureinpicture aria-label="FlowerDance, MACE-Dance and MMC-Dance (Ours) side by side"></video>
-    </div>
-  </div>
+  <div id="clips"></div>
 
   <section class="block">
     <h2>Whole-clip scores</h2>
     <div class="scores"><table id="metrics" aria-label="Whole-clip scores"></table></div>
-    <p class="note">Higher is better for both. Bold marks the best model.</p>
+    <p class="note">Higher is better for both. Bold marks the best model in each clip.</p>
   </section>
 
   <section class="block">
@@ -153,7 +129,7 @@
   </section>
 
   <footer>
-    <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; All models use the same random seed.
+    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; All models use the same random seed.
   </footer>
 </main>
 
@@ -172,57 +148,12 @@
     full: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg>',
     exit: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg>'
   };
+  var RATES = [1, 0.75, 0.5];
   var CLIPS = window.CLIPS || [];
-  var vid = document.getElementById('vid');
-  var stage = document.getElementById('stage');
-  var playBtn = document.getElementById('play');
-  var seek = document.getElementById('seek');
-  var timeEl = document.getElementById('time');
-  var statusEl = document.getElementById('status');
-  var speedBox = document.getElementById('speed');
-  var view = document.getElementById('view');
-  var fsBtn = document.getElementById('fs');
-  var rate = 1, clip = null, seeking = false;
+  var fsOK = !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
 
-  function store(k, v) { try { localStorage.setItem('cmp.' + k, JSON.stringify(v)); } catch (e) {} }
-  function load(k) { try { return JSON.parse(localStorage.getItem('cmp.' + k)); } catch (e) { return null; } }
-
-  // ---------- clip picker ----------
-  var clipBox = document.getElementById('clips');
-  CLIPS.forEach(function (c) {
-    var b = document.createElement('button');
-    b.className = 'clip';
-    b.textContent = c.name.replace('Clip ', '');
-    b.title = c.name;
-    b.setAttribute('aria-label', c.name);
-    b.setAttribute('aria-pressed', 'false');
-    b.onclick = function () { selectClip(c); };
-    c.btn = b;
-    clipBox.appendChild(b);
-  });
-
-  // ---------- scores ----------
-  function renderMetrics() {
-    var t = document.getElementById('metrics');
-    if (!clip || !clip.metrics) { t.innerHTML = ''; return; }
-    var best = {};
-    ['bpl', 'imc'].forEach(function (k) { best[k] = Math.max.apply(null, MODELS.map(function (m) { return clip.metrics[m.id][k]; })); });
-    function cell(m, k) {
-      var v = clip.metrics[m.id][k];
-      var bar = k === 'bpl'       // BPL 0..1 from the left; IMC -1..1 around a centre line
-        ? '<i style="left:0;width:' + (Math.max(0, Math.min(1, v)) * 100).toFixed(1) + '%"></i>'
-        : '<i style="' + (v >= 0 ? 'left:50%' : 'right:50%') + ';width:' + (Math.min(1, Math.abs(v)) * 50).toFixed(1) + '%"></i>';
-      return '<td><div class="val' + (v === best[k] ? ' best' : '') + '" style="--c:' + m.color + '"><span>' + v.toFixed(2) +
-             '</span><div class="meter' + (k === 'imc' ? ' div' : '') + '">' + bar + '</div></div></td>';
-    }
-    t.innerHTML = '<thead><tr><th>Model</th><th>BPL (0 to 1)</th><th>IMC (&minus;1 to 1)</th></tr></thead><tbody>' +
-      MODELS.map(function (m) {
-        return '<tr><td class="model" style="--c:' + m.color + '"><span class="sw"></span>' + m.name + '</td>' +
-               cell(m, 'bpl') + cell(m, 'imc') + '</tr>';
-      }).join('') + '</tbody>';
-  }
-
-  // ---------- loading ----------
   // Each clip is downloaded whole and played from memory (blob URL): seeking then works on any host, also ones without
   // HTTP range requests (e.g. anonymous.4open.science). Falls back to the plain URL if fetch fails (file://).
   var blobs = {};
@@ -234,135 +165,178 @@
     }
     return blobs[u];
   }
-  var loadToken = 0;
-  function selectClip(c) {
-    vid.pause();
-    clip = c;
-    var token = ++loadToken;
-    CLIPS.forEach(function (x) { x.btn.setAttribute('aria-pressed', String(x === c)); });
-    vid.removeAttribute('src');
-    vid.load();
-    statusEl.textContent = 'Loading clip…';
-    store('clip', c.id);
-    try { history.replaceState(null, '', '#' + c.id); } catch (e) {}
-    renderMetrics();
-    updateUI();
-    fetchUrl(c.video).then(function (url) {
-      if (token !== loadToken) return;            // another clip was chosen meanwhile
-      vid.src = url;
-      vid.playbackRate = rate;
-      statusEl.textContent = '';
-      updateUI();
-      prefetchRest();
-    });
-  }
-  var prefetched = false;
-  function prefetchRest() {        // after the first clip: fetch the others one by one so switching is instant
-    if (prefetched) return;
-    prefetched = true;
-    CLIPS.reduce(function (p, c) { return p.then(function () { return fetchUrl(c.video); }); }, Promise.resolve());
-  }
 
-  // ---------- playback ----------
-  function play() {
-    if (vid.ended) vid.currentTime = 0;
-    vid.playbackRate = rate;
-    var p = vid.play();
-    if (p && p.catch) p.catch(function () {});
-  }
-  function toggle() { if (vid.paused || vid.ended) play(); else vid.pause(); }
-  ['play', 'pause', 'ended', 'loadedmetadata', 'durationchange'].forEach(function (e) { vid.addEventListener(e, updateUI); });
-  vid.addEventListener('timeupdate', function () { if (!seeking) updateUI(); });
-  vid.addEventListener('waiting', function () { if (!statusEl.textContent) statusEl.textContent = 'Loading'; });
-  vid.addEventListener('playing', function () { if (statusEl.textContent === 'Loading') statusEl.textContent = ''; });
-  vid.addEventListener('ratechange', function () { if (vid.playbackRate !== rate && vid.src) vid.playbackRate = rate; });
-  vid.addEventListener('click', toggle);
+  // ---------- one player per clip ----------
+  var players = [];
+  function Player(c) {
+    var p = this;
+    p.clip = c;
+    var card = document.createElement('section');
+    card.className = 'clipcard';
+    card.id = c.id;
+    card.setAttribute('aria-label', c.name);
+    card.innerHTML =
+      '<video playsinline preload="auto" disablepictureinpicture aria-label="' + c.name + ': FlowerDance, MACE-Dance and MMC-Dance (Ours)"></video>' +
+      '<div class="bar">' +
+        '<span class="name">' + c.name + '</span>' +
+        '<button class="icon play" aria-label="Play">' + ICON.play + '</button>' +
+        '<span class="time">0.0 / 0.0 s</span>' +
+        '<input class="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek ' + c.name + '">' +
+        '<span class="status" role="status"></span>' +
+        '<div class="segmented" role="group" aria-label="Playback speed">' +
+          RATES.map(function (r) { return '<button data-rate="' + r + '" aria-pressed="' + (r === 1) + '">' + r + '&times;</button>'; }).join('') +
+        '</div>' +
+        '<button class="icon fs" aria-label="Full screen" title="Full screen (F)">' + ICON.full + '</button>' +
+      '</div>';
+    p.card = card;
+    var v = p.vid = card.querySelector('video');
+    var playBtn = card.querySelector('.play'), timeEl = card.querySelector('.time'), seek = card.querySelector('.seek');
+    var statusEl = card.querySelector('.status'), speed = card.querySelector('.segmented'), fsBtn = card.querySelector('.fs');
+    var rate = 1, seeking = false, wantPlay = false, loaded = false;
 
-  function setProgress(f) {
-    seek.value = Math.round(1000 * f);
-    seek.style.setProperty('--p', (100 * f).toFixed(2) + '%');
-  }
-  function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
-  function updateUI() {
-    var dur = vid.duration || 0, on = !vid.paused && !vid.ended;
-    playBtn.innerHTML = on ? ICON.pause : ICON.play;
-    playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play');
-    if (!seeking && dur) setProgress(vid.currentTime / dur);
-    timeEl.textContent = fmt(vid.currentTime) + ' / ' + fmt(dur) + ' s';
-  }
-  function tick() {               // smooth progress bar while playing
-    if (!seeking && !vid.paused && vid.duration) setProgress(vid.currentTime / vid.duration);
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  function seekTo(t) {
-    var dur = vid.duration || 0;
-    vid.currentTime = Math.min(Math.max(t, 0), Math.max(dur - 0.05, 0));
-    updateUI();
-  }
-
-  speedBox.querySelectorAll('button').forEach(function (b) {
-    b.onclick = function () {
-      rate = Number(b.dataset.rate);
-      speedBox.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-      vid.playbackRate = rate;
+    p.load = function () {
+      if (p.loading) return p.loading;
+      statusEl.textContent = 'Loading…';
+      p.loading = fetchUrl(c.video).then(function (url) {
+        v.src = url;
+        v.playbackRate = rate;
+        loaded = true;
+        statusEl.textContent = '';
+        if (wantPlay) p.play();
+      });
+      return p.loading;
     };
-  });
+    p.play = function () {
+      wantPlay = true;
+      if (!loaded) { p.load(); return; }
+      if (v.ended) v.currentTime = 0;
+      v.playbackRate = rate;
+      var pr = v.play();
+      if (pr && pr.catch) pr.catch(function () {});
+    };
+    p.pause = function () { wantPlay = false; v.pause(); };
+    p.toggle = function () { if (v.paused || v.ended) p.play(); else p.pause(); };
+    p.seekBy = function (d) { p.seekTo(v.currentTime + d); };
+    p.seekTo = function (t) {
+      var dur = v.duration || 0;
+      if (!dur) return;
+      v.currentTime = Math.min(Math.max(t, 0), Math.max(dur - 0.05, 0));
+      update();
+    };
+    p.toggleFull = function () {
+      if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else (card.requestFullscreen || card.webkitRequestFullscreen).call(card);
+    };
+    p.fsChanged = function () {
+      var on = fsElement() === card;
+      fsBtn.innerHTML = on ? ICON.exit : ICON.full;
+      fsBtn.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen');
+      fsBtn.title = (on ? 'Exit full screen' : 'Full screen') + ' (F)';
+    };
 
-  playBtn.onclick = toggle;
-  seek.addEventListener('input', function () {
-    seeking = true;
-    var dur = vid.duration || 0;
-    seek.style.setProperty('--p', (seek.value / 10) + '%');
-    timeEl.textContent = fmt(seek.value / 1000 * dur) + ' / ' + fmt(dur) + ' s';
-    seekTo(seek.value / 1000 * dur);
-  });
-  seek.addEventListener('change', function () { seeking = false; updateUI(); });
+    function setProgress(f) {
+      seek.value = Math.round(1000 * f);
+      seek.style.setProperty('--p', (100 * f).toFixed(2) + '%');
+    }
+    function update() {
+      var dur = v.duration || 0, on = !v.paused && !v.ended;
+      playBtn.innerHTML = on ? ICON.pause : ICON.play;
+      playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play');
+      if (!seeking && dur) setProgress(v.currentTime / dur);
+      timeEl.textContent = fmt(v.currentTime) + ' / ' + fmt(dur) + ' s';
+    }
+    p.tick = function () { if (!seeking && !v.paused && v.duration) setProgress(v.currentTime / v.duration); };
 
-  // ---------- size and full screen ----------
-  function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
-  function fit() {                // video height = what is left of the window under the toolbar (page or full screen)
-    var box = fsElement() || document.documentElement;
-    var top = stage.getBoundingClientRect().top - box.getBoundingClientRect().top;
-    var h = window.innerHeight - top - (fsElement() ? 10 : 14);
-    stage.style.setProperty('--h', Math.max(h, 240) + 'px');
-  }
-  window.addEventListener('resize', fit);
-  function toggleFull() {
-    if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-    else (view.requestFullscreen || view.webkitRequestFullscreen).call(view);
-  }
-  function fsChanged() {
-    var on = !!fsElement();
-    fsBtn.innerHTML = on ? ICON.exit : ICON.full;
-    fsBtn.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen');
-    fsBtn.title = (on ? 'Exit full screen' : 'Full screen') + ' (F)';
-    fit();
-  }
-  if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
-    fsBtn.onclick = toggleFull;
-    document.addEventListener('fullscreenchange', fsChanged);
-    document.addEventListener('webkitfullscreenchange', fsChanged);
-    fsChanged();
-  } else {
-    fsBtn.hidden = true;   // e.g. iPhone Safari
+    ['pause', 'ended', 'loadedmetadata', 'durationchange', 'seeked'].forEach(function (e) { v.addEventListener(e, update); });
+    v.addEventListener('ended', function () { wantPlay = false; });
+    v.addEventListener('play', function () {
+      update();
+      players.forEach(function (o) { if (o !== p) o.pause(); });   // one song at a time
+    });
+    v.addEventListener('timeupdate', function () { if (!seeking) update(); });
+    v.addEventListener('waiting', function () { if (!statusEl.textContent) statusEl.textContent = 'Loading…'; });
+    v.addEventListener('playing', function () { statusEl.textContent = ''; });
+    v.addEventListener('click', p.toggle);
+
+    playBtn.onclick = p.toggle;
+    seek.addEventListener('input', function () {
+      seeking = true;
+      var dur = v.duration || 0;
+      seek.style.setProperty('--p', (seek.value / 10) + '%');
+      timeEl.textContent = fmt(seek.value / 1000 * dur) + ' / ' + fmt(dur) + ' s';
+      p.seekTo(seek.value / 1000 * dur);
+    });
+    seek.addEventListener('change', function () { seeking = false; update(); });
+    speed.querySelectorAll('button').forEach(function (b) {
+      b.onclick = function () {
+        rate = Number(b.dataset.rate);
+        speed.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        v.playbackRate = rate;
+      };
+    });
+    if (fsOK) fsBtn.onclick = p.toggleFull;
+    else fsBtn.hidden = true;   // e.g. iPhone Safari
   }
 
+  var box = document.getElementById('clips');
+  CLIPS.forEach(function (c) { var p = new Player(c); players.push(p); box.appendChild(p.card); });
+  if (!CLIPS.length) box.textContent = 'No clips found (clips.js missing or empty).';
+
+  // load from the top, one clip after the other (a clip whose play button is pressed jumps the queue)
+  players.reduce(function (q, p) { return q.then(function () { return p.load(); }); }, Promise.resolve());
+
+  (function frame() { players.forEach(function (p) { p.tick(); }); requestAnimationFrame(frame); })();
+
+  function onFs() { players.forEach(function (p) { p.fsChanged(); }); }
+  document.addEventListener('fullscreenchange', onFs);
+  document.addEventListener('webkitfullscreenchange', onFs);
+
+  // ---------- scores: one row per clip ----------
+  (function () {
+    var t = document.getElementById('metrics');
+    var head = '<thead><tr><th></th><th class="sep" colspan="3">BPL (0 to 1)</th><th class="sep" colspan="3">IMC (&minus;1 to 1)</th></tr><tr><th>Clip</th>';
+    ['bpl', 'imc'].forEach(function () {
+      MODELS.forEach(function (m, j) {
+        head += '<th class="' + (j === 0 ? 'sep' : '') + '"><span class="sw" style="--c:' + m.color + '"></span>' + m.name + '</th>';
+      });
+    });
+    var rows = CLIPS.map(function (c) {
+      var r = '<tr><td><a href="#' + c.id + '">' + c.name + '</a></td>';
+      ['bpl', 'imc'].forEach(function (k) {
+        var best = Math.max.apply(null, MODELS.map(function (m) { return c.metrics[m.id][k]; }));
+        MODELS.forEach(function (m, j) {
+          var v = c.metrics[m.id][k];
+          r += '<td class="num' + (j === 0 ? ' sep' : '') + (v === best ? ' best' : '') + '">' + v.toFixed(2) + '</td>';
+        });
+      });
+      return r + '</tr>';
+    });
+    t.innerHTML = head + '</tr></thead><tbody>' + rows.join('') + '</tbody>';
+  })();
+
+  // ---------- keys act on the full-screen clip, else the one most in view ----------
+  function current() {
+    var f = fsElement();
+    if (f) return players.filter(function (p) { return p.card === f; })[0];
+    var best = null, most = 0;
+    players.forEach(function (p) {
+      var r = p.card.getBoundingClientRect();
+      var seen = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+      if (seen > most) { most = seen; best = p; }
+    });
+    return best;
+  }
   document.addEventListener('keydown', function (e) {
     var tg = e.target && e.target.tagName;
     if (tg === 'INPUT' && e.target.type !== 'range' || tg === 'SELECT' || tg === 'TEXTAREA') return;
-    if (e.code === 'Space') { e.preventDefault(); toggle(); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); seekTo(vid.currentTime + 2); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); seekTo(vid.currentTime - 2); }
-    else if ((e.key === 'f' || e.key === 'F') && !e.ctrlKey && !e.metaKey && !e.altKey && !fsBtn.hidden) { e.preventDefault(); toggleFull(); }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    var p = current();
+    if (!p) return;
+    if (e.code === 'Space') { e.preventDefault(); p.toggle(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); p.seekBy(2); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); p.seekBy(-2); }
+    else if ((e.key === 'f' || e.key === 'F') && fsOK) { e.preventDefault(); p.toggleFull(); }
   });
-
-  playBtn.innerHTML = ICON.play;
-  fit();
-  if (!CLIPS.length) { statusEl.textContent = 'No clips found (clips.js missing or empty)'; return; }
-  var first = location.hash.slice(1) || load('clip');
-  selectClip(CLIPS.filter(function (c) { return c.id === first; })[0] || CLIPS[0]);
 })();
 </script>
 </body>
