@@ -1,7 +1,7 @@
 """Instructions video for the review site (2026-11-24), same frame as the comparison clips (1350 x 1056).
 
 Left: the Real Dance panel of site Clip 1 (FineDance test song 092, site/videos/092_slice0_seed8/real.mp4, 450 x 1056, made by
-render_pink_grid.py --imc --split), with a shaded 'both rise' band over 11-15 s on both intensity graphs from 11 s on.
+render_pink_grid.py --imc --split), with a shaded 'both rise' band over 11-17 s on both intensity graphs from 11 s on.
 Right: the narration as large text (the phrase being spoken in dark, the rest grey) and arrows from it to the marker it
 explains (graphs, red line, IMC label, band, beat clock, dots, top, clockwise, hand, BPL label).
 Sound: the ElevenLabs clips demo/out/voice/{A,B,C,D}.mp3 (lines of real_demo_script.md) at their VOICE starts, the song
@@ -30,7 +30,7 @@ TITLE, PH = 46, 800
 GX0, GX1 = 16, PW - 16
 STRIPS = [(TITLE + PH + 22, TITLE + PH + 92), (TITLE + PH + 112, TITLE + PH + 182)]
 CX, CY, R = PW - 58, TITLE + 60, 40                   # beat clock centre and radius
-BAND = (11.0, 15.0)                                   # seconds, shaded on both graphs from BAND[0] on
+BAND = (11.0, 17.0)                                   # seconds, shaded on both graphs from BAND[0] on
 LABEL = ['both', 'rise']
 FADE = 0.4
 ORANGE = (205, 110, 0)

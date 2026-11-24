@@ -5,8 +5,9 @@ Video (`demo/make_demo_video.py`): 1350 x 1056 like the comparison clips. Left: 
 large text (the phrase being spoken dark, the rest grey) with arrows to the marker it explains; no separate captions.
 The song plays throughout and is turned down while the voice speaks. First card ("How to read") of the review site.
 
-Hint drawn on the video: from 11 s on, a shaded band over 11-15 s on both intensity graphs, labelled "both rise"
-(chosen 2026-11-24; the steepest joint climb is 10-13.5 s, after which both curves level off slightly up to 15 s).
+Hint drawn on the video: from 11 s on, a shaded band over 11-17 s on both intensity graphs, labelled "both rise"
+(chosen 2026-11-24; the steepest joint climb is 10-13.5 s; both level off slightly to 15 s, then motion climbs again to
+17 s while loudness stays high).
 
 What the data shows for this dancer (checked 2026-11-24, as drawn = each curve scaled to its own min..max over the clip):
 - Intensity: both curves bottom out at about 10 s (motion 0.01-0.02, audio 0.00-0.04) and climb together to 13.5 s (motion
