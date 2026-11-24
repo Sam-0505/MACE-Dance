@@ -32,13 +32,13 @@ If the videos do not play
 Some browsers restrict pages opened from disk. In that case, use either of these:
 
 a) Play the files directly. They are ordinary MP4 files (H.264 video, AAC audio) in videos/:
-     How to read   videos/instructions.mp4
-     Clip 1        videos/092_slice0_seed8.mp4
-     Clip 2        videos/211_slice2_seed6.mp4
-     Clip 3        videos/012_slice0_seed8.mp4
-     Clip 4        videos/198_slice0_seed8.mp4
-     Clip 5        videos/179_slice0_seed8.mp4
-     Clip 6        videos/109_slice2_seed7.mp4
+     How to read   videos/how_to_read.mp4
+     Clip 1        videos/clip1.mp4
+     Clip 2        videos/clip2.mp4
+     Clip 3        videos/clip3.mp4
+     Clip 4        videos/clip4.mp4
+     Clip 5        videos/clip5.mp4
+     Clip 6        videos/clip6.mp4
 
 b) Serve the folder locally. With Python 3, run this inside the folder:
      python3 -m http.server 8000

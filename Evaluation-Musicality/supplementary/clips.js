@@ -1,9 +1,9 @@
 // clip list
 window.CLIPS = [
  {
-  "id": "092_slice0_seed8",
+  "id": "clip1",
   "name": "Clip 1",
-  "video": "videos/092_slice0_seed8.mp4",
+  "video": "videos/clip1.mp4",
   "models": [
    "flower",
    "mace",
@@ -25,9 +25,9 @@ window.CLIPS = [
   }
  },
  {
-  "id": "211_slice2_seed6",
+  "id": "clip2",
   "name": "Clip 2",
-  "video": "videos/211_slice2_seed6.mp4",
+  "video": "videos/clip2.mp4",
   "models": [
    "flower",
    "mace",
@@ -49,9 +49,9 @@ window.CLIPS = [
   }
  },
  {
-  "id": "012_slice0_seed8",
+  "id": "clip3",
   "name": "Clip 3",
-  "video": "videos/012_slice0_seed8.mp4",
+  "video": "videos/clip3.mp4",
   "models": [
    "flower",
    "mace",
@@ -73,9 +73,9 @@ window.CLIPS = [
   }
  },
  {
-  "id": "198_slice0_seed8",
+  "id": "clip4",
   "name": "Clip 4",
-  "video": "videos/198_slice0_seed8.mp4",
+  "video": "videos/clip4.mp4",
   "models": [
    "flower",
    "mace",
@@ -97,9 +97,9 @@ window.CLIPS = [
   }
  },
  {
-  "id": "179_slice0_seed8",
+  "id": "clip5",
   "name": "Clip 5",
-  "video": "videos/179_slice0_seed8.mp4",
+  "video": "videos/clip5.mp4",
   "models": [
    "flower",
    "mace",
@@ -121,9 +121,9 @@ window.CLIPS = [
   }
  },
  {
-  "id": "109_slice2_seed7",
+  "id": "clip6",
   "name": "Clip 6",
-  "video": "videos/109_slice2_seed7.mp4",
+  "video": "videos/clip6.mp4",
   "models": [
    "flower",
    "mace",
