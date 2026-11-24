@@ -119,7 +119,7 @@
   </section>
 
   <footer>
-    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; All models use the same random seed.
+    For the video most in view: <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; <kbd>M</kbd> mute &nbsp;&middot;&nbsp; All models use the same random seed.
   </footer>
 </main>
 
@@ -131,7 +131,9 @@
     play: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9.5-5.5z"/></svg>',
     pause: '<svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2.5" width="3.6" height="11" rx="1"/><rect x="9.4" y="2.5" width="3.6" height="11" rx="1"/></svg>',
     full: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg>',
-    exit: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg>'
+    exit: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg>',
+    sound: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h2.6L8 3v10L4.6 10H2z" fill="currentColor"/><path d="M10.6 5.6a3.4 3.4 0 0 1 0 4.8M12.6 3.6a6.2 6.2 0 0 1 0 8.8"/></svg>',
+    muted: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h2.6L8 3v10L4.6 10H2z" fill="currentColor"/><path d="M10.5 6l4 4M14.5 6l-4 4"/></svg>'
   };
   var RATES = [1, 0.75, 0.5];
   var CLIPS = window.CLIPS || [];
@@ -145,7 +147,7 @@
   function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
 
   // Each clip is downloaded whole and played from memory (blob URL): seeking then works on any host, also ones without
-  // HTTP range requests (e.g. anonymous.4open.science). Falls back to the plain URL if fetch fails (file://).
+  // HTTP range requests (e.g. python -m http.server). Falls back to the plain URL if fetch fails (file://).
   var blobs = {};
   function fetchUrl(u) {
     if (!blobs[u]) {
@@ -176,13 +178,15 @@
         '<div class="segmented" role="group" aria-label="Playback speed">' +
           RATES.map(function (r) { return '<button data-rate="' + r + '" aria-pressed="' + (r === 1) + '">' + r + '&times;</button>'; }).join('') +
         '</div>' +
+        '<button class="icon mute" aria-label="Mute" title="Mute (M)">' + ICON.sound + '</button>' +
         '<button class="icon fs" aria-label="Full screen" title="Full screen (F)">' + ICON.full + '</button>' +
       '</div>';
     p.card = card;
     var v = p.vid = card.querySelector('video');
     var playBtn = card.querySelector('.play'), timeEl = card.querySelector('.time'), seek = card.querySelector('.seek');
     var statusEl = card.querySelector('.status'), speed = card.querySelector('.segmented'), fsBtn = card.querySelector('.fs');
-    var rate = 1, seeking = false, wantPlay = false, loaded = false;
+    var muteBtn = card.querySelector('.mute');
+    var rate = 1, seeking = false, wantPlay = false, loaded = false, pendingFrac = null;
 
     p.load = function () {
       if (p.loading) return p.loading;
@@ -210,8 +214,15 @@
     p.seekTo = function (t) {
       var dur = v.duration || 0;
       if (!dur) return;
+      pendingFrac = null;
       v.currentTime = Math.min(Math.max(t, 0), Math.max(dur - 0.05, 0));
       update();
+    };
+    p.toggleMute = function () {
+      v.muted = !v.muted;
+      muteBtn.innerHTML = v.muted ? ICON.muted : ICON.sound;
+      muteBtn.setAttribute('aria-label', v.muted ? 'Unmute' : 'Mute');
+      muteBtn.title = (v.muted ? 'Unmute' : 'Mute') + ' (M)';
     };
     p.toggleFull = function () {
       if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
@@ -239,6 +250,9 @@
 
     ['pause', 'ended', 'loadedmetadata', 'durationchange', 'seeked'].forEach(function (e) { v.addEventListener(e, update); });
     v.addEventListener('ended', function () { wantPlay = false; });
+    v.addEventListener('loadedmetadata', function () {   // a seek made while the clip was still loading
+      if (pendingFrac !== null) p.seekTo(pendingFrac * v.duration);
+    });
     v.addEventListener('play', function () {
       update();
       players.forEach(function (o) { if (o !== p) o.pause(); });   // one song at a time
@@ -252,11 +266,13 @@
     seek.addEventListener('input', function () {
       seeking = true;
       var dur = v.duration || 0;
+      if (!dur) { pendingFrac = seek.value / 1000; p.load(); }
       seek.style.setProperty('--p', (seek.value / 10) + '%');
       timeEl.textContent = fmt(seek.value / 1000 * dur) + ' / ' + fmt(dur) + ' s';
       p.seekTo(seek.value / 1000 * dur);
     });
     seek.addEventListener('change', function () { seeking = false; update(); });
+    muteBtn.onclick = p.toggleMute;
     speed.querySelectorAll('button').forEach(function (b) {
       b.onclick = function () {
         rate = Number(b.dataset.rate);
@@ -347,6 +363,7 @@
     else if (e.key === 'ArrowRight') { e.preventDefault(); p.seekBy(2); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); p.seekBy(-2); }
     else if ((e.key === 'f' || e.key === 'F') && fsOK) { e.preventDefault(); p.toggleFull(); }
+    else if (e.key === 'm' || e.key === 'M') { e.preventDefault(); p.toggleMute(); }
   });
 })();
 </script>

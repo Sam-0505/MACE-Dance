@@ -16,13 +16,14 @@ All models use the same random seed.
 
 Controls
 --------
-- Each video has its own bar: play / pause, seek, speed (1x, 0.75x, 0.5x) and full screen.
+- Each video has its own bar: play / pause, seek, speed (1x, 0.75x, 0.5x), mute and full screen.
 - The tabs at the top jump to a clip.
 - Starting one video pauses the others.
 - Keys act on the video most in view:
     Space          play / pause
     Left / Right   2 s back / forward
     F              full screen
+    M              mute / unmute
 
 A short guide to the beat clock, BPL, the intensity graphs and IMC is at the bottom of the page.
 
