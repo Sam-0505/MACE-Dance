@@ -1,10 +1,8 @@
-// written by make_site.py
+// clip list
 window.CLIPS = [
  {
   "id": "092_slice0_seed8",
   "name": "Clip 1",
-  "song": "FineDance test song 092",
-  "bpm": 116,
   "models": [
    "flower",
    "mace",
@@ -33,8 +31,6 @@ window.CLIPS = [
  {
   "id": "012_slice0_seed8",
   "name": "Clip 2",
-  "song": "FineDance test song 012",
-  "bpm": 84,
   "models": [
    "flower",
    "mace",
@@ -63,8 +59,6 @@ window.CLIPS = [
  {
   "id": "211_slice2_seed6",
   "name": "Clip 3",
-  "song": "FineDance test song 211",
-  "bpm": 142,
   "models": [
    "flower",
    "mace",
@@ -93,8 +87,6 @@ window.CLIPS = [
  {
   "id": "198_slice0_seed8",
   "name": "Clip 4",
-  "song": "FineDance test song 198",
-  "bpm": 76,
   "models": [
    "flower",
    "mace",
@@ -123,8 +115,6 @@ window.CLIPS = [
  {
   "id": "179_slice0_seed8",
   "name": "Clip 5",
-  "song": "FineDance test song 179",
-  "bpm": 90,
   "models": [
    "flower",
    "mace",
@@ -153,8 +143,6 @@ window.CLIPS = [
  {
   "id": "109_slice2_seed7",
   "name": "Clip 6",
-  "song": "FineDance test song 109",
-  "bpm": 124,
   "models": [
    "flower",
    "mace",

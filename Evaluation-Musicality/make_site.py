@@ -60,11 +60,12 @@ def write_clips(order):
         r = rows[(clip, int(seed))]
         met = {m: {'bpl': round(r['bpl'][j], 2), 'imc': round(r['imc'][j], 2)} for j, m in enumerate(['ours', 'mace', 'flower'])}
         met['real'] = {'bpl': round(r['real'][0], 2), 'imc': round(r['real'][1], 2)}
-        clips.append({'id': key, 'name': f'Clip {i + 1}', 'song': f'FineDance test song {clip.split("_")[0]}',
-                      'bpm': round(r['bpm']), 'models': [m for m in MODELS if os.path.isfile(os.path.join(VIDS, key, m + '.mp4'))],
+        # no song name or BPM: the review page does not show them (anonymous copy)
+        clips.append({'id': key, 'name': f'Clip {i + 1}',
+                      'models': [m for m in MODELS if os.path.isfile(os.path.join(VIDS, key, m + '.mp4'))],
                       'metrics': met})
-    with open(os.path.join(SITE, 'clips.js'), 'w') as f:
-        f.write('// written by make_site.py\nwindow.CLIPS = ' + json.dumps(clips, indent=1) + ';\n')
+    with open(os.path.join(SITE, 'clips.js'), 'w') as f:  # neutral header: the file is copied as is into the anonymous repo
+        f.write('// clip list\nwindow.CLIPS = ' + json.dumps(clips, indent=1) + ';\n')
     print('clips.js:', [c['id'] for c in clips])
 
 
