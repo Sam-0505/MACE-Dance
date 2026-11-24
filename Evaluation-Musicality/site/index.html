@@ -12,22 +12,28 @@
     --line: #e5e5ea; --soft: #f0f0f3; --ink: #1c1c1e;
     --flower: rgb(148, 103, 189); --mace: rgb(230, 92, 0); --ours: rgb(23, 150, 60);
     --barh: 48px;            /* height of a player bar */
+    --navh: 48px;            /* height of the sticky title + clip tabs row */
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body { margin: 0; background: var(--bg); color: var(--fg);
          font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
          -webkit-font-smoothing: antialiased; }
-  main { max-width: 1880px; margin: 0 auto; padding: 12px 16px 48px; }
+  main { max-width: 1880px; margin: 0 auto; padding: 0 16px 48px; }
   button { font: inherit; color: inherit; }
   :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-  header { margin-bottom: 12px; }
+  /* sticky top row: title + one tab per clip (jumps to that clip; the clip in view is highlighted) */
+  header { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px;
+           min-height: var(--navh); padding: 6px 0; margin-bottom: 4px; background: var(--bg); }
+  .segmented.tabs { flex: 0 1 auto; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+  .segmented.tabs::-webkit-scrollbar { display: none; }
+  .segmented.tabs button { flex: none; white-space: nowrap; padding: 4px 12px; font-size: 13px; }
   h1 { font-size: 17px; line-height: 1.3; margin: 0; font-weight: 650; }
 
   /* one card per clip: the video (FlowerDance | MACE-Dance | Ours, 1350 x 1056), its player bar right under it */
-  .clipcard { width: min(100%, calc((100vh - var(--barh) - 50px) * 1350 / 1056)); margin: 0 auto 28px; background: var(--card);
-              border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: 12px; }
+  .clipcard { width: min(100%, calc((100vh - var(--barh) - var(--navh) - 22px) * 1350 / 1056)); margin: 0 auto 28px; background: var(--card);
+              border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: calc(var(--navh) + 6px); }
   .clipcard video { display: block; width: 100%; height: auto; aspect-ratio: 1350 / 1056; background: #fff; cursor: pointer; }
 
   .bar { display: flex; align-items: center; gap: 10px; min-height: var(--barh); padding: 6px 10px; border-top: 1px solid var(--line); }
@@ -82,7 +88,7 @@
         border-radius: 4px; padding: 0 5px; }
 
   @media (max-width: 760px) {
-    main { padding: 12px 10px 36px; }
+    main { padding: 0 10px 36px; }
     .clipcard { width: 100%; }
     .bar { flex-wrap: wrap; gap: 8px; }
     .seek { order: 5; flex-basis: 100%; }
@@ -96,6 +102,7 @@
 <main>
   <header>
     <h1>Music-to-dance comparisons</h1>
+    <nav class="segmented tabs" id="tabs" aria-label="Clips"></nav>
   </header>
 
   <div id="clips"></div>
@@ -255,6 +262,44 @@
     else fsBtn.hidden = true;   // e.g. iPhone Safari
   }
 
+  // ---------- tabs: jump to a clip; the clip most in view is highlighted ----------
+  var header = document.querySelector('header');
+  function syncNav() {     // the sticky row wraps on narrow screens: card size and jump offset follow its real height
+    document.documentElement.style.setProperty('--navh', header.offsetHeight + 'px');
+  }
+  syncNav();
+  window.addEventListener('resize', syncNav);
+  var tabs = document.getElementById('tabs');
+  CLIPS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.textContent = c.name;
+    b.setAttribute('aria-pressed', 'false');
+    b.onclick = function () {
+      var p = players.filter(function (x) { return x.clip === c; })[0];
+      if (!p) return;
+      p.card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try { history.replaceState(null, '', '#' + c.id); } catch (e) {}
+      setActive(p);
+    };
+    c.tab = b;
+    tabs.appendChild(b);
+  });
+  var active = null;
+  function setActive(p) {
+    if (!p || p === active) return;
+    active = p;
+    CLIPS.forEach(function (c) { c.tab.setAttribute('aria-pressed', String(c === p.clip)); });
+    var t = p.clip.tab;   // keep the active tab visible when the tab row scrolls (phones)
+    if (t.offsetLeft < tabs.scrollLeft || t.offsetLeft + t.offsetWidth > tabs.scrollLeft + tabs.clientWidth)
+      tabs.scrollLeft = t.offsetLeft - 8;
+  }
+  var spyQueued = false;
+  window.addEventListener('scroll', function () {
+    if (spyQueued) return;
+    spyQueued = true;
+    requestAnimationFrame(function () { spyQueued = false; if (!fsElement()) setActive(current()); });
+  }, { passive: true });
+
   var box = document.getElementById('clips');
   CLIPS.forEach(function (c) { var p = new Player(c); players.push(p); box.appendChild(p.card); });
   if (!CLIPS.length) box.textContent = 'No clips found (clips.js missing or empty).';
@@ -268,6 +313,12 @@
   document.addEventListener('fullscreenchange', onFs);
   document.addEventListener('webkitfullscreenchange', onFs);
 
+  setActive(players[0]);
+  if (location.hash) {      // a #clip link opens at that clip
+    var h = players.filter(function (p) { return p.clip.id === location.hash.slice(1); })[0];
+    if (h) { h.card.scrollIntoView({ block: 'start' }); setActive(h); }
+  }
+
   // ---------- keys act on the full-screen clip, else the one most in view ----------
   function current() {
     var f = fsElement();
@@ -275,7 +326,7 @@
     var best = null, most = 0;
     players.forEach(function (p) {
       var r = p.card.getBoundingClientRect();
-      var seen = Math.min(r.bottom, innerHeight) - Math.max(r.top, 0);
+      var seen = Math.min(r.bottom, innerHeight) - Math.max(r.top, header.offsetHeight);
       if (seen > most) { most = seen; best = p; }
     });
     return best;
