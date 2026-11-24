@@ -10,9 +10,7 @@
   :root {
     --bg: #f5f5f7; --card: #ffffff; --fg: #1c1c1e; --muted: #6e6e73; --faint: #a1a1a6;
     --line: #e5e5ea; --soft: #f0f0f3; --ink: #1c1c1e;
-    --flower: rgb(148, 103, 189); --mace: rgb(230, 92, 0); --ours: rgb(23, 150, 60); --real: rgb(31, 119, 180);
-    --radius: 14px;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 6px 24px rgba(0, 0, 0, .06);
+    --flower: rgb(148, 103, 189); --mace: rgb(230, 92, 0); --ours: rgb(23, 150, 60);
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -23,11 +21,10 @@
   button { font: inherit; color: inherit; }
   :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-  /* header: one quiet line */
-  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-bottom: 10px; }
+  header { margin-bottom: 10px; }
   h1 { font-size: 17px; line-height: 1.3; margin: 0; font-weight: 650; }
 
-  /* toolbar: everything in one compact bar */
+  /* toolbar: clip, player, speed, full screen */
   #view { background: var(--bg); }
   .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 8px 10px; background: var(--card);
          border: 1px solid var(--line); border-radius: 12px; }
@@ -42,21 +39,6 @@
                       transition: background .15s, color .15s, box-shadow .15s; }
   .segmented button:hover { color: var(--fg); }
   .segmented button[aria-pressed="true"] { background: var(--card); color: var(--fg); box-shadow: 0 1px 2px rgba(0, 0, 0, .14); }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 7px; border-radius: 999px;
-          border: 1.5px solid var(--line); background: var(--card); cursor: pointer; user-select: none; font-size: 13.5px; font-weight: 500;
-          color: var(--muted); transition: background .15s, border-color .15s, color .15s; }
-  .chip input { position: absolute; opacity: 0; pointer-events: none; }
-  .chip .tick { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--faint); display: grid; place-items: center;
-                transition: background .15s, border-color .15s; }
-  .chip .tick svg { width: 9px; height: 9px; opacity: 0; }
-  .chip.on { border-color: var(--c); color: var(--fg); background: color-mix(in srgb, var(--c) 9%, white); }
-  .chip.on .tick { background: var(--c); border-color: var(--c); }
-  .chip.on .tick svg { opacity: 1; }
-  .chip:hover { border-color: color-mix(in srgb, var(--c) 60%, white); }
-  .chip:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .chip.locked { cursor: default; }
 
   .player { flex: 1 1 360px; display: flex; align-items: center; gap: 10px; min-width: 0; }
   .icon { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center;
@@ -82,18 +64,16 @@
                     border: 2px solid var(--line); border-top-color: var(--muted); border-radius: 50%; animation: spin .8s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* videos: as tall as the window allows (--h is set from the space left under the toolbar; videos are 450 x 1056) */
-  .stage { --n: 2; --h: 600px; display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
-  .vcard { flex: none; width: min(calc(var(--h) * 0.4261), calc((100% - (var(--n) - 1) * 12px) / var(--n)));
-           background: #fff; border-radius: 10px; overflow: hidden; }
-  .vcard[hidden] { display: none; }
-  .vcard video { display: block; width: 100%; height: auto; aspect-ratio: 450 / 1056; background: #fff; }
+  /* the video (FlowerDance | MACE-Dance | Ours, 1350 x 1056): as tall as the window allows (--h is set by fit()) */
+  .stage { --h: 600px; display: flex; justify-content: center; margin-top: 10px; }
+  #vid { display: block; width: min(100%, calc(var(--h) * 1350 / 1056)); height: auto; aspect-ratio: 1350 / 1056;
+         background: #fff; border-radius: 10px; cursor: pointer; }
 
-  /* full screen: only the toolbar and the videos */
+  /* full screen: only the toolbar and the video */
   #view:fullscreen { padding: 10px 14px; overflow: auto; }
   #view:-webkit-full-screen { padding: 10px 14px; overflow: auto; width: 100%; height: 100%; }
 
-  /* below the videos: plain and small */
+  /* below the video: plain and small */
   section.block { margin-top: 28px; }
   h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
   .scores { overflow-x: auto; max-width: 100%; }
@@ -103,7 +83,6 @@
   thead th { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); }
   td.model { font-weight: 550; }
   td.model .sw { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-right: 8px; }
-  td.model .ref { font-weight: 400; font-size: 12px; color: var(--muted); margin-left: 6px; }
   .val { display: flex; align-items: center; gap: 8px; }
   .val span { width: 38px; text-align: right; }
   .val.best span { font-weight: 700; }
@@ -125,8 +104,6 @@
     .bar { gap: 8px 12px; }
     .player { flex-basis: 100%; flex-wrap: wrap; }
     #seek { order: 5; flex-basis: 100%; }
-    .stage { flex-wrap: wrap; gap: 8px; }
-    .vcard { width: calc(50% - 4px); }
     .meter { width: 64px; }
     th, td { padding-right: 12px; }
   }
@@ -139,9 +116,8 @@
   </header>
 
   <div id="view">
-    <div class="bar" role="toolbar" aria-label="Choose what to compare">
+    <div class="bar" role="toolbar" aria-label="Player">
       <div class="group"><span class="label">Clip</span><div class="segmented" id="clips" role="group" aria-label="Clip"></div></div>
-      <div class="chips" id="models" role="group" aria-label="Models"></div>
       <div class="player">
         <button id="play" class="icon" aria-label="Play"></button>
         <span id="time">0.0 / 0.0 s</span>
@@ -155,13 +131,15 @@
         <button id="fs" class="icon" aria-label="Full screen" title="Full screen (F)"></button>
       </div>
     </div>
-    <div class="stage" id="stage"></div>
+    <div class="stage" id="stage">
+      <video id="vid" playsinline preload="auto" disablepictureinpicture aria-label="FlowerDance, MACE-Dance and MMC-Dance (Ours) side by side"></video>
+    </div>
   </div>
 
   <section class="block">
     <h2>Whole-clip scores</h2>
     <div class="scores"><table id="metrics" aria-label="Whole-clip scores"></table></div>
-    <p class="note">Higher is better for both. Bold marks the best generated model among those shown; Real Dance is the reference.</p>
+    <p class="note">Higher is better for both. Bold marks the best model.</p>
   </section>
 
   <section class="block">
@@ -175,7 +153,7 @@
   </section>
 
   <footer>
-    <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; Real Dance is the motion-capture dance recorded for the song.
+    <kbd>Space</kbd> play / pause &nbsp;&middot;&nbsp; <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 2 s back / forward &nbsp;&middot;&nbsp; <kbd>F</kbd> full screen &nbsp;&middot;&nbsp; All models use the same random seed.
   </footer>
 </main>
 
@@ -186,37 +164,30 @@
   var MODELS = [
     { id: 'flower', name: 'FlowerDance', color: 'var(--flower)' },
     { id: 'mace', name: 'MACE-Dance', color: 'var(--mace)' },
-    { id: 'ours', name: 'MMC-Dance (Ours)', color: 'var(--ours)', locked: true },
-    { id: 'real', name: 'Real Dance', color: 'var(--real)' }
+    { id: 'ours', name: 'MMC-Dance (Ours)', color: 'var(--ours)' }
   ];
   var ICON = {
     play: '<svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9.5-5.5z"/></svg>',
     pause: '<svg viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2.5" width="3.6" height="11" rx="1"/><rect x="9.4" y="2.5" width="3.6" height="11" rx="1"/></svg>',
     full: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg>',
-    exit: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg>',
-    tick: '<svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.2l2 2L8 3"/></svg>'
+    exit: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v4H2M14 6h-4V2M10 14v-4h4M2 10h4v4"/></svg>'
   };
   var CLIPS = window.CLIPS || [];
-  var audio = new Audio();
-  audio.preload = 'auto';
+  var vid = document.getElementById('vid');
   var stage = document.getElementById('stage');
   var playBtn = document.getElementById('play');
   var seek = document.getElementById('seek');
   var timeEl = document.getElementById('time');
   var statusEl = document.getElementById('status');
   var speedBox = document.getElementById('speed');
-  var rate = 1;
-  var videos = {};          // model id -> <video>
-  var cards = {};           // model id -> card around the video
-  var shown = { flower: false, mace: true, ours: true, real: false };   // every load starts as MACE-Dance vs Ours
-  var clip = null;
-  var wantPlay = false;     // user pressed play (we may be paused while a video buffers)
-  var seeking = false;
+  var view = document.getElementById('view');
+  var fsBtn = document.getElementById('fs');
+  var rate = 1, clip = null, seeking = false;
 
   function store(k, v) { try { localStorage.setItem('cmp.' + k, JSON.stringify(v)); } catch (e) {} }
   function load(k) { try { return JSON.parse(localStorage.getItem('cmp.' + k)); } catch (e) { return null; } }
 
-  // ---------- UI ----------
+  // ---------- clip picker ----------
   var clipBox = document.getElementById('clips');
   CLIPS.forEach(function (c) {
     var b = document.createElement('button');
@@ -230,89 +201,134 @@
     clipBox.appendChild(b);
   });
 
-  var modelBox = document.getElementById('models');
-  MODELS.forEach(function (m) {
-    var lab = document.createElement('label');
-    lab.className = 'chip' + (m.locked ? ' locked' : '');
-    lab.style.setProperty('--c', m.color);
-    var cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = shown[m.id];
-    cb.disabled = !!m.locked;
-    cb.onchange = function () {
-      shown[m.id] = cb.checked;
-      lab.classList.toggle('on', cb.checked);
-      layout();
-    };
-    lab.classList.toggle('on', shown[m.id]);
-    var tick = document.createElement('span'); tick.className = 'tick'; tick.innerHTML = ICON.tick;
-    lab.appendChild(cb); lab.appendChild(tick); lab.appendChild(document.createTextNode(m.name));
-    if (m.locked) lab.title = 'Always shown';
-    m.chip = lab; m.cb = cb;
-    modelBox.appendChild(lab);
+  // ---------- scores ----------
+  function renderMetrics() {
+    var t = document.getElementById('metrics');
+    if (!clip || !clip.metrics) { t.innerHTML = ''; return; }
+    var best = {};
+    ['bpl', 'imc'].forEach(function (k) { best[k] = Math.max.apply(null, MODELS.map(function (m) { return clip.metrics[m.id][k]; })); });
+    function cell(m, k) {
+      var v = clip.metrics[m.id][k];
+      var bar = k === 'bpl'       // BPL 0..1 from the left; IMC -1..1 around a centre line
+        ? '<i style="left:0;width:' + (Math.max(0, Math.min(1, v)) * 100).toFixed(1) + '%"></i>'
+        : '<i style="' + (v >= 0 ? 'left:50%' : 'right:50%') + ';width:' + (Math.min(1, Math.abs(v)) * 50).toFixed(1) + '%"></i>';
+      return '<td><div class="val' + (v === best[k] ? ' best' : '') + '" style="--c:' + m.color + '"><span>' + v.toFixed(2) +
+             '</span><div class="meter' + (k === 'imc' ? ' div' : '') + '">' + bar + '</div></div></td>';
+    }
+    t.innerHTML = '<thead><tr><th>Model</th><th>BPL (0 to 1)</th><th>IMC (&minus;1 to 1)</th></tr></thead><tbody>' +
+      MODELS.map(function (m) {
+        return '<tr><td class="model" style="--c:' + m.color + '"><span class="sw"></span>' + m.name + '</td>' +
+               cell(m, 'bpl') + cell(m, 'imc') + '</tr>';
+      }).join('') + '</tbody>';
+  }
 
-    var card = document.createElement('div');
-    card.className = 'vcard';
-    card.style.setProperty('--c', m.color);
-    var v = document.createElement('video');
-    v.muted = true; v.playsInline = true; v.preload = 'auto';
-    v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
-    v.disablePictureInPicture = true;
-    v.setAttribute('aria-label', m.name);
-    card.appendChild(v);
-    videos[m.id] = v; cards[m.id] = card;
-    stage.appendChild(card);
-  });
+  // ---------- loading ----------
+  // Each clip is downloaded whole and played from memory (blob URL): seeking then works on any host, also ones without
+  // HTTP range requests (e.g. anonymous.4open.science). Falls back to the plain URL if fetch fails (file://).
+  var blobs = {};
+  function fetchUrl(u) {
+    if (!blobs[u]) {
+      blobs[u] = fetch(u).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
+        .then(function (b) { return URL.createObjectURL(b); })
+        .catch(function () { return u; });
+    }
+    return blobs[u];
+  }
+  var loadToken = 0;
+  function selectClip(c) {
+    vid.pause();
+    clip = c;
+    var token = ++loadToken;
+    CLIPS.forEach(function (x) { x.btn.setAttribute('aria-pressed', String(x === c)); });
+    vid.removeAttribute('src');
+    vid.load();
+    statusEl.textContent = 'Loading clip…';
+    store('clip', c.id);
+    try { history.replaceState(null, '', '#' + c.id); } catch (e) {}
+    renderMetrics();
+    updateUI();
+    fetchUrl(c.video).then(function (url) {
+      if (token !== loadToken) return;            // another clip was chosen meanwhile
+      vid.src = url;
+      vid.playbackRate = rate;
+      statusEl.textContent = '';
+      updateUI();
+      prefetchRest();
+    });
+  }
+  var prefetched = false;
+  function prefetchRest() {        // after the first clip: fetch the others one by one so switching is instant
+    if (prefetched) return;
+    prefetched = true;
+    CLIPS.reduce(function (p, c) { return p.then(function () { return fetchUrl(c.video); }); }, Promise.resolve());
+  }
+
+  // ---------- playback ----------
+  function play() {
+    if (vid.ended) vid.currentTime = 0;
+    vid.playbackRate = rate;
+    var p = vid.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function toggle() { if (vid.paused || vid.ended) play(); else vid.pause(); }
+  ['play', 'pause', 'ended', 'loadedmetadata', 'durationchange'].forEach(function (e) { vid.addEventListener(e, updateUI); });
+  vid.addEventListener('timeupdate', function () { if (!seeking) updateUI(); });
+  vid.addEventListener('waiting', function () { if (!statusEl.textContent) statusEl.textContent = 'Loading'; });
+  vid.addEventListener('playing', function () { if (statusEl.textContent === 'Loading') statusEl.textContent = ''; });
+  vid.addEventListener('ratechange', function () { if (vid.playbackRate !== rate && vid.src) vid.playbackRate = rate; });
+  vid.addEventListener('click', toggle);
+
+  function setProgress(f) {
+    seek.value = Math.round(1000 * f);
+    seek.style.setProperty('--p', (100 * f).toFixed(2) + '%');
+  }
+  function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
+  function updateUI() {
+    var dur = vid.duration || 0, on = !vid.paused && !vid.ended;
+    playBtn.innerHTML = on ? ICON.pause : ICON.play;
+    playBtn.setAttribute('aria-label', on ? 'Pause' : 'Play');
+    if (!seeking && dur) setProgress(vid.currentTime / dur);
+    timeEl.textContent = fmt(vid.currentTime) + ' / ' + fmt(dur) + ' s';
+  }
+  function tick() {               // smooth progress bar while playing
+    if (!seeking && !vid.paused && vid.duration) setProgress(vid.currentTime / vid.duration);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function seekTo(t) {
+    var dur = vid.duration || 0;
+    vid.currentTime = Math.min(Math.max(t, 0), Math.max(dur - 0.05, 0));
+    updateUI();
+  }
 
   speedBox.querySelectorAll('button').forEach(function (b) {
     b.onclick = function () {
       rate = Number(b.dataset.rate);
       speedBox.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-      audio.playbackRate = rate;
-      resync(true);
+      vid.playbackRate = rate;
     };
   });
 
-  function active() {
-    return MODELS.filter(function (m) { return shown[m.id] && clip && clip.models.indexOf(m.id) >= 0; })
-                 .map(function (m) { return videos[m.id]; });
-  }
+  playBtn.onclick = toggle;
+  seek.addEventListener('input', function () {
+    seeking = true;
+    var dur = vid.duration || 0;
+    seek.style.setProperty('--p', (seek.value / 10) + '%');
+    timeEl.textContent = fmt(seek.value / 1000 * dur) + ' / ' + fmt(dur) + ' s';
+    seekTo(seek.value / 1000 * dur);
+  });
+  seek.addEventListener('change', function () { seeking = false; updateUI(); });
 
-  function layout() {
-    var n = 0;
-    MODELS.forEach(function (m) {
-      var avail = clip && clip.models.indexOf(m.id) >= 0;
-      var on = shown[m.id] && avail;
-      var v = videos[m.id];
-      cards[m.id].hidden = !on;
-      v.hidden = !on;
-      m.chip.style.display = avail ? '' : 'none';
-      if (on) {
-        n++;
-        v.currentTime = audio.currentTime;
-        v.playbackRate = audio.playbackRate;
-        if (!audio.paused) v.play().catch(function () {});
-      } else {
-        v.pause();
-      }
-    });
-    stage.style.setProperty('--n', Math.max(n, 1));
-    fit();
-    renderMetrics();
-  }
-
-  // video height = what is left of the window under the toolbar (page or full screen)
+  // ---------- size and full screen ----------
   function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
-  function fit() {
+  function fit() {                // video height = what is left of the window under the toolbar (page or full screen)
     var box = fsElement() || document.documentElement;
     var top = stage.getBoundingClientRect().top - box.getBoundingClientRect().top;
     var h = window.innerHeight - top - (fsElement() ? 10 : 14);
-    stage.style.setProperty('--h', Math.max(h, 320) + 'px');
+    stage.style.setProperty('--h', Math.max(h, 240) + 'px');
   }
   window.addEventListener('resize', fit);
-
-  var view = document.getElementById('view');
-  var fsBtn = document.getElementById('fs');
   function toggleFull() {
     if (fsElement()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
     else (view.requestFullscreen || view.webkitRequestFullscreen).call(view);
@@ -333,189 +349,17 @@
     fsBtn.hidden = true;   // e.g. iPhone Safari
   }
 
-  function renderMetrics() {
-    var t = document.getElementById('metrics');
-    if (!clip || !clip.metrics) { t.innerHTML = ''; return; }
-    var rows = MODELS.filter(function (m) { return shown[m.id] && clip.models.indexOf(m.id) >= 0; });
-    var gen = rows.filter(function (m) { return m.id !== 'real'; });
-    var best = {};
-    ['bpl', 'imc'].forEach(function (k) { best[k] = Math.max.apply(null, gen.map(function (m) { return clip.metrics[m.id][k]; })); });
-    function cell(m, k) {
-      var v = clip.metrics[m.id][k];
-      var isBest = m.id !== 'real' && gen.length > 1 && v === best[k];
-      var bar = k === 'bpl'       // BPL 0..1 from the left; IMC -1..1 around a centre line
-        ? '<i style="left:0;width:' + (Math.max(0, Math.min(1, v)) * 100).toFixed(1) + '%"></i>'
-        : '<i style="' + (v >= 0 ? 'left:50%' : 'right:50%') + ';width:' + (Math.min(1, Math.abs(v)) * 50).toFixed(1) + '%"></i>';
-      return '<td><div class="val' + (isBest ? ' best' : '') + '" style="--c:' + m.color + '"><span>' + v.toFixed(2) +
-             '</span><div class="meter' + (k === 'imc' ? ' div' : '') + '">' + bar + '</div></div></td>';
-    }
-    t.innerHTML = '<thead><tr><th>Model</th><th>BPL (0 to 1)</th><th>IMC (&minus;1 to 1)</th></tr></thead><tbody>' +
-      rows.map(function (m) {
-        return '<tr><td class="model" style="--c:' + m.color + '"><span class="sw"></span>' + m.name +
-               (m.id === 'real' ? '<span class="ref">reference</span>' : '') + '</td>' + cell(m, 'bpl') + cell(m, 'imc') + '</tr>';
-      }).join('') + '</tbody>';
-  }
-
-  // Files are downloaded whole and played from memory (blob URLs): seeking then works on any host, also ones without
-  // HTTP range requests (e.g. anonymous.4open.science). Falls back to the plain URL if fetch fails (file://).
-  var blobs = {};
-  function fetchUrl(u) {
-    if (!blobs[u]) {
-      blobs[u] = fetch(u).then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
-        .then(function (b) { return URL.createObjectURL(b); })
-        .catch(function () { return u; });
-    }
-    return blobs[u];
-  }
-  function clipFiles(c) {
-    var base = 'videos/' + c.id + '/';
-    return [base + 'audio.m4a'].concat(c.models.map(function (m) { return base + m + '.mp4'; }));
-  }
-  var loadToken = 0;
-  var LOADING_CLIP = 'Loading clip…';
-  function selectClip(c) {
-    wantPlay = false;
-    audio.pause();
-    clip = c;
-    var token = ++loadToken;
-    CLIPS.forEach(function (x) { x.btn.setAttribute('aria-pressed', String(x === c)); });
-    audio.removeAttribute('src');
-    audio.load();
-    MODELS.forEach(function (m) { var v = videos[m.id]; v.pause(); v.removeAttribute('src'); v.load(); });
-    statusEl.textContent = LOADING_CLIP;
-    store('clip', c.id);
-    try { history.replaceState(null, '', '#' + c.id); } catch (e) {}
-    layout();
-    updateUI();
-    Promise.all(clipFiles(c).map(fetchUrl)).then(function (urls) {
-      if (token !== loadToken) return;            // another clip was chosen meanwhile
-      audio.src = urls[0];
-      audio.playbackRate = rate;
-      c.models.forEach(function (m, i) { videos[m].src = urls[i + 1]; videos[m].load(); });
-      statusEl.textContent = '';
-      layout();
-      updateUI();
-      prefetchRest();
-    });
-  }
-  var prefetched = false;
-  function prefetchRest() {        // after the first clip: fetch the others one by one so switching is instant
-    if (prefetched) return;
-    prefetched = true;
-    CLIPS.reduce(function (p, c) {
-      return p.then(function () { return Promise.all(clipFiles(c).map(fetchUrl)); });
-    }, Promise.resolve());
-  }
-
-  // ---------- playback: the song is the clock, videos follow ----------
-  var holding = false;      // audio.play() pending
-  function play() {
-    wantPlay = true;
-    if (audio.ended || audio.currentTime >= (audio.duration || 1e9) - 0.05) audio.currentTime = 0;
-    resync(true);
-    updateUI();             // tick() starts the song and the videos once every shown video can play
-  }
-  function startPlayback() {
-    holding = true;
-    audio.play().then(function () {
-      holding = false;
-      active().forEach(function (v) { v.play().catch(function () {}); });
-    }).catch(function () { holding = false; wantPlay = false; updateUI(); });
-  }
-  function ready() {        // the song buffers by itself while playing (the videos follow its clock); videos must be ready
-    return audio.readyState >= 1 && active().every(function (v) { return v.readyState >= 3 && !v.seeking; });
-  }
-  function pause() {
-    wantPlay = false;
-    audio.pause();
-    active().forEach(function (v) { v.pause(); });
-    resync(true);
-    updateUI();
-  }
-
-  function align() {         // paused: put every shown video on the song's time; true if one had to seek
-    var t = audio.currentTime, moved = false;
-    active().forEach(function (v) {
-      v.playbackRate = audio.playbackRate;
-      if (Math.abs(v.currentTime - t) > 0.02) { v.currentTime = t; moved = true; }
-    });
-    return moved;
-  }
-
-  function resync(hard) {
-    var t = audio.currentTime, r = audio.playbackRate;
-    active().forEach(function (v) {
-      if (v.readyState < 1) return;
-      var d = v.currentTime - t;
-      if (hard || Math.abs(d) > 0.25) { v.currentTime = t; v.playbackRate = r; }
-      else if (Math.abs(d) > 0.03) { v.playbackRate = r * (d > 0 ? 0.95 : 1.05); }   // drift: nudge the rate
-      else if (v.playbackRate !== r) { v.playbackRate = r; }
-    });
-  }
-
-  audio.addEventListener('ended', function () { wantPlay = false; active().forEach(function (v) { v.pause(); }); updateUI(); });
-  audio.addEventListener('loadedmetadata', updateUI);
-  audio.addEventListener('timeupdate', function () { if (!seeking) updateUI(); });
-
-  function tick() {          // every frame: keep the videos on the song; hold everything while a shown video is loading
-    if (wantPlay && !holding) {
-      var ok = ready();
-      if (!audio.paused && !ok) {
-        audio.pause();
-        active().forEach(function (v) { v.pause(); });
-        statusEl.textContent = 'Loading';
-      } else if (audio.paused && ok) {
-        if (!align()) { statusEl.textContent = ''; startPlayback(); }   // start only once no video needed a seek
-      } else if (!audio.paused) {
-        resync(false);
-      }
-    } else if (!wantPlay && statusEl.textContent === 'Loading') {
-      statusEl.textContent = '';
-    }
-    if (!seeking && audio.duration) setProgress(audio.currentTime / audio.duration);
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-
-  function setProgress(f) {
-    seek.value = Math.round(1000 * f);
-    seek.style.setProperty('--p', (100 * f).toFixed(2) + '%');
-  }
-  function fmt(s) { return (isFinite(s) ? s : 0).toFixed(1); }
-  function updateUI() {
-    var dur = audio.duration || 0;
-    playBtn.innerHTML = wantPlay ? ICON.pause : ICON.play;
-    playBtn.setAttribute('aria-label', wantPlay ? 'Pause' : 'Play');
-    if (!seeking && dur) setProgress(audio.currentTime / dur);
-    timeEl.textContent = fmt(audio.currentTime) + ' / ' + fmt(dur) + ' s';
-  }
-
-  function seekTo(t) {
-    var dur = audio.duration || 0;
-    audio.currentTime = Math.min(Math.max(t, 0), Math.max(dur - 0.05, 0));
-    resync(true);
-    updateUI();
-  }
-
-  playBtn.onclick = function () { wantPlay ? pause() : play(); };
-  seek.addEventListener('input', function () {
-    seeking = true;
-    var dur = audio.duration || 0;
-    seek.style.setProperty('--p', (seek.value / 10) + '%');
-    timeEl.textContent = fmt(seek.value / 1000 * dur) + ' / ' + fmt(dur) + ' s';
-    seekTo(seek.value / 1000 * dur);
-  });
-  seek.addEventListener('change', function () { seeking = false; updateUI(); });
   document.addEventListener('keydown', function (e) {
     var tg = e.target && e.target.tagName;
-    if (tg === 'INPUT' && e.target.type !== 'checkbox' && e.target.type !== 'range' || tg === 'SELECT' || tg === 'TEXTAREA') return;
-    if (e.code === 'Space') { e.preventDefault(); wantPlay ? pause() : play(); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); seekTo(audio.currentTime + 2); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); seekTo(audio.currentTime - 2); }
+    if (tg === 'INPUT' && e.target.type !== 'range' || tg === 'SELECT' || tg === 'TEXTAREA') return;
+    if (e.code === 'Space') { e.preventDefault(); toggle(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); seekTo(vid.currentTime + 2); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); seekTo(vid.currentTime - 2); }
     else if ((e.key === 'f' || e.key === 'F') && !e.ctrlKey && !e.metaKey && !e.altKey && !fsBtn.hidden) { e.preventDefault(); toggleFull(); }
   });
 
   playBtn.innerHTML = ICON.play;
+  fit();
   if (!CLIPS.length) { statusEl.textContent = 'No clips found (clips.js missing or empty)'; return; }
   var first = location.hash.slice(1) || load('clip');
   selectClip(CLIPS.filter(function (c) { return c.id === first; })[0] || CLIPS[0]);
